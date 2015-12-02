@@ -1,10 +1,10 @@
 Package: Rbonaut2
 Type: Package
-Title: What the Package Does (Title Case)
+Title: CLIP2's Rbonaut
 Version: 0.1
 Date: 2015-12-02
-Author: Who wrote it
-Maintainer: Who to complain to <yourfault@somewhere.net>
-Description: More about what it does (maybe more than one line)
-License: What license is it under?
+Author: Cavorit
+Maintainer: Harald Fiedler <harald.fiedler@cavorit.de>
+Description: The CLIP2-Version of CLIP1's Rbonaut-Package
+License: This package is private and internal of Cavorit Consulting GmbH
 LazyData: TRUE
