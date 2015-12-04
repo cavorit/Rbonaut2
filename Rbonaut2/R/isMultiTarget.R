@@ -2,14 +2,16 @@
 #' @title isMultiTarget
 #' @param adrW character Array, etwa c("{22, 33, 44, 55}", "{11, 22222, 11111}", "{99}")
 #' @return boolescher Vektor
-#' @description ist adrW multitargetting?
+#' @description Hilfsfunktion von SQL2DF(): ist adrW multitargetting?
 #' @details Sagt, ob {11, 21, 16} oder {23} unter adrW abgespeichert wurde
+#' @examples
+#' adrW <- head(SQL,1)$adrw
+#' adrW <- c("{22, 33, 44, 55}", "{11, 22222, 11111}", "{99}")
+#' isMultiTarget(adrW=adrW)
+
 
 isMultiTarget <- function(adrW){
   ZieleListe <- getAdrWAlsListe(adrW = adrW)
   unlist(lapply(ZieleListe, length)) != 1
 }
 
-# adrW <- head(SQL,1)$adrw
-# adrW <- c("{22, 33, 44, 55}", "{11, 22222, 11111}", "{99}")
-# isMultiTarget(adrW=adrW)
