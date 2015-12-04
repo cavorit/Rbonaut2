@@ -13,10 +13,14 @@ getAdrWAlsListe(adrW)
 list mit numerischen Elementen
 }
 \description{
-adrW-Einträge als numerische Liste
+Hilfsfunktion von SQL2DF()
 }
 \details{
-Aus c("{1, 2, 3, 4}", "{11, 12, 13, 14}") mach mache list(c(1, 2, 3, 4), c(11, 12, 13, 14))
+In den DB-Abfragen von CGoal findet sich die Variable adrW für die Zielfelder.
+Beim Umstellen von Single-Target auf Multi-Target wurde aus einer Zahl nun einen String, der einen JSON-Vektor darstellt.
+Wenn also Früher nur das Zielfeld 7 angegeben war, kann bei Multitarget nun der Ausdruck "{7, 2, 21}" angegeben sein.
+Die hier volriegende Funktion arbeitet Vektorwertig und macht beispielsweise aus den Tabelleneinträgen
+c("{1, 2, 3, 4}", "{11, 12, 13, 14}") eine List der Form list(c(1, 2, 3, 4), c(11, 12, 13, 14))
 }
 \author{
 Harald Fiedler
