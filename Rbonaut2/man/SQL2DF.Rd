@@ -18,6 +18,13 @@ SQL zu data.frame
 \details{
 Mit shinySQL erhalten wir von CGoal SQL-Abfragen händisch als .csv-Files zurück. Diese werden in ein data.frame umgewandelt
 }
+\examples{
+message("Ich lade den R-Paket-internen RAW-Datensatz: Footbonaut_Datenabfrage_RicoWehrle.csv")
+Pfad <- system.file("extdata", package="Rbonaut2", "Footbonaut_Datenabfrage_RicoWehrle.csv")
+SQL <- read.csv2(file=Pfad, sep = ",", stringsAsFactors = FALSE, encoding = "utf8")
+DF <- SQL2DF(SQL=SQL)
+head(DF)
+}
 \author{
 Harald Fiedler
 }

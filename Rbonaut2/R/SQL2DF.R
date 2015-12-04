@@ -4,6 +4,16 @@
 #' @details Mit shinySQL erhalten wir von CGoal SQL-Abfragen händisch als .csv-Files zurück. Diese werden in ein data.frame umgewandelt
 #' @param SQL data.frame, dass per read.csv eingelesen wurde
 #' @return data.frame
+#' @examples
+#' message("Ich lade den R-Paket-internen RAW-Datensatz: Footbonaut_Datenabfrage_RicoWehrle.csv")
+#' Pfad <- system.file("extdata", package="Rbonaut2", "Footbonaut_Datenabfrage_RicoWehrle.csv")
+#' SQL <- read.csv2(file=Pfad, sep = ",", stringsAsFactors = FALSE, encoding = "utf8")
+#' DF <- SQL2DF(SQL=SQL)
+#' head(DF)
+
+
+
+
 
 SQL2DF <- function(SQL){
 
@@ -128,12 +138,7 @@ SQL2DF <- function(SQL){
 }
 
 
-# SQL <- read.csv2("~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/RicoWehrle_BA/RAW/Footbonaut_Datenabfrage_RicoWehrle.csv", header = TRUE,
-#                  sep=",", stringsAsFactors = FALSE, encoding = "utf8")
-#
-# Pfad <- system.file("extdata", package="Rbonaut2", "SQL Abfrage 06.11.2015 Studie Rico Wehrle.csv")
-# SQL <- read.csv2(file=Pfad, sep = ",", stringsAsFactors = FALSE, encoding = "utf8")
-#
-# X <- SQL2DF(SQL)
-# View(X)
+#SQL <- read.csv2("~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/RicoWehrle_BA/RAW/Footbonaut_Datenabfrage_RicoWehrle.csv", header = TRUE,
+#                 sep=",", stringsAsFactors = FALSE, encoding = "utf8")
+
 
