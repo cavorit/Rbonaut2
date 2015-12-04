@@ -74,7 +74,7 @@ problems found in ‘SQL2DF.Rd’, ‘getAdrWAlsListe.Rd’, ‘getFirstAdrW.Rd�
 * checking Rd \usage sections ... OK
 * checking Rd contents ... OK
 * checking for unstated dependencies in examples ... OK
-* checking examples ... NONE
+* checking examples ... OK
 * checking PDF version of manual ... OK
 * DONE
 Status: 3 WARNINGs, 3 NOTEs

@@ -18,11 +18,6 @@ Hilfsfunktion von SQL2DF(): ist adrW multitargetting?
 \details{
 Sagt, ob {11, 21, 16} oder {23} unter adrW abgespeichert wurde
 }
-\examples{
-adrW <- head(SQL,1)$adrw
-adrW <- c("{22, 33, 44, 55}", "{11, 22222, 11111}", "{99}")
-isMultiTarget(adrW=adrW)
-}
 \author{
 Harald Fiedler
 }
