@@ -19,6 +19,10 @@ Liest die ItemBank ein
 \details{
 Es wird die ItemBank im 1:4PL-Modell eingelesen.
 }
+\examples{
+ItemBank <- readItemBank()
+head(ItemBank)
+}
 \author{
 Harald Fiedler
 }

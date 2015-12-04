@@ -82,6 +82,14 @@ Overfull \hbox (115.98093pt too wide) in paragraph at lines 189--189
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [5]
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [6]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (23.28091pt too wide) in paragraph at lines 367--367
+ []\T1/zi4/m/n/9 message("Ich lade den R-Paket-internen RAW-Datensatz: Footbona
+ut_Datenabfrage_RicoWehrle.csv")[] 
+
+Overfull \hbox (15.18091pt too wide) in paragraph at lines 368--368
+ []\T1/zi4/m/n/9 Pfad <- system.file("extdata", package="Rbonaut2", "Footbonaut
+_Datenabfrage_RicoWehrle.csv")[] 
 No file Rd2.ind.
 [7] (./Rd2.aux)
 
@@ -98,12 +106,12 @@ fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/t
 ype1/urw/times/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/t
 imes/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmr8
 a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Rd2.pdf (7 pages, 76624 bytes).
+Output written on Rd2.pdf (7 pages, 79501 bytes).
 Transcript written on Rd2.log.
 This is makeindex, version 2.15 [TeX Live 2015] (kpathsea + Thai support).
-Scanning input file Rd2.idx....done (11 entries accepted, 0 rejected).
-Sorting entries....done (45 comparisons).
-Generating output file Rd2.ind....done (29 lines written, 0 warnings).
+Scanning input file Rd2.idx....done (12 entries accepted, 0 rejected).
+Sorting entries....done (48 comparisons).
+Generating output file Rd2.ind....done (30 lines written, 0 warnings).
 Output written in Rd2.ind.
 Transcript written in Rd2.ilg.
 This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex)
@@ -187,8 +195,16 @@ Overfull \hbox (115.98093pt too wide) in paragraph at lines 189--189
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [4]
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [5]
-(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [6] (./Rd2.ind
-[7]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [6]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (23.28091pt too wide) in paragraph at lines 367--367
+ []\T1/zi4/m/n/9 message("Ich lade den R-Paket-internen RAW-Datensatz: Footbona
+ut_Datenabfrage_RicoWehrle.csv")[] 
+
+Overfull \hbox (15.18091pt too wide) in paragraph at lines 368--368
+ []\T1/zi4/m/n/9 Pfad <- system.file("extdata", package="Rbonaut2", "Footbonaut
+_Datenabfrage_RicoWehrle.csv")[] 
+(./Rd2.ind [7]
 
 LaTeX Font Warning: Font shape `T1/zi4/m/it' undefined
 (Font)              using `T1/zi4/m/n' instead on input line 21.
@@ -212,12 +228,12 @@ onts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/ty
 pe1/urw/times/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/ti
 mes/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmr8a
 .pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Rd2.pdf (8 pages, 86622 bytes).
+Output written on Rd2.pdf (8 pages, 89766 bytes).
 Transcript written on Rd2.log.
 This is makeindex, version 2.15 [TeX Live 2015] (kpathsea + Thai support).
-Scanning input file Rd2.idx....done (11 entries accepted, 0 rejected).
-Sorting entries....done (45 comparisons).
-Generating output file Rd2.ind....done (29 lines written, 0 warnings).
+Scanning input file Rd2.idx....done (12 entries accepted, 0 rejected).
+Sorting entries....done (48 comparisons).
+Generating output file Rd2.ind....done (30 lines written, 0 warnings).
 Output written in Rd2.ind.
 Transcript written in Rd2.ilg.
 This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex)
@@ -301,8 +317,16 @@ Overfull \hbox (115.98093pt too wide) in paragraph at lines 189--189
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [4]
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [5]
-(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [6] (./Rd2.ind
-[7]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [6]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (23.28091pt too wide) in paragraph at lines 367--367
+ []\T1/zi4/m/n/9 message("Ich lade den R-Paket-internen RAW-Datensatz: Footbona
+ut_Datenabfrage_RicoWehrle.csv")[] 
+
+Overfull \hbox (15.18091pt too wide) in paragraph at lines 368--368
+ []\T1/zi4/m/n/9 Pfad <- system.file("extdata", package="Rbonaut2", "Footbonaut
+_Datenabfrage_RicoWehrle.csv")[] 
+(./Rd2.ind [7]
 
 LaTeX Font Warning: Font shape `T1/zi4/m/it' undefined
 (Font)              using `T1/zi4/m/n' instead on input line 21.
@@ -321,8 +345,8 @@ onts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/ty
 pe1/urw/times/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/ti
 mes/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmr8a
 .pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Rd2.pdf (8 pages, 87596 bytes).
+Output written on Rd2.pdf (8 pages, 90527 bytes).
 Transcript written on Rd2.log.
 Saving output to 'Rbonaut2-manual.pdf' ...
 Done
-You may want to clean up by 'rm -rf /var/folders/2v/02lf0mjn2v70y10r5bp0kqyr0000gn/T//RtmpNOanHT/Rd2pdf26783044714'
+You may want to clean up by 'rm -rf /var/folders/2v/02lf0mjn2v70y10r5bp0kqyr0000gn/T//RtmpHqJGbO/Rd2pdf34242741ecc8'

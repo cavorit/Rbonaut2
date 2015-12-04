@@ -4,7 +4,7 @@
 * using session charset: UTF-8
 * checking for file ‘Rbonaut2/DESCRIPTION’ ... OK
 * checking extension type ... Package
-* this is package ‘Rbonaut2’ version ‘0.1’
+* this is package ‘Rbonaut2’ version ‘0.2’
 * checking package namespace information ... OK
 * checking package dependencies ... OK
 * checking if this is a source package ... OK
@@ -13,6 +13,7 @@
 * checking for hidden files and directories ... NOTE
 Found the following hidden files and directories:
   .Rhistory
+  inst/extdata/.DS_Store
   .Rproj.user
 These were most likely included in error. See section ‘Package
 structure’ in the ‘Writing R Extensions’ manual.
@@ -69,15 +70,26 @@ getFirstAdrW.Rd: non-ASCII input and no declared encoding
 getNachname.Rd: non-ASCII input and no declared encoding
 getVorname.Rd: non-ASCII input and no declared encoding
 istFormatNachnameKommaVorname.Rd: non-ASCII input and no declared encoding
-problems found in ‘SQL2DF.Rd’, ‘getAdrWAlsListe.Rd’, ‘getFirstAdrW.Rd’, ‘getNachname.Rd’, ‘getVorname.Rd’, ‘istFormatNachnameKommaVorname.Rd’
+readItemBank.Rd: non-ASCII input and no declared encoding
+problems found in ‘SQL2DF.Rd’, ‘getAdrWAlsListe.Rd’, ‘getFirstAdrW.Rd’, ‘getNachname.Rd’, ‘getVorname.Rd’, ‘istFormatNachnameKommaVorname.Rd’, ‘readItemBank.Rd’
 * checking Rd metadata ... OK
 * checking Rd cross-references ... OK
 * checking for missing documentation entries ... OK
 * checking for code/documentation mismatches ... OK
-* checking Rd \usage sections ... OK
+* checking Rd \usage sections ... WARNING
+Undocumented arguments in documentation object 'readItemBank'
+  ‘file’
+Documented arguments not in \usage in documentation object 'readItemBank':
+  ‘Pfad’
+
+Functions with \usage entries need to have the appropriate \alias
+entries, and all their arguments documented.
+The \usage entries must correspond to syntactically valid R code.
+See chapter ‘Writing R documentation files’ in the ‘Writing R
+Extensions’ manual.
 * checking Rd contents ... OK
 * checking for unstated dependencies in examples ... OK
 * checking examples ... OK
 * checking PDF version of manual ... OK
 * DONE
-Status: 3 WARNINGs, 3 NOTEs
+Status: 4 WARNINGs, 3 NOTEs

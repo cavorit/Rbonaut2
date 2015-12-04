@@ -7,4 +7,5 @@ getVorname	getVorname
 isMultiTarget	isMultiTarget
 istFormatNachnameKommaVorname	istFormatNachnameKommaVorname
 Rbonaut2	Rbonaut2-package
+readItemBank	readItemBank
 SQL2DF	SQL2DF

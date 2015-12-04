@@ -5,6 +5,26 @@ library('Rbonaut2')
 
 base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
 cleanEx()
+nameEx("SQL2DF")
+### * SQL2DF
+
+flush(stderr()); flush(stdout())
+
+### Name: SQL2DF
+### Title: SQL2DF
+### Aliases: SQL2DF
+
+### ** Examples
+
+message("Ich lade den R-Paket-internen RAW-Datensatz: Footbonaut_Datenabfrage_RicoWehrle.csv")
+Pfad <- system.file("extdata", package="Rbonaut2", "Footbonaut_Datenabfrage_RicoWehrle.csv")
+SQL <- read.csv2(file=Pfad, sep = ",", stringsAsFactors = FALSE, encoding = "utf8")
+DF <- SQL2DF(SQL=SQL)
+head(DF)
+
+
+
+cleanEx()
 nameEx("getAdrWAlsListe")
 ### * getAdrWAlsListe
 
@@ -101,6 +121,23 @@ flush(stderr()); flush(stdout())
 
 Spielername <- c("Fiedler, Harald", "Mayer, Jan", "A-Team")
 istFormatNachnameKommaVorname(Spielername = Spielername)
+
+
+
+cleanEx()
+nameEx("readItemBank")
+### * readItemBank
+
+flush(stderr()); flush(stdout())
+
+### Name: readItemBank
+### Title: readItemBank
+### Aliases: readItemBank
+
+### ** Examples
+
+ItemBank <- readItemBank()
+head(ItemBank)
 
 
 

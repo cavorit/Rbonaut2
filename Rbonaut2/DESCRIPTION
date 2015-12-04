@@ -1,8 +1,8 @@
 Package: Rbonaut2
 Type: Package
 Title: CLIP2's Rbonaut
-Version: 0.1
-Date: 2015-12-02
+Version: 0.2
+Date: 2015-12-04
 Author: Cavorit
 Maintainer: Harald Fiedler <harald.fiedler@cavorit.de>
 Depends: data.table
