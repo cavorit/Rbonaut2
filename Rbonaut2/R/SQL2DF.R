@@ -11,10 +11,6 @@
 #' DF <- SQL2DF(SQL=SQL)
 #' head(DF)
 
-
-
-
-
 SQL2DF <- function(SQL){
 
   message("\nErstelle Schlüßel")
@@ -138,7 +134,5 @@ SQL2DF <- function(SQL){
 }
 
 
-#SQL <- read.csv2("~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/RicoWehrle_BA/RAW/Footbonaut_Datenabfrage_RicoWehrle.csv", header = TRUE,
-#                 sep=",", stringsAsFactors = FALSE, encoding = "utf8")
 
 
