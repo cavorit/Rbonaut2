@@ -72,13 +72,15 @@ No file Rd2.aux.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [1{/usr/local/texl
 ive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [2]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [3]
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [4]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [5]
 No file Rd2.ind.
-[5] (./Rd2.aux)
+[6] (./Rd2.aux)
 
 Package rerunfilecheck Warning: File `Rd2.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
@@ -92,12 +94,12 @@ xlive/2015/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2015
 /texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dis
 t/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/ty
 pe1/urw/times/utmri8a.pfb>
-Output written on Rd2.pdf (5 pages, 68630 bytes).
+Output written on Rd2.pdf (6 pages, 71620 bytes).
 Transcript written on Rd2.log.
 This is makeindex, version 2.15 [TeX Live 2015] (kpathsea + Thai support).
-Scanning input file Rd2.idx....done (9 entries accepted, 0 rejected).
-Sorting entries....done (34 comparisons).
-Generating output file Rd2.ind....done (27 lines written, 0 warnings).
+Scanning input file Rd2.idx....done (11 entries accepted, 0 rejected).
+Sorting entries....done (45 comparisons).
+Generating output file Rd2.ind....done (29 lines written, 0 warnings).
 Output written in Rd2.ind.
 Transcript written in Rd2.ilg.
 This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex)
@@ -172,17 +174,19 @@ Writing index file Rd2.idx
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [1{/usr/local/texl
 ive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [2]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [3]
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
-(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [4] (./Rd2.ind
-[5]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [4]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [5] (./Rd2.ind
+[6]
 
 LaTeX Font Warning: Font shape `T1/zi4/m/it' undefined
-(Font)              using `T1/zi4/m/n' instead on input line 19.
+(Font)              using `T1/zi4/m/n' instead on input line 21.
 
-[6]) (./Rd2.aux)
+[7]) (./Rd2.aux)
 
 Package rerunfilecheck Warning: File `Rd2.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
@@ -200,12 +204,12 @@ live/2015/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2015/
 texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist
 /fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/typ
 e1/urw/times/utmri8a.pfb>
-Output written on Rd2.pdf (6 pages, 78392 bytes).
+Output written on Rd2.pdf (7 pages, 81603 bytes).
 Transcript written on Rd2.log.
 This is makeindex, version 2.15 [TeX Live 2015] (kpathsea + Thai support).
-Scanning input file Rd2.idx....done (9 entries accepted, 0 rejected).
-Sorting entries....done (34 comparisons).
-Generating output file Rd2.ind....done (27 lines written, 0 warnings).
+Scanning input file Rd2.idx....done (11 entries accepted, 0 rejected).
+Sorting entries....done (45 comparisons).
+Generating output file Rd2.ind....done (29 lines written, 0 warnings).
 Output written in Rd2.ind.
 Transcript written in Rd2.ilg.
 This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex)
@@ -280,17 +284,19 @@ Writing index file Rd2.idx
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [1{/usr/local/texl
 ive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [2]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [3]
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
-(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [4] (./Rd2.ind
-[5]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [4]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [5] (./Rd2.ind
+[6]
 
 LaTeX Font Warning: Font shape `T1/zi4/m/it' undefined
-(Font)              using `T1/zi4/m/n' instead on input line 19.
+(Font)              using `T1/zi4/m/n' instead on input line 21.
 
-[6]) (./Rd2.aux)
+[7]) (./Rd2.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -303,8 +309,8 @@ live/2015/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2015/
 texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist
 /fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/typ
 e1/urw/times/utmri8a.pfb>
-Output written on Rd2.pdf (6 pages, 78663 bytes).
+Output written on Rd2.pdf (7 pages, 81781 bytes).
 Transcript written on Rd2.log.
 Saving output to 'Rbonaut2-manual.pdf' ...
 Done
-You may want to clean up by 'rm -rf /var/folders/2v/02lf0mjn2v70y10r5bp0kqyr0000gn/T//RtmpsYxKwG/Rd2pdf10652b5918a1'
+You may want to clean up by 'rm -rf /var/folders/2v/02lf0mjn2v70y10r5bp0kqyr0000gn/T//RtmpqAm9AY/Rd2pdf14d62ab4bd43'

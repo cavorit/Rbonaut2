@@ -1,6 +1,8 @@
 Rbonaut2-package        Rbonaut2
 SQL2DF                  SQL2DF
 getAdrWAlsListe         getAdrWAlsListe
+getFirstAdrW            getFirstArdW
+getNachname             getNachname
 getSessionTimeStamp     getSessionTimeStamp
 getVorname              getVorname
 isMultiTarget           isMultiTarget

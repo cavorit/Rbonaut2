@@ -48,12 +48,6 @@ Use \uxxxx escapes for other characters.
 * checking replacement functions ... OK
 * checking foreign function calls ... OK
 * checking R code for possible problems ... NOTE
-SQL2DF : SQL2DF.bio: no visible global function definition for
-  ‘getNachname’
-SQL2DF : SQL2DF.itemDefinition: no visible global function definition
-  for ‘getFirstAdrW’
-SQL2DF : SQL2DF.sonstiges: no visible global function definition for
-  ‘getFirstAdrW’
 SQL2DF : SQL2DF.nB: no visible global function definition for
   ‘data.table’
 SQL2DF : SQL2DF.nB: no visible global function definition for ‘.’
@@ -68,9 +62,11 @@ SQL2DF : SQL2DF.RW : iCalcReaktionsWinkel: no visible binding for
 * checking Rd files ... WARNING
 SQL2DF.Rd: non-ASCII input and no declared encoding
 getAdrWAlsListe.Rd: non-ASCII input and no declared encoding
+getFirstAdrW.Rd: non-ASCII input and no declared encoding
+getNachname.Rd: non-ASCII input and no declared encoding
 getVorname.Rd: non-ASCII input and no declared encoding
 istFormatNachnameKommaVorname.Rd: non-ASCII input and no declared encoding
-problems found in ‘SQL2DF.Rd’, ‘getAdrWAlsListe.Rd’, ‘getVorname.Rd’, ‘istFormatNachnameKommaVorname.Rd’
+problems found in ‘SQL2DF.Rd’, ‘getAdrWAlsListe.Rd’, ‘getFirstAdrW.Rd’, ‘getNachname.Rd’, ‘getVorname.Rd’, ‘istFormatNachnameKommaVorname.Rd’
 * checking Rd metadata ... OK
 * checking Rd cross-references ... OK
 * checking for missing documentation entries ... OK

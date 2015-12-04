@@ -1,5 +1,7 @@
 Rbonaut2-package	Rbonaut2-package
 getAdrWAlsListe	getAdrWAlsListe
+getFirstAdrW	getFirstAdrW
+getNachname	getNachname
 getSessionTimeStamp	getSessionTimeStamp
 getVorname	getVorname
 isMultiTarget	isMultiTarget
