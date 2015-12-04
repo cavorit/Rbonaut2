@@ -21,6 +21,7 @@ Type 'q()' to quit R.
 > source(file.path(R.home("share"), "R", "examples-header.R"))
 > options(warn = 1)
 > library('Rbonaut2')
+Loading required package: data.table
 > 
 > base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
 > cleanEx()
@@ -137,7 +138,7 @@ Type 'q()' to quit R.
 > ###
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  0.042 0.001 0.044 0 0 
+Time elapsed:  0.117 0.003 0.135 0 0 
 > grDevices::dev.off()
 null device 
           1 

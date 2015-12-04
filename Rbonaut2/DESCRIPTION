@@ -5,6 +5,7 @@ Version: 0.1
 Date: 2015-12-02
 Author: Cavorit
 Maintainer: Harald Fiedler <harald.fiedler@cavorit.de>
+Depends: data.table
 Description: The CLIP2-Version of CLIP1's Rbonaut-Package
 License: This package is private and internal of Cavorit Consulting GmbH
 LazyData: TRUE

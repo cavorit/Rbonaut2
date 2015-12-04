@@ -128,19 +128,9 @@ SQL2DF <- function(SQL){
 }
 
 
-#
-# SQL <- read.csv2("../RAW/Footbonaut_Datenabfrage_RicoWehrle.csv", header = TRUE,
+
+# SQL <- read.csv2("~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/RicoWehrle_BA/RAW/Footbonaut_Datenabfrage_RicoWehrle.csv", header = TRUE,
 #                  sep=",", stringsAsFactors = FALSE, encoding = "utf8")
-#
-# library(data.table)
-# library(Rbonaut)
-# source(file = "istFormatNachnameKommeVorname.R")
-# source(file = "getVorname.R" )
-# source(file = "getNachname.R")
-# source(file="getAdrWAlsListe.R")
-# source(file="isMultiTarget.R")
-# source(file="getFirstAdrW.R")
-# source(file="getSessionTimeStamp.R")
 #
 # X <- SQL2DF(SQL)
 # View(X)
