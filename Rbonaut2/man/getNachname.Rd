@@ -13,10 +13,14 @@ getNachname(Spielername)
 character Vektor der gleichen Länge wie der an die Funktion übergebene Vektor
 }
 \description{
-Gibt aus einem Spielername den Vornamen
+Hilfsfunktion von SQL2DF(): Gibt aus einem Spielername den Vornamen
 }
 \details{
 Spielernamen können in SQL-Abfragen des FBN beispielsweise "Dogan, Isa" sein. Es wird "Isa" zurückgegeben.
+}
+\examples{
+Spielername <- c("Fiedler, Harald", "Mayer, Jan", "A-Team")
+getNachname(Spielername = Spielername)
 }
 \author{
 Harald Fiedler

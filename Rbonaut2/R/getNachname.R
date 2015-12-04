@@ -1,9 +1,13 @@
 #' @author Harald Fiedler
-#' @description Gibt aus einem Spielername den Vornamen
+#' @description Hilfsfunktion von SQL2DF(): Gibt aus einem Spielername den Vornamen
 #' @details Spielernamen können in SQL-Abfragen des FBN beispielsweise "Dogan, Isa" sein. Es wird "Isa" zurückgegeben.
 #' @title getNachname
 #' @param Spielername character Vektor von beliebiger Länge
 #' @return character Vektor der gleichen Länge wie der an die Funktion übergebene Vektor
+#' @examples
+#' Spielername <- c("Fiedler, Harald", "Mayer, Jan", "A-Team")
+#' getNachname(Spielername = Spielername)
+
 
 getNachname <- function(Spielername){
   Erg <- rep(NA, times=length(Spielername))
@@ -18,6 +22,4 @@ getNachname <- function(Spielername){
 }
 
 
-# Spielername <- c("Fiedler, Harald", "Mayer, Jan", "A-Team")
-# getNachname(Spielername = Spielername)
 
