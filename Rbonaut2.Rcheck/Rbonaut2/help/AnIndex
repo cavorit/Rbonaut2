@@ -1,2 +1,8 @@
 Rbonaut2-package	Rbonaut2-package
+getAdrWAlsListe	getAdrWAlsListe
+getSessionTimeStamp	getSessionTimeStamp
+getVorname	getVorname
+isMultiTarget	isMultiTarget
+istFormatNachnameKommaVorname	istFormatNachnameKommaVorname
 Rbonaut2	Rbonaut2-package
+SQL2DF	SQL2DF

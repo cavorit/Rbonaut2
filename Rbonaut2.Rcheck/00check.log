@@ -30,27 +30,50 @@ Standardizable: FALSE
 * checking for left-over files ... OK
 * checking index information ... OK
 * checking package subdirectories ... OK
-* checking R files for non-ASCII characters ... OK
+* checking R files for non-ASCII characters ... WARNING
+Found the following file with non-ASCII characters:
+  SQL2DF.R
+Portable packages must use only ASCII characters in their R code,
+except perhaps in comments.
+Use \uxxxx escapes for other characters.
 * checking R files for syntax errors ... OK
 * checking whether the package can be loaded ... OK
 * checking whether the package can be loaded with stated dependencies ... OK
 * checking whether the package can be unloaded cleanly ... OK
 * checking whether the namespace can be loaded with stated dependencies ... OK
 * checking whether the namespace can be unloaded cleanly ... OK
-* checking dependencies in R code ... OK
+* checking dependencies in R code ... WARNING
+'::' or ':::' import not declared from: ‘Rbonaut’
 * checking S3 generic/method consistency ... OK
 * checking replacement functions ... OK
 * checking foreign function calls ... OK
-* checking R code for possible problems ... OK
-* checking Rd files ... OK
+* checking R code for possible problems ... NOTE
+SQL2DF : SQL2DF.bio: no visible global function definition for
+  ‘getNachname’
+SQL2DF : SQL2DF.itemDefinition: no visible global function definition
+  for ‘getFirstAdrW’
+SQL2DF : SQL2DF.sonstiges: no visible global function definition for
+  ‘getFirstAdrW’
+SQL2DF : SQL2DF.nB: no visible global function definition for
+  ‘data.table’
+SQL2DF : SQL2DF.nB: no visible global function definition for ‘.’
+SQL2DF : SQL2DF.nB: no visible binding for global variable ‘idX’
+SQL2DF : SQL2DF.nB: no visible binding for global variable ‘idS’
+SQL2DF : SQL2DF.RW : iCalcReaktionsWinkel: no visible global function
+  definition for ‘data.table’
+SQL2DF : SQL2DF.RW : iCalcReaktionsWinkel: no visible global function
+  definition for ‘setkey’
+SQL2DF : SQL2DF.RW : iCalcReaktionsWinkel: no visible binding for
+  global variable ‘idX’
+* checking Rd files ... WARNING
+SQL2DF.Rd: non-ASCII input and no declared encoding
+getAdrWAlsListe.Rd: non-ASCII input and no declared encoding
+getVorname.Rd: non-ASCII input and no declared encoding
+istFormatNachnameKommaVorname.Rd: non-ASCII input and no declared encoding
+problems found in ‘SQL2DF.Rd’, ‘getAdrWAlsListe.Rd’, ‘getVorname.Rd’, ‘istFormatNachnameKommaVorname.Rd’
 * checking Rd metadata ... OK
 * checking Rd cross-references ... OK
-* checking for missing documentation entries ... WARNING
-Undocumented code objects:
-  ‘getAdrWAlsListe’
-All user-level objects in a package should have documentation entries.
-See chapter ‘Writing R documentation files’ in the ‘Writing R
-Extensions’ manual.
+* checking for missing documentation entries ... OK
 * checking for code/documentation mismatches ... OK
 * checking Rd \usage sections ... OK
 * checking Rd contents ... OK
@@ -58,4 +81,4 @@ Extensions’ manual.
 * checking examples ... NONE
 * checking PDF version of manual ... OK
 * DONE
-Status: 1 WARNING, 2 NOTEs
+Status: 3 WARNINGs, 3 NOTEs
