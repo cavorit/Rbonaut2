@@ -6,18 +6,18 @@
 #' @return character Vektor der gleichen Länge wie der an die Funktion übergebene Vektor
 
 getNachname <- function(Spielername){
-  Erg <- rep(NA, times=length(Spielername))    
+  Erg <- rep(NA, times=length(Spielername))
   Nachname <- NULL
   for (i in strsplit(Spielername, split = ",")){
     Nachname <- c(Nachname, i[1])
   }
   Wo <- istFormatNachnameKommaVorname(Spielername)
   Erg[Wo] <- Nachname[Wo]
-  Erg <- gsub(Erg, pattern = " ", replacement="") # nimmt Leerzeichen raus  
+  Erg <- gsub(Erg, pattern = " ", replacement="") # nimmt Leerzeichen raus
   return(Erg)
 }
 
 
-Spielername <- c("Fiedler, Harald", "Mayer, Jan", "A-Team")
-getNachname(Spielername = Spielername)
+# Spielername <- c("Fiedler, Harald", "Mayer, Jan", "A-Team")
+# getNachname(Spielername = Spielername)
 
