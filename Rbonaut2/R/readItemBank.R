@@ -8,15 +8,11 @@
 #'
 
 
-readItemBank <- function(file="default"){
+readItemBank <- function(file=NA){
 
-  if (file==default){
-    Pfad <- system.file("extdata", package="Rbonaut2", "ItemBank.csv")
-  }else{
-    Pfad <- file
-  }
+  if (is.na(file)){Pfad <- system.file("extdata", package="Rbonaut2", "ItemBank.csv")}
+  ItemBank <- read.csv2(file = Pfad, header = TRUE, sep = ";", encoding = "utf8")
 
-  ItemBank <- read.csv2(file = Pfad, header = TRUE)
   return(ItemBank)
 }
 

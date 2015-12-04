@@ -4,7 +4,7 @@
 \alias{readItemBank}
 \title{readItemBank}
 \usage{
-readItemBank(file = "default")
+readItemBank(file = NA)
 }
 \arguments{
 \item{Pfad}{character der Länge 1, der den Pfadname zu einer .csv-Datei darstellt. Die Datei muss eine gültige ItemBank im Sinne des 4-PL-Modells sein.
