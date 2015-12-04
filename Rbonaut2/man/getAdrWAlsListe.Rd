@@ -22,6 +22,10 @@ Wenn also Früher nur das Zielfeld 7 angegeben war, kann bei Multitarget nun der
 Die hier volriegende Funktion arbeitet Vektorwertig und macht beispielsweise aus den Tabelleneinträgen
 c("{1, 2, 3, 4}", "{11, 12, 13, 14}") eine List der Form list(c(1, 2, 3, 4), c(11, 12, 13, 14))
 }
+\examples{
+adrW <- c("{1, 2, 3, 4}", "{11, 12, 13, 14}")
+getAdrWAlsListe(adrW = adrW)
+}
 \author{
 Harald Fiedler
 }

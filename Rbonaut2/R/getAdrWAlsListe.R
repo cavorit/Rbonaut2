@@ -8,6 +8,9 @@
 #' @title getAdrWAlsListe
 #' @param adrW character
 #' @return list mit numerischen Elementen
+#' @examples
+#' adrW <- c("{1, 2, 3, 4}", "{11, 12, 13, 14}")
+#' getAdrWAlsListe(adrW = adrW)
 
 getAdrWAlsListe <- function(adrW){
   VektorLaenge <- length(adrW)
@@ -22,7 +25,6 @@ getAdrWAlsListe <- function(adrW){
   return(Erg)
 }
 
-#  adrW <- c("{1, 2, 3, 4}", "{11, 12, 13, 14}")
-#  getAdrWAlsListe(adrW = adrW)
+
 
 
