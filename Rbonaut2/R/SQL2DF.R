@@ -17,7 +17,9 @@ SQL2DF <- function(SQL){
   SQL2DF.key <- function(SQL){
     BALL <- data.frame(
       idB = paste(paste0(paste(SQL$fbn, sep="-", as.character(as.Date(SQL$date))),
-                         paste0("-", getSessionTimeStamp(SQL$date))), SQL$idx, sep="-B"),
+                         paste0("-", getSessionTimeStamp(SQL$date))), gibZahlFuehrendeNullen(SQL$idx), sep="-B"),
+#       idB = paste(paste0(paste(SQL$fbn, sep="-", as.character(as.Date(SQL$date))),
+#                          paste0("-", getSessionTimeStamp(SQL$date))), SQL$idx, sep="-B"),
       idS = paste0(paste(SQL$fbn, sep="-", as.character(as.Date(SQL$date))),
                    paste0("-", getSessionTimeStamp(SQL$date))),
       idX = SQL$idx,
