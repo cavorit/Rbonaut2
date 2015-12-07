@@ -12,3 +12,7 @@ M <- merge(x=DF, y=ItemBank[2:31,], all.x=TRUE, by=c("adrM", "adrW"))
 View(M)
 
 SessionA <- M[M$idS=="FBN-Hoffenheim-2015-08-27-13:29:38", c("adrM", "adrW", "idX", "AW.x", "AW.y", "RW.x", "RW.y", "ItemID")]
+View(SessionA)
+ItemBank
+Rbonaut::played_angle(adrM=64, adrW=68)
+Rbonaut::played_angle(adrM=28, adrW=72)
