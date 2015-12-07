@@ -42,8 +42,8 @@ SQL2DF <- function(SQL){
 
   message("\nErstelle itemdefinierende Variablen")
   SQL2DF.itemDefinition <- function(SQL, BALL){
-    BALL$adrM <- SQL$adrm
-    BALL$adrW <- getFirstAdrW(SQL$adrw)
+    BALL$adrM <- as.integer(SQL$adrm)
+    BALL$adrW <- as.integer(getFirstAdrW(SQL$adrw))
     BALL$isMultiTarget <- isMultiTarget(SQL$adrw)
     BALL$MultiTarg <- SQL$adrw
     BALL$sL <- SQL$sl
