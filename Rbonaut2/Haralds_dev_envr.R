@@ -12,7 +12,19 @@ M <- merge(x=DF, y=ItemBank[2:31,], all.x=TRUE, by=c("adrM", "adrW"))
 View(M)
 
 SessionA <- M[M$idS=="FBN-Hoffenheim-2015-08-27-13:29:38", c("adrM", "adrW", "idX", "AW.x", "AW.y", "RW.x", "RW.y", "ItemID")]
+SessionA <- M[M$idS=="FBN-Hoffenheim-2015-08-27-13:29:38",]
+
+View(merge(x=SessionA, y=ItemBank[2:31,], all.x=TRUE, by=c("adrM", "adrW")))
+
+library(Rbonaut)
+data(BT32)
+BT32[BT32$idS==7704,]
+
 View(SessionA)
-ItemBank
-Rbonaut::played_angle(adrM=64, adrW=68)
-Rbonaut::played_angle(adrM=28, adrW=72)
+
+x <- as.character(SessionA$ItemID)
+data.frame(BL = M[M$idS=="FBN-Hoffenheim-2015-08-27-13:00:23", "ItemID"], x = x)
+# vergleiche Itemreihenfolge der 121. Session mit denen von Session A
+data.frame(BL = M[M$idS==sort(unique(M$idS))[121], "ItemID"], x = x)
+
+sort(unique(M$idS))
