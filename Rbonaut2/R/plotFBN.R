@@ -1,6 +1,7 @@
 #' @author Harald Fiedler
 #' @title plotFBN
 #' @details  Zeichnet schematisch den Footbonaut
+#' @param Adresses boolescher Wert der angibt, ob die Fensteradressen mit eingegeben werden sollen.
 #' @examples
 #' plotFBN(Adresses=FALSE)
 #'
