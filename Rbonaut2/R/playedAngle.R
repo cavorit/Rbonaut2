@@ -36,7 +36,9 @@ playedAngle <- function(adrA, adrB){
   LotAdrA <- adrA+adrA%%2
   LotAdrB <- adrB+adrB%%2
 
-  Erg <- (LotAdrA - LotAdrB) * 10
+  Erg <- (subtrahiereImRing(a=LotAdrA, b=LotAdrB)) * 10
   return(Erg)
 }
 
+
+playedAngle(adrA=70, adrB=71)
