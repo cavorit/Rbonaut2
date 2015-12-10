@@ -7,38 +7,16 @@
 #' @return numeric mit Winkel aus 0:180
 
 
-playedAngle <- function(adrA, adrB){
+playedAngle <- function(adrA, adrB, Clockwise = FALSE){
   if(any(adrA>72) | any(adrA<1) | any(adrB>72) | any(adrB<1)){stop("Adressen des FBN sind in 1:72")}
 
-  addiereImRing <- function (a, b){
-    if (a <= 0 | b <= 0)
-      warning("a und b sollten positiv sein. Nutze subtrahiereImRing() statt dessen.")
-    if (a == 72 & b == 72) {
-      return(72)
-    }
-    else {
-      return((a + b)%%72)
-    }
-  }
+  Aground <- adrA+adrA%%2
+  Bground <- adrB+adrB%%2
 
-  subtrahiereImRing <- function (a, b)
-  {
-    if (a <= 0 | b <= 0)
-      warning("a und b sollten positiv sein")
-    if (a > b)
-      return(a - b)
-    if (a == b)
-      return(0)
-    if (a < b)
-      return(a - b + 72)
-  }
-
-  LotAdrA <- adrA+adrA%%2
-  LotAdrB <- adrB+adrB%%2
-
-  Erg <- (subtrahiereImRing(a=LotAdrA, b=LotAdrB)) * 10
+  Erg <- ( Aground - Bground ) * (-1)*(!Clockwise)
   return(Erg)
 }
 
-
-playedAngle(adrA=70, adrB=71)
+adrA=70
+adrB=71
+playedAngle(adrA=adrA, adrB=adrB, Clockwise = FALSE) # liefert 700
