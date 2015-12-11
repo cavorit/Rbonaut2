@@ -5,7 +5,7 @@
 #' @param B numeric Adressen der Zielfelder
 #' @param Clockwise boolean der angibt, ob die Winkel im Uhrzeigersinn oder im mathematisch positiven Sinn gemessen werden. Default ist der mathematisch positive Sinn.
 #' @return numeric mit Winkel aus 0:180
-
+#' @title playedAngle
 
 playedAngle <- function(adrA, adrB, Clockwise = FALSE){
   if(any(adrA>72) | any(adrA<1) | any(adrB>72) | any(adrB<1)){stop("Adressen des FBN sind in 1:72")}
