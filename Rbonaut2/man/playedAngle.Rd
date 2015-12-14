@@ -22,6 +22,12 @@ Winkel zwischen zwei Adressen
 \details{
 Gibt den Winkel zwischen zwei FBN-Adressen
 }
+\examples{
+adrA=10
+adrB=18
+plotFBN()
+playedAngle(adrA=adrA, adrB=adrB, Clockwise = FALSE)
+}
 \author{
 Harald Fiedler
 }

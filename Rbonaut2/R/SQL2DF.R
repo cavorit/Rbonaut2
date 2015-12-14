@@ -51,7 +51,8 @@ SQL2DF <- function(SQL){
     BALL$sL <- SQL$sl
     BALL$sR <- SQL$sr
     BALL$vA <- SQL$va
-    BALL$AW <- Rbonaut::played_angle(SQL$adrm, getFirstAdrW(SQL$adrw)) # Aktionswinkel
+    #BALL$AW <- Rbonaut::played_angle(SQL$adrm, getFirstAdrW(SQL$adrw)) # Aktionswinkel
+    BALL$AW <- playedAngle(SQL$adrm, getFirstAdrW(SQL$adrw)) # Aktionswinkel
     BALL$RW <- NA # Reaktionswinkel
     return(BALL)
   }
