@@ -18,8 +18,8 @@ playedAngle <- function(adrA, adrB, Clockwise = FALSE){
 }
 
 # toDo
-- Prüfen
-- Vektorisierung
+# - Prüfen
+# - Vektorisierung
 adrA=70
 adrB=71
 plotFBN()
