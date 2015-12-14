@@ -20,8 +20,8 @@ playedAngle <- function(adrA, adrB, Clockwise = FALSE){
 # toDo
 # - Prüfen
 # - Vektorisierung
-adrA=70
-adrB=71
-plotFBN()
-playedAngle(adrA=adrA, adrB=adrB, Clockwise = FALSE) # liefert 700
-plotFBN()
+# adrA=70
+# adrB=71
+# plotFBN()
+# playedAngle(adrA=adrA, adrB=adrB, Clockwise = FALSE) # liefert 700
+# plotFBN()

@@ -12,6 +12,20 @@ plotFBN <- function(Adresses=TRUE){
     zeichneInnenkreis <- function(x, y, radius, nv=100, border=NULL, col=NA, lty=1, lwd=1){
       xylim <- par("usr")
       plotdim <- par("pin")
+
+      getYmult <- function(){
+          if (dev.cur() == 1) {
+            warning("No graphics device open.")
+            ymult <- 1
+          }
+          else {
+            xyasp <- par("pin")
+            xycr <- diff(par("usr"))[c(1, 3)]
+            ymult <- xyasp[1]/xyasp[2] * xycr[2]/xycr[1]
+          }
+          return(ymult)
+      }
+
       ymult <- getYmult()
       angle.inc <- 2 * pi/nv
       angles <- seq(0, 2 * pi - angle.inc, by = angle.inc)
