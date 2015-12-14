@@ -23,4 +23,3 @@ playedAngle <- function(adrA, adrB, Clockwise = FALSE){
 
 }
 
-
