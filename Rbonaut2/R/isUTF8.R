@@ -11,7 +11,7 @@
 #'
 
 
-isUTF8 <- function(file="*", echo=TRUE){
+isUTF8 <- function(file, echo=TRUE){
   Befehl <- paste("isutf8", file, collapse = " ")
   SystemAntwort <- system(Befehl, intern=TRUE)
   if (echo) print(SystemAntwort)
