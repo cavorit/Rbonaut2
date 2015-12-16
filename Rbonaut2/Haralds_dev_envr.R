@@ -25,7 +25,7 @@ DF <- SQL2DF(SQL = SQL)
 
 # Merge die ItemBank
 ItemBank <- Rbonaut2::readItemBank()
-M <- merge(x=DF, y=ItemBank[2:31,], all.x=TRUE, by=c("adrM", "adrW"))
+M <- merge(x=DF, y=ItemBank[1:31,], all.x=TRUE, by=c("AW", "RW"))
 View(M)
 
 
