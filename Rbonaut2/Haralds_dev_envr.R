@@ -33,20 +33,36 @@ head(DF)
 ########### Schritt 3: Füge mit Hilfe von Itembanken neue Testergebnisse hinzu
 
 # Merge die ItemBank
-fiedler2014 <- function(DF, ItemBank){
+getItemICC <- function(DF, ItemBank){
   M <- merge(x=DF, y=ItemBank, all.x=TRUE, by=c("AW", "RW", "HW", "vA")) # dieser Merge ignoriert sL und sR
-  # die Item-ID und Item-ICC des harten Merge werden mit NA überschrieben, wenn weiche Kriterien sL und sR zu
-  # stark über- bzw. unterschritten werden
-  cond1 <- (abs(M$sL.x - M$sL.y) > 10) # sL weicht zu stark von der ItemBank ab -> Item-Identifikation rückgängig machen
-  cond2 <- (abs(M$sR.y - M$sR.y) > 10) # sR weichtzu stark von der ItemBank ab -> Item-Identifikation rückgängig machen
-  cond <- cond1 & cond2
-  print(cond1)
-  print(head(M))
-  return(DF)
+
+  # ungetestetes Fehler-Handling
+  if(is.element("ItemID.y", colnames(M))){
+    warning("Ein bereits identifiziertes Item wurde erneut identifiziert. Alte ItemID und ItemCC drurch neue überschrieben.")
+    M$ItemID <- M$ItemID.y
+    M$a <- M$a.y
+    M$b <- M$b.y
+    M$c <- M$c.y
+    M$d <- M$d.y
+  }
+
+  # die Item-ID und Item-ICC des harten Merge werden mit NA überschrieben, falls weiche Kriterien sL und sR zu
+  # weich sind
+  cond0 <- !is.na(M$sL.y)
+  cond1 <- (abs(M$sL.x - M$sL.y) < 25) # sL weicht zu stark von der ItemBank ab -> Item-Identifikation rückgängig machen
+  cond2 <- (abs(M$sR.y - M$sR.y) < 25) # sR weichtzu stark von der ItemBank ab -> Item-Identifikation rückgängig machen
+  cond <- cond0 & cond1 & cond2
+  #print(cond)
+  #print(head(M))
+  M[!cond, c("ItemID", "sL.y", "sR.y", "a", "b", "c", "d")] <- NA
+
+  # nun in M noch sL.x und sR.x in sL und sR umbenennen
+  names(M)[names(M)=="sL.x"] <- "sL"
+  names(M)[names(M)=="sR.x"] <- "sR"
+  Erg <- M[, c(names(DF), "ItemID")] # getItemID
+  Erg <- M[, c(names(DF), "ItemID", "ICCa", "ICCb", "ICCc", "ICCd")] # getItemICC
+  return(Erg)
 }
 
-F14 <- fiedler2014(DF=DF, ItemBank=readItemBank())
-
-
-#View(M)
-
+F14 <- getItemICC(DF=DF, ItemBank=readItemBank())
+View(F14)
