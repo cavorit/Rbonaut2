@@ -53,6 +53,7 @@ SQL2DF <- function(SQL){
     BALL$vA <- SQL$va
     #BALL$AW <- Rbonaut::played_angle(SQL$adrm, getFirstAdrW(SQL$adrw)) # Aktionswinkel
     BALL$AW <- playedAngle(SQL$adrm, getFirstAdrW(SQL$adrw)) # Aktionswinkel
+    BALL$HW <- getHW(SQL=SQL) # Höhenwinkel
     BALL$RW <- NA # Reaktionswinkel
     return(BALL)
   }
@@ -142,7 +143,7 @@ SQL2DF <- function(SQL){
                    "adrM", "adrW", "adrLast", "adrOut",
                    "sL", "sR", "vA",
                    "isMultiTarg", "MultiTargs",
-                   "RW", "AW",
+                   "RW", "HW", "AW",
                    "DELAY", "SND", "LED", "Date", "JSONfile", "Comments", "goal.under.5000ms",
                    "FBq", "FBt", "Fiedler2012")]
     return(BALL)
