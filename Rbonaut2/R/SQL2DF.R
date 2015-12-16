@@ -32,11 +32,11 @@ SQL2DF <- function(SQL){
 
   message("\nErstelle Biographie (= nichtintegres bzw. weiches idP)")
   SQL2DF.bio <- function(SQL, BALL){
-    BALL$Name <- SQL$spielername
-    BALL$Nachname <- getNachname(SQL$spielername)
-    BALL$Vorname <- getVorname(SQL$spielername)
-    BALL$Position <- SQL$pos
-    BALL$team <- SQL$team
+    BALL$PbnName <- SQL$spielername
+    BALL$PbnNachname <- getNachname(SQL$spielername)
+    BALL$PbnVorname <- getVorname(SQL$spielername)
+    BALL$PbnPosition <- SQL$pos
+    BALL$PbnTeam <- SQL$team
     return(BALL)
   }
   BALL <- SQL2DF.bio(SQL=SQL, BALL=BALL)
@@ -46,8 +46,8 @@ SQL2DF <- function(SQL){
   SQL2DF.itemDefinition <- function(SQL, BALL){
     BALL$adrM <- as.integer(SQL$adrm)
     BALL$adrW <- as.integer(getFirstAdrW(SQL$adrw))
-    BALL$isMultiTarget <- isMultiTarget(SQL$adrw)
-    BALL$MultiTarg <- SQL$adrw
+    BALL$isMultiTarg <- isMultiTarget(SQL$adrw)
+    BALL$MultiTargs <- SQL$adrw
     BALL$sL <- SQL$sl
     BALL$sR <- SQL$sr
     BALL$vA <- SQL$va
@@ -61,7 +61,7 @@ SQL2DF <- function(SQL){
 
   message("\nErstelle technische misc")
   SQL2DF.misc <- function(SQL, BALL){
-    BALL$Delay <- SQL$delay
+    BALL$DELAY <- SQL$delay
     BALL$LED <- "t"
     BALL$SND <- "t"
     return(BALL)
@@ -83,9 +83,9 @@ SQL2DF <- function(SQL){
   message("\nErstelle Sonstiges")
   SQL2DF.sonstiges <- function(SQL, BALL){
     BALL$goal.under.5000ms <- as.numeric(SQL$hit == getFirstAdrW(SQL$adrw) & SQL$time < 5000)
-    BALL$date = as.Date(SQL$date)
+    BALL$Date = as.Date(SQL$date)
     BALL$JSONfile = NA
-    BALL$comments = NA
+    BALL$Comments = NA
     return(BALL)
   }
   BALL <- SQL2DF.sonstiges(SQL=SQL, BALL=BALL)
@@ -131,6 +131,23 @@ SQL2DF <- function(SQL){
     return(BALL)
   }
   BALL <- SQL2DF.RW(BALL=BALL, SQL=SQL)
+  message("... fertig")
+
+
+
+  message("\nSortiere Spalten")
+  SQL2DF.rename <- function(BALL){
+    BALL <- BALL[c("idB", "idS", "idFBN", "idX", "nB",
+                   "PbnName", "PbnNachname", "PbnVorname", "PbnPosition", "PbnTeam",
+                   "adrM", "adrW", "adrLast", "adrOut",
+                   "sL", "sR", "vA",
+                   "isMultiTarg", "MultiTargs",
+                   "RW", "AW",
+                   "DELAY", "SND", "LED", "Date", "JSONfile", "Comments", "goal.under.5000ms",
+                   "FBq", "FBt", "Fiedler2012")]
+    return(BALL)
+  }
+  BALL <- SQL2DF.rename(BALL=BALL)
   message("... fertig")
 
   return(BALL)

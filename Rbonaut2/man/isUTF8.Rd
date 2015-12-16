@@ -4,10 +4,12 @@
 \alias{isUTF8}
 \title{isUTF8}
 \usage{
-isUTF8(file = "*")
+isUTF8(file = "*", echo = TRUE)
 }
 \arguments{
 \item{file}{character der Länge 1 der angibt, ob schätzungsweise UTF8 vorliegt}
+
+\item{echo}{boolean der Länge 1 sagt, ob der Systemoutput angezeigt werden soll}
 }
 \value{
 siehe *details*
