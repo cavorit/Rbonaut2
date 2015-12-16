@@ -17,7 +17,7 @@ Pfad <- "~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/Projekte/7_Ke
 # 8. Rico Wehrle : # noch keine SQL-Daten
 
 # RAW2DATA
-SQL <- read.csv(file=Pfad, sep=",", header=TRUE, encoding="utf8", stringsAsFactors = FALSE)
+SQL <- read.csv(file=Pfad, sep=";", header=TRUE, encoding="utf8", stringsAsFactors = FALSE)
 #View(SQL)
 DF <- SQL2DF(SQL = SQL)
 #View(DF)
