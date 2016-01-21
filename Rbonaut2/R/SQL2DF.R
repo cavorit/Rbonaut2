@@ -150,7 +150,7 @@ SQL2DF <- function(SQL){
 
   message("\nSortiere Spalten")
   SQL2DF.rename <- function(BALL){
-    BALL <- BALL[c("idB", "idS", "idFBN", "idX", "nB",
+    BALL <- BALL[c("idB", "idS", "idFBN", "idX", "nB", "ItemID",
                    "PbnName", "PbnNachname", "PbnVorname", "PbnPosition", "PbnTeam",
                    "adrM", "adrW", "adrLast", "adrOut",
                    "sL", "sR", "vA",
