@@ -11,6 +11,7 @@ detectItemID <- function(Stimulus){
   isMultiTarg <- Stimulus$isMultiTarg
   MultiTargs <- Stimulus$MultiTargs
   RW <- Stimulus$RW
+  is.na(RW){RW<-Inf}
   AW <- Stimulus$AW
   HW <- Stimulus$HW
   vA <- Stimulus$vA
@@ -18,7 +19,7 @@ detectItemID <- function(Stimulus){
   sR <- Stimulus$sR
 
   # BaseLine (neu)
-  if (!isMultiTarg & is.na(RW)     & AW == 20   & HW == "FF" & vA == 2 & (abs(sL-50)<15) & (abs(sR-50)<15)) return(c("ItemID"="BL01"))
+  if (!isMultiTarg & RW == Inf     & AW == 20   & HW == "FF" & vA == 2 & (abs(sL-50)<15) & (abs(sR-50)<15)) return(c("ItemID"="BL01"))
   if (!isMultiTarg & RW ==  -160   & AW == 220  & HW == "FF" & vA == 2 & (abs(sL-50)<15) & (abs(sR-50)<15)) return(c("ItemID"="BL02"))
   if (!isMultiTarg & RW ==  -50    & AW == 60   & HW == "FF" & vA == 2 & (abs(sL-50)<15) & (abs(sR-50)<15)) return(c("ItemID"="BL03"))
   if (!isMultiTarg & RW ==  -120   & AW == -50  & HW == "FF" & vA == 2 & (abs(sL-50)<15) & (abs(sR-50)<15)) return(c("ItemID"="BL04"))
@@ -52,7 +53,7 @@ detectItemID <- function(Stimulus){
   if (!isMultiTarg & RW ==  170    & AW == -40  & HW == "FF" & vA == 2 & (abs(sL-50)<15) & (abs(sR-50)<15)) return(c("ItemID"="BL32"))
 
   # CS32
-  if (!isMultiTarg & is.na(RW)     & AW == 20   & HW == "FF" & vA == 2 & (abs(sL-55)<15) & (abs(sR-65)<25)) return(c("ItemID"="CS01"))
+  if (!isMultiTarg & Inf     & AW == 20   & HW == "FF" & vA == 2 & (abs(sL-55)<15) & (abs(sR-65)<25)) return(c("ItemID"="CS01"))
   if (!isMultiTarg & RW == -160    & AW == 140  & HW == "FF" & vA == 2 & (abs(sL-55)<15) & (abs(sR-65)<25)) return(c("ItemID"="CS02"))
   if (!isMultiTarg & RW == 40      & AW == 50   & HW == "FF" & vA == 2 & (abs(sL-55)<15) & (abs(sR-65)<25)) return(c("ItemID"="CS03"))
   if (!isMultiTarg & RW == -140    & AW == -60  & HW == "FF" & vA == 2 & (abs(sL-55)<15) & (abs(sR-65)<25)) return(c("ItemID"="CS04"))

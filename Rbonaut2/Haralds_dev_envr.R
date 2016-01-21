@@ -42,10 +42,12 @@ colnames(RaschMatrix) <- paste0("BL", gibZahlFuehrendeNullen(1:32, digits=2))
 rownames(RaschMatrix) <- 1:nrow(RaschMatrix)
 RaschMatrix
 
-for (Ball in DF$idB){
-  Ball <- DF[1, "idB"] # zum Testen der Schleife Zeile für Zeile
-  Stimulus <- DF[DF$idB==Ball, ]
+for (i in 13:13){
+  Stimulus <- DF[i, ]
   ItemID <- detectItemID(Stimulus=Stimulus)
   cat(ItemID)
 }
+
+detectItemID(DF[13,])
+DF[13,]
 
