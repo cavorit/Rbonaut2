@@ -42,10 +42,6 @@ colnames(RaschMatrix) <- paste0("BL", gibZahlFuehrendeNullen(1:32, digits=2))
 rownames(RaschMatrix) <- 1:nrow(RaschMatrix)
 RaschMatrix
 
-for (i in 1:nrow(DF)){
-  Stimulus <- DF[i, ]
-  ItemID <- detectItemID(Stimulus=Stimulus)
-  cat(paste0(ItemID, "\n"))
-}
+
 
 
