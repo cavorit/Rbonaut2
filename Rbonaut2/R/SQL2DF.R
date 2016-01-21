@@ -134,7 +134,19 @@ SQL2DF <- function(SQL){
   BALL <- SQL2DF.RW(BALL=BALL, SQL=SQL)
   message("... fertig")
 
+  message("\nErstelle ItemID")
+  SQL2DF.detectItemID <- function(BALL){
+    ItemID <- NULL
+    for (i in nrow(BALL)){
+      Stimulus <- BALL[i, ]
+      ItemID <- c(ItemID, detectItemID(Stimulus=Stimulus))
+    }
+  BALL$ItemID <- ItemID
+  return(BALL)
+  }
+  BALL <- SQL2DF.detectItemID(BALL=BALL)
 
+  message("... fertig")
 
   message("\nSortiere Spalten")
   SQL2DF.rename <- function(BALL){
