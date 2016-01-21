@@ -4,22 +4,10 @@
 \alias{detectItemID}
 \title{detectItemID}
 \usage{
-detectItemID(isMultiTarg, adrW, RW, AW, HW, sL, sR)
+detectItemID(Stimulus)
 }
 \arguments{
-\item{adrW}{character, etwa "{13, 17}"}
-
-\item{RW}{numeric der Länge 1, gibt den Reaktionswinkel an}
-
-\item{AW}{numeric der Länge 1, gibt den Aktionswinkel an}
-
-\item{HW}{character der Länge 1, etwa "FF"}
-
-\item{sL}{numeric der Länge 1, eine natürliche Zahl zwischen 1 und 100}
-
-\item{sR}{numeric der Länge 1, eine natürliche Zahl zwischen 1 und 100}
-
-\item{isMulitTarg}{boolean der Länge 1, gibt an, ob das Item multiple Targets kennt}
+\item{Stimulus}{ein data.frame mit den Spalten isMulitTarg, adrW, RW, AW, HW, sL und sR und einer Zeile. Es handelt sich also um eine Zeile aus DF, die einen Ball darstellt}
 }
 \value{
 charactger der Länge 1, z.B. c("BL03")

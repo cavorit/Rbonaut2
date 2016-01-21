@@ -1,18 +1,21 @@
 #' @author Harald Fiedler
 #' @description Liefert die ItemID eines Balls zurück
 #' @details Liefert die ItemID eines Balls zurück, z.B. "BL03". Die Funktion ist nicht vektorwertig implementiert, sondern kann immer nur eine Abfrage auf einmal durchführen
-#' @param isMulitTarg boolean der Länge 1, gibt an, ob das Item multiple Targets kennt
-#' @param adrW character, etwa "{13, 17}"
-#' @param RW numeric der Länge 1, gibt den Reaktionswinkel an
-#' @param AW numeric der Länge 1, gibt den Aktionswinkel an
-#' @param HW character der Länge 1, etwa "FF"
-#' @param sL numeric der Länge 1, eine natürliche Zahl zwischen 1 und 100
-#' @param sR numeric der Länge 1, eine natürliche Zahl zwischen 1 und 100
+#' @param Stimulus ein data.frame mit den Spalten isMulitTarg, adrW, RW, AW, HW, sL und sR und einer Zeile. Es handelt sich also um eine Zeile aus DF, die einen Ball darstellt
 #' @return charactger der Länge 1, z.B. c("BL03")
 #' @title detectItemID
 
 
-detectItemID <- function(isMultiTarg, adrW, RW, AW, HW, sL, sR){
+detectItemID <- function(Stimulus){
+
+  isMultiTarg <- Stimulus$isMultiTarget
+  adrW <- Stimulus$adrW
+  RW <- Stimulus$RW
+  AW <- Stimulus$AW
+  HW <- Stimulus$HW
+  sL <- Stimulus$sL
+  sR <- Stimulus$sR
+
   # BaseLine (neu)
   if (!isMultiTarg & is.na(RW)     & AW == 20   & HW == "FF" & Stimulus$vA == 2 & (abs(sL-50)<15) & (abs(sR-50)<15)) return(c("ItemID"="BL01"))
   if (!isMultiTarg & RW ==  -160   & AW == 220  & HW == "FF" & Stimulus$vA == 2 & (abs(sL-50)<15) & (abs(sR-50)<15)) return(c("ItemID"="BL02"))
