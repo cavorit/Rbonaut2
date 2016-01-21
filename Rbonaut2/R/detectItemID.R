@@ -11,7 +11,7 @@ detectItemID <- function(Stimulus){
   isMultiTarg <- Stimulus$isMultiTarg
   MultiTargs <- Stimulus$MultiTargs
   RW <- Stimulus$RW
-  is.na(RW){RW<-Inf}
+  if (is.na(RW)){RW<-Inf}
   AW <- Stimulus$AW
   HW <- Stimulus$HW
   vA <- Stimulus$vA
