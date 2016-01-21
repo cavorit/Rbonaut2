@@ -1,59 +1,18 @@
-rm(list=ls())
-library(Rbonaut2)
-
-########### SCHRITT 1: Hole SQL-Query
-
-########### SCHRITT 2: SQL2DF
-Pfad <- system.file("extdata", package="Rbonaut2", "Footbonaut_Datenabfrage_RicoWehrle.csv")
-isUTF8(Pfad)
-# 1. Ausdauer Vortest:  kein Datensatz auf Ballebene
-# 2. Christian Mautner: Datensatz auf Ballebene im XML-Format
-# 3. Helix: kein Datensatz auf Ballebene
-# 4. Inder
-# Pfad <- "~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/Projekte/4_Inder/SQLmanuelleQeuryVonCgoalBereitgestelltAm2015-12-14Von2015-09-30.csv"
-# isUTF8(Pfad)
-# 5. Ivan Gojak:
-# Pfad <- "~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/Projekte/5_IvanGojak_MA/RAW/SQL Abfrage Ivan Gojak 05.12.2015.csv"
-# # ab Zeile 53 Probleme wegen Janis; Miller
-# 6. Karsten Specht: nur Faktorenanalytische Daten
-# 7. Kevin Frey
-# Pfad <- "~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/Projekte/7_KevinFrey_MA/Rohwerte_Footbonaut.csv"
-# isUTF8(Pfad)
- # 8. Rico Wehrle : # noch keine SQL-Daten
-
-# RAW2DATA
-SQL <- read.csv(file=Pfad, sep=";", header=TRUE, encoding="utf8", stringsAsFactors = FALSE)
-#View(SQL)
-DF <- SQL2DF(SQL = SQL)
-#View(DF)
-head(DF)
-
-########### Schritt 3: Füge mit Hilfe von Itembanken neue Testergebnisse hinzu
-ItemBank=readItemBank()
-# Merge die ItemBank
-
-F14 <- getItemICC(DF=DF, ItemBank=readItemBank())
-View(F14)
-
-########### Exkurs: erstelle eine neue ItemBank
-DF <- DF[DF$nB==31,]
-head(DF)
-
-RaschMatrix <- matrix(NA, ncol=32, nrow=5)
-colnames(RaschMatrix) <- paste0("BL", gibZahlFuehrendeNullen(1:32, digits=2))
-rownames(RaschMatrix) <- 1:nrow(RaschMatrix)
-RaschMatrix
-
-for (Ball in DF$idB){
-  Stimulus <- DF[DF$idB==Ball, c("isMultiTarg", "RW", "AW", "HW", "vA", "sL", "sR")]
-  Response <- DF[DF$idB==Ball, c("adrOut", "FBt")]
-
-}
-
-DF[1:32, c("idX", "RW", "AW")]
+#' @author Harald Fiedler
+#' @description Liefert die ItemID eines Balls zurück
+#' @details Liefert die ItemID eines Balls zurück, z.B. "BL03". Die Funktion ist nicht vektorwertig implementiert, sondern kann immer nur eine Abfrage auf einmal durchführen
+#' @param isMulitTarg boolean der Länge 1, gibt an, ob das Item multiple Targets kennt
+#' @param adrW character, etwa "{13, 17}"
+#' @param RW numeric der Länge 1, gibt den Reaktionswinkel an
+#' @param AW numeric der Länge 1, gibt den Aktionswinkel an
+#' @param HW character der Länge 1, etwa "FF"
+#' @param sL numeric der Länge 1, eine natürliche Zahl zwischen 1 und 100
+#' @param sR numeric der Länge 1, eine natürliche Zahl zwischen 1 und 100
+#' @return charactger der Länge 1, z.B. c("BL03")
+#' @title detectItemID
 
 
-detectItem <- function(isMultiTarg, RW, AW, HW, sL, sR){
+detectItemID <- function(isMultiTarg, adrW, RW, AW, HW, sL, sR){
   # BaseLine (neu)
   if (!isMultiTarg & is.na(RW)     & AW == 20   & HW == "FF" & Stimulus$vA == 2 & (abs(sL-50)<15) & (abs(sR-50)<15)) return(c("ItemID"="BL01"))
   if (!isMultiTarg & RW ==  -160   & AW == 220  & HW == "FF" & Stimulus$vA == 2 & (abs(sL-50)<15) & (abs(sR-50)<15)) return(c("ItemID"="BL02"))
@@ -122,6 +81,5 @@ detectItem <- function(isMultiTarg, RW, AW, HW, sL, sR){
   if (!isMultiTarg & RW == -10     & AW == 100  & HW == "FF" & Stimulus$vA == 2 & (abs(sL-55)<15) & (abs(sR-65)<15)) return(c("ItemID"="CS31"))
   if (!isMultiTarg & RW == 170     & AW == 40   & HW == "FF" & Stimulus$vA == 2 & (abs(sL-55)<15) & (abs(sR-65)<15)) return(c("ItemID"="CS32"))
 
-
+  return(NA)
 }
-

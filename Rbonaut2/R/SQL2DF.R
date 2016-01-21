@@ -100,7 +100,7 @@ SQL2DF <- function(SQL){
     return(BALL)
   }
   BALL <- SQL2DF.nB(SQL=SQL, BALL=BALL)
-  message("... erstellt")
+  message("... erstellt. Anmerkung: nB = max(idX), daher ist nB+1 die tatsächliche Anzahl der Bälle")
 
   message("\nErstelle Reaktionswinkel")
   SQL2DF.RW <- function(SQL, BALL){
