@@ -7,16 +7,16 @@
 detectItemID(Stimulus)
 }
 \arguments{
-\item{Stimulus}{ein data.frame mit den Spalten isMulitTarg, adrW, RW, AW, HW, sL und sR und einer Zeile. Es handelt sich also um eine Zeile aus DF, die einen Ball darstellt}
+\item{Stimulus}{ein data.frame mit den Spalten isMulitTarg, MultiTargs, RW, AW, HW, vA, sL und sR und einer Zeile. Es handelt sich also um eine Zeile aus DF, die einen Ball darstellt}
 }
 \value{
 charactger der Länge 1, z.B. c("BL03")
 }
 \description{
-Liefert die ItemID eines Balls zurück
+Liefert die ItemID eines Balls/Stimulus zurück
 }
 \details{
-Liefert die ItemID eines Balls zurück, z.B. "BL03". Die Funktion ist nicht vektorwertig implementiert, sondern kann immer nur eine Abfrage auf einmal durchführen
+Liefert die ItemID eines Balls/Stimulus zurück, z.B. "BL03". Die Funktion ist nicht vektorwertig implementiert, sondern kann immer nur eine Abfrage auf einmal durchführen
 }
 \author{
 Harald Fiedler

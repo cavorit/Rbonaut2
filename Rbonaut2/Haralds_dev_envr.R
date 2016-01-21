@@ -36,8 +36,6 @@ F14 <- getItemICC(DF=DF, ItemBank=readItemBank())
 View(F14)
 
 ########### Exkurs: erstelle eine neue ItemBank
-DF <- DF[DF$nB==31,]
-head(DF)
 
 RaschMatrix <- matrix(NA, ncol=32, nrow=5)
 colnames(RaschMatrix) <- paste0("BL", gibZahlFuehrendeNullen(1:32, digits=2))
@@ -45,10 +43,9 @@ rownames(RaschMatrix) <- 1:nrow(RaschMatrix)
 RaschMatrix
 
 for (Ball in DF$idB){
-  Stimulus <- DF[DF$idB==Ball, c("isMultiTarg", "RW", "AW", "HW", "vA", "sL", "sR")]
-  Response <- DF[DF$idB==Ball, c("adrOut", "FBt")]
-
+  Ball <- DF[1, "idB"] # zum Testen der Schleife Zeile für Zeile
+  Stimulus <- DF[DF$idB==Ball, ]
+  ItemID <- detectItemID(Stimulus=Stimulus)
+  cat(ItemID)
 }
-
-DF[1:32, c("idX", "RW", "AW")]
 
