@@ -42,12 +42,10 @@ colnames(RaschMatrix) <- paste0("BL", gibZahlFuehrendeNullen(1:32, digits=2))
 rownames(RaschMatrix) <- 1:nrow(RaschMatrix)
 RaschMatrix
 
-for (i in 13:13){
+for (i in 1:1000){
   Stimulus <- DF[i, ]
   ItemID <- detectItemID(Stimulus=Stimulus)
   cat(ItemID)
 }
 
-detectItemID(DF[13,])
-DF[13,]
 
