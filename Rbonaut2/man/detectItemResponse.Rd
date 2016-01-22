@@ -10,7 +10,7 @@ detectItemResponse(Stimulus)
 \item{Stimulus}{ein data.frame mit den Spalten isMulitTarg, MultiTargs, RW, AW, HW, vA, sL und sR und einer Zeile. Es handelt sich also um eine Zeile aus DF, die einen Ball darstellt}
 }
 \value{
-numeric der Länge 1
+data frame mit der zusätzlichen Spate ItemResponse
 }
 \description{
 Liefert das Ergebnis eines Balls/Stimulus zurück, z.B. 0 oder 1

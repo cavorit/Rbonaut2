@@ -27,7 +27,6 @@ SQL <- read.csv(file=Pfad, sep=";", header=TRUE, encoding="utf8", stringsAsFacto
 DF <- SQL2DF(SQL = SQL)
 #View(DF)
 head(DF)
-DF$ItemID
 ########### Schritt 3: Füge mit Hilfe von Itembanken neue Testergebnisse hinzu
 ItemBank=readItemBank()
 # Merge die ItemBank

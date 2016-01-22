@@ -153,12 +153,12 @@ SQL2DF <- function(SQL){
     BALL <- detectItemResponse(Stimulus=BALL)
     return(BALL)
   }
-  BALL <- SQL2DF.detectItemResponse(Stimulus=BALL)
+  BALL <- SQL2DF.detectItemResponse(BALL=BALL)
   message("... fertig")
 
   message("\nSortiere Spalten")
   SQL2DF.rename <- function(BALL){
-    BALL <- BALL[c("idB", "idS", "idFBN", "idX", "nB", "ItemID", "ItemResponse",
+    BALL <- BALL[c("idFBN", "idS", "idB", "idX", "nB", "ItemID", "ItemResponse",
                    "PbnName", "PbnNachname", "PbnVorname", "PbnPosition", "PbnTeam",
                    "adrM", "adrW", "adrLast", "adrOut",
                    "sL", "sR", "vA",
