@@ -137,7 +137,7 @@ SQL2DF <- function(SQL){
   message("\nErstelle ItemID")
   SQL2DF.detectItemID <- function(BALL){
     ItemID <- NULL
-    for (i in nrow(BALL)){
+    for (i in 1:nrow(BALL)){
       Stimulus <- BALL[i, ]
       ItemID <- c(ItemID, detectItemID(Stimulus=Stimulus))
     }
