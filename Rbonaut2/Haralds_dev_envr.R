@@ -42,6 +42,10 @@ colnames(RaschMatrix) <- paste0("BL", gibZahlFuehrendeNullen(1:32, digits=2))
 rownames(RaschMatrix) <- 1:nrow(RaschMatrix)
 RaschMatrix
 
+x <- NULL
+for (i in 1:nrow(DF)){
+  x <- c(x, detectItemResponse(DF[i,]))
+}
+x
 
-
-
+View(detectItemResponse(DF))
