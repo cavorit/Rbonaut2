@@ -1,11 +1,20 @@
 Rbonaut2-package        Rbonaut2
 SQL2DF                  SQL2DF
+detectItemID            detectItemID
+detectItemResponse      detectItemResponse
 getAdrWAlsListe         getAdrWAlsListe
 getFirstAdrW            getFirstArdW
+getHW                   getHW
+getItemICC              getItemICC
 getNachname             getNachname
 getSessionTimeStamp     getSessionTimeStamp
 getVorname              getVorname
+gibZahlFuehrendeNullen
+                        gibZahlFuehrendeNullen
 isMultiTarget           isMultiTarget
+isUTF8                  isUTF8
 istFormatNachnameKommaVorname
                         istFormatNachnameKommaVorname
+playedAngle             playedAngle
+plotFBN                 plotFBN
 readItemBank            readItemBank

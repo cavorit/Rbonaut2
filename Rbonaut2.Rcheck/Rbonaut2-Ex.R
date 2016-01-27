@@ -58,6 +58,27 @@ getFirstAdrW(adrW=c("{2, 4, 5}", "{12, 19}", "{4}"))
 
 
 cleanEx()
+nameEx("getItemICC")
+### * getItemICC
+
+flush(stderr()); flush(stdout())
+
+### Name: getItemICC
+### Title: getItemICC
+### Aliases: getItemICC
+
+### ** Examples
+
+Pfad <- system.file("extdata", package="Rbonaut2", "Footbonaut_Datenabfrage_RicoWehrle.csv")
+SQL <- read.csv(file=Pfad, sep=";", header=TRUE, encoding="utf8", stringsAsFactors = FALSE)
+DF <- SQL2DF(SQL = SQL)
+ItemBank=readItemBank()
+F14 <- getItemICC(DF=DF, ItemBank=readItemBank(), MaximaleToleranz=15)
+head(F14)
+
+
+
+cleanEx()
 nameEx("getNachname")
 ### * getNachname
 
@@ -108,6 +129,39 @@ getVorname(Spielername = Spielername)
 
 
 cleanEx()
+nameEx("gibZahlFuehrendeNullen")
+### * gibZahlFuehrendeNullen
+
+flush(stderr()); flush(stdout())
+
+### Name: gibZahlFuehrendeNullen
+### Title: gibZahlFuehrendeNullen
+### Aliases: gibZahlFuehrendeNullen
+
+### ** Examples
+
+k = c(2, 7, 17, 299)
+gibZahlfuehrendeNull(k=k, digits=9)
+
+
+
+cleanEx()
+nameEx("isUTF8")
+### * isUTF8
+
+flush(stderr()); flush(stdout())
+
+### Name: isUTF8
+### Title: isUTF8
+### Aliases: isUTF8
+
+### ** Examples
+
+isUTF8(file="~/Desktop")
+
+
+
+cleanEx()
 nameEx("istFormatNachnameKommaVorname")
 ### * istFormatNachnameKommaVorname
 
@@ -121,6 +175,41 @@ flush(stderr()); flush(stdout())
 
 Spielername <- c("Fiedler, Harald", "Mayer, Jan", "A-Team")
 istFormatNachnameKommaVorname(Spielername = Spielername)
+
+
+
+cleanEx()
+nameEx("playedAngle")
+### * playedAngle
+
+flush(stderr()); flush(stdout())
+
+### Name: playedAngle
+### Title: playedAngle
+### Aliases: playedAngle
+
+### ** Examples
+
+adrA=10
+adrB=18
+plotFBN()
+playedAngle(adrA=adrA, adrB=adrB, Clockwise = FALSE)
+
+
+
+cleanEx()
+nameEx("plotFBN")
+### * plotFBN
+
+flush(stderr()); flush(stdout())
+
+### Name: plotFBN
+### Title: plotFBN
+### Aliases: plotFBN
+
+### ** Examples
+
+plotFBN(Adresses=FALSE)
 
 
 
