@@ -112,7 +112,9 @@ SQL2DF <- function(SQL){
       setkey(DT, idX)
       DT$adrLast <- c(NA, DT$adrW)[1:(nrow(DT))]
       DT
-      DT$RW[2:nrow(DT)] <- Rbonaut::played_angle(DT$adrLast[2:nrow(DT)], DT$adrM[2:nrow(DT)])
+#      DT$RW[2:nrow(DT)] <- Rbonaut::played_angle(DT$adrLast[2:nrow(DT)], DT$adrM[2:nrow(DT)])
+      DT$RW[2:nrow(DT)] <- Rbonaut2::playedAngle(DT$adrLast[2:nrow(DT)], DT$adrM[2:nrow(DT)])
+
       DF <- as.data.frame(DT)
       rm(DT)
       return(DF)
@@ -120,7 +122,7 @@ SQL2DF <- function(SQL){
     # eineSESSION <- BALL[BALL$idS=="FBN-Hoffenheim-2015-08-27-18:59:25" , c(2, 4, 10, 11, 3, 30)]
 
     DF <- NULL
-    for (s in unique(BALL$idS)){
+    for (s in unique(BALL$idS)){ #s <- BALL$idS[100] zu Testzwecken
       eineSESSION <- BALL[BALL$idS==s,]
 #       print("====== Ich analysiere nun: ")
 #       print(eineSESSION[, c(2, 4, 10, 11, 3, 30)])
