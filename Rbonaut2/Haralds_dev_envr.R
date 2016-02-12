@@ -29,10 +29,11 @@ Pfad <- "~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/Baseline-Abfr
 Pfad <- "~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/Baseline-Abfrage2014-2015/RAW/Abfrage 2015/SQLmanuelleQueryVonCgoalBereitgestelltAm2016-01-27Von2015-09-01Bis2015-09-31.csv" # Spt
 Pfad <- "~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/Baseline-Abfrage2014-2015/RAW/Abfrage 2015/SQLmanuelleQueryVonCgoalBereitgestelltAm2016-01-27Von2015-10-01Bis2015-10-30.csv" # Okt
 Pfad <- "~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/Baseline-Abfrage2014-2015/RAW/Abfrage 2015/SQLmanuelleQueryVonCgoalBereitgestelltAm2016-01-27Von2015-11-01Bis2015-11-31.csv" # Nov
-
+Pfad <- "~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/Baseline-Abfrage2014-2015/RAW/Abfrage 2015/SQLmanuelleQueryVonCgoalBereitgestelltAm2016-01-27Von2015-12-01Bis2015-12-30.csv" # Dez
 
 SQL <- read.csv(file=Pfad, sep=";", header=TRUE, encoding="utf8", stringsAsFactors = FALSE)
-#SQL$score <- SQL$points # wegen CGoal-Bug temporär
+head(SQL)
+SQL$score <- SQL$fbn_points # wegen CGoal-Bug temporär
 DF <- SQL2DF(SQL = SQL)
 table(DF$ItemID)
 ########### erstelle eine neue ItemBank
