@@ -1,6 +1,6 @@
 #' @author Harald Fiedler
 #' @details Gibt den Winkel zwischen zwei FBN-Adressen
-#' @description Winkel zwischen zwei Adressen
+#' @description Winkel zwischen zwei Adressen. Die Funktion funktioniert *nicht* Vektorwertig
 #' @param A numeric Adressen der Ausgangsfelder
 #' @param B numeric Adressen der Zielfelder
 #' @return numeric mit Winkel aus -170:180 wobei der Winkel positiv im Uhrzeigersinn gemessen wird

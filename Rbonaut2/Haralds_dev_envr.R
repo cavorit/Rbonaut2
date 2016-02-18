@@ -53,3 +53,5 @@ for (S in SessionIndex){# S <- SessionIndex[1]
 
 RaschMatrix
 
+#X <- DF[DF$Date == as.Date("2015-04-30") & DF$PbnName == "Gutzeit, Jan", c("idX", "adrM", "adrW", "RW", "AW")]
+#write.csv2(file = "~/Desktop/BL3220150430JanGutzeit.csv", x=X, sep=";")
