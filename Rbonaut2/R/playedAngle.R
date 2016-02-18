@@ -32,7 +32,7 @@ playedAngle <- function(adrA, adrB, Clockwise = FALSE){
     Signum <- Signum * (-1)
   }
 
-  Erg <- Winkel
+  Erg <- Winkel * Signum
   return(Erg)
 
 }
