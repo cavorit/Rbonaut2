@@ -17,23 +17,29 @@ playedAngle <- function(adrA, adrB, Clockwise = FALSE){
   Aground <- adrA+adrA%%2
   Bground <- adrB+adrB%%2
 
-  if (Aground == Bground) return(0)
+  # Zwischen A und B gibt es immer zwei Winkel
+  # Ich möchte den Winkel, der von A gegen den Uhrzeigersinn zu B führt.
+  if (Aground == Bground){
+    Erg <- 0
+  }
+
+  if (Bground > Aground){
+    Erg <- (Bground-Aground)*5
+  }
+
   if (Aground > Bground){
-    Winkel <- (Aground-Bground)*5;
-    Signum <- 1
-  }
-  if (Aground < Bground){
-    Winkel <- (Bground-Aground)*5;
-    Signum <- -1
+    Erg <- (playedAngle(Aground, 72) + Bground ) * 5
   }
 
-  if (Winkel > 180){
-    Winkel <- Winkel-180
-    Signum <- Signum * (-1)
+  # Falls der Winkel größer als 180 Grad ist, will ich den Gegenwinkel mit negativem Vorzeichen zurückgeben
+  if (Erg > 180){
+    Erg <- (-1)*(360-Erg)
   }
 
-  Erg <- Winkel * Signum
   return(Erg)
 
 }
 
+adrA = 18
+adrB = 10
+playedAngle(adrA, adrB)

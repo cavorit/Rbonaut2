@@ -7,17 +7,15 @@
 playedAngle(adrA, adrB, Clockwise = FALSE)
 }
 \arguments{
-\item{Clockwise}{boolean der angibt, ob die Winkel im Uhrzeigersinn oder im mathematisch positiven Sinn gemessen werden. Default ist der mathematisch positive Sinn.}
-
 \item{A}{numeric Adressen der Ausgangsfelder}
 
 \item{B}{numeric Adressen der Zielfelder}
 }
 \value{
-numeric mit Winkel aus 0:180
+numeric mit Winkel aus -170:180 wobei der Winkel positiv im Uhrzeigersinn gemessen wird
 }
 \description{
-Winkel zwischen zwei Adressen
+Winkel zwischen zwei Adressen. Die Funktion funktioniert *nicht* Vektorwertig
 }
 \details{
 Gibt den Winkel zwischen zwei FBN-Adressen
@@ -26,7 +24,7 @@ Gibt den Winkel zwischen zwei FBN-Adressen
 adrA=10
 adrB=18
 plotFBN()
-playedAngle(adrA=adrA, adrB=adrB, Clockwise = FALSE)
+playedAngle(adrA=adrA, adrB=adrB)
 }
 \author{
 Harald Fiedler
