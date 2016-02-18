@@ -17,7 +17,11 @@ playedAngle <- function(adrA, adrB, Clockwise = FALSE){
   Aground <- adrA+adrA%%2
   Bground <- adrB+adrB%%2
 
-  Erg <- ( Bground - Aground ) * 5
+  if (Aground == Bground) return(0)
+  if (Aground > Bground){Winkel <- (Aground-Bground)*5}
+  if (Aground < Bground){Winkel <- (Bground-Aground)*5}
+
+  Erg <- Winkel
   return(Erg)
 
 }
