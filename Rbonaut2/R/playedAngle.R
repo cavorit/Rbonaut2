@@ -1,6 +1,6 @@
 #' @author Harald Fiedler
 #' @details Gibt den Winkel zwischen zwei FBN-Adressen
-#' @description Winkel zwischen zwei Adressen. Die Funktion funktioniert *nicht* Vektorwertig
+#' @description Winkel zwischen zwei Adressen.
 #' @param A numeric Adressen der Ausgangsfelder
 #' @param B numeric Adressen der Zielfelder
 #' @return numeric mit Winkel aus -170:180 wobei der Winkel positiv im Uhrzeigersinn gemessen wird
@@ -17,29 +17,23 @@ playedAngle <- function(adrA, adrB, Clockwise = FALSE){
   Aground <- adrA+adrA%%2
   Bground <- adrB+adrB%%2
 
+  Erg <- rep(NA, times=length(adrA))
+
   # Zwischen A und B gibt es immer zwei Winkel
   # Ich möchte den Winkel, der von A gegen den Uhrzeigersinn zu B führt.
-  if (Aground == Bground){
-    Erg <- 0
-  }
+  Erg[Aground == Bground] <- 0
+  Erg[Bground > Aground] <- (Bground[Bground > Aground] - Aground[Bground > Aground])*5
 
-  if (Bground > Aground){
-    Erg <- (Bground-Aground)*5
-  }
-
-  if (Aground > Bground){
-    Erg <- (playedAngle(Aground, 72) + Bground ) * 5
-  }
+  #Erg[Aground > Bground] <- (playedAngle(Aground[Aground > Bground], 72) + Erg[Aground > Bground]$Bground ) * 5
+  Erg[Aground > Bground] <- ( (72-Aground[Aground > Bground]) + Bground[Aground > Bground] ) *5
 
   # Falls der Winkel größer als 180 Grad ist, will ich den Gegenwinkel mit negativem Vorzeichen zurückgeben
-  if (Erg > 180){
-    Erg <- (-1)*(360-Erg)
-  }
+  Erg[Erg > 180] <- (-1) * (360-Erg[Erg > 180])
 
   return(Erg)
 
 }
 
-adrA = 18
-adrB = 10
-playedAngle(adrA, adrB)
+#adrA = c(10, 12, 22)
+#adrB = c(18, 13, 8)
+#playedAngle(adrA, adrB)
