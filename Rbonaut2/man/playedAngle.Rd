@@ -15,7 +15,7 @@ playedAngle(adrA, adrB, Clockwise = FALSE)
 numeric mit Winkel aus -170:180 wobei der Winkel positiv im Uhrzeigersinn gemessen wird
 }
 \description{
-Winkel zwischen zwei Adressen. Die Funktion funktioniert *nicht* Vektorwertig
+Winkel zwischen zwei Adressen.
 }
 \details{
 Gibt den Winkel zwischen zwei FBN-Adressen

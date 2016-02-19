@@ -35,6 +35,7 @@ SQL <- read.csv(file=Pfad, sep=";", header=TRUE, encoding="utf8", stringsAsFacto
 head(SQL)
 SQL$score <- SQL$fbn_points # wegen CGoal-Bug temporär
 DF <- SQL2DF(SQL = SQL)
+system('say "Die Berechnungen sind fertig."')
 table(DF$ItemID)
 ########### erstelle eine neue ItemBank
 SessionIndex <- unique(DF$idS)

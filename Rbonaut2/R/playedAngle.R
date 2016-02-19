@@ -1,8 +1,8 @@
 #' @author Harald Fiedler
 #' @details Gibt den Winkel zwischen zwei FBN-Adressen
 #' @description Winkel zwischen zwei Adressen.
-#' @param A numeric Adressen der Ausgangsfelder
-#' @param B numeric Adressen der Zielfelder
+#' @param adrA numeric Adressen der Ausgangsfelder
+#' @param adrB numeric Adressen der Zielfelder
 #' @return numeric mit Winkel aus -170:180 wobei der Winkel positiv im Uhrzeigersinn gemessen wird
 #' @title playedAngle
 #' @examples

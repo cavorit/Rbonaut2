@@ -193,7 +193,7 @@ flush(stderr()); flush(stdout())
 adrA=10
 adrB=18
 plotFBN()
-playedAngle(adrA=adrA, adrB=adrB, Clockwise = FALSE)
+playedAngle(adrA=adrA, adrB=adrB)
 
 
 
