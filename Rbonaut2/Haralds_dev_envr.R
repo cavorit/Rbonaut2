@@ -31,12 +31,65 @@ Pfad <- "~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/Baseline-Abfr
 Pfad <- "~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/Baseline-Abfrage2014-2015/RAW/Abfrage 2015/SQLmanuelleQueryVonCgoalBereitgestelltAm2016-01-27Von2015-11-01Bis2015-11-31.csv" # Nov
 Pfad <- "~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/Baseline-Abfrage2014-2015/RAW/Abfrage 2015/SQLmanuelleQueryVonCgoalBereitgestelltAm2016-01-27Von2015-12-01Bis2015-12-30.csv" # Dez
 
-SQL <- read.csv(file=Pfad, sep=";", header=TRUE, encoding="utf8", stringsAsFactors = FALSE)
-head(SQL)
-SQL$score <- SQL$fbn_points # wegen CGoal-Bug temporär
-DF <- SQL2DF(SQL = SQL)
+JAN2015CSV <- "~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/Baseline-Abfrage2014-2015/RAW/Abfrage 2015/SQLmanuelleQueryVonCgoalBereitgestelltAm2016-01-27Von2015-01-01Bis2015-01-31.csv" # Jan
+FEB2015CSV <- "~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/Baseline-Abfrage2014-2015/RAW/Abfrage 2015/SQLmanuelleQueryVonCgoalBereitgestelltAm2016-01-27Von2015-02-01Bis2015-02-28.csv" # Feb
+MRZ2015CSV <- "~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/Baseline-Abfrage2014-2015/RAW/Abfrage 2015/SQLmanuelleQueryVonCgoalBereitgestelltAm2016-01-27Von2015-03-01Bis2015-03-31.csv" # Mrz
+APR2015CSV <- "~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/Baseline-Abfrage2014-2015/RAW/Abfrage 2015/SQLmanuelleQueryVonCgoalBereitgestelltAm2016-01-27Von2015-04-01Bis2015-04-30.csv" # Avr
+MAI2015CSV <- "~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/Baseline-Abfrage2014-2015/RAW/Abfrage 2015/SQLmanuelleQueryVonCgoalBereitgestelltAm2016-01-27Von2015-05-01Bis2015-05-31.csv" # Mai
+JUN2015CSV <- "~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/Baseline-Abfrage2014-2015/RAW/Abfrage 2015/SQLmanuelleQueryVonCgoalBereitgestelltAm2016-01-27Von2015-06-01Bis2015-06-30.csv" # Jun
+JUL2015CSV <- "~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/Baseline-Abfrage2014-2015/RAW/Abfrage 2015/SQLmanuelleQueryVonCgoalBereitgestelltAm2016-01-27Von2015-07-01Bis2015-07-31.csv" # Jul
+AUG2015CSV <- "~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/Baseline-Abfrage2014-2015/RAW/Abfrage 2015/SQLmanuelleQueryVonCgoalBereitgestelltAm2016-01-27Von2015-08-01Bis2015-08-30.csv" # Aug
+SPT2015CSV <- "~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/Baseline-Abfrage2014-2015/RAW/Abfrage 2015/SQLmanuelleQueryVonCgoalBereitgestelltAm2016-01-27Von2015-09-01Bis2015-09-31.csv" # Spt
+OKT2015CSV <- "~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/Baseline-Abfrage2014-2015/RAW/Abfrage 2015/SQLmanuelleQueryVonCgoalBereitgestelltAm2016-01-27Von2015-10-01Bis2015-10-30.csv" # Okt
+NOV2015CSV <- "~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/Baseline-Abfrage2014-2015/RAW/Abfrage 2015/SQLmanuelleQueryVonCgoalBereitgestelltAm2016-01-27Von2015-11-01Bis2015-11-31.csv" # Nov
+DEZ2015CSV <- "~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/Baseline-Abfrage2014-2015/RAW/Abfrage 2015/SQLmanuelleQueryVonCgoalBereitgestelltAm2016-01-27Von2015-12-01Bis2015-12-30.csv" # Dez
+
+
+JAN2015SQL <- read.csv(file=JAN2015CSV, sep=";", header=TRUE, encoding="utf8", stringsAsFactors = FALSE)
+FEB2015SQL <- read.csv(file=FEB2015CSV, sep=";", header=TRUE, encoding="utf8", stringsAsFactors = FALSE)
+MRZ2015SQL <- read.csv(file=MRZ2015CSV, sep=";", header=TRUE, encoding="utf8", stringsAsFactors = FALSE)
+APR2015SQL <- read.csv(file=APR2015CSV, sep=";", header=TRUE, encoding="utf8", stringsAsFactors = FALSE)
+MAI2015SQL <- read.csv(file=MAI2015CSV, sep=";", header=TRUE, encoding="utf8", stringsAsFactors = FALSE)
+JUN2015SQL <- read.csv(file=JUN2015CSV, sep=";", header=TRUE, encoding="utf8", stringsAsFactors = FALSE)
+JUL2015SQL <- read.csv(file=JUL2015CSV, sep=";", header=TRUE, encoding="utf8", stringsAsFactors = FALSE)
+AUG2015SQL <- read.csv(file=AUG2015CSV, sep=";", header=TRUE, encoding="utf8", stringsAsFactors = FALSE)
+SPT2015SQL <- read.csv(file=SPT2015CSV, sep=";", header=TRUE, encoding="utf8", stringsAsFactors = FALSE)
+OKT2015SQL <- read.csv(file=OKT2015CSV, sep=";", header=TRUE, encoding="utf8", stringsAsFactors = FALSE)
+NOV2015SQL <- read.csv(file=NOV2015CSV, sep=";", header=TRUE, encoding="utf8", stringsAsFactors = FALSE)
+DEZ2015SQL <- read.csv(file=DEZ2015CSV, sep=";", header=TRUE, encoding="utf8", stringsAsFactors = FALSE)
+
+JAN2015SQL$score <- JAN2015SQL$fbn_points # wegen CGoal-Bug temporär
+FEB2015SQL$score <- FEB2015SQL$fbn_points # wegen CGoal-Bug temporär
+MRZ2015SQL$score <- MRZ2015SQL$fbn_points # wegen CGoal-Bug temporär
+APR2015SQL$score <- APR2015SQL$fbn_points # wegen CGoal-Bug temporär
+MAI2015SQL$score <- MAI2015SQL$fbn_points # wegen CGoal-Bug temporär
+JUN2015SQL$score <- JUN2015SQL$fbn_points # wegen CGoal-Bug temporär
+JUL2015SQL$score <- JUL2015SQL$fbn_points # wegen CGoal-Bug temporär
+AUG2015SQL$score <- AUG2015SQL$fbn_points # wegen CGoal-Bug temporär
+SPT2015SQL$score <- SPT2015SQL$fbn_points # wegen CGoal-Bug temporär
+OKT2015SQL$score <- OKT2015SQL$fbn_points # wegen CGoal-Bug temporär
+NOV2015SQL$score <- NOV2015SQL$fbn_points # wegen CGoal-Bug temporär
+DEZ2015SQL$score <- DEZ2015SQL$fbn_points # wegen CGoal-Bug temporär
+
+
+JAN2015DF <- SQL2DF(SQL = JAN2015SQL)
+FEB2015DF <- SQL2DF(SQL = FEB2015SQL)
+MRZ2015DF <- SQL2DF(SQL = MRZ2015SQL)
+APR2015DF <- SQL2DF(SQL = APR2015SQL)
+MAI2015DF <- SQL2DF(SQL = MAI2015SQL)
+JUN2015DF <- SQL2DF(SQL = JUN2015SQL)
+JUL2015DF <- SQL2DF(SQL = JUL2015SQL)
+AUG2015DF <- SQL2DF(SQL = AUG2015SQL)
+SPT2015DF <- SQL2DF(SQL = SPT2015SQL)
+OKT2015DF <- SQL2DF(SQL = OKT2015SQL)
+NOV2015DF <- SQL2DF(SQL = NOV2015SQL)
+DEZ2015DF <- SQL2DF(SQL = DEZ2015SQL)
+
+
 system('say "Die Berechnungen sind fertig."')
+DF <- rbind(JAN2015DF, FEB2015DF, MRZ2015DF, APR2015DF, MAI2015DF, JUN2015DF, JUL2015DF, AUG2015DF, SPT2015DF, OKT2015DF, NOV2015DF, DEZ2015DF)
 table(DF$ItemID)
+
 ########### erstelle eine neue ItemBank
 SessionIndex <- unique(DF$idS)
 RaschMatrix <- matrix(NA, ncol=32, nrow=length(SessionIndex))
@@ -56,6 +109,7 @@ for (S in SessionIndex){# S <- SessionIndex[1]
 AnzahlErkannterItems <- 32-apply(is.na(RaschMatrix), 1, sum)
 RaschMatrixQualitaet <- RaschMatrix[AnzahlErkannterItems>=30,]
 RaschMatrixQualitaet
+system('say "Die Berechnungen sind fertig."')
 
 ### Rasch-Analyse
 library(eRm)
