@@ -48,11 +48,25 @@ for (S in SessionIndex){# S <- SessionIndex[1]
   EineSession <- DF[DF$idS==S,]
   for (B in EineSession$idX){ # B <- EineSession$idX[1]
     EinBall <- EineSession[EineSession$idX==B,]
-    if (is.element(EinBall$ItemID, colnames(RaschMatrix))){RaschMatrix[S, EinBall$ItemID] <- EinBall$ItemResponse}
+    if (  is.element(EinBall$ItemID, colnames(RaschMatrix))  ){RaschMatrix[rownames(RaschMatrix)==S, EinBall$ItemID] <- EinBall$ItemResponse}
   }
 }
 
-RaschMatrix
+## nur die Sessions, die ausreichend viele richtig erkannte Items hat
+AnzahlErkannterItems <- 32-apply(is.na(RaschMatrix), 1, sum)
+RaschMatrixQualitaet <- RaschMatrix[AnzahlErkannterItems>=30,]
+RaschMatrixQualitaet
 
-#X <- DF[DF$Date == as.Date("2015-04-30") & DF$PbnName == "Gutzeit, Jan", c("idX", "adrM", "adrW", "RW", "AW")]
-#write.csv2(file = "~/Desktop/BL3220150430JanGutzeit.csv", x=X, sep=";")
+### Rasch-Analyse
+library(eRm)
+fit <- RM(RaschMatrixQualitaet)
+summary(fit)
+fit$betapar
+
+test01 <- LRtest(fit, splitcr="mean", se=TRUE) # es liegt Modellverletzung vor, da signifikant unterschiedliche Itemmodellierungen für die besseren und die schlechteren 50% der Probanden ermittelt werden.
+plotGOF(test01, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.95, col=1), main="BT01:BT08", beta.subset = 0:7)
+plotGOF(test01, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.95, col=1), main="BT09:BT16", beta.subset = 8:15)
+plotGOF(test01, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.95, col=1), main="BT17:BT24", beta.subset = 16:23)
+plotGOF(test01, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.95, col=1), main="BT25:BT32", beta.subset = 24:32)
+
+
