@@ -74,42 +74,59 @@ DEZ2015SQL$score <- DEZ2015SQL$fbn_points # wegen CGoal-Bug temporär
 
 JAN2015DF <- SQL2DF(SQL = JAN2015SQL)
 FEB2015DF <- SQL2DF(SQL = FEB2015SQL)
-MRZ2015DF <- SQL2DF(SQL = MRZ2015SQL)
-APR2015DF <- SQL2DF(SQL = APR2015SQL)
-MAI2015DF <- SQL2DF(SQL = MAI2015SQL)
-JUN2015DF <- SQL2DF(SQL = JUN2015SQL)
-JUL2015DF <- SQL2DF(SQL = JUL2015SQL)
-AUG2015DF <- SQL2DF(SQL = AUG2015SQL)
-SPT2015DF <- SQL2DF(SQL = SPT2015SQL)
-OKT2015DF <- SQL2DF(SQL = OKT2015SQL)
-NOV2015DF <- SQL2DF(SQL = NOV2015SQL)
-DEZ2015DF <- SQL2DF(SQL = DEZ2015SQL)
+#MRZ2015DF <- SQL2DF(SQL = MRZ2015SQL)
+#APR2015DF <- SQL2DF(SQL = APR2015SQL)
+#MAI2015DF <- SQL2DF(SQL = MAI2015SQL)
+#JUN2015DF <- SQL2DF(SQL = JUN2015SQL)
+#JUL2015DF <- SQL2DF(SQL = JUL2015SQL)
+#AUG2015DF <- SQL2DF(SQL = AUG2015SQL)
+#SPT2015DF <- SQL2DF(SQL = SPT2015SQL)
+#OKT2015DF <- SQL2DF(SQL = OKT2015SQL)
+#NOV2015DF <- SQL2DF(SQL = NOV2015SQL)
+#DEZ2015DF <- SQL2DF(SQL = DEZ2015SQL)
 
 
 system('say "Die Berechnungen sind fertig."')
-DF <- rbind(JAN2015DF, FEB2015DF, MRZ2015DF, APR2015DF, MAI2015DF, JUN2015DF, JUL2015DF, AUG2015DF, SPT2015DF, OKT2015DF, NOV2015DF, DEZ2015DF)
+DF <- rbind(JAN2015DF, FEB2015DF)#, MRZ2015DF, APR2015DF, MAI2015DF, JUN2015DF, JUL2015DF, AUG2015DF, SPT2015DF, OKT2015DF, NOV2015DF, DEZ2015DF)
 table(DF$ItemID)
 
 ########### erstelle eine neue ItemBank
-SessionIndex <- unique(DF$idS)
-RaschMatrix <- matrix(NA, ncol=32, nrow=length(SessionIndex))
-colnames(RaschMatrix) <- paste0("BL", gibZahlFuehrendeNullen(1:32, digits=2))
-rownames(RaschMatrix) <- unique(DF$idS)
-RaschMatrix
+DF = DF
+ItemIDNamen = paste0("BL", gibZahlFuehrendeNullen(1:32, digits=2))
 
-for (S in SessionIndex){# S <- SessionIndex[1]
-  EineSession <- DF[DF$idS==S,]
-  for (B in EineSession$idX){ # B <- EineSession$idX[1]
-    EinBall <- EineSession[EineSession$idX==B,]
-    if (  is.element(EinBall$ItemID, colnames(RaschMatrix))  ){RaschMatrix[rownames(RaschMatrix)==S, EinBall$ItemID] <- EinBall$ItemResponse}
-  }
+# erstelleRaschMatrixSkeleton <- function(DF, ItemIDNamen){
+#   ## erstelle RaschMatrix-Skeletton
+#   SessionIndex <- unique(DF$idS)
+#   RaschMatrixSkeleton <- matrix(NA, ncol=length(ItemIDNamen), nrow=length(SessionIndex))
+#   colnames(RaschMatrixSkeleton) <- ItemIDNamen
+#   rownames(RaschMatrixSkeleton) <- unique(DF$idS)
+#   return(RaschMatrixSkeleton)
+# }
+
+
+# fillRaschMatrixSkeleton <- function(DF, ItemIDNamen, RaschMatrixSkeleton){
+#   SessionIndex <- unique(DF$idS)
+#   for (S in SessionIndex){# S <- SessionIndex[1]
+#     EineSession <- DF[DF$idS==S,]
+#     for (B in EineSession$idX){ # B <- EineSession$idX[1]
+#       EinBall <- EineSession[EineSession$idX==B,]
+#       if (  is.element(EinBall$ItemID, colnames(RaschMatrixSkeleton))  ){RaschMatrixSkeleton[rownames(RaschMatrixSkeleton)==S, EinBall$ItemID] <- EinBall$ItemResponse}
+#     }
+#   }
+#   return(RaschMatrixSkeleton)
+# }
+
+implodeRaschMatrix4Quality <- function(RaschMatrixSkeleton){
+  ## nur die Sessions, die ausreichend viele richtig erkannte Items hat
+  AnzahlErkannterItems <- 32-apply(is.na(RaschMatrixSkeleton), 1, sum)
+  RaschMatrixQualitaet <- RaschMatrixSkeleton[AnzahlErkannterItems>=30,]
+  return(RaschMatrixQualitaet)
 }
 
-## nur die Sessions, die ausreichend viele richtig erkannte Items hat
-AnzahlErkannterItems <- 32-apply(is.na(RaschMatrix), 1, sum)
-RaschMatrixQualitaet <- RaschMatrix[AnzahlErkannterItems>=30,]
-RaschMatrixQualitaet
-system('say "Die Berechnungen sind fertig."')
+RaschMatrixSkeleton <- erstelleRaschMatrixSkeleton(DF=DF, ItemIDNamen = ItemIDNamen)
+RaschMatrixSkeletonFilled <- filledRaschMatrixSkeleton(DF=DF, RaschMatrixSkeleton = RaschMatrixSkeleton)
+
+head(RaschMatrixQualitaet)
 
 ### Rasch-Analyse
 library(eRm)
@@ -123,4 +140,20 @@ plotGOF(test01, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tl
 plotGOF(test01, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.95, col=1), main="BT17:BT24", beta.subset = 16:23)
 plotGOF(test01, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.95, col=1), main="BT25:BT32", beta.subset = 24:32)
 
+#### Analyse unterschiedlicher Teams
 
+U12 <- DF[DF$PbnTeam=="U 12",]
+U13 <- DF[DF$PbnTeam=="U 13",]
+U14 <- DF[DF$PbnTeam=="U 14",]
+U15 <- DF[DF$PbnTeam=="U 15",]
+U16 <- DF[DF$PbnTeam=="U 16",]
+U17 <- DF[DF$PbnTeam=="U 17",]
+U19 <- DF[DF$PbnTeam=="U 19",]
+U23 <- DF[DF$PbnTeam=="U 23",]
+
+RaschMatrixSkeleton <- erstelleRaschMatrixSkeleton(DF = U13, ItemIDNamen = paste0("BL", gibZahlFuehrendeNullen(1:32, digits=2)))
+RaschMatrixSkeletonFilled <- fillRaschMatrixSkeleton(DF = U13, RaschMatrixSkeleton = RaschMatrixSkeleton, ItemIDNamen = paste0("BL", gibZahlFuehrendeNullen(1:32, digits=2)))
+RaschU13 <- implodeRaschMatrix4Quality(RaschMatrixSkeleton = RaschMatrixSkeletonFilled)
+fit <- RM(RaschU13)
+testU13 <- LRtest(fit, splitcr="mean", se=TRUE)
+summary(testU13)
