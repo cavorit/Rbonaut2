@@ -7,9 +7,9 @@
 playedAngle(adrA, adrB, Clockwise = FALSE)
 }
 \arguments{
-\item{A}{numeric Adressen der Ausgangsfelder}
+\item{adrA}{numeric Adressen der Ausgangsfelder}
 
-\item{B}{numeric Adressen der Zielfelder}
+\item{adrB}{numeric Adressen der Zielfelder}
 }
 \value{
 numeric mit Winkel aus -170:180 wobei der Winkel positiv im Uhrzeigersinn gemessen wird
