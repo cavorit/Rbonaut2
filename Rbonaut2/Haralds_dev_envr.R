@@ -96,40 +96,22 @@ table(DF2015$ItemID)
 DF = DF2015
 ItemIDNamen = paste0("BL", gibZahlFuehrendeNullen(1:32, digits=2))
 
-# erstelleRaschMatrixSkeleton <- function(DF, ItemIDNamen){
-#   ## erstelle RaschMatrix-Skeletton
-#   SessionIndex <- unique(DF$idS)
-#   RaschMatrixSkeleton <- matrix(NA, ncol=length(ItemIDNamen), nrow=length(SessionIndex))
-#   colnames(RaschMatrixSkeleton) <- ItemIDNamen
-#   rownames(RaschMatrixSkeleton) <- unique(DF$idS)
-#   return(RaschMatrixSkeleton)
-# }
-
-
-# fillRaschMatrixSkeleton <- function(DF, ItemIDNamen, RaschMatrixSkeleton){
-#   SessionIndex <- unique(DF$idS)
-#   for (S in SessionIndex){# S <- SessionIndex[1]
-#     EineSession <- DF[DF$idS==S,]
-#     for (B in EineSession$idX){ # B <- EineSession$idX[1]
-#       EinBall <- EineSession[EineSession$idX==B,]
-#       if (  is.element(EinBall$ItemID, colnames(RaschMatrixSkeleton))  ){RaschMatrixSkeleton[rownames(RaschMatrixSkeleton)==S, EinBall$ItemID] <- EinBall$ItemResponse}
-#     }
-#   }
-#   return(RaschMatrixSkeleton)
-# }
-
-# implodeRaschMatrix4Quality <- function(RaschMatrixSkeletonFilled){
-#   ## nur die Sessions, die ausreichend viele richtig erkannte Items hat
-#   AnzahlErkannterItems <- 32-apply(is.na(RaschMatrixSkeleton), 1, sum)
-#   RaschMatrixQualitaet <- RaschMatrixSkeleton[AnzahlErkannterItems>=30,]
-#   return(RaschMatrixQualitaet)
-# }
-
 RaschMatrixSkeleton <- erstelleRaschMatrixSkeleton(DF=DF, ItemIDNamen = ItemIDNamen)
 RaschMatrixSkeletonFilled <- fillRaschMatrixSkeleton(DF=DF, RaschMatrixSkeleton = RaschMatrixSkeleton)
 RaschMatrixSkeletonFilledAndImploded4Quality <- implodeRaschMatrix4Quality(RaschMatrixSkeletonFilled = RaschMatrixSkeletonFilled)
 RM <- RaschMatrixSkeletonFilledAndImploded4Quality
 head(RM)
+
+# Ich möchte einen Vektor haben, der zu jeder SessionID das Team (U13:U17, U19, U23) ermittelt und die gleiche Sortierung hat wie die RaschMatrix
+SessionID_TeamID <- data.frame("SessionID"=NULL, "TeamID"=NULL)
+for (SessionID in rownames(RM)){# SessionID <- "FBN-Hoffenheim-2015-04-30-18:37:31"
+  TeamID <- unique(DF[DF$idS==SessionID, "PbnTeam"])
+  if(length(TeamID)>1){stop("Alarm!!! Ich habe eine Session gefunden, die mehreren Teams zugeordnet ist. Abbruch.")}
+  TMP <- data.frame("SessionID"=SessionID, "TeamID"=TeamID)
+  SessionID_TeamID <- rbind(SessionID_TeamID, TMP)
+}
+SessionID_TeamID
+table(SessionID_TeamID$TeamID)
 
 ### Rasch-Analyse
 library(eRm)
@@ -143,20 +125,4 @@ plotGOF(test01, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tl
 plotGOF(test01, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.95, col=1), main="BT17:BT24", beta.subset = 16:23)
 plotGOF(test01, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.95, col=1), main="BT25:BT32", beta.subset = 24:32)
 
-#### Analyse unterschiedlicher Teams
 
-U12 <- DF[DF$PbnTeam=="U 12",]
-U13 <- DF[DF$PbnTeam=="U 13",]
-U14 <- DF[DF$PbnTeam=="U 14",]
-U15 <- DF[DF$PbnTeam=="U 15",]
-U16 <- DF[DF$PbnTeam=="U 16",]
-U17 <- DF[DF$PbnTeam=="U 17",]
-U19 <- DF[DF$PbnTeam=="U 19",]
-U23 <- DF[DF$PbnTeam=="U 23",]
-
-RaschMatrixSkeleton <- erstelleRaschMatrixSkeleton(DF = U13, ItemIDNamen = paste0("BL", gibZahlFuehrendeNullen(1:32, digits=2)))
-RaschMatrixSkeletonFilled <- fillRaschMatrixSkeleton(DF = U13, RaschMatrixSkeleton = RaschMatrixSkeleton, ItemIDNamen = paste0("BL", gibZahlFuehrendeNullen(1:32, digits=2)))
-RaschU13 <- implodeRaschMatrix4Quality(RaschMatrixSkeleton = RaschMatrixSkeletonFilled)
-fit <- RM(RaschU13)
-testU13 <- LRtest(fit, splitcr="mean", se=TRUE)
-summary(testU13)
