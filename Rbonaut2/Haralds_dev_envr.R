@@ -72,10 +72,10 @@ NOV2015SQL$score <- NOV2015SQL$fbn_points # wegen CGoal-Bug temporär
 DEZ2015SQL$score <- DEZ2015SQL$fbn_points # wegen CGoal-Bug temporär
 
 
-JAN2015DF <- SQL2DF(SQL = JAN2015SQL)
-FEB2015DF <- SQL2DF(SQL = FEB2015SQL)
+#JAN2015DF <- SQL2DF(SQL = JAN2015SQL)
+#FEB2015DF <- SQL2DF(SQL = FEB2015SQL)
 #MRZ2015DF <- SQL2DF(SQL = MRZ2015SQL)
-#APR2015DF <- SQL2DF(SQL = APR2015SQL)
+APR2015DF <- SQL2DF(SQL = APR2015SQL)
 #MAI2015DF <- SQL2DF(SQL = MAI2015SQL)
 #JUN2015DF <- SQL2DF(SQL = JUN2015SQL)
 #JUL2015DF <- SQL2DF(SQL = JUL2015SQL)
@@ -87,11 +87,13 @@ FEB2015DF <- SQL2DF(SQL = FEB2015SQL)
 
 
 system('say "Die Berechnungen sind fertig."')
-DF <- rbind(JAN2015DF, FEB2015DF)#, MRZ2015DF, APR2015DF, MAI2015DF, JUN2015DF, JUL2015DF, AUG2015DF, SPT2015DF, OKT2015DF, NOV2015DF, DEZ2015DF)
-table(DF$ItemID)
+#DF2015 <- rbind(JAN2015DF, FEB2015DF, MRZ2015DF, APR2015DF, MAI2015DF, JUN2015DF, JUL2015DF, AUG2015DF, SPT2015DF, OKT2015DF, NOV2015DF, DEZ2015DF)
+DF2015 <- APR2015DF
+
+table(DF2015$ItemID)
 
 ########### erstelle eine neue ItemBank
-DF = DF
+DF = DF2015
 ItemIDNamen = paste0("BL", gibZahlFuehrendeNullen(1:32, digits=2))
 
 # erstelleRaschMatrixSkeleton <- function(DF, ItemIDNamen){
@@ -116,21 +118,22 @@ ItemIDNamen = paste0("BL", gibZahlFuehrendeNullen(1:32, digits=2))
 #   return(RaschMatrixSkeleton)
 # }
 
-implodeRaschMatrix4Quality <- function(RaschMatrixSkeleton){
-  ## nur die Sessions, die ausreichend viele richtig erkannte Items hat
-  AnzahlErkannterItems <- 32-apply(is.na(RaschMatrixSkeleton), 1, sum)
-  RaschMatrixQualitaet <- RaschMatrixSkeleton[AnzahlErkannterItems>=30,]
-  return(RaschMatrixQualitaet)
-}
+# implodeRaschMatrix4Quality <- function(RaschMatrixSkeletonFilled){
+#   ## nur die Sessions, die ausreichend viele richtig erkannte Items hat
+#   AnzahlErkannterItems <- 32-apply(is.na(RaschMatrixSkeleton), 1, sum)
+#   RaschMatrixQualitaet <- RaschMatrixSkeleton[AnzahlErkannterItems>=30,]
+#   return(RaschMatrixQualitaet)
+# }
 
 RaschMatrixSkeleton <- erstelleRaschMatrixSkeleton(DF=DF, ItemIDNamen = ItemIDNamen)
-RaschMatrixSkeletonFilled <- filledRaschMatrixSkeleton(DF=DF, RaschMatrixSkeleton = RaschMatrixSkeleton)
-
-head(RaschMatrixQualitaet)
+RaschMatrixSkeletonFilled <- fillRaschMatrixSkeleton(DF=DF, RaschMatrixSkeleton = RaschMatrixSkeleton)
+RaschMatrixSkeletonFilledAndImploded4Quality <- implodeRaschMatrix4Quality(RaschMatrixSkeletonFilled = RaschMatrixSkeletonFilled)
+RM <- RaschMatrixSkeletonFilledAndImploded4Quality
+head(RM)
 
 ### Rasch-Analyse
 library(eRm)
-fit <- RM(RaschMatrixQualitaet)
+fit <- RM(RM)
 summary(fit)
 fit$betapar
 
