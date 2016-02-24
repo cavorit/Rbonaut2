@@ -2,8 +2,23 @@ rm(list=ls())
 library(Rbonaut2)
 
 ########### SCHRITT 1: Hole SQL-Query
+library(RPostgreSQL)
+drv = dbDriver("PostgreSQL")
+dbname = "fbn"
+user = "hf"
+password = "123456"
+host = "localhost"
+port = 5432
+con <- dbConnect(drv = drv, dbname=dbname, user=user, password=password, port=port)
+dbExistsTable(con,"webapp_playedsession")
+dbGetInfo(drv)
+dbListTables(con)
+dbListFields(con,"webapp_team")
+DF <-dbReadTable(con,"webapp_team")
+dbGetQuery(con, statement = "select * from webapp_team")
 
-########### SCHRITT 2: SQL2DF
+dbDisconnect(con)
+rem########### SCHRITT 2: SQL2DF
 Pfad <- system.file("extdata", package="Rbonaut2", "Footbonaut_Datenabfrage_RicoWehrle.csv")
 Pfad <- "~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/Projekte/2_ChristianMautner_PhD/RAW/SQLmanuelleQueryVonCgoalBereitgestelltAm2016-01-21Von2016-01-16Bis2016-01-16.csv"
 Pfad <- "~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/Projekte/4_Inder/SQLmanuelleQeuryVonCgoalBereitgestelltAm2015-12-14Von2015-09-30.csv" # harmlose warnings() bei den Namen
@@ -114,6 +129,8 @@ SessionID_TeamID
 table(SessionID_TeamID$TeamID)
 
 ### Rasch-Analyse
+RM <- merge(as.data.frame(RM), SessionID_TeamID)
+View(RM)
 library(eRm)
 fit <- RM(RM)
 summary(fit)
