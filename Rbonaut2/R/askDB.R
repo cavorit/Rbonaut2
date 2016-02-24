@@ -24,7 +24,7 @@ askDB <- function(Anfangsdatum, Enddatum){
 
   Query <- paste0("
   SELECT
-  translate(webapp_player.name,';',',') AS spielername,
+  TRANSLATE(webapp_player.name,';',',') AS spielername,
   webapp_player.birthday AS geboren,
   webapp_player.position AS pos,
   webapp_playedsession.start_date AS date,
