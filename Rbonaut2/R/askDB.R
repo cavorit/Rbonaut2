@@ -19,9 +19,6 @@ askDB <- function(Anfangsdatum, Enddatum){
   port = 5432
   con <- dbConnect(drv = drv, dbname=dbname, user=user, password=password, port=port)
 
-  Anfangsdatum = "2015-04-01"
-  Enddatum = "2015-04-22"
-
   Query <- paste0("
   SELECT
   TRANSLATE(webapp_player.name,';',',') AS spielername,
