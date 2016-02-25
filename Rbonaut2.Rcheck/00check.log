@@ -49,9 +49,13 @@ Use \uxxxx escapes for other characters.
 * checking whether the namespace can be loaded with stated dependencies ... OK
 * checking whether the namespace can be unloaded cleanly ... OK
 * checking dependencies in R code ... NOTE
-Package in Depends field not imported from: ‘data.table’
+'library' or 'require' call to ‘RPostgreSQL’ which was already attached by Depends.
+  Please remove these calls from your code.
+Packages in Depends field not imported from:
+  ‘RPostgreSQL’ ‘data.table’
   These packages need to be imported from (in the NAMESPACE file)
   for when this namespace is loaded but not attached.
+Missing or unexported object: ‘Rbonaut2::playedAngle’
 * checking S3 generic/method consistency ... OK
 * checking replacement functions ... OK
 * checking foreign function calls ... OK
@@ -67,10 +71,17 @@ SQL2DF : SQL2DF.RW : iCalcReaktionsWinkel: no visible global function
   definition for ‘setkey’
 SQL2DF : SQL2DF.RW : iCalcReaktionsWinkel: no visible binding for
   global variable ‘idX’
+askDB: no visible global function definition for ‘dbDriver’
+askDB: no visible global function definition for ‘dbConnect’
+askDB: no visible global function definition for ‘dbGetQuery’
+askDB: no visible global function definition for ‘dbDisconnect’
 * checking Rd files ... WARNING
 SQL2DF.Rd: non-ASCII input and no declared encoding
+askDB.Rd: non-ASCII input and no declared encoding
 detectItemID.Rd: non-ASCII input and no declared encoding
 detectItemResponse.Rd: non-ASCII input and no declared encoding
+erstelleRaschMatrixSkeleton.Rd: non-ASCII input and no declared encoding
+fillRaschMatrixSkeleton.Rd: non-ASCII input and no declared encoding
 getAdrWAlsListe.Rd: non-ASCII input and no declared encoding
 getFirstAdrW.Rd: non-ASCII input and no declared encoding
 getHW.Rd: non-ASCII input and no declared encoding
@@ -78,19 +89,24 @@ getItemICC.Rd: non-ASCII input and no declared encoding
 getNachname.Rd: non-ASCII input and no declared encoding
 getVorname.Rd: non-ASCII input and no declared encoding
 gibZahlFuehrendeNullen.Rd: non-ASCII input and no declared encoding
+implodeRaschMatrix4Quality.Rd: non-ASCII input and no declared encoding
 isUTF8.Rd: non-ASCII input and no declared encoding
 istFormatNachnameKommaVorname.Rd: non-ASCII input and no declared encoding
+checkRd: (5) plotFBN.Rd:0-23: Must have a \description
 readItemBank.Rd: non-ASCII input and no declared encoding
-problems found in ‘SQL2DF.Rd’, ‘detectItemID.Rd’, ‘detectItemResponse.Rd’, ‘getAdrWAlsListe.Rd’, ‘getFirstAdrW.Rd’, ‘getHW.Rd’, ‘getItemICC.Rd’, ‘getNachname.Rd’, ‘getVorname.Rd’, ‘gibZahlFuehrendeNullen.Rd’, ‘isUTF8.Rd’, ‘istFormatNachnameKommaVorname.Rd’, ‘readItemBank.Rd’
+problems found in ‘SQL2DF.Rd’, ‘askDB.Rd’, ‘detectItemID.Rd’, ‘detectItemResponse.Rd’, ‘erstelleRaschMatrixSkeleton.Rd’, ‘fillRaschMatrixSkeleton.Rd’, ‘getAdrWAlsListe.Rd’, ‘getFirstAdrW.Rd’, ‘getHW.Rd’, ‘getItemICC.Rd’, ‘getNachname.Rd’, ‘getVorname.Rd’, ‘gibZahlFuehrendeNullen.Rd’, ‘implodeRaschMatrix4Quality.Rd’, ‘isUTF8.Rd’, ‘istFormatNachnameKommaVorname.Rd’, ‘readItemBank.Rd’
 * checking Rd metadata ... OK
 * checking Rd cross-references ... OK
 * checking for missing documentation entries ... OK
 * checking for code/documentation mismatches ... OK
 * checking Rd \usage sections ... WARNING
+Undocumented arguments in documentation object 'erstelleRaschMatrixSkeleton'
+  ‘ItemIDNamen’
+Documented arguments not in \usage in documentation object 'erstelleRaschMatrixSkeleton':
+  ‘character’
+
 Undocumented arguments in documentation object 'playedAngle'
-  ‘adrA’ ‘adrB’ ‘Clockwise’
-Documented arguments not in \usage in documentation object 'playedAngle':
-  ‘A’ ‘B’
+  ‘Clockwise’
 
 Undocumented arguments in documentation object 'readItemBank'
   ‘file’
@@ -119,11 +135,7 @@ Ich lade den R-Paket-internen RAW-Datensatz: Footbonaut_Datenabfrage_RicoWehrle.
 > Pfad <- system.file("extdata", package="Rbonaut2", "Footbonaut_Datenabfrage_RicoWehrle.csv")
 > SQL <- read.csv2(file=Pfad, sep = ",", stringsAsFactors = FALSE, encoding = "utf8")
 > DF <- SQL2DF(SQL=SQL)
-
-Erstelle Schlüßel
-Error in as.Date.default(SQL$date) : 
-  do not know how to convert 'SQL$date' to class “Date”
-Calls: SQL2DF ... paste -> paste0 -> paste -> as.Date -> as.Date.default
+Error: could not find function "SQL2DF"
 Execution halted
 * checking PDF version of manual ... OK
 * DONE

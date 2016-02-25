@@ -1,7 +1,12 @@
 Rbonaut2-package        Rbonaut2
 SQL2DF                  SQL2DF
+askDB                   askDB
 detectItemID            detectItemID
 detectItemResponse      detectItemResponse
+erstelleRaschMatrixSkeleton
+                        erstelleRaschMatrixSkeleton
+fillRaschMatrixSkeleton
+                        fillRaschMatrixSkeleton
 getAdrWAlsListe         getAdrWAlsListe
 getFirstAdrW            getFirstArdW
 getHW                   getHW
@@ -11,6 +16,8 @@ getSessionTimeStamp     getSessionTimeStamp
 getVorname              getVorname
 gibZahlFuehrendeNullen
                         gibZahlFuehrendeNullen
+implodeRaschMatrix4Quality
+                        implodeFilledRaschMatrixSkeleton4Quality
 isMultiTarget           isMultiTarget
 isUTF8                  isUTF8
 istFormatNachnameKommaVorname

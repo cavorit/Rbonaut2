@@ -2,7 +2,6 @@ rm(list=ls())
 library(Rbonaut2)
 
 ########### SCHRITT 1: Hole SQL-Query
-library(RPostgreSQL)
 DF <- askDB(Anfangsdatum = "2012-01-01", Enddatum = "2012-01-31") # DF$geboren ist Date und DF$date ist POSIXct
 # DF2$geboren ist char und DF2$date ist char
 setwd("~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/RAW/")

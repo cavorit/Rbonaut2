@@ -22,6 +22,8 @@ Type 'q()' to quit R.
 > options(warn = 1)
 > library('Rbonaut2')
 Loading required package: data.table
+Loading required package: RPostgreSQL
+Loading required package: DBI
 > 
 > base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
 > cleanEx()
@@ -41,9 +43,5 @@ Ich lade den R-Paket-internen RAW-Datensatz: Footbonaut_Datenabfrage_RicoWehrle.
 > Pfad <- system.file("extdata", package="Rbonaut2", "Footbonaut_Datenabfrage_RicoWehrle.csv")
 > SQL <- read.csv2(file=Pfad, sep = ",", stringsAsFactors = FALSE, encoding = "utf8")
 > DF <- SQL2DF(SQL=SQL)
-
-Erstelle Schlüßel
-Error in as.Date.default(SQL$date) : 
-  do not know how to convert 'SQL$date' to class “Date”
-Calls: SQL2DF ... paste -> paste0 -> paste -> as.Date -> as.Date.default
+Error: could not find function "SQL2DF"
 Execution halted

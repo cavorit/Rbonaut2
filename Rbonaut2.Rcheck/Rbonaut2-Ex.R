@@ -25,6 +25,28 @@ head(DF)
 
 
 cleanEx()
+nameEx("erstelleRaschMatrixSkeleton")
+### * erstelleRaschMatrixSkeleton
+
+flush(stderr()); flush(stdout())
+
+### Name: erstelleRaschMatrixSkeleton
+### Title: erstelleRaschMatrixSkeleton
+### Aliases: erstelleRaschMatrixSkeleton
+
+### ** Examples
+
+rm(list=ls())
+DF <- data.frame(c("SessionA", "SessionB"), c(22, 90), c(23, 18), c(10,12))
+colnames(DF) <- c("idS", "It1", "It2", "It_von_wo_ganz_anders")
+ItemIDNamen <- c("Item1", "Item2", "Item3")
+print(DF)
+erstelleRaschMatrixSkeleton(DF=DF, ItemIDNamen=ItemIDNamen)
+
+
+
+
+cleanEx()
 nameEx("getAdrWAlsListe")
 ### * getAdrWAlsListe
 
@@ -210,6 +232,7 @@ flush(stderr()); flush(stdout())
 ### ** Examples
 
 plotFBN(Adresses=FALSE)
+
 
 
 

@@ -1,6 +1,9 @@
 Rbonaut2-package	Rbonaut2-package
+askDB	askDB
 detectItemID	detectItemID
 detectItemResponse	detectItemResponse
+erstelleRaschMatrixSkeleton	erstelleRaschMatrixSkeleton
+fillRaschMatrixSkeleton	fillRaschMatrixSkeleton
 getAdrWAlsListe	getAdrWAlsListe
 getFirstAdrW	getFirstAdrW
 getHW	getHW
@@ -9,6 +12,7 @@ getNachname	getNachname
 getSessionTimeStamp	getSessionTimeStamp
 getVorname	getVorname
 gibZahlFuehrendeNullen	gibZahlFuehrendeNullen
+implodeRaschMatrix4Quality	implodeRaschMatrix4Quality
 isMultiTarget	isMultiTarget
 istFormatNachnameKommaVorname	istFormatNachnameKommaVorname
 isUTF8	isUTF8
