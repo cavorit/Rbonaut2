@@ -28,6 +28,7 @@ askDB <- function(Anfangsdatum, Enddatum){
   webapp_playedsession.start_date AS date,
   webapp_playedsession.session_template_ID AS template,
   webapp_playedsession.name AS sessionname,
+  webapp_playedshot.start_timestamp AS timesstampB,
   webapp_playedshot.idx AS idx,
   webapp_playedshot.id AS idborig,
   webapp_playedshot.session_id AS idsorig,

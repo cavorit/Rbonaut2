@@ -3,23 +3,22 @@ library(Rbonaut2)
 
 ########### SCHRITT 1: Hole SQL-Query
 DF <- askDB(Anfangsdatum = "2016-01-01", Enddatum = "2016-01-31")
-writeRAW(DF = DF, Dateiname = "gulugulu")
-DFreloaded <- readRAW(Dateiname = "gulugulu")
-
+writeRAW(DF = DF, Dateiname = "RAW-2016-01")
+DF <- readRAW(Dateiname = "RAW-2016-01")
 
 ########### SCHRITT 2: SQL2DF
-#JAN2015DF <- SQL2DF(SQL = JAN2015SQL)
-#FEB2015DF <- SQL2DF(SQL = FEB2015SQL)
-#MRZ2015DF <- SQL2DF(SQL = MRZ2015SQL)
-APR2015DF <- SQL2DF(SQL = APR2015SQL)
-#MAI2015DF <- SQL2DF(SQL = MAI2015SQL)
-#JUN2015DF <- SQL2DF(SQL = JUN2015SQL)
-#JUL2015DF <- SQL2DF(SQL = JUL2015SQL)
-#AUG2015DF <- SQL2DF(SQL = AUG2015SQL)
-#SPT2015DF <- SQL2DF(SQL = SPT2015SQL)
-#OKT2015DF <- SQL2DF(SQL = OKT2015SQL)
-#NOV2015DF <- SQL2DF(SQL = NOV2015SQL)
-#DEZ2015DF <- SQL2DF(SQL = DEZ2015SQL)
+JAN2015DF <- SQL2DF(SQL = readRAW(Dateiname = "RAW-2015-01"))
+FEB2015DF <- SQL2DF(SQL = readRAW(Dateiname = "RAW-2015-02"))
+MRZ2015DF <- SQL2DF(SQL = readRAW(Dateiname = "RAW-2015-03"))
+APR2015DF <- SQL2DF(SQL = readRAW(Dateiname = "RAW-2015-04"))
+MAI2015DF <- SQL2DF(SQL = readRAW(Dateiname = "RAW-2015-05"))
+JUN2015DF <- SQL2DF(SQL = readRAW(Dateiname = "RAW-2015-06"))
+JUL2015DF <- SQL2DF(SQL = readRAW(Dateiname = "RAW-2015-07"))
+AUG2015DF <- SQL2DF(SQL = readRAW(Dateiname = "RAW-2015-08"))
+SPT2015DF <- SQL2DF(SQL = readRAW(Dateiname = "RAW-2015-09"))
+OKT2015DF <- SQL2DF(SQL = readRAW(Dateiname = "RAW-2015-10"))
+NOV2015DF <- SQL2DF(SQL = readRAW(Dateiname = "RAW-2015-11"))
+DEZ2015DF <- SQL2DF(SQL = readRAW(Dateiname = "RAW-2015-12"))
 
 
 system('say "Die Berechnungen sind fertig."')
