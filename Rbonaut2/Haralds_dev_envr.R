@@ -3,10 +3,9 @@ library(Rbonaut2)
 
 ########### SCHRITT 1: Hole SQL-Query
 DF <- askDB(Anfangsdatum = "2016-01-01", Enddatum = "2016-01-31")
+writeRAW(DF = DF, Dateiname = "gulugulu")
+DFreloaded <- readRAW(Dateiname = "gulugulu")
 
-setwd("~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/RAW/")
-write.table(x=DF, file="RAW-2016-01.csv", col.names = TRUE, fileEncoding = "utf8", sep=";", quote = FALSE, dec = ".", row.names = FALSE, append = FALSE)
-JAN2015SQL <- read.table(       file="JAN2015.csv", header    = TRUE,     encoding = "utf8", sep=";",                dec = ".", stringsAsFactors = FALSE)
 
 ########### SCHRITT 2: SQL2DF
 #JAN2015DF <- SQL2DF(SQL = JAN2015SQL)
