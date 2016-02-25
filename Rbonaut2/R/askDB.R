@@ -3,7 +3,7 @@
 #' @details Diese Funktion fragt auf localhost einen DB-dump der fbn-Datenbank ab und ersetzt das Copy&Paste-Verfahren der shinyApp
 #' @param Anfangsdatum character der Länge 1 im Format "JJJJ-MM-DD", welches dann zu einem Datumsobjekt umgewandelt wird. Achtung: Zeitzone könnte ein paar Probleme aufwerfen.
 #' @param Enddatum character der Länge 1 im Format "JJJJ-MM-DD"
-#' @return data.frame das dann von SQL2DF() weiterverarbeitet werden kann.
+#' @return data.frame das dann von augmentRAW() weiterverarbeitet werden kann.
 #' @title askDB
 #'
 #'

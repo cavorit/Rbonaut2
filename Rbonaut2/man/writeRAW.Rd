@@ -4,10 +4,10 @@
 \alias{writeRAW}
 \title{writeRAW}
 \usage{
-writeRAW(DF, Dateiname)
+writeRAW(SQL, Dateiname)
 }
 \arguments{
-\item{DF}{data.frame der per askDB() erzeugte Datensatz}
+\item{SQL}{data.frame der per askDB() erzeugte Datensatz}
 
 \item{Dateiname}{character der Länge 1, gibt den Dateinamen ohne Endung an. Der Pfad ist hard coded zur Dropbox}
 }

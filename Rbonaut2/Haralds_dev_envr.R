@@ -1,10 +1,14 @@
 rm(list=ls())
 library(Rbonaut2)
 
+Anfangsdatum = "2016-01-01"
+Enddatum = "2016-01-31"
+Dateiname = "RAW-2016-01"
+
 ########### SCHRITT 1: Hole SQL-Query
-DF <- askDB(Anfangsdatum = "2016-01-01", Enddatum = "2016-01-31")
-writeRAW(DF = DF, Dateiname = "RAW-2016-01")
-readRAW(Dateiname = "RAW-2016-01")
+SQL <- askDB(Anfangsdatum = Anfangsdatum, Enddatum = Enddatum)
+writeRAW(SQL = SQL, Dateiname = Dateiname)
+readRAW(Dateiname = Dateiname)
 
 
 ########### SCHRITT 2: SQL2DF

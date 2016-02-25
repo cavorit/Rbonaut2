@@ -12,7 +12,7 @@ askDB(Anfangsdatum, Enddatum)
 \item{Enddatum}{character der Länge 1 im Format "JJJJ-MM-DD"}
 }
 \value{
-data.frame das dann von SQL2DF() weiterverarbeitet werden kann.
+data.frame das dann von augmentRAW() weiterverarbeitet werden kann.
 }
 \description{
 Fragt die DB ab
