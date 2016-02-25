@@ -10,30 +10,12 @@ SQL <- askDB(Anfangsdatum = Anfangsdatum, Enddatum = Enddatum)
 writeRAW(SQL = SQL, Dateiname = Dateiname)
 readRAW(Dateiname = Dateiname)
 
-
-########### SCHRITT 2: SQL2DF
-JAN2015DF <- SQL2DF(SQL = readRAW(Dateiname = "RAW-2015-01"))
-FEB2015DF <- SQL2DF(SQL = readRAW(Dateiname = "RAW-2015-02"))
-MRZ2015DF <- SQL2DF(SQL = readRAW(Dateiname = "RAW-2015-03"))
-APR2015DF <- SQL2DF(SQL = readRAW(Dateiname = "RAW-2015-04"))
-MAI2015DF <- SQL2DF(SQL = readRAW(Dateiname = "RAW-2015-05"))
-JUN2015DF <- SQL2DF(SQL = readRAW(Dateiname = "RAW-2015-06"))
-JUL2015DF <- SQL2DF(SQL = readRAW(Dateiname = "RAW-2015-07"))
-AUG2015DF <- SQL2DF(SQL = readRAW(Dateiname = "RAW-2015-08"))
-SPT2015DF <- SQL2DF(SQL = readRAW(Dateiname = "RAW-2015-09"))
-OKT2015DF <- SQL2DF(SQL = readRAW(Dateiname = "RAW-2015-10"))
-NOV2015DF <- SQL2DF(SQL = readRAW(Dateiname = "RAW-2015-11"))
-DEZ2015DF <- SQL2DF(SQL = readRAW(Dateiname = "RAW-2015-12"))
-
-
+########### SCHRITT 2: augmentRAW
+DF <- augmentRAW(SQL = SQL)
 system('say "Die Berechnungen sind fertig."')
-#DF2015 <- rbind(JAN2015DF, FEB2015DF, MRZ2015DF, APR2015DF, MAI2015DF, JUN2015DF, JUL2015DF, AUG2015DF, SPT2015DF, OKT2015DF, NOV2015DF, DEZ2015DF)
-DF2015 <- APR2015DF
-
-table(DF2015$ItemID)
+table(DF$ItemID)
 
 ########### erstelle eine neue ItemBank
-DF = DF2015
 ItemIDNamen = paste0("BL", gibZahlFuehrendeNullen(1:32, digits=2))
 
 RaschMatrixSkeleton <- erstelleRaschMatrixSkeleton(DF=DF, ItemIDNamen = ItemIDNamen)
