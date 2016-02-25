@@ -8,9 +8,9 @@
 
 fillRaschMatrixSkeleton <- function(DF, RaschMatrixSkeleton){
   ItemIDNamen <- colnames(RaschMatrixSkeleton)
-  SessionIndex <- unique(DF$idS)
+  SessionIndex <- unique(DF$keyS)
   for (S in SessionIndex){# S <- SessionIndex[1]
-    EineSession <- DF[DF$idS==S,]
+    EineSession <- DF[DF$keyS==S,]
     for (B in EineSession$idX){ # B <- EineSession$idX[1]
       EinBall <- EineSession[EineSession$idX==B,]
       if (  is.element(EinBall$ItemID, colnames(RaschMatrixSkeleton))  ){RaschMatrixSkeleton[rownames(RaschMatrixSkeleton)==S, EinBall$ItemID] <- EinBall$ItemResponse}
