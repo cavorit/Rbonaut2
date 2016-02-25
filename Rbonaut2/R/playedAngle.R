@@ -11,7 +11,7 @@
 #' plotFBN()
 #' playedAngle(adrA=adrA, adrB=adrB)
 
-playedAngle <- function(adrA, adrB, Clockwise = FALSE){
+playedAngle <- function(adrA, adrB){
   if(any(adrA>72) | any(adrA<1) | any(adrB>72) | any(adrB<1)){stop("Adressen des FBN müssen in 1:72 liegen")}
 
   Aground <- adrA+adrA%%2

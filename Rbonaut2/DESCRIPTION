@@ -5,8 +5,7 @@ Version: 0.3
 Date: 2016-01-27
 Author: Cavorit
 Maintainer: Harald Fiedler <harald.fiedler@cavorit.de>
-Depends:
-    data.table, RPostgreSQL
+Depends: data.table, RPostgreSQL
 Description: The CLIP2-Version of CLIP1's Rbonaut-Package
 License: This package is private and internal of Cavorit Consulting GmbH
 LazyData: TRUE

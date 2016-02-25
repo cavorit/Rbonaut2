@@ -3,7 +3,7 @@
 #' @description erstellte eine NA-Matrix mit den Sessions als Zeilenindex und den Item-Namen als Spaltenindex
 #' @details Achtung: eine Spalte des data.frame muss den Spaltennamen "idS" haben.
 #' @param DF data.frame auf Ballebene. Eine Spalte muss "idS".
-#' @param character array mit den Itembezeichnungen, für die eine Rasch-Matrix erstellt werden soll.
+#' @param ItemIDNamen character array mit den Itembezeichnungen, für die eine Rasch-Matrix erstellt werden soll.
 #' @return Eine Matrix voller NA, mit colnames=Itembezeichnungen und rownames=unique(idS)
 #' @examples
 #' rm(list=ls())

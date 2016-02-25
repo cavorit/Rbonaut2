@@ -5,11 +5,11 @@
 #' @param SQL data.frame, dass per read.csv eingelesen wurde
 #' @return data.frame
 #' @examples
-#' message("Ich lade den R-Paket-internen RAW-Datensatz: Footbonaut_Datenabfrage_RicoWehrle.csv")
-#' Pfad <- system.file("extdata", package="Rbonaut2", "Footbonaut_Datenabfrage_RicoWehrle.csv")
-#' SQL <- read.csv2(file=Pfad, sep = ",", stringsAsFactors = FALSE, encoding = "utf8")
-#' DF <- SQL2DF(SQL=SQL)
-#' head(DF)
+#' #message("Ich lade den R-Paket-internen RAW-Datensatz: Footbonaut_Datenabfrage_RicoWehrle.csv")
+#' #Pfad <- system.file("extdata", package="Rbonaut2", "Footbonaut_Datenabfrage_RicoWehrle.csv")
+#' #SQL <- read.csv2(file=Pfad, sep = ",", stringsAsFactors = FALSE, encoding = "utf8")
+#' #DF <- SQL2DF(SQL=SQL)
+#' #head(DF)
 
 SQL2DF <- function(SQL){
 
