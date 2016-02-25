@@ -137,7 +137,7 @@ augmentRAW <- function(SQL){
                    "sL", "sR", "vA",
                    "RW", "HW", "AW", "AWcg",
                    "DELAY", "goalUnder5000ms",
-                   "FBq", "FBt", "CgoalScore")]
+                   "FBq", "FBt", "CGoalScore")]
     return(BALL)
   }
   BALL <- SQL2DF.rename(BALL=BALL)
