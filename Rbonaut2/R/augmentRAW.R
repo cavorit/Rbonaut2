@@ -34,7 +34,8 @@ augmentRAW <- function(SQL){
   BALL$adrM <- as.integer(SQL$adrm)
   BALL$adrW <- as.integer(getFirstAdrW(SQL$adrw))
   BALL$isMultiTarg <- isMultiTarget(SQL$adrw)
-  BALL$MultiTarg <- SQL$adrw
+  BALL$adrWW <- SQL$adrw
+  BALL$adrDD <- SQL$adrd
   BALL$sL <- SQL$sl
   BALL$sR <- SQL$sr
   BALL$vA <- SQL$va
@@ -45,7 +46,7 @@ augmentRAW <- function(SQL){
   message("... erstellt")
 
 #   message("\nErstelle technische misc")
-#   BALL$DELAY <- SQL$delay
+    BALL$DELAY <- SQL$delay
 #   BALL$LED <- "t"
 #   BALL$SND <- "t"
 #   message("... erstellt")
@@ -66,7 +67,7 @@ augmentRAW <- function(SQL){
   message("\nErstelle nB")
   SQL2DF.nB <- function(SQL, BALL){
     DT <- data.table(BALL)
-    DT.nB <- DT[, .(nB=max(idX)),by=idS]
+    DT.nB <- DT[, .(nB=max(idX)),by=keyS]
     BALL <- merge(BALL, DT.nB, all.x=TRUE)
     return(BALL)
   }
@@ -89,19 +90,17 @@ augmentRAW <- function(SQL){
       rm(DT)
       return(DF)
     }
-    # eineSESSION <- BALL[BALL$idS=="FBN-Hoffenheim-2015-08-27-18:59:25" , c(2, 4, 10, 11, 3, 30)]
+    # eineSESSION <- BALL[BALL$keyS=="002b6573-cf12-436d-bccd-0856b0bb0a25" , ] # Session aus JAN 2016
 
     DF <- NULL
-    for (s in unique(BALL$idS)){ #s <- unique(BALL$idS)[73] # zu Testzwecken
-      eineSESSION <- BALL[BALL$idS==s,]
+    for (s in unique(BALL$keyS)){ #s <- unique(BALL$keyS)[73] # zu Testzwecken
+      eineSESSION <- BALL[BALL$keyS==s,]
 #       print("====== Ich analysiere nun: ")
 #       print(eineSESSION[, c(2, 4, 10, 11, 3, 30)])
 #       print("---")
       DF <- rbind(DF, iCalcReaktionsWinkel(eineSESSION=eineSESSION))
     }
-
-    BALL <- DF
-    return(BALL)
+    return(DF)
   }
   BALL <- SQL2DF.RW(BALL=BALL, SQL=SQL)
   message("... fertig")
@@ -128,20 +127,21 @@ augmentRAW <- function(SQL){
   BALL <- SQL2DF.detectItemResponse(BALL=BALL)
   message("... fertig")
 
-#   message("\nSortiere Spalten")
-#   SQL2DF.rename <- function(BALL){
-#     BALL <- BALL[c("idFBN", "idS", "idB", "idX", "nB", "ItemID", "ItemResponse",
-#                    "PbnName", "PbnNachname", "PbnVorname", "PbnPosition", "PbnTeam",
-#                    "adrM", "adrW", "adrLast", "adrOut",
-#                    "sL", "sR", "vA",
-#                    "isMultiTarg", "MultiTargs",
-#                    "RW", "HW", "AW",
-#                    "DELAY", "SND", "LED", "Date", "JSONfile", "Comments", "goal.under.5000ms",
-#                    "FBq", "FBt", "Fiedler2012")]
-#     return(BALL)
-#   }
-#   BALL <- SQL2DF.rename(BALL=BALL)
-#   message("... fertig")
+  message("\nSortiere Spalten")
+  SQL2DF.rename <- function(BALL){
+    BALL <- BALL[c("keyS", "keyB", "keyP", "keyT", "idFBN", "timestampS", "timestampB",
+                   "idX", "nB",
+                   "ItemID", "ItemResponse",
+                   "PbnName", "PbnNachname", "PbnVorname", "PbnGeboren", "PbnAlter","PbnPosition", "PbnTeam",
+                   "adrM", "adrW", "isMultiTarg", "adrWW", "adrDD", "adrLast", "adrOut",
+                   "sL", "sR", "vA",
+                   "RW", "HW", "AW", "AWcg",
+                   "DELAY", "goalUnder5000ms",
+                   "FBq", "FBt", "CgoalScore")]
+    return(BALL)
+  }
+  BALL <- SQL2DF.rename(BALL=BALL)
+  message("... fertig")
 
   return(BALL)
 }

@@ -49,7 +49,6 @@ askDB <- function(Anfangsdatum, Enddatum){
   webapp_playedshot.speed_left AS sl,
   webapp_playedshot.speed_right AS sr,
   webapp_playedshot.vertical_angle AS va,
-  webapp_playedshot.played_angle AS deg,
   webapp_playedshot.goal_hit AS goal,
   webapp_playedshot.goal_actual AS hit,
   webapp_playedshot.goal_actual_height AS flachstufe,
