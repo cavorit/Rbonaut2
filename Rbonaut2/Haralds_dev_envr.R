@@ -4,7 +4,8 @@ library(Rbonaut2)
 ########### SCHRITT 1: Hole SQL-Query
 DF <- askDB(Anfangsdatum = "2016-01-01", Enddatum = "2016-01-31")
 writeRAW(DF = DF, Dateiname = "RAW-2016-01")
-DF <- readRAW(Dateiname = "RAW-2016-01")
+readRAW(Dateiname = "RAW-2016-01")
+
 
 ########### SCHRITT 2: SQL2DF
 JAN2015DF <- SQL2DF(SQL = readRAW(Dateiname = "RAW-2015-01"))

@@ -9,9 +9,6 @@ readRAW(Dateiname)
 \arguments{
 \item{Dateiname}{character der Länge 1 mit Dateiname (ohne Endung). Der Pfad wird automatisch auf die Dropbox gesetzt, genauer in den Ordner RAW vom Ordner Hoffenheim}
 }
-\value{
-data.frame der einer SQL-Abfrage gleicht.
-}
 \description{
 Liest die per writeRAW() gespeicherten Dateien ein
 }

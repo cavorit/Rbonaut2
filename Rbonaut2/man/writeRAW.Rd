@@ -12,7 +12,7 @@ writeRAW(DF, Dateiname)
 \item{Dateiname}{character der Länge 1, gibt den Dateinamen ohne Endung an. Der Pfad ist hard coded zur Dropbox}
 }
 \description{
-Der per askDB() erzeugte Datensatz (ein data.frame) wird als .csv in der Dropbox abgespeichert.
+Der per askDB() erzeugte Datensatz (ein data.frame) wird als R-Objekt in der Dropbox abgespeichert.
 }
 \author{
 Harald Fiedler
