@@ -20,7 +20,7 @@ DF wird um die Spalten ItemID, ICCa, ICCb, ICCc und ICCd angereichert.
 Fügt die Spalten ItemID, ICCa, ICCb, ICCc, ICCd
 }
 \details{
-Aus einem DF (erzeugt mittels SQL2DF(SQL = SQL)) und der ItemBank wird ein Merge erzeugt. Dabei nutze ich AW, RW, HW und vA als Key. In einem zweiten Schritt wird die Identifikation der Items gelöscht, wenn zwischen dem tstsächlichen sL bzw. sR und dem in der ItemBank hinterlegten sL und sR eine zu große Diskrepanz entsteht.
+Aus einem DF (erzeugt mittels augment(SQL = SQL)) und der ItemBank wird ein Merge erzeugt. Dabei nutze ich AW, RW, HW und vA als Key. In einem zweiten Schritt wird die Identifikation der Items gelöscht, wenn zwischen dem tstsächlichen sL bzw. sR und dem in der ItemBank hinterlegten sL und sR eine zu große Diskrepanz entsteht.
 }
 \examples{
 Pfad <- system.file("extdata", package="Rbonaut2", "Footbonaut_Datenabfrage_RicoWehrle.csv")

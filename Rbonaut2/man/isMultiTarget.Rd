@@ -13,7 +13,7 @@ isMultiTarget(adrW)
 boolescher Vektor
 }
 \description{
-Hilfsfunktion von SQL2DF(): ist adrW multitargetting?
+Hilfsfunktion von augmentRAW(): ist adrW multitargetting?
 }
 \details{
 Sagt, ob {11, 21, 16} oder {23} unter adrW abgespeichert wurde

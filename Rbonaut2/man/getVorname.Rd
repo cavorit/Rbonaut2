@@ -13,7 +13,7 @@ getVorname(Spielername)
 character Vektor der gleichen Länge wie der an die Funktion übergebene Vektor
 }
 \description{
-Hilfsfunktion von SQL2DF(): Gibt aus einem Spielername den Vornamen
+Hilfsfunktion von augmentDF(): Gibt aus einem Spielername den Vornamen
 }
 \details{
 Spielernamen können in SQL-Abfragen des FBN beispielsweise "Dogan, Isa" sein. Es wird "Isa" zurückgegeben.

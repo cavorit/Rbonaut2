@@ -13,7 +13,7 @@ getHW(SQL)
 character mit Einträgen aus c("FF", "FH", "HF", "HH"), wobei FF=Flach Flach bedeutet und HH=Hoch Hoch.
 }
 \description{
-Hilfsfunktion von SQL2DF zur Ermittlung von Höhenwinkel FF-FH-HF-HH
+Hilfsfunktion von augmentRAW zur Ermittlung von Höhenwinkel FF-FH-HF-HH
 }
 \details{
 Je nachdem ob eine obere Ballkanonen oder eine untere Ballkanone zum Zuge kommt, oder ein unteres Zeil respektive oberes Ziel, kommt ein anderer Höhenwinkle zu stande.

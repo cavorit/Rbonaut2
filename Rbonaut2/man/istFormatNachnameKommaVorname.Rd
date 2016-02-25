@@ -13,7 +13,7 @@ istFormatNachnameKommaVorname(Spielername)
 Boolescher Wert, der angibt, ob das Format Name, Vorname (mutmaßlich) vorliegt
 }
 \description{
-Hilfsfunktion von SQL2DF()
+Hilfsfunktion von augmentRAW()
 }
 \details{
 In den SQL-Auszügen des FBN finden sich Spielername vom Format "Fiedler, Harald", aber auch "A_TEST_Forschung". Die Funktion testet komponentenweise, ob zwei Strings kommagetrennt gepastet sind.
