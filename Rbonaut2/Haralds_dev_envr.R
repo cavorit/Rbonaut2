@@ -14,7 +14,7 @@ readRAW(Dateiname = Dateiname)
 DF <- augmentRAW(SQL = SQL)
 system('say "Ich habe fertig."')
 table(DF$ItemID)
-
+writeAUGMENTED(DF=DF, Dateiname=Dateiname)
 ########### erstelle eine neue ItemBank
 ItemIDNamen = paste0("BL", gibZahlFuehrendeNullen(1:32, digits=2))
 

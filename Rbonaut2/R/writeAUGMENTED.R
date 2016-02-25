@@ -7,7 +7,7 @@
 
 writeAUGMENTED <- function(DF, Dateiname){
 
-  path <- "~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/RAW/"
-  path <- paste0(path, Dateiname, collapse = "/AUGMENTED")
+  path <- "~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/RAW/AUGMENTED"
+  path <- paste0(path, Dateiname)
   save(DF, file = path)
 }
