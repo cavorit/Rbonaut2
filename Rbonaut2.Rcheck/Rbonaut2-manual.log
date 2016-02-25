@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.9.18)  25 FEB 2016 09:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.9.18)  25 FEB 2016 09:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -809,15 +809,15 @@ File: utf8.def 2014/09/29 v1.1m UTF-8 support for inputenc
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2014/09/29 v1.1m UTF-8 support for inputenc
 ) [15]
-Overfull \hbox (23.28091pt too wide) in paragraph at lines 786--786
- []\T1/zi4/m/n/9 message("Ich lade den R-Paket-internen RAW-Datensatz: Footbona
-ut_Datenabfrage_RicoWehrle.csv")[] 
+Overfull \hbox (27.78091pt too wide) in paragraph at lines 786--786
+ []\T1/zi4/m/n/9 #message("Ich lade den R-Paket-internen RAW-Datensatz: Footbon
+aut_Datenabfrage_RicoWehrle.csv")[] 
  []
 
 
-Overfull \hbox (15.18091pt too wide) in paragraph at lines 787--787
- []\T1/zi4/m/n/9 Pfad <- system.file("extdata", package="Rbonaut2", "Footbonaut
-_Datenabfrage_RicoWehrle.csv")[] 
+Overfull \hbox (19.68091pt too wide) in paragraph at lines 787--787
+ []\T1/zi4/m/n/9 #Pfad <- system.file("extdata", package="Rbonaut2", "Footbonau
+t_Datenabfrage_RicoWehrle.csv")[] 
  []
 
 (./Rd2.ind [16]
@@ -862,7 +862,7 @@ live/2015/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2015/
 texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist
 /fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/typ
 e1/urw/times/utmri8a.pfb>
-Output written on Rd2.pdf (17 pages, 111850 bytes).
+Output written on Rd2.pdf (17 pages, 112001 bytes).
 PDF statistics:
  457 PDF objects out of 1000 (max. 8388607)
  426 compressed objects within 5 object streams

@@ -26,7 +26,7 @@ Sortierung wieder so funktioniert, wie man es gerne hätte.
 }
 \examples{
 k = c(2, 7, 17, 299)
-gibZahlfuehrendeNull(k=k, digits=9)
+gibZahlFuehrendeNullen(k=k, digits=9)
 }
 \author{
 Harald Fiedler

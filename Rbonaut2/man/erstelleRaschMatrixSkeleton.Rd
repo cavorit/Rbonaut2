@@ -9,7 +9,7 @@ erstelleRaschMatrixSkeleton(DF, ItemIDNamen)
 \arguments{
 \item{DF}{data.frame auf Ballebene. Eine Spalte muss "idS".}
 
-\item{character}{array mit den Itembezeichnungen, für die eine Rasch-Matrix erstellt werden soll.}
+\item{ItemIDNamen}{character array mit den Itembezeichnungen, für die eine Rasch-Matrix erstellt werden soll.}
 }
 \value{
 Eine Matrix voller NA, mit colnames=Itembezeichnungen und rownames=unique(idS)

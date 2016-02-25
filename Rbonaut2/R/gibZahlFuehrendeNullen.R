@@ -8,7 +8,7 @@
 #' Sortierung wieder so funktioniert, wie man es gerne hätte.
 #' @examples
 #' k = c(2, 7, 17, 299)
-#' gibZahlfuehrendeNull(k=k, digits=9)
+#' gibZahlFuehrendeNullen(k=k, digits=9)
 #' @param k numeric (besser wäre integer, sonst wird das Ergebnis korrumpiert)
 #' @param digits numeric der Länge 1, das die Wortlänge bezeichnet. "0004" erhält man beispielsweise mit digits=4
 #' @return Ein Vektor mit der gleichen Länge wie k, dessen Elemente Worte sind. Sie example.

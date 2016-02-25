@@ -16,11 +16,11 @@ flush(stderr()); flush(stdout())
 
 ### ** Examples
 
-message("Ich lade den R-Paket-internen RAW-Datensatz: Footbonaut_Datenabfrage_RicoWehrle.csv")
-Pfad <- system.file("extdata", package="Rbonaut2", "Footbonaut_Datenabfrage_RicoWehrle.csv")
-SQL <- read.csv2(file=Pfad, sep = ",", stringsAsFactors = FALSE, encoding = "utf8")
-DF <- SQL2DF(SQL=SQL)
-head(DF)
+#message("Ich lade den R-Paket-internen RAW-Datensatz: Footbonaut_Datenabfrage_RicoWehrle.csv")
+#Pfad <- system.file("extdata", package="Rbonaut2", "Footbonaut_Datenabfrage_RicoWehrle.csv")
+#SQL <- read.csv2(file=Pfad, sep = ",", stringsAsFactors = FALSE, encoding = "utf8")
+#DF <- SQL2DF(SQL=SQL)
+#head(DF)
 
 
 
@@ -163,7 +163,7 @@ flush(stderr()); flush(stdout())
 ### ** Examples
 
 k = c(2, 7, 17, 299)
-gibZahlfuehrendeNull(k=k, digits=9)
+gibZahlFuehrendeNullen(k=k, digits=9)
 
 
 

@@ -4,7 +4,7 @@
 \alias{playedAngle}
 \title{playedAngle}
 \usage{
-playedAngle(adrA, adrB, Clockwise = FALSE)
+playedAngle(adrA, adrB)
 }
 \arguments{
 \item{adrA}{numeric Adressen der Ausgangsfelder}
