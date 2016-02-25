@@ -26,6 +26,7 @@ augmentRAW <- function(SQL){
   BALL$PbnVorname <- getVorname(SQL$spielername)
   BALL$PbnGeboren <- SQL$geburtstag
   BALL$PbnAlter <- SQL$alter
+  BALL$PbnJahre <- as.numeric( (as.Date(SQL$sessiontimestamp) - as.Date(SQL$geburtstag)) / 365)
   BALL$PbnPosition <- SQL$pos
   BALL$PbnTeam <- SQL$team
   message("... erstellt")
@@ -132,7 +133,7 @@ augmentRAW <- function(SQL){
     BALL <- BALL[c("keyS", "keyB", "keyP", "keyT", "idFBN", "timestampS", "timestampB",
                    "idX", "nB",
                    "ItemID", "ItemResponse",
-                   "PbnName", "PbnNachname", "PbnVorname", "PbnGeboren", "PbnAlter","PbnPosition", "PbnTeam",
+                   "PbnName", "PbnNachname", "PbnVorname", "PbnGeboren", "PbnAlter", "PbnJahre", "PbnPosition", "PbnTeam",
                    "adrM", "adrW", "isMultiTarg", "adrWW", "adrDD", "adrLast", "adrOut",
                    "sL", "sR", "vA",
                    "RW", "HW", "AW", "AWcg",
