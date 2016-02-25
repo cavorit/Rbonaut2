@@ -16,9 +16,9 @@
 
 erstelleRaschMatrixSkeleton <- function(DF, ItemIDNamen){
   ## erstelle RaschMatrix-Skeletton
-  SessionIndex <- unique(DF$idS)
+  SessionIndex <- unique(DF$keyS)
   RaschMatrixSkeleton <- matrix(NA, ncol=length(ItemIDNamen), nrow=length(SessionIndex))
   colnames(RaschMatrixSkeleton) <- ItemIDNamen
-  rownames(RaschMatrixSkeleton) <- unique(DF$idS)
+  rownames(RaschMatrixSkeleton) <- unique(DF$keyS)
   return(RaschMatrixSkeleton)
 }
