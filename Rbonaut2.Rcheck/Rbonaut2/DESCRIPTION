@@ -1,8 +1,8 @@
 Package: Rbonaut2
 Type: Package
 Title: CLIP2's Rbonaut
-Version: 0.3
-Date: 2016-01-27
+Version: 0.4
+Date: 2016-02-25
 Author: Cavorit
 Maintainer: Harald Fiedler <harald.fiedler@cavorit.de>
 Depends: data.table, RPostgreSQL
@@ -11,4 +11,4 @@ License: This package is private and internal of Cavorit Consulting
         GmbH
 LazyData: TRUE
 RoxygenNote: 5.0.1
-Built: R 3.2.2; ; 2016-02-25 08:43:02 UTC; unix
+Built: R 3.2.2; ; 2016-02-25 10:34:37 UTC; unix

@@ -25,3 +25,5 @@ istFormatNachnameKommaVorname
 playedAngle             playedAngle
 plotFBN                 plotFBN
 readItemBank            readItemBank
+readRAW                 readRAW
+writeRAW                writeRAW

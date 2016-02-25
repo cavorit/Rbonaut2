@@ -4,7 +4,7 @@
 * using session charset: UTF-8
 * checking for file ‘Rbonaut2/DESCRIPTION’ ... OK
 * checking extension type ... Package
-* this is package ‘Rbonaut2’ version ‘0.3’
+* this is package ‘Rbonaut2’ version ‘0.4’
 * checking package namespace information ... OK
 * checking package dependencies ... OK
 * checking if this is a source package ... OK
@@ -93,7 +93,9 @@ isUTF8.Rd: non-ASCII input and no declared encoding
 istFormatNachnameKommaVorname.Rd: non-ASCII input and no declared encoding
 checkRd: (5) plotFBN.Rd:0-23: Must have a \description
 readItemBank.Rd: non-ASCII input and no declared encoding
-problems found in ‘SQL2DF.Rd’, ‘askDB.Rd’, ‘detectItemID.Rd’, ‘detectItemResponse.Rd’, ‘erstelleRaschMatrixSkeleton.Rd’, ‘fillRaschMatrixSkeleton.Rd’, ‘getAdrWAlsListe.Rd’, ‘getFirstAdrW.Rd’, ‘getHW.Rd’, ‘getItemICC.Rd’, ‘getNachname.Rd’, ‘getVorname.Rd’, ‘gibZahlFuehrendeNullen.Rd’, ‘implodeRaschMatrix4Quality.Rd’, ‘isUTF8.Rd’, ‘istFormatNachnameKommaVorname.Rd’, ‘readItemBank.Rd’
+readRAW.Rd: non-ASCII input and no declared encoding
+writeRAW.Rd: non-ASCII input and no declared encoding
+problems found in ‘SQL2DF.Rd’, ‘askDB.Rd’, ‘detectItemID.Rd’, ‘detectItemResponse.Rd’, ‘erstelleRaschMatrixSkeleton.Rd’, ‘fillRaschMatrixSkeleton.Rd’, ‘getAdrWAlsListe.Rd’, ‘getFirstAdrW.Rd’, ‘getHW.Rd’, ‘getItemICC.Rd’, ‘getNachname.Rd’, ‘getVorname.Rd’, ‘gibZahlFuehrendeNullen.Rd’, ‘implodeRaschMatrix4Quality.Rd’, ‘isUTF8.Rd’, ‘istFormatNachnameKommaVorname.Rd’, ‘readItemBank.Rd’, ‘readRAW.Rd’, ‘writeRAW.Rd’
 * checking Rd metadata ... OK
 * checking Rd cross-references ... OK
 * checking for missing documentation entries ... OK

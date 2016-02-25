@@ -382,11 +382,32 @@ character(0)
 > 
 > 
 > 
+> cleanEx()
+> nameEx("readRAW")
+> ### * readRAW
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: readRAW
+> ### Title: readRAW
+> ### Aliases: readRAW
+> 
+> ### ** Examples
+> 
+> Dateiname = "RAW-2015-04"
+> head(readRAW(Dateiname = Dateiname))
+Loading objects:
+  DF
+[1] "DF"
+> 
+> 
+> 
+> 
 > ### * <FOOTER>
 > ###
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  2.78 0.026 2.847 0.002 0.003 
+Time elapsed:  2.956 0.03 3.006 0.002 0.002 
 > grDevices::dev.off()
 null device 
           1 

@@ -21,17 +21,26 @@ askDB <- function(Anfangsdatum, Enddatum){
 
   Query <- paste0("
   SELECT
+
+  webapp_playedshot.id AS keyb,
+  webapp_playedshot.session_id AS keys,
+  webapp_player.id AS keyp,
+  webapp_sessiontemplate.id AS keyt,
+
+  webapp_playedsession.start_date AS sessiontimestamp,
+  webapp_playedshot.start_timestamp AS balltimestamp,
+
+  webapp_team.name AS team,
+  webapp_footbonaut.name AS fbn,
+
   TRANSLATE(webapp_player.name,';',',') AS spielername,
-  webapp_player.birthday AS geboren,
+  webapp_player.birthday AS geburtstag,
   age(webapp_playedsession.start_date, webapp_player.birthday) AS alter,
   webapp_player.position AS pos,
-  webapp_playedsession.start_date AS date,
-  webapp_playedsession.session_template_ID AS template,
+
   webapp_playedsession.name AS sessionname,
-  webapp_playedshot.start_timestamp AS timesstampB,
   webapp_playedshot.idx AS idx,
-  webapp_playedshot.id AS idborig,
-  webapp_playedshot.session_id AS idsorig,
+
   webapp_playedshot.played_angle AS CGoalWinkel,
   webapp_playedshot.ballmachine AS adrm,
   webapp_playedshot.own_targets AS adrw,
@@ -45,9 +54,7 @@ askDB <- function(Anfangsdatum, Enddatum){
   webapp_playedshot.goal_actual AS hit,
   webapp_playedshot.goal_actual_height AS flachstufe,
   webapp_playedshot.duration AS time,
-  webapp_playedshot.points AS score,
-  webapp_team.name AS team,
-  webapp_footbonaut.name AS fbn
+  webapp_playedshot.points AS score
 
   FROM
   webapp_playedshot
@@ -70,7 +77,7 @@ askDB <- function(Anfangsdatum, Enddatum){
   ON webapp_playedshot.player_id = webapp_player.id
 
   WHERE
-  DATE(start_date) BETWEEN '", Anfangsdatum, "' AND '", Enddatum, "' ORDER BY date ASC;")
+  DATE(start_date) BETWEEN '", Anfangsdatum, "' AND '", Enddatum, "' ORDER BY balltimestamp ASC;")
 
   DF <- dbGetQuery(conn=con, statement = Query)
 

@@ -253,6 +253,24 @@ head(ItemBank)
 
 
 
+cleanEx()
+nameEx("readRAW")
+### * readRAW
+
+flush(stderr()); flush(stdout())
+
+### Name: readRAW
+### Title: readRAW
+### Aliases: readRAW
+
+### ** Examples
+
+Dateiname = "RAW-2015-04"
+head(readRAW(Dateiname = Dateiname))
+
+
+
+
 ### * <FOOTER>
 ###
 options(digits = 7L)

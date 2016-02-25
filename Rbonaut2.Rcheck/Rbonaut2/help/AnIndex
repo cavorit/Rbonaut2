@@ -20,4 +20,6 @@ playedAngle	playedAngle
 plotFBN	plotFBN
 Rbonaut2	Rbonaut2-package
 readItemBank	readItemBank
+readRAW	readRAW
 SQL2DF	SQL2DF
+writeRAW	writeRAW
