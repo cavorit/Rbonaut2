@@ -1,6 +1,6 @@
 #' @author Harald Fiedler
 #' @description Fügt die Spalten ItemID, ICCa, ICCb, ICCc, ICCd
-#' @details Aus einem DF (erzeugt mittels SQL2DF(SQL = SQL)) und der ItemBank wird ein Merge erzeugt. Dabei nutze ich AW, RW, HW und vA als Key. In einem zweiten Schritt wird die Identifikation der Items gelöscht, wenn zwischen dem tstsächlichen sL bzw. sR und dem in der ItemBank hinterlegten sL und sR eine zu große Diskrepanz entsteht.
+#' @details Aus einem DF (erzeugt mittels augment(SQL = SQL)) und der ItemBank wird ein Merge erzeugt. Dabei nutze ich AW, RW, HW und vA als Key. In einem zweiten Schritt wird die Identifikation der Items gelöscht, wenn zwischen dem tstsächlichen sL bzw. sR und dem in der ItemBank hinterlegten sL und sR eine zu große Diskrepanz entsteht.
 #' @title getItemICC
 #' @param DF data.frame Mittels SQL2DF(SQL=SQL) erzeugt wird
 #' @param ItemBank data.frame Wird etwa durch ItemBank=readItemBank() gewonnen
