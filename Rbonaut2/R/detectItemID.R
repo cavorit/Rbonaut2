@@ -9,7 +9,7 @@
 detectItemID <- function(Stimulus){
 
   isMultiTarg <- Stimulus$isMultiTarg
-  MultiTargs <- Stimulus$MultiTargs
+  adrWW <- Stimulus$adrWW
   RW <- Stimulus$RW
   if (is.na(RW)){RW<-Inf} # RW=NA macht zu viele Probleme
   AW <- Stimulus$AW
