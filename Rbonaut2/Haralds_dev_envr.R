@@ -2,10 +2,10 @@ rm(list=ls())
 library(Rbonaut2)
 
 ########### SCHRITT 1: Hole SQL-Query
-DF <- askDB(Anfangsdatum = "2012-01-01", Enddatum = "2012-01-31") # DF$geboren ist Date und DF$date ist POSIXct
+DF <- askDB(Anfangsdatum = "2016-01-01", Enddatum = "2016-01-31") # DF$geboren ist Date und DF$date ist POSIXct
 # DF2$geboren ist char und DF2$date ist char
 setwd("~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/RAW/")
-write.table(x=DF, file="JAN2013.csv", col.names = TRUE, fileEncoding = "utf8", sep=";", quote = FALSE, dec = ".", row.names = FALSE, append = FALSE)
+write.table(x=DF, file="RAW-2016-01.csv", col.names = TRUE, fileEncoding = "utf8", sep=";", quote = FALSE, dec = ".", row.names = FALSE, append = FALSE)
 JAN2015SQL <- read.table(       file="JAN2015.csv", header    = TRUE,     encoding = "utf8", sep=";",                dec = ".", stringsAsFactors = FALSE)
 
 ########### SCHRITT 2: SQL2DF
