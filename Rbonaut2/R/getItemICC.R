@@ -15,6 +15,8 @@
 #' head(F14)
 
 
+# Nach dem Umbau von SQL2DF() (=Copy&Paste-Abfragen) zu Datenbankabfragen per augmentRAW() kann es sein, dass diese Funktion nicht mehr fehlerfrei läuft.
+
 getItemICC <- function(DF, ItemBank, MaximaleToleranz = 10){
   M <- merge(x=DF, y=ItemBank, all.x=TRUE, by=c("AW", "RW", "HW", "vA")) # dieser Merge ignoriert sL und sR
 

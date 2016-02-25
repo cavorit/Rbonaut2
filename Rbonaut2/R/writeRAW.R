@@ -9,18 +9,5 @@ writeRAW <- function(SQL, Dateiname){
 
   path <- "~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/RAW/"
   path <- paste0(path, Dateiname, collapse = "/")
-  #path <- paste0(path, ".csv")
-
-#   write.table(x=DF,
-#               file=path,
-#               col.names = TRUE,
-#               fileEncoding = "utf8",
-#               sep=";",
-#               quote = FALSE,
-#               dec = ".",
-#               row.names = FALSE,
-#               append = FALSE
-#   )
-#
   save(SQL, file = path)
 }

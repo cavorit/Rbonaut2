@@ -1,5 +1,5 @@
 #' @author Harald Fiedler
-#' @description Hilfsfunktion von SQL2DF(): Gibt aus einem Spielername den Vornamen
+#' @description Hilfsfunktion von augmentRWA(): Gibt aus einem Spielername den Vornamen
 #' @details Spielernamen können in SQL-Abfragen des FBN beispielsweise "Dogan, Isa" sein. Es wird "Isa" zurückgegeben.
 #' @title getNachname
 #' @param Spielername character Vektor von beliebiger Länge

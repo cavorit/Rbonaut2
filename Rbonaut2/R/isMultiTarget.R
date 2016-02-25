@@ -2,7 +2,7 @@
 #' @title isMultiTarget
 #' @param adrW character Array, etwa c("{22, 33, 44, 55}", "{11, 22222, 11111}", "{99}")
 #' @return boolescher Vektor
-#' @description Hilfsfunktion von SQL2DF(): ist adrW multitargetting?
+#' @description Hilfsfunktion von augmentRAW(): ist adrW multitargetting?
 #' @details Sagt, ob {11, 21, 16} oder {23} unter adrW abgespeichert wurde
 
 

@@ -9,21 +9,7 @@
 
 readRAW <- function(Dateiname){
   path <- paste0("~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/RAW/", Dateiname, collapse = "/")
-#  path <- paste0(path, ".csv")
-#   SQL <- read.table(file=path,
-#                     header = TRUE,
-#                     encoding = "utf8",
-#                     sep=";",
-#                     dec = ".",
-#                     stringsAsFactors = FALSE
-#           )
-#   SQL$date <- as.POSIXct(SQL$date)
-#   SQL$geboren <- as.Date(SQL$geboren)
-#   SQL$timestampb <- as.POSIXct(SQL$timestampb)
-#   return(SQL)
-
   load(file = path, verbose = TRUE)
-
 }
 
 

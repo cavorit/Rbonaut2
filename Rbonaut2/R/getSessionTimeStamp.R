@@ -8,6 +8,7 @@
 #' DatumString <- c("2015-08-27 18:59:25.328383+02", "2015-08-27 18:59:25.328383+02", "2015-08-27 18:59:25.328383+02")
 
 getSessionTimeStamp <- function(DatumString){
+  message("Diese Funktion wird wohl nicht mehr benötigt. Falls sie bis 30.4.2016 nicht mehr genutzt worden ist, kann man sie löschen.")
   # c("2015-08-27 18:59:25.328383+02", "2015-08-27 18:59:25.328383+02", "2015-08-27 18:59:25.328383+02")
   Liste <- strsplit(x = DatumString, split = " ")
 
