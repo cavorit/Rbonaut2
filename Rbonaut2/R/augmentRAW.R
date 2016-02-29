@@ -57,7 +57,17 @@ augmentRAW <- function(SQL){
   BALL$FBq <- SQL$goal
   BALL$FBt <- SQL$time
   BALL$CGoalScore <- SQL$score
-  BALL$Fiedler2012 <- calcFiedler2012(SQL=BALL)
+
+  Term01 <- 1218.250 * exp(-(BALL$FBt/1000))
+  Term02 <- 100 * exp(1/50 * BALL$FBq - 2)
+  maximalerWalzenSpeed <- (apply(data.frame(BALL$sL, BALL$sR), 1, max))
+  Term03 <- (2^( maximalerWalzenSpeed / 100 ) ) + 3^((1000-BALL$delay)/(1000)) + 2^(BALL$vA/20)
+  Term04 <- exp( (log(4)/360 )*(playedAngle(adrA = BALL$adrM, adrB = BALL$adrW)/40))
+  BALL$Fiedler2012 <- 1.006693 * (exp(5))/(1+exp(5)) * Term01 * Term02 * Term03 * Term04
+
+
+
+  BALL$Fiedler2012 <- calcFiedler2012(BALL=BALL)
   message("... erstellt")
 
   message("\nErstelle Sonstiges")
