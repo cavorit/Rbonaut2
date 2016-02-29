@@ -57,6 +57,7 @@ augmentRAW <- function(SQL){
   BALL$FBq <- SQL$goal
   BALL$FBt <- SQL$time
   BALL$CGoalScore <- SQL$score
+  BALL$Fiedler2012 <- calcFiedler2012(SQL=BALL)
   message("... erstellt")
 
   message("\nErstelle Sonstiges")
