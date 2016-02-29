@@ -3,7 +3,7 @@ library(Rbonaut2)
 
 Anfangsdatum = "2013-12-01"
 Enddatum = "2013-12-31"
-Dateiname = "2013-12"
+Dateiname = "RAW2013-12"
 
 ########### SCHRITT 1: Hole SQL-Query
 SQL <- askDB(Anfangsdatum = Anfangsdatum, Enddatum = Enddatum)
@@ -13,7 +13,7 @@ readRAW(Dateiname = Dateiname)
 ########### SCHRITT 2: augmentRAW
 DF <- augmentRAW(SQL = SQL)
 table(DF$ItemID)
-writeAUGMENTED(DF=DF, Dateiname=Dateiname)
+writeAUGMENTED(DF=DF, Dateiname="AUGMENTED2013-12-01")
 system('say "Ich habe fertig."')
 readAUGMENTED(Dateiname = Dateiname)
 

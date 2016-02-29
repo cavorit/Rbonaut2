@@ -8,6 +8,6 @@
 #'
 
 readAUGMENTED <- function(Dateiname){
-  path <- paste0("~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/RAW/AUGMENTED", Dateiname, collapse = "/")
+  path <- paste0("~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/RAW/", Dateiname, collapse = "/")
   load(file = path, verbose = TRUE)
 }
