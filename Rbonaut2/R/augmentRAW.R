@@ -1,12 +1,20 @@
 #' @author Harald Fiedler
 #' @title augmentRAW
 #' @description data.frame SQL wird angereichert
-#' @details Es werden Derivate gebildet und Punktzahlen eingebunden
+#' @details Es werden Derivate gebildet und Punktzahlen eingebunden. Problemhafte Sessions werden eliminiert. Dazu zählen zwei Sessions aus dem November 2014 ohne adrW.
 #' @param SQL data.frame, dass per askDB() oder readRAW() eingelesen wurde
 #' @return data.frame
 
 augmentRAW <- function(SQL){
-
+  
+  ProblemSessions <- c("a715dff9-d9a1-4aaa-b922-b15f52be1d49", # eine Session aus dem November 2014 ohne Zielfelder
+                       "a715dff9-d9a1-4aaa-b922-b15f52be1d49") # eine Session aus dem Novmeber 2014, ebenfalls ohne Zielfelder
+  
+  if(any(is.element(SQL$keys, ProblemSessions))){
+    warning("ProblemSessions identifiziert und eliminiert.Details siehe Dokumentation augmentRAW()")
+    SQL <- SQL[!is.element(SQL$keys, ProblemSessions), ]
+  }
+  
   message("\nErstelle Schlüßel")
   BALL <- data.frame(
     keyB = SQL$keyb,
@@ -37,6 +45,7 @@ augmentRAW <- function(SQL){
   BALL$isMultiTarg <- isMultiTarget(SQL$adrw)
   BALL$adrWW <- SQL$adrw
   BALL$adrDD <- SQL$adrd
+  
   BALL$sL <- SQL$sl
   BALL$sR <- SQL$sr
   BALL$vA <- SQL$va
