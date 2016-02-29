@@ -1,9 +1,9 @@
 rm(list=ls())
 library(Rbonaut2)
 
-Anfangsdatum = "2013-12-01"
-Enddatum = "2013-12-31"
-Dateiname = "RAW2013-12"
+Anfangsdatum = "2014-01-01"
+Enddatum = "2014-01-31"
+Dateiname = "RAW2014-01"
 
 ########### SCHRITT 1: Hole SQL-Query
 SQL <- askDB(Anfangsdatum = Anfangsdatum, Enddatum = Enddatum)
@@ -15,7 +15,7 @@ DF <- augmentRAW(SQL = SQL)
 table(DF$ItemID)
 writeAUGMENTED(DF=DF, Dateiname="AUGMENTED2013-12-01")
 system('say "Ich habe fertig."')
-readAUGMENTED(Dateiname = Dateiname)
+readAUGMENTED(Dateiname = "AUGMENTED2013-12-01")
 
 ########### erstelle eine neue ItemBank
 ItemIDNamen = paste0("BL", gibZahlFuehrendeNullen(1:32, digits=2))
