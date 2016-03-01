@@ -1,23 +1,23 @@
 rm(list=ls())
 library(Rbonaut2)
 
-Anfangsdatum =  "2014-11-01"
-Enddatum =      "2014-11-30"
-Dateiname =     "RAW2014-11"
+Anfangsdatum =  "2015-04-01"
+Enddatum =      "2015-04-30"
+Dateiname =     "RAW2015-04"
 
-########### SCHRITT 1: Hole SQL-Query
+# ########### SCHRITT 1: Hole SQL-Query
 SQL <- askDB(Anfangsdatum = Anfangsdatum, Enddatum = Enddatum)
 writeRAW(SQL = SQL, Dateiname = Dateiname)
 readRAW(Dateiname = Dateiname)
 
-########### SCHRITT 2: augmentRAW
+# ########### SCHRITT 2: augmentRAW
 DF <- augmentRAW(SQL = SQL)
-table(DF$ItemID)
-writeAUGMENTED(DF=DF, Dateiname="AUGMENTED2014-11")
-system('say "Iche habe fertig." -v Alice')
-readAUGMENTED(Dateiname = "AUGMENTED2014-11")
+writeAUGMENTED(DF=DF, Dateiname="AUGMENTED2015-04")
+# system('say "Iche habe fertig." -v Alice')
+readAUGMENTED(Dateiname = "AUGMENTED2015-04")
+rm(DF)
 head(DF)
-
+table(DF$ItemID)
 ########### erstelle eine neue ItemBank
 ItemIDNamen = paste0("BL", gibZahlFuehrendeNullen(1:32, digits=2))
 
@@ -27,20 +27,13 @@ RaschMatrixSkeletonFilledAndImploded4Quality <- implodeRaschMatrix4Quality(Rasch
 RM <- RaschMatrixSkeletonFilledAndImploded4Quality
 head(RM)
 
-# Ich möchte einen Vektor haben, der zu jeder SessionID das Team (U13:U17, U19, U23) ermittelt und die gleiche Sortierung hat wie die RaschMatrix
-SessionID_TeamID <- data.frame("SessionID"=NULL, "TeamID"=NULL)
-for (SessionID in rownames(RM)){# SessionID <- "FBN-Hoffenheim-2015-04-30-18:37:31"
-  TeamID <- unique(DF[DF$idS==SessionID, "PbnTeam"])
-  if(length(TeamID)>1){stop("Alarm!!! Ich habe eine Session gefunden, die mehreren Teams zugeordnet ist. Abbruch.")}
-  TMP <- data.frame("SessionID"=SessionID, "TeamID"=TeamID)
-  SessionID_TeamID <- rbind(SessionID_TeamID, TMP)
-}
-SessionID_TeamID
-table(SessionID_TeamID$TeamID)
+## Füge das Alter hinzu
+RM <- as.data.frame(RM)
+RM <- cbind(RM, DF[is.element(DF$keyS,rownames(RM)) & DF$idX == 0, c("PbnJahre", "keyS")])
+head(RM)
+# RM$keyS == rownames(RM) # TRUE
 
 ### Rasch-Analyse
-RM <- merge(as.data.frame(RM), SessionID_TeamID)
-View(RM)
 library(eRm)
 fit <- RM(RM)
 summary(fit)

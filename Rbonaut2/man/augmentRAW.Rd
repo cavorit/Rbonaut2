@@ -16,7 +16,7 @@ data.frame
 data.frame SQL wird angereichert
 }
 \details{
-Es werden Derivate gebildet und Punktzahlen eingebunden
+Es werden Derivate gebildet und Punktzahlen eingebunden. Problemhafte Sessions werden eliminiert. Dazu zählen zwei Sessions aus dem November 2014 ohne adrW.
 }
 \author{
 Harald Fiedler

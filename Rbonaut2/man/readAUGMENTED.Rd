@@ -13,8 +13,8 @@ readAUGMENTED(Dateiname)
 Liest die per writeAUGMENTED() gespeicherten Dateien ein
 }
 \examples{
-Dateiname = "RAW-2015-04"
-head(readAUGMENTED(Dateiname = Dateiname))
+#Dateiname = "RAW-2015-04"
+#head(readAUGMENTED(Dateiname = Dateiname))
 
 }
 \author{
