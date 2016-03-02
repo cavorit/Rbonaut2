@@ -1,6 +1,15 @@
 rm(list=ls())
 library(Rbonaut2)
 
+Monate <- c("2013-12",
+            "2014-01", "2014-02", "2014-03", "2014-04",
+            "2014-05", "2014-06", "2014-07", "2014-08",
+            "2014-09", "2014-10", "2014-11", "2014-12",
+            "2015-01", "2015-02", "2015-03", "2015-04",
+            "2015-05","2015-06", "2015-07",  "2015-08",
+            "2015-09", "2015-10", "2015-11","2015-12",
+            "2016-01")
+
 # Anfangsdatum =  "2013-12-01"
 # Enddatum =      "2013-12-31"
 # Dateiname =     "RAW2013-12"
@@ -152,7 +161,7 @@ RaschMatrixSkeletonFilled2015_12 <- fillRaschMatrixSkeleton(DF=DF2015_12, RaschM
 RaschMatrixSkeletonFilled2016_01 <- fillRaschMatrixSkeleton(DF=DF2016_01, RaschMatrixSkeleton = RaschMatrixSkeleton2016_01)
 
 
-RaschMatrixSkeletonFilledAndImploded4Quality2013_12 <- implodeRaschMatrix4Quality(RaschMatrixSkeletonFilled = RaschMatrixSkeletonFilled2013_01)
+RaschMatrixSkeletonFilledAndImploded4Quality2013_12 <- implodeRaschMatrix4Quality(RaschMatrixSkeletonFilled = RaschMatrixSkeletonFilled2013_12)
 RaschMatrixSkeletonFilledAndImploded4Quality2014_01 <- implodeRaschMatrix4Quality(RaschMatrixSkeletonFilled = RaschMatrixSkeletonFilled2014_01)
 RaschMatrixSkeletonFilledAndImploded4Quality2014_02 <- implodeRaschMatrix4Quality(RaschMatrixSkeletonFilled = RaschMatrixSkeletonFilled2014_02)
 RaschMatrixSkeletonFilledAndImploded4Quality2014_03 <- implodeRaschMatrix4Quality(RaschMatrixSkeletonFilled = RaschMatrixSkeletonFilled2014_03)
@@ -165,9 +174,9 @@ RaschMatrixSkeletonFilledAndImploded4Quality2014_09 <- implodeRaschMatrix4Qualit
 RaschMatrixSkeletonFilledAndImploded4Quality2014_10 <- implodeRaschMatrix4Quality(RaschMatrixSkeletonFilled = RaschMatrixSkeletonFilled2014_10)
 RaschMatrixSkeletonFilledAndImploded4Quality2014_11 <- implodeRaschMatrix4Quality(RaschMatrixSkeletonFilled = RaschMatrixSkeletonFilled2014_11)
 RaschMatrixSkeletonFilledAndImploded4Quality2014_12 <- implodeRaschMatrix4Quality(RaschMatrixSkeletonFilled = RaschMatrixSkeletonFilled2014_12)
-RaschMatrixSkeletonFilledAndImploded4Quality2014_01 <- implodeRaschMatrix4Quality(RaschMatrixSkeletonFilled = RaschMatrixSkeletonFilled2015_01)
-RaschMatrixSkeletonFilledAndImploded4Quality2014_02 <- implodeRaschMatrix4Quality(RaschMatrixSkeletonFilled = RaschMatrixSkeletonFilled2015_02)
-RaschMatrixSkeletonFilledAndImploded4Quality2014_03 <- implodeRaschMatrix4Quality(RaschMatrixSkeletonFilled = RaschMatrixSkeletonFilled2015_03)
+RaschMatrixSkeletonFilledAndImploded4Quality2015_01 <- implodeRaschMatrix4Quality(RaschMatrixSkeletonFilled = RaschMatrixSkeletonFilled2015_01)
+RaschMatrixSkeletonFilledAndImploded4Quality2015_02 <- implodeRaschMatrix4Quality(RaschMatrixSkeletonFilled = RaschMatrixSkeletonFilled2015_02)
+RaschMatrixSkeletonFilledAndImploded4Quality2015_03 <- implodeRaschMatrix4Quality(RaschMatrixSkeletonFilled = RaschMatrixSkeletonFilled2015_03)
 RaschMatrixSkeletonFilledAndImploded4Quality2015_04 <- implodeRaschMatrix4Quality(RaschMatrixSkeletonFilled = RaschMatrixSkeletonFilled2015_04)
 RaschMatrixSkeletonFilledAndImploded4Quality2015_05 <- implodeRaschMatrix4Quality(RaschMatrixSkeletonFilled = RaschMatrixSkeletonFilled2015_05)
 RaschMatrixSkeletonFilledAndImploded4Quality2015_06 <- implodeRaschMatrix4Quality(RaschMatrixSkeletonFilled = RaschMatrixSkeletonFilled2015_06)
@@ -206,7 +215,8 @@ RM2015_11 <- RaschMatrixSkeletonFilledAndImploded4Quality2015_11
 RM2015_12 <- RaschMatrixSkeletonFilledAndImploded4Quality2015_12
 RM2016_01 <- RaschMatrixSkeletonFilledAndImploded4Quality2016_01
 
-head(RM)
+RM <- rbind(RM2013_12, RM2014_01, RM2014_02, RM2014_03, RM2014_04, RM2014_05, RM2014_06, RM2014_07, RM2014_08, RM2014_09, RM2014_10, RM2014_11, RM2014_12,
+            RM2015_01, RM2015_02, RM2015_03, RM2015_04, RM2015_05, RM2015_06, RM2015_07, RM2015_08, RM2015_09, RM2015_10, RM2015_11, RM2015_12, RM2016_01)
 
 ## Füge das Alter hinzu
 RM <- as.data.frame(RM)
