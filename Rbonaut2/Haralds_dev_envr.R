@@ -32,24 +32,26 @@ system('say "Iche habe fertig." -v Alice')
 table(DF$ItemID)
 
 ########### erstelle eine neue ItemBank
-ItemIDNamen = paste0("BL", gibZahlFuehrendeNullen(1:32, digits=2))
+  ItemIDNamen = paste0("BL", gibZahlFuehrendeNullen(1:32, digits=2))
+  RMtotal <- NULL
 
-readAUGMENTED(Dateiname = "AUGMENTED2014-01")# paste0("AUGMENTED", Monate[WievielterMonat]) )
+  for (WievielterMonat in 1:26){
+      readAUGMENTED(Dateiname = paste0("AUGMENTED", Monate[WievielterMonat]) )
+      RaschMatrixSkeleton <- erstelleRaschMatrixSkeleton(DF=DF, ItemIDNamen = ItemIDNamen)
+      RaschMatrixSkeletonFilled <- fillRaschMatrixSkeleton(DF=DF, RaschMatrixSkeleton = RaschMatrixSkeleton)
+      RaschMatrixSkeletonFilledAndImploded4Quality <- implodeRaschMatrix4Quality(RaschMatrixSkeletonFilled = RaschMatrixSkeletonFilled)
+      RM <- RaschMatrixSkeletonFilledAndImploded4Quality
 
-RaschMatrixSkeleton <- erstelleRaschMatrixSkeleton(DF=DF, ItemIDNamen = ItemIDNamen)
-RaschMatrixSkeletonFilled <- fillRaschMatrixSkeleton(DF=DF, RaschMatrixSkeleton = RaschMatrixSkeleton)
-RaschMatrixSkeletonFilledAndImploded4Quality <- implodeRaschMatrix4Quality(RaschMatrixSkeletonFilled = RaschMatrixSkeletonFilled)
-RM <- RaschMatrixSkeletonFilledAndImploded4Quality
+      ## Füge das Alter hinzu
+      RM <- as.data.frame(RM)
+      RM <- cbind(RM, DF[is.element(DF$keyS,rownames(RM)) & DF$idX == 0, c("PbnJahre", "keyS")])
+      head(RM)
+      # RM$keyS == rownames(RM) # TRUE
 
-    ## Füge das Alter hinzu
-    RM <- as.data.frame(RM)
-    RM <- cbind(RM, DF[is.element(DF$keyS,rownames(RM)) & DF$idX == 0, c("PbnJahre", "keyS")])
-    head(RM)
-    # RM$keyS == rownames(RM) # TRUE
-
-    if (!any(is.element(ls(), "RMtotal"))){RMtotal <- NULL}
-    RMtotal <- rbind(RMtotal, RM)
-
+      #if (!any(is.element(ls(), "RMtotal"))){RMtotal <- NULL}
+      RMtotal <- rbind(RMtotal, RM)
+    }
+    system('say "Iche habe fertig." -v Alice')
 
     ## Rasch-Analyse
     library(eRm)
