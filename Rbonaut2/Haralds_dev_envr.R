@@ -21,15 +21,25 @@ Enddatum      = paste(Monate, LetzterTag, sep = "-")[WievielterMonat]  #"2013-12
 Dateiname     = paste0("RAW", Monate)[WievielterMonat] #    "RAW2013-12"
 
 ########### SCHRITT 1: Hole SQL-Query
-SQL <- askDB(Anfangsdatum = Anfangsdatum, Enddatum = Enddatum)
-writeRAW(SQL = SQL, Dateiname = Dateiname)
-readRAW(Dateiname = Dateiname)
+for (WievielterMonat in 1:26){
+  Anfangsdatum  = paste0(Monate, "-01")[WievielterMonat]  #"2013-12-01"
+  Enddatum      = paste(Monate, LetzterTag, sep = "-")[WievielterMonat]  #"2013-12-31"
+  Dateiname     = paste0("RAW", Monate)[WievielterMonat] #    "RAW2013-12"
+  SQL <- askDB(Anfangsdatum = Anfangsdatum, Enddatum = Enddatum)
+  writeRAW(SQL = SQL, Dateiname = Dateiname)
+}
 
 ########### SCHRITT 2: augmentRAW
-DF <- augmentRAW(SQL = SQL)
-writeAUGMENTED(DF=DF, Dateiname= paste0("AUGMENTED", Monate[WievielterMonat]) ) # AUGMENTED2014-01
+for (WievielterMonat in 1:26){
+  Anfangsdatum  = paste0(Monate, "-01")[WievielterMonat]  #"2013-12-01"
+  Enddatum      = paste(Monate, LetzterTag, sep = "-")[WievielterMonat]  #"2013-12-31"
+  Dateiname     = paste0("RAW", Monate)[WievielterMonat] #    "RAW2013-12"
+  readRAW(Dateiname = Dateiname)
+  DF <- augmentRAW(SQL = SQL)
+  writeAUGMENTED(DF=DF, Dateiname= paste0("AUGMENTED", Monate[WievielterMonat]) ) # AUGMENTED2014-01
+  table(DF$ItemID)
+}
 system('say "Iche habe fertig." -v Alice')
-table(DF$ItemID)
 
 ########### erstelle eine neue ItemBank
   ItemIDNamen = paste0("BL", gibZahlFuehrendeNullen(1:32, digits=2))
@@ -44,26 +54,50 @@ table(DF$ItemID)
 
       ## Füge das Alter hinzu
       RM <- as.data.frame(RM)
-      RM <- cbind(RM, DF[is.element(DF$keyS,rownames(RM)) & DF$idX == 0, c("PbnJahre", "keyS")])
+      RM <- cbind(RM, DF[is.element(DF$keyS,rownames(RM)) & DF$idX == 0, c("PbnJahre", "PbnTeam", "PbnPosition", "keyS")])
       head(RM)
       # RM$keyS == rownames(RM) # TRUE
 
       #if (!any(is.element(ls(), "RMtotal"))){RMtotal <- NULL}
       RMtotal <- rbind(RMtotal, RM)
     }
-    system('say "Iche habe fertig." -v Alice')
+  system('say "Iche habe fertig." -v Alice')
+  RM <- RMtotal
+  set.seed(123)
+  Explorativ <- !(!sample(0:1, size=nrow(RM), replace=TRUE)) # !! wandelt 0-1 in FALSE-TRUE
+  Konfirmatorisch <- !Explorativ
 
-    ## Rasch-Analyse
-    library(eRm)
-    fit <- RM(RM[, ItemIDNamen])
-    summary(fit)
-    fit$betapar
+  ## Rasch-Analyse
+  #library(eRm)
+  #fit <- RM(RM[, ItemIDNamen])
+  #summary(fit)
+  #fit$betapar
 
-    ## Modellgeltungstest
-    test <- LRtest(fit, splitcr="mean", se=TRUE)
-    plotGOF(test, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.95, col=1), main="BT01:BT08", beta.subset = 0:7)
-    plotGOF(test, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.95, col=1), main="BT09:BT16", beta.subset = 8:15)
-    plotGOF(test, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.95, col=1), main="BT17:BT24", beta.subset = 16:23)
-    plotGOF(test, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.95, col=1), main="BT25:BT32", beta.subset = 24:32)
+  ## Modellgeltungstest
+  #test <- LRtest(fit, splitcr="mean", se=TRUE)
+  #par(mfrow=c(2,2))
+  #plotGOF(test, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.95, col=1), main="BT01:BT08", beta.subset = 0:7)
+  #plotGOF(test, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.95, col=1), main="BT09:BT16", beta.subset = 8:15)
+  #plotGOF(test, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.95, col=1), main="BT17:BT24", beta.subset = 16:23)
+  #plotGOF(test, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.95, col=1), main="BT25:BT32", beta.subset = 24:32)
 
+  # Modellbasierte rekursive Partitionierung {psychotree}
+  library(psychotree)
+  # DichotomisierteCovariate <- model.matrix( ~ PbnTeam - 1, data=RM)
+  fit2 <- raschtree(as.matrix(RM[Explorativ, ItemIDNamen]) ~ RM$PbnJahre[Explorativ] , verbose=TRUE)
+  plot(fit2)
+
+  ## Rasch-Analyse für Jahre < 26.225 Jahre
+  library(eRm)
+  fit <- RM(RM[RM$PbnJahre < 26.225 & Explorativ, ItemIDNamen])
+  summary(fit)
+  fit$betapar
+
+  ## Modellgeltungstest
+  test <- LRtest(fit, splitcr="mean", se=TRUE)
+  par(mfrow=c(2,2))
+  plotGOF(test, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.95, col=1), main="BT01:BT08", beta.subset = 0:7)
+  plotGOF(test, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.95, col=1), main="BT09:BT16", beta.subset = 8:15)
+  plotGOF(test, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.95, col=1), main="BT17:BT24", beta.subset = 16:23)
+  plotGOF(test, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.95, col=1), main="BT25:BT32", beta.subset = 24:32)
 

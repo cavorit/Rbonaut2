@@ -57,7 +57,7 @@ detectItemResponse <- function(Stimulus){
   Stimulus[ItemID=="BL06" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
   Stimulus[ItemID=="BL07" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
   Stimulus[ItemID=="BL08" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
-  Stimulus[ItemID=="BL09" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
+  Stimulus[ItemID=="BL09" & FBt < 2500 & adrW == adrOut, "ItemResponse"] <- 1 #
   Stimulus[ItemID=="BL10" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
   Stimulus[ItemID=="BL11" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
   Stimulus[ItemID=="BL12" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
@@ -72,13 +72,13 @@ detectItemResponse <- function(Stimulus){
   Stimulus[ItemID=="BL21" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
   Stimulus[ItemID=="BL22" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
   Stimulus[ItemID=="BL23" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
-  Stimulus[ItemID=="BL24" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
+  Stimulus[ItemID=="BL24" & FBt < 2500 & adrW == adrOut, "ItemResponse"] <- 1 #
   Stimulus[ItemID=="BL25" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
   Stimulus[ItemID=="BL26" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
   Stimulus[ItemID=="BL27" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
   Stimulus[ItemID=="BL28" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
   Stimulus[ItemID=="BL29" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
-  Stimulus[ItemID=="BL30" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
+  Stimulus[ItemID=="BL30" & FBt < 2500 & adrW == adrOut, "ItemResponse"] <- 1 #
   Stimulus[ItemID=="BL31" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
   Stimulus[ItemID=="BL32" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
 

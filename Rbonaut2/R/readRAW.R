@@ -9,7 +9,7 @@
 
 readRAW <- function(Dateiname){
   path <- paste0("~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/RAW/", Dateiname, collapse = "/")
-  load(file = path, verbose = TRUE)
+  load(file = path, verbose = TRUE, envir = .GlobalEnv)
 }
 
 
