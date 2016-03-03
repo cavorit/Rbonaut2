@@ -2,8 +2,8 @@ rm(list=ls())
 library(Rbonaut2)
 # DB muss erst von Hand gestartet werden.
 
-WievielterMonat = 2
-
+# WievielterMonat = 2
+#
 Monate <- c("2013-12",
             "2014-01", "2014-02", "2014-03", "2014-04",
             "2014-05", "2014-06", "2014-07", "2014-08",
@@ -16,9 +16,9 @@ LetzterTag <- c(31,
                rep(c(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31), times=2),
                31)
 
-Anfangsdatum  = paste0(Monate, "-01")[WievielterMonat]  #"2013-12-01"
-Enddatum      = paste(Monate, LetzterTag, sep = "-")[WievielterMonat]  #"2013-12-31"
-Dateiname     = paste0("RAW", Monate)[WievielterMonat] #    "RAW2013-12"
+# Anfangsdatum  = paste0(Monate, "-01")[WievielterMonat]  #"2013-12-01"
+# Enddatum      = paste(Monate, LetzterTag, sep = "-")[WievielterMonat]  #"2013-12-31"
+# Dateiname     = paste0("RAW", Monate)[WievielterMonat] #    "RAW2013-12"
 
 ########### SCHRITT 1: Hole SQL-Query
 for (WievielterMonat in 1:26){
@@ -96,8 +96,8 @@ system('say "Iche habe fertig." -v Alice')
   ## Modellgeltungstest
   test <- LRtest(fit, splitcr="mean", se=TRUE)
   par(mfrow=c(2,2))
-  plotGOF(test, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.95, col=1), main="BT01:BT08", beta.subset = 0:7)
-  plotGOF(test, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.95, col=1), main="BT09:BT16", beta.subset = 8:15)
-  plotGOF(test, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.95, col=1), main="BT17:BT24", beta.subset = 16:23)
-  plotGOF(test, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.95, col=1), main="BT25:BT32", beta.subset = 24:32)
+  plotGOF(test, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.95, col=1), main="BL01:BL08", beta.subset = 0:7)
+  plotGOF(test, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.95, col=1), main="BL09:BL16", beta.subset = 8:15)
+  plotGOF(test, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.95, col=1), main="BL17:BL24", beta.subset = 16:23)
+  plotGOF(test, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.95, col=1), main="BL25:BL32", beta.subset = 24:32)
 
