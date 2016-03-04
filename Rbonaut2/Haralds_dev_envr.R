@@ -48,12 +48,12 @@ for (WievielterMonat in 1:26){
   Enddatum      = paste(Monate, LetzterTag, sep = "-")[WievielterMonat]  #"2013-12-31"
   Dateiname     = paste0("AUGMENTED", Monate)[WievielterMonat] #    "RAW2013-12"
   readAUGMENTED(Dateiname = Dateiname)
-  DFtotal <- rbind(DF)
+  DFtotal <- rbind(DF, DFtotal)
   print(Dateiname)
   print(table(DF$ItemID))
+  print(dim(DF))
 }
 DF <- DFtotal
-
 ########### erstelle eine neue ItemBank
 
   ItemIDNamen = paste0("BL", gibZahlFuehrendeNullen(1:32, digits=2))
@@ -97,7 +97,7 @@ DF <- DFtotal
     DF[ItemID=="BL28" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
     DF[ItemID=="BL29" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
     DF[ItemID=="BL30" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL31" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL31" & FBt < 2150 & adrW == adrOut, "ItemResponse"] <- 1
     DF[ItemID=="BL32" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
 
 
@@ -125,15 +125,18 @@ DF <- DFtotal
   # Modellbasierte rekursive Partitionierung {psychotree}
   library(psychotree)
   # DichotomisierteCovariate <- model.matrix( ~ PbnTeam - 1, data=RM)
-  fit2 <- raschtree(as.matrix(RM[Explorativ, ItemIDNamen]) ~ RM$PbnJahre[Explorativ] , verbose=TRUE)
+  fit2 <- raschtree(as.matrix(RM[, ItemIDNamen]) ~ RM$PbnJahre[] , verbose=TRUE)
   plot(fit2)
 
   ## Rasch-Analyse für Jahre < 26.225 Jahre
   library(eRm)
-  fit <- RM(RM[RM$PbnJahre < 26.225 & Explorativ , ItemIDNamen])
+  fit <- RM(RM[RM$PbnJahre < 26.225  , ItemIDNamen])
   summary(fit)
   fit$betapar
-
+  data.frame(
+    Schwierigkeitsparameter = c("BL01"=0, fit$etapar),
+    Randsumme = colSums(RM[RM$PbnJahre < 26.225  , ItemIDNamen], na.rm = TRUE)
+  )
   ## Modellgeltungstest
   test <- LRtest(fit, splitcr="mean", se=TRUE)
   par(mfrow=c(2,2))
@@ -142,3 +145,24 @@ DF <- DFtotal
   plotGOF(test, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.99, col=1), main="BL17:BL24", beta.subset = 16:23)
   plotGOF(test, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.99, col=1), main="BL25:BL32", beta.subset = 24:32)
 
+
+
+#### catR
+
+library(catR)
+Bank <- readItemBank()
+EineSession <- DF[DF$keyS == "56764750-1ae2-465e-add2-f0738f53692c"  ,] # Jan Gutzeit (*2003) Session vom 2015-04-30 17:44:24
+EineSession
+
+Fiedler2016 <- NULL
+for (b in 1:32){ # b = 2
+  Historie <- EineSession[1:b,]
+  tmp <- catR::thetaEst(it = Bank[1:b,-1], x = Historie$ItemResponse) # Achtung: Bei Bank müssen im Falle von Adaptivität die Zeilen entsprechend der Testung umsortiert werden.
+  Fiedler2016 <- c(Fiedler2016, tmp)
+}
+plot(1:32, Fiedler2016, type = 'o', ylim=c(-4,4), main="Jan Gutzeit (*2003) \n Session #1 vom 30. Apr. 2015 17:44:24", xlab="Ball Nummer")
+abline(h=Fiedler2016[32])
+Sigma <- catR::semTheta(thEst = Fiedler2016[32], it = Bank[, -1], x=EineSession$ItemResponse)
+abline(h=Fiedler2016[32]+Sigma, col=2)
+abline(h=Fiedler2016[32]-Sigma, col=2)
+abline(v=16, col="magenta")
