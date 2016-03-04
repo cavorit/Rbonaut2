@@ -41,12 +41,66 @@ for (WievielterMonat in 1:26){
 }
 system('say "Iche habe fertig." -v Alice')
 
+########### SCHRITT 3: readAUGMENTED
+DFtotal <- NULL
+for (WievielterMonat in 1:26){
+  Anfangsdatum  = paste0(Monate, "-01")[WievielterMonat]  #"2013-12-01"
+  Enddatum      = paste(Monate, LetzterTag, sep = "-")[WievielterMonat]  #"2013-12-31"
+  Dateiname     = paste0("AUGMENTED", Monate)[WievielterMonat] #    "RAW2013-12"
+  readAUGMENTED(Dateiname = Dateiname)
+  DFtotal <- rbind(DF)
+  print(Dateiname)
+  print(table(DF$ItemID))
+}
+DF <- DFtotal
+
 ########### erstelle eine neue ItemBank
+
   ItemIDNamen = paste0("BL", gibZahlFuehrendeNullen(1:32, digits=2))
   RMtotal <- NULL
 
   for (WievielterMonat in 1:26){
-      readAUGMENTED(Dateiname = paste0("AUGMENTED", Monate[WievielterMonat]) )
+    readAUGMENTED(Dateiname = paste0("AUGMENTED", Monate[WievielterMonat]) )
+
+    adrW <- DF$adrW
+    adrOut <- DF$adrOut
+    FBt <- DF$FBt
+    ItemID <- DF$ItemID
+    DF$ItemResponse <- 0
+    DF[ItemID=="BL01" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL02" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL03" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL04" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL05" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL06" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL07" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL08" & FBt < 2200 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL09" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL10" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL11" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL12" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL13" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL14" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL15" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL16" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL17" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL18" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL19" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL20" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL21" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL22" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL23" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL24" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL25" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL26" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL27" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL28" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL29" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL30" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL31" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL32" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
+
+
       RaschMatrixSkeleton <- erstelleRaschMatrixSkeleton(DF=DF, ItemIDNamen = ItemIDNamen)
       RaschMatrixSkeletonFilled <- fillRaschMatrixSkeleton(DF=DF, RaschMatrixSkeleton = RaschMatrixSkeleton)
       RaschMatrixSkeletonFilledAndImploded4Quality <- implodeRaschMatrix4Quality(RaschMatrixSkeletonFilled = RaschMatrixSkeletonFilled)
@@ -68,19 +122,6 @@ system('say "Iche habe fertig." -v Alice')
   Konfirmatorisch <- !Explorativ
 
   ## Rasch-Analyse
-  #library(eRm)
-  #fit <- RM(RM[, ItemIDNamen])
-  #summary(fit)
-  #fit$betapar
-
-  ## Modellgeltungstest
-  #test <- LRtest(fit, splitcr="mean", se=TRUE)
-  #par(mfrow=c(2,2))
-  #plotGOF(test, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.95, col=1), main="BT01:BT08", beta.subset = 0:7)
-  #plotGOF(test, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.95, col=1), main="BT09:BT16", beta.subset = 8:15)
-  #plotGOF(test, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.95, col=1), main="BT17:BT24", beta.subset = 16:23)
-  #plotGOF(test, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.95, col=1), main="BT25:BT32", beta.subset = 24:32)
-
   # Modellbasierte rekursive Partitionierung {psychotree}
   library(psychotree)
   # DichotomisierteCovariate <- model.matrix( ~ PbnTeam - 1, data=RM)
@@ -89,15 +130,15 @@ system('say "Iche habe fertig." -v Alice')
 
   ## Rasch-Analyse für Jahre < 26.225 Jahre
   library(eRm)
-  fit <- RM(RM[RM$PbnJahre < 26.225 & Explorativ, ItemIDNamen])
+  fit <- RM(RM[RM$PbnJahre < 26.225 & Explorativ , ItemIDNamen])
   summary(fit)
   fit$betapar
 
   ## Modellgeltungstest
   test <- LRtest(fit, splitcr="mean", se=TRUE)
   par(mfrow=c(2,2))
-  plotGOF(test, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.95, col=1), main="BL01:BL08", beta.subset = 0:7)
-  plotGOF(test, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.95, col=1), main="BL09:BL16", beta.subset = 8:15)
-  plotGOF(test, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.95, col=1), main="BL17:BL24", beta.subset = 16:23)
-  plotGOF(test, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.95, col=1), main="BL25:BL32", beta.subset = 24:32)
+  plotGOF(test, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.99, col=1), main="BL01:BL08", beta.subset = 0:7)
+  plotGOF(test, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.99, col=1), main="BL09:BL16", beta.subset = 8:15)
+  plotGOF(test, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.99, col=1), main="BL17:BL24", beta.subset = 16:23)
+  plotGOF(test, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.99, col=1), main="BL25:BL32", beta.subset = 24:32)
 
