@@ -54,6 +54,12 @@ for (WievielterMonat in 1:26){
   print(dim(DF))
 }
 DF <- DFtotal
+
+# library(data.table)
+# DT <- data.table(DF)
+# X <- DT[, .("Name"=unique(PbnName), "Beginn"=unique(timestampS), "ErkannteItems"= sum(ItemID!="unbekannt")), by=.("ID"=keyS)]
+# write.csv2(x = X, file = "~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/JanSpielmann/IndexAllerSessions.csv", fileEncoding = "utf8")
+
 ########### erstelle eine neue ItemBank
 
   ItemIDNamen = paste0("BL", gibZahlFuehrendeNullen(1:32, digits=2))
@@ -67,38 +73,38 @@ DF <- DFtotal
     FBt <- DF$FBt
     ItemID <- DF$ItemID
     DF$ItemResponse <- 0
-    DF[ItemID=="BL01" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL02" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL03" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL04" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL05" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL06" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL07" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL08" & FBt < 2200 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL09" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL10" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL11" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL12" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL13" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL14" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL15" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL16" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL17" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL18" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL19" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL20" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL21" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL22" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL23" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL24" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL25" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL26" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL27" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL28" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL29" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL30" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL31" & FBt < 2150 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL32" & FBt < 2250 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL01" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL02" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL03" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL04" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL05" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL06" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL07" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL08" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL09" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL10" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL11" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL12" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL13" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL14" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL15" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL16" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL17" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL18" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL19" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL20" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL21" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL22" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL23" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL24" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL25" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL26" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL27" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL28" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL29" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL30" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL31" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+    DF[ItemID=="BL32" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
 
 
       RaschMatrixSkeleton <- erstelleRaschMatrixSkeleton(DF=DF, ItemIDNamen = ItemIDNamen)
@@ -117,7 +123,7 @@ DF <- DFtotal
     }
   system('say "Iche habe fertig." -v Alice')
   RM <- RMtotal
-  set.seed(123)
+  set.seed(124)
   Explorativ <- !(!sample(0:1, size=nrow(RM), replace=TRUE)) # !! wandelt 0-1 in FALSE-TRUE
   Konfirmatorisch <- !Explorativ
 
@@ -126,7 +132,9 @@ DF <- DFtotal
   library(psychotree)
   # DichotomisierteCovariate <- model.matrix( ~ PbnTeam - 1, data=RM)
   fit2 <- raschtree(as.matrix(RM[, ItemIDNamen]) ~ RM$PbnJahre[] , verbose=TRUE)
+  #pdf(file = "rekursivePartitionierung.pdf")
   plot(fit2)
+  #dev.off()
 
   ## Rasch-Analyse für Jahre < 26.225 Jahre
   library(eRm)
