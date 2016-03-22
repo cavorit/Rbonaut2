@@ -153,7 +153,12 @@ DF <- DFtotal
   plotGOF(test, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.99, col=1), main="BL17:BL24", beta.subset = 16:23)
   plotGOF(test, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.99, col=1), main="BL25:BL32", beta.subset = 24:32)
 
-
+  # Achtung: eRm::fit$eta == catR::ItemBank$beta bzw. eRm::fit$beta != catR::ItemBank$beta
+  ItemSchwierigkeit <- fit$etapar
+  par(mfrow=c(1,1))
+  plot(1:32, c(0, ItemSchwierigkeit), main="Itemschwierigkeit BL32")
+  hist(ItemSchwierigkeit)
+  write.csv2(x = ItemSchwierigkeit, file="~/Desktop/ItemschwierigkeitBL32.csv")
 
 #### catR
 
