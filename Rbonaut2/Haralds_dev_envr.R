@@ -179,3 +179,27 @@ Sigma <- catR::semTheta(thEst = Fiedler2016[32], it = Bank[, -1], x=EineSession$
 abline(h=Fiedler2016[32]+Sigma, col=2)
 abline(h=Fiedler2016[32]-Sigma, col=2)
 abline(v=16, col="magenta")
+
+#### Funktion, die aus einer Session die IRT-Points ausrechnet
+
+calcFiedler2016a <- function(SessionDF, ItemBank=readItemBank()){ # SessionDF = EineSession
+  # Achtung, die Berechnung setzt implizit voraus, dass die Items in SessionDF eine chronologische Reihenfolge aufweisen.
+  DF <- SessionDF
+  DF$Fiedler2016a <- NA
+  Fiedler2016a <- NULL
+  # Eliminiere alle Items, die nicht zu den offiziellen BL32-Items gehören
+  ItemNamenVonBL32 <- paste0("BL", gibZahlFuehrendeNullen(1:32, digits = 2))
+  ItemKnown <- is.element(SessionDF$ItemID, ItemNamenVonBL32)
+  SessionDF <- SessionDF[ItemKnown, ]
+
+  for (b in 1:nrow(SessionDF)){ # b = 2
+    Historie <- SessionDF[1:b,]
+    tmp <- catR::thetaEst(it = Bank[1:b,-1], x = Historie$ItemResponse) # Achtung: Bei Bank müssen im Falle von Adaptivität die Zeilen entsprechend der Testung umsortiert werden.
+    Fiedler2016a <- c(Fiedler2016a, tmp)
+  }
+  DF[ItemKnown, "Fiedler2016a"] <- Fiedler2016a
+  return(DF)
+}
+
+calcFiedler2016b(SessionDF = EineSession)
+
