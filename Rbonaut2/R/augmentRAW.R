@@ -6,15 +6,15 @@
 #' @return data.frame
 
 augmentRAW <- function(SQL){
-  
+
   ProblemSessions <- c("a715dff9-d9a1-4aaa-b922-b15f52be1d49", # eine Session aus dem November 2014 ohne Zielfelder
                        "a715dff9-d9a1-4aaa-b922-b15f52be1d49") # eine Session aus dem Novmeber 2014, ebenfalls ohne Zielfelder
-  
+
   if(any(is.element(SQL$keys, ProblemSessions))){
     warning("ProblemSessions identifiziert und eliminiert.Details siehe Dokumentation augmentRAW()")
     SQL <- SQL[!is.element(SQL$keys, ProblemSessions), ]
   }
-  
+
   message("\nErstelle Schlüßel")
   BALL <- data.frame(
     keyB = SQL$keyb,
@@ -45,7 +45,7 @@ augmentRAW <- function(SQL){
   BALL$isMultiTarg <- isMultiTarget(SQL$adrw)
   BALL$adrWW <- SQL$adrw
   BALL$adrDD <- SQL$adrd
-  
+
   BALL$sL <- SQL$sl
   BALL$sR <- SQL$sr
   BALL$vA <- SQL$va
@@ -145,6 +145,16 @@ augmentRAW <- function(SQL){
   BALL <- SQL2DF.detectItemResponse(BALL=BALL)
   message("... fertig")
 
+  BALLaugm <- NULL
+  for (S in unique(BALL$keyS)){#################################### Fiedler2016a : S <- unique(BALL$keyS)[3]
+    cat("Ich analysiere jetzt Session ", as.character(S), "\n")
+    EineSession <- BALL[BALL$keyS==S, ]
+    #print(calcFiedler2016a(SessionDF = EineSession))
+    BALLaugm <- rbind(BALLaugm, calcFiedler2016a(SessionDF = EineSession))
+  }
+  BALL <- BALLaugm
+
+
   message("\nSortiere Spalten")
   SQL2DF.rename <- function(BALL){
     BALL <- BALL[c("keyS", "keyB", "keyP", "keyT", "idFBN", "timestampS", "timestampB",
@@ -155,7 +165,7 @@ augmentRAW <- function(SQL){
                    "sL", "sR", "vA",
                    "RW", "HW", "AW", "AWcg",
                    "DELAY", "goalUnder5000ms",
-                   "FBq", "FBt", "CGoalScore", "Fiedler2012")]
+                   "FBq", "FBt", "CGoalScore", "Fiedler2012", "Fiedler2016a")]
     return(BALL)
   }
   BALL <- SQL2DF.rename(BALL=BALL)

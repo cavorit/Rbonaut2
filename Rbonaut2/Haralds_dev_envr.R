@@ -31,27 +31,27 @@ for (WievielterMonat in 1:26){
 
 ########### SCHRITT 2: augmentRAW
 for (WievielterMonat in 1:26){
-  Anfangsdatum  = paste0(Monate, "-01")[WievielterMonat]  #"2013-12-01"
-  Enddatum      = paste(Monate, LetzterTag, sep = "-")[WievielterMonat]  #"2013-12-31"
-  Dateiname     = paste0("RAW", Monate)[WievielterMonat] #    "RAW2013-12"
-  readRAW(Dateiname = Dateiname)
-  DF <- augmentRAW(SQL = SQL)
-  writeAUGMENTED(DF=DF, Dateiname= paste0("AUGMENTED", Monate[WievielterMonat]) ) # AUGMENTED2014-01
-  table(DF$ItemID)
+Anfangsdatum  = paste0(Monate, "-01")[WievielterMonat]  #"2013-12-01"
+Enddatum      = paste(Monate, LetzterTag, sep = "-")[WievielterMonat]  #"2013-12-31"
+Dateiname     = paste0("RAW", Monate)[WievielterMonat] #    "RAW2013-12"
+readRAW(Dateiname = Dateiname)
+DF <- augmentRAW(SQL = SQL)
+writeAUGMENTED(DF=DF, Dateiname= paste0("AUGMENTED", Monate[WievielterMonat]) ) # AUGMENTED2014-01
+table(DF$ItemID)
 }
 system('say "Iche habe fertig." -v Alice')
 
 ########### SCHRITT 3: readAUGMENTED
 DFtotal <- NULL
 for (WievielterMonat in 1:26){
-  Anfangsdatum  = paste0(Monate, "-01")[WievielterMonat]  #"2013-12-01"
-  Enddatum      = paste(Monate, LetzterTag, sep = "-")[WievielterMonat]  #"2013-12-31"
-  Dateiname     = paste0("AUGMENTED", Monate)[WievielterMonat] #    "RAW2013-12"
-  readAUGMENTED(Dateiname = Dateiname)
-  DFtotal <- rbind(DF, DFtotal)
-  print(Dateiname)
-  print(table(DF$ItemID))
-  print(dim(DF))
+Anfangsdatum  = paste0(Monate, "-01")[WievielterMonat]  #"2013-12-01"
+Enddatum      = paste(Monate, LetzterTag, sep = "-")[WievielterMonat]  #"2013-12-31"
+Dateiname     = paste0("AUGMENTED", Monate)[WievielterMonat] #    "RAW2013-12"
+readAUGMENTED(Dateiname = Dateiname)
+DFtotal <- rbind(DF, DFtotal)
+print(Dateiname)
+print(table(DF$ItemID))
+print(dim(DF))
 }
 DF <- DFtotal
 
@@ -180,7 +180,18 @@ abline(h=Fiedler2016[32]+Sigma, col=2)
 abline(h=Fiedler2016[32]-Sigma, col=2)
 abline(v=16, col="magenta")
 
-#### Funktion, die aus einer Session die IRT-Points ausrechnet
+#### wrapper zur Verechnung der IRT-Points
 
-calcFiedler2016b(SessionDF = EineSession)
+DF <- DFtotal#[1:1000, ]
+# Erster Durchgang nur zur Initialisierungszwecken
+DFaugm <- NULL
+for (S in unique(DF$keyS)){
+  cat("Ich analysiere jetzt Session ", S, "\n")
+  EineSession <- DF[DF$keyS==S, ]
+  #print(calcFiedler2016a(SessionDF = EineSession))
+  DFaugm <- rbind(DFaugm, calcFiedler2016a(SessionDF = EineSession))
+}
+DFaugm
+
+
 
