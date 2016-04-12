@@ -180,18 +180,134 @@ abline(h=Fiedler2016[32]+Sigma, col=2)
 abline(h=Fiedler2016[32]-Sigma, col=2)
 abline(v=16, col="magenta")
 
-#### wrapper zur Verechnung der IRT-Points
+#### Normtabellen erstellen
 
-DF <- DFtotal#[1:1000, ]
-# Erster Durchgang nur zur Initialisierungszwecken
-DFaugm <- NULL
-for (S in unique(DF$keyS)){
-  cat("Ich analysiere jetzt Session ", S, "\n")
-  EineSession <- DF[DF$keyS==S, ]
-  #print(calcFiedler2016a(SessionDF = EineSession))
-  DFaugm <- rbind(DFaugm, calcFiedler2016a(SessionDF = EineSession))
+JanSpielmann <- read.csv(file="~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/JanSpielmann/IndexAllerSessions_Normgruppen.csv", header=TRUE, sep=";")
+head(JanSpielmann)
+NormSessions <- list(
+  "Probanden" = JanSpielmann[!is.na(JanSpielmann$Probanden), "ID"],
+  "U12" = JanSpielmann[!is.na(JanSpielmann$U12), "ID"],
+  "U13" = JanSpielmann[!is.na(JanSpielmann$U13), "ID"],
+  "U14" = JanSpielmann[!is.na(JanSpielmann$U14), "ID"],
+  "U15" = JanSpielmann[!is.na(JanSpielmann$U15), "ID"],
+  "U16" = JanSpielmann[!is.na(JanSpielmann$U16), "ID"],
+  "U17" = JanSpielmann[!is.na(JanSpielmann$U17), "ID"],
+  "U19" = JanSpielmann[!is.na(JanSpielmann$U19), "ID"],
+  "U23" = JanSpielmann[!is.na(JanSpielmann$U23), "ID"],
+  "Profis" = JanSpielmann[!is.na(JanSpielmann$Profis), "ID"]
+)
+lapply(NormSessions, length)
+
+
+ermittleDieSessionErgebnisse <- function(SessionIDs){
+  Resultate <- data.frame("SessionID"=c(), "Fiedler2016a"=c())
+  for (SessionID in SessionIDs){
+    EineSession <- (DF[DF$keyS==SessionID & DF$ItemID!="unbekannt", ])
+    EineSession <- EineSession[order(EineSession$idX), ]
+    print(paste0("Ich ermittle nun das Sessionergebnis von Session ", SessionID))
+    SessionErgebnis <- EineSession[EineSession$idX==max(EineSession$idX), "Fiedler2016a"]
+    Resultate <- rbind(Resultate, data.frame("SessionID"=SessionID, "Fiedler2016a"=SessionErgebnis))
+  }
+  return(Resultate)
 }
-DFaugm
+
+NormSessionResults <- list(
+  "Probanden" = ermittleDieSessionErgebnisse(SessionIDs = NormSessions[["Probanden"]]),
+  "U12" = ermittleDieSessionErgebnisse(SessionIDs = NormSessions[["U12"]]),
+  "U13" = ermittleDieSessionErgebnisse(SessionIDs = NormSessions[["U13"]]),
+  "U14" = ermittleDieSessionErgebnisse(SessionIDs = NormSessions[["U14"]]),
+  "U15" = ermittleDieSessionErgebnisse(SessionIDs = NormSessions[["U15"]]),
+  "U16" = ermittleDieSessionErgebnisse(SessionIDs = NormSessions[["U16"]]),
+  "U17" = ermittleDieSessionErgebnisse(SessionIDs = NormSessions[["U17"]]),
+  "U19" = ermittleDieSessionErgebnisse(SessionIDs = NormSessions[["U19"]]),
+  "U23" = ermittleDieSessionErgebnisse(SessionIDs = NormSessions[["U23"]]),
+  "Profis" = ermittleDieSessionErgebnisse(SessionIDs = NormSessions[["Profis"]])
+)
+
+par(mfrow=c(5, 1))
+plot(density(NormSessionResults$Probanden$Fiedler2016a), main="Probanden", xlim=c(-3, 3))
+plot(density(NormSessionResults$U12$Fiedler2016a), main="U12", xlim=c(-3, 3))
+plot(density(NormSessionResults$U13$Fiedler2016a), main="U13", xlim=c(-3, 3))
+plot(density(NormSessionResults$U14$Fiedler2016a), main="U14", xlim=c(-3, 3))
+plot(density(NormSessionResults$U15$Fiedler2016a), main="U15", xlim=c(-3, 3))
+
+plot(density(NormSessionResults$U16$Fiedler2016a), main="U16", xlim=c(-3, 3))
+plot(density(NormSessionResults$U17$Fiedler2016a), main="U17", xlim=c(-3, 3))
+plot(density(NormSessionResults$U19$Fiedler2016a), main="U19", xlim=c(-3, 3))
+plot(density(NormSessionResults$U23$Fiedler2016a), main="U23", xlim=c(-3, 3))
+plot(density(NormSessionResults$Profis$Fiedler2016a), main="Profis", xlim=c(-3, 3))
+
+library(ggplot2)
+# Multiple plot function
+#
+# ggplot objects can be passed in ..., or to plotlist (as a list of ggplot objects)
+# - cols:   Number of columns in layout
+# - layout: A matrix specifying the layout. If present, 'cols' is ignored.
+#
+# If the layout is something like matrix(c(1,2,3,3), nrow=2, byrow=TRUE),
+# then plot 1 will go in the upper left, 2 will go in the upper right, and
+# 3 will go all the way across the bottom.
+#
+multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
+  library(grid)
+
+  # Make a list from the ... arguments and plotlist
+  plots <- c(list(...), plotlist)
+
+  numPlots = length(plots)
+
+  # If layout is NULL, then use 'cols' to determine layout
+  if (is.null(layout)) {
+    # Make the panel
+    # ncol: Number of columns of plots
+    # nrow: Number of rows needed, calculated from # of cols
+    layout <- matrix(seq(1, cols * ceiling(numPlots/cols)),
+                     ncol = cols, nrow = ceiling(numPlots/cols))
+  }
+
+  if (numPlots==1) {
+    print(plots[[1]])
+
+  } else {
+    # Set up the page
+    grid.newpage()
+    pushViewport(viewport(layout = grid.layout(nrow(layout), ncol(layout))))
+
+    # Make each plot, in the correct location
+    for (i in 1:numPlots) {
+      # Get the i,j matrix positions of the regions that contain this subplot
+      matchidx <- as.data.frame(which(layout == i, arr.ind = TRUE))
+
+      print(plots[[i]], vp = viewport(layout.pos.row = matchidx$row,
+                                      layout.pos.col = matchidx$col))
+    }
+  }
+}
+
+FarbPalette <- data.frame(
+  red = seq(from = 13, to=200, length.out = 10)/255,
+  green = seq(from = 83, to=100, length.out = 10)/255,
+  blue = seq(from = 97, to=0, length.out=10)/255
+)
+FarbPalette <- FarbPalette[10:1,]
+CavoritFarbPalette <- list()
+for (i in 1:10){
+  CavoritFarbPalette <- c(CavoritFarbPalette, rgb(FarbPalette[i, 1], FarbPalette[i, 2], FarbPalette[i, 3]))
+}
 
 
+
+gPbn <- ggplot(NormSessionResults$Probanden, aes(x = Fiedler2016a)) + geom_density(fill=CavoritFarbPalette[1]) + xlim(-3, 3) + ggtitle("Normwerteverteilung Probanden")
+g12 <- ggplot(NormSessionResults$U12, aes(x = Fiedler2016a)) + geom_density(fill=CavoritFarbPalette[2]) + xlim(-3, 3) + ggtitle("Normwerteverteilung U12")
+g13 <- ggplot(NormSessionResults$U13, aes(x = Fiedler2016a)) + geom_density(fill=CavoritFarbPalette[3]) + xlim(-3, 3) + ggtitle("Normwerteverteilung U13")
+g14 <- ggplot(NormSessionResults$U14, aes(x = Fiedler2016a)) + geom_density(fill=CavoritFarbPalette[4]) + xlim(-3, 3) + ggtitle("Normwerteverteilung U14")
+g15 <- ggplot(NormSessionResults$U15, aes(x = Fiedler2016a)) + geom_density(fill=CavoritFarbPalette[5]) + xlim(-3, 3) + ggtitle("Normwerteverteilung U15")
+g16 <- ggplot(NormSessionResults$U16, aes(x = Fiedler2016a)) + geom_density(fill=CavoritFarbPalette[6]) + xlim(-3, 3) + ggtitle("Normwerteverteilung U16")
+g17 <- ggplot(NormSessionResults$U17, aes(x = Fiedler2016a)) + geom_density(fill=CavoritFarbPalette[7]) + xlim(-3, 3) + ggtitle("Normwerteverteilung U17")
+g19 <- ggplot(NormSessionResults$U19, aes(x = Fiedler2016a)) + geom_density(fill=CavoritFarbPalette[8]) + xlim(-3, 3) + ggtitle("Normwerteverteilung U19")
+g23 <- ggplot(NormSessionResults$U23, aes(x = Fiedler2016a)) + geom_density(fill=CavoritFarbPalette[9]) + xlim(-3, 3) + ggtitle("Normwerteverteilung U23")
+gProfis <- ggplot(NormSessionResults$Profis, aes(x = Fiedler2016a)) + geom_density(fill=CavoritFarbPalette[10]) + xlim(-3, 3) + ggtitle("Normwerteverteilung Profis")
+
+
+multiplot(gPbn, g12, g13, g14, g15, g16, g17, g19, g23, gProfis)
 
