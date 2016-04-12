@@ -311,3 +311,19 @@ gProfis <- ggplot(NormSessionResults$Profis, aes(x = Fiedler2016a)) + geom_densi
 
 multiplot(gPbn, g12, g13, g14, g15, g16, g17, g19, g23, gProfis)
 
+#### calcProzentrang
+
+calcProzentrang <- function(x, Populus=rnorm(100)){
+  Erg <- sum(x<=Populus)/length(Populus)
+  return(Erg)
+}
+
+library(ggplot2)
+plotProzentrang <- function(x, Populus1=rnorm(100), Populus2=rexp(100)){
+  g <- ggplot(data.frame(Populus1), aes(x = Populus1)) +
+    geom_density() +
+    xlim(-3, 3) +
+    ggtitle("Normwerteverteilung")
+  g
+}
+plotProzentrang(x=2)
