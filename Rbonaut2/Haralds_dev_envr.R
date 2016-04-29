@@ -315,6 +315,7 @@ gProfis <- ggplot(NormSessionResults$Profis, aes(x = Fiedler2016a)) + geom_densi
 
 multiplot(gPbn, g12, g13, g14, g15, g16, g17, g19, g23, gProfis)
 
+<<<<<<< HEAD
 
 ## Normtabelle
 Normtabelle_Probanden <- data.frame(
@@ -328,4 +329,22 @@ write.csv2(x=Normtabelle_Probanden, file = "~/Desktop/Normtabelle")
 library(jsonlite)
 JSONstring <- jsonlite::toJSON(NormSessionResults, pretty = TRUE)
 write(x=JSONstring, file="~/Desktop/Normen.json")
+
+=======
+#### calcProzentrang
+
+calcProzentrang <- function(x, Populus=rnorm(100)){
+  Erg <- sum(x<=Populus)/length(Populus)
+  return(Erg)
+}
+
+library(ggplot2)
+plotProzentrang <- function(x, Populus1=rnorm(100), Populus2=rexp(100)){
+  g <- ggplot(data.frame(Populus1), aes(x = Populus1)) +
+    geom_density() +
+    xlim(-3, 3) +
+    ggtitle("Normwerteverteilung")
+  g
+}
+plotProzentrang(x=2)
 
