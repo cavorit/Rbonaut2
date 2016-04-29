@@ -200,13 +200,17 @@ lapply(NormSessions, length)
 
 
 ermittleDieSessionErgebnisse <- function(SessionIDs){
-  Resultate <- data.frame("SessionID"=c(), "Fiedler2016a"=c())
+  Resultate <- data.frame("SessionID"=c(), "Fiedler2016a"=c(), "FBt"=c(), "FBq"=c())
   for (SessionID in SessionIDs){
     EineSession <- (DF[DF$keyS==SessionID & DF$ItemID!="unbekannt", ])
     EineSession <- EineSession[order(EineSession$idX), ]
     print(paste0("Ich ermittle nun das Sessionergebnis von Session ", SessionID))
-    SessionErgebnis <- EineSession[EineSession$idX==max(EineSession$idX), "Fiedler2016a"]
-    Resultate <- rbind(Resultate, data.frame("SessionID"=SessionID, "Fiedler2016a"=SessionErgebnis))
+
+      SessionErgebnisQuote <- mean(EineSession$FBq)
+      SessionErgebnisTime <- mean(EineSession$FBt)
+      SessionErgebnisLevel <- EineSession[EineSession$idX==max(EineSession$idX), c("Fiedler2016a")]
+
+    Resultate <- rbind(Resultate, data.frame("SessionID"=SessionID, "Fiedler2016a"=SessionErgebnisLevel, "FBt"=SessionErgebnisTime, "FBq"=SessionErgebnisQuote))
   }
   return(Resultate)
 }
@@ -310,4 +314,18 @@ gProfis <- ggplot(NormSessionResults$Profis, aes(x = Fiedler2016a)) + geom_densi
 
 
 multiplot(gPbn, g12, g13, g14, g15, g16, g17, g19, g23, gProfis)
+
+
+## Normtabelle
+Normtabelle_Probanden <- data.frame(
+  "Level" = sort(NormSessionResults$Probanden$Fiedler2016a),
+  "Prozentrang" = round(1:length(NormSessionResults$Probanden$Fiedler2016a)/length(NormSessionResults$Probanden$Fiedler2016a)*100,3)
+)
+
+library(xtable)
+xtable(Normtabelle_Probanden)
+write.csv2(x=Normtabelle_Probanden, file = "~/Desktop/Normtabelle")
+library(jsonlite)
+JSONstring <- jsonlite::toJSON(NormSessionResults, pretty = TRUE)
+write(x=JSONstring, file="~/Desktop/Normen.json")
 
