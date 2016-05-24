@@ -62,124 +62,124 @@ DF <- DFtotal
 # write.csv2(x = X, file = "~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/JanSpielmann/IndexAllerSessions.csv", fileEncoding = "utf8")
 
 ########### erstelle eine neue ItemBank
-
-  ItemIDNamen = paste0("BL", gibZahlFuehrendeNullen(1:32, digits=2))
-  RMtotal <- NULL
-
-  for (WievielterMonat in 1:26){
-    readAUGMENTED(Dateiname = paste0("AUGMENTED", Monate[WievielterMonat]) )
-
-    adrW <- DF$adrW
-    adrOut <- DF$adrOut
-    FBt <- DF$FBt
-    ItemID <- DF$ItemID
-    DF$ItemResponse <- 0
-    DF[ItemID=="BL01" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL02" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL03" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL04" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL05" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL06" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL07" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL08" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL09" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL10" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL11" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL12" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL13" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL14" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL15" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL16" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL17" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL18" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL19" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL20" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL21" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL22" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL23" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL24" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL25" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL26" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL27" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL28" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL29" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL30" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL31" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
-    DF[ItemID=="BL32" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
-
-
-      RaschMatrixSkeleton <- erstelleRaschMatrixSkeleton(DF=DF, ItemIDNamen = ItemIDNamen)
-      RaschMatrixSkeletonFilled <- fillRaschMatrixSkeleton(DF=DF, RaschMatrixSkeleton = RaschMatrixSkeleton)
-      RaschMatrixSkeletonFilledAndImploded4Quality <- implodeRaschMatrix4Quality(RaschMatrixSkeletonFilled = RaschMatrixSkeletonFilled)
-      RM <- RaschMatrixSkeletonFilledAndImploded4Quality
-
-      ## Füge das Alter hinzu
-      RM <- as.data.frame(RM)
-      RM <- cbind(RM, DF[is.element(DF$keyS,rownames(RM)) & DF$idX == 0, c("PbnJahre", "PbnTeam", "PbnPosition", "keyS")])
-      head(RM)
-      # RM$keyS == rownames(RM) # TRUE
-
-      #if (!any(is.element(ls(), "RMtotal"))){RMtotal <- NULL}
-      RMtotal <- rbind(RMtotal, RM)
-    }
-  system('say "Iche habe fertig." -v Alice')
-  RM <- RMtotal
-  set.seed(124)
-  Explorativ <- !(!sample(0:1, size=nrow(RM), replace=TRUE)) # !! wandelt 0-1 in FALSE-TRUE
-  Konfirmatorisch <- !Explorativ
-
-  ## Rasch-Analyse
-  # Modellbasierte rekursive Partitionierung {psychotree}
-  library(psychotree)
-  # DichotomisierteCovariate <- model.matrix( ~ PbnTeam - 1, data=RM)
-  fit2 <- raschtree(as.matrix(RM[, ItemIDNamen]) ~ RM$PbnJahre[] , verbose=TRUE)
-  #pdf(file = "rekursivePartitionierung.pdf")
-  plot(fit2)
-  #dev.off()
-
-  ## Rasch-Analyse für Jahre < 26.225 Jahre
-  library(eRm)
-  fit <- RM(RM[RM$PbnJahre < 26.225  , ItemIDNamen])
-  summary(fit)
-  fit$betapar
-  data.frame(
-    Schwierigkeitsparameter = c("BL01"=0, fit$etapar),
-    Randsumme = colSums(RM[RM$PbnJahre < 26.225  , ItemIDNamen], na.rm = TRUE)
-  )
-  ## Modellgeltungstest
-  test <- LRtest(fit, splitcr="mean", se=TRUE)
-  par(mfrow=c(2,2))
-  plotGOF(test, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.99, col=1), main="BL01:BL08", beta.subset = 0:7)
-  plotGOF(test, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.99, col=1), main="BL09:BL16", beta.subset = 8:15)
-  plotGOF(test, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.99, col=1), main="BL17:BL24", beta.subset = 16:23)
-  plotGOF(test, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.99, col=1), main="BL25:BL32", beta.subset = 24:32)
-
-  # Achtung: eRm::fit$eta == catR::ItemBank$beta bzw. eRm::fit$beta != catR::ItemBank$beta
-  ItemSchwierigkeit <- fit$etapar
-  par(mfrow=c(1,1))
-  plot(1:32, c(0, ItemSchwierigkeit), main="Itemschwierigkeit BL32")
-  hist(ItemSchwierigkeit)
-  write.csv2(x = ItemSchwierigkeit, file="~/Desktop/ItemschwierigkeitBL32.csv")
-
-#### catR
-
-library(catR)
-Bank <- readItemBank()
-EineSession <- DF[DF$keyS == "56764750-1ae2-465e-add2-f0738f53692c"  ,] # Jan Gutzeit (*2003) Session vom 2015-04-30 17:44:24
-EineSession
-
-Fiedler2016 <- NULL
-for (b in 1:32){ # b = 2
-  Historie <- EineSession[1:b,]
-  tmp <- catR::thetaEst(it = Bank[1:b,-1], x = Historie$ItemResponse) # Achtung: Bei Bank müssen im Falle von Adaptivität die Zeilen entsprechend der Testung umsortiert werden.
-  Fiedler2016 <- c(Fiedler2016, tmp)
-}
-plot(1:32, Fiedler2016, type = 'o', ylim=c(-4,4), main="Jan Gutzeit (*2003) \n Session #1 vom 30. Apr. 2015 17:44:24", xlab="Ball Nummer")
-abline(h=Fiedler2016[32])
-Sigma <- catR::semTheta(thEst = Fiedler2016[32], it = Bank[, -1], x=EineSession$ItemResponse)
-abline(h=Fiedler2016[32]+Sigma, col=2)
-abline(h=Fiedler2016[32]-Sigma, col=2)
-abline(v=16, col="magenta")
+#
+#   ItemIDNamen = paste0("BL", gibZahlFuehrendeNullen(1:32, digits=2))
+#   RMtotal <- NULL
+#
+#   for (WievielterMonat in 1:26){
+#     readAUGMENTED(Dateiname = paste0("AUGMENTED", Monate[WievielterMonat]) )
+#
+#     adrW <- DF$adrW
+#     adrOut <- DF$adrOut
+#     FBt <- DF$FBt
+#     ItemID <- DF$ItemID
+#     DF$ItemResponse <- 0
+#     DF[ItemID=="BL01" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+#     DF[ItemID=="BL02" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+#     DF[ItemID=="BL03" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+#     DF[ItemID=="BL04" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+#     DF[ItemID=="BL05" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+#     DF[ItemID=="BL06" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+#     DF[ItemID=="BL07" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+#     DF[ItemID=="BL08" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+#     DF[ItemID=="BL09" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+#     DF[ItemID=="BL10" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+#     DF[ItemID=="BL11" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+#     DF[ItemID=="BL12" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+#     DF[ItemID=="BL13" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+#     DF[ItemID=="BL14" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+#     DF[ItemID=="BL15" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+#     DF[ItemID=="BL16" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+#     DF[ItemID=="BL17" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+#     DF[ItemID=="BL18" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+#     DF[ItemID=="BL19" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+#     DF[ItemID=="BL20" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+#     DF[ItemID=="BL21" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+#     DF[ItemID=="BL22" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+#     DF[ItemID=="BL23" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+#     DF[ItemID=="BL24" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+#     DF[ItemID=="BL25" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+#     DF[ItemID=="BL26" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+#     DF[ItemID=="BL27" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+#     DF[ItemID=="BL28" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+#     DF[ItemID=="BL29" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+#     DF[ItemID=="BL30" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+#     DF[ItemID=="BL31" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+#     DF[ItemID=="BL32" & FBt < 2195 & adrW == adrOut, "ItemResponse"] <- 1
+#
+#
+#       RaschMatrixSkeleton <- erstelleRaschMatrixSkeleton(DF=DF, ItemIDNamen = ItemIDNamen)
+#       RaschMatrixSkeletonFilled <- fillRaschMatrixSkeleton(DF=DF, RaschMatrixSkeleton = RaschMatrixSkeleton)
+#       RaschMatrixSkeletonFilledAndImploded4Quality <- implodeRaschMatrix4Quality(RaschMatrixSkeletonFilled = RaschMatrixSkeletonFilled)
+#       RM <- RaschMatrixSkeletonFilledAndImploded4Quality
+#
+#       ## Füge das Alter hinzu
+#       RM <- as.data.frame(RM)
+#       RM <- cbind(RM, DF[is.element(DF$keyS,rownames(RM)) & DF$idX == 0, c("PbnJahre", "PbnTeam", "PbnPosition", "keyS")])
+#       head(RM)
+#       # RM$keyS == rownames(RM) # TRUE
+#
+#       #if (!any(is.element(ls(), "RMtotal"))){RMtotal <- NULL}
+#       RMtotal <- rbind(RMtotal, RM)
+#     }
+#   system('say "Iche habe fertig." -v Alice')
+#   RM <- RMtotal
+#   set.seed(124)
+#   Explorativ <- !(!sample(0:1, size=nrow(RM), replace=TRUE)) # !! wandelt 0-1 in FALSE-TRUE
+#   Konfirmatorisch <- !Explorativ
+#
+#   ## Rasch-Analyse
+#   # Modellbasierte rekursive Partitionierung {psychotree}
+#   library(psychotree)
+#   # DichotomisierteCovariate <- model.matrix( ~ PbnTeam - 1, data=RM)
+#   fit2 <- raschtree(as.matrix(RM[, ItemIDNamen]) ~ RM$PbnJahre[] , verbose=TRUE)
+#   #pdf(file = "rekursivePartitionierung.pdf")
+#   plot(fit2)
+#   #dev.off()
+#
+#   ## Rasch-Analyse für Jahre < 26.225 Jahre
+#   library(eRm)
+#   fit <- RM(RM[RM$PbnJahre < 26.225  , ItemIDNamen])
+#   summary(fit)
+#   fit$betapar
+#   data.frame(
+#     Schwierigkeitsparameter = c("BL01"=0, fit$etapar),
+#     Randsumme = colSums(RM[RM$PbnJahre < 26.225  , ItemIDNamen], na.rm = TRUE)
+#   )
+#   ## Modellgeltungstest
+#   test <- LRtest(fit, splitcr="mean", se=TRUE)
+#   par(mfrow=c(2,2))
+#   plotGOF(test, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.99, col=1), main="BL01:BL08", beta.subset = 0:7)
+#   plotGOF(test, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.99, col=1), main="BL09:BL16", beta.subset = 8:15)
+#   plotGOF(test, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.99, col=1), main="BL17:BL24", beta.subset = 16:23)
+#   plotGOF(test, xlab="Randsumme < Mittelwert", ylab="Randsumme > Mittelwert", tlab="number", conf=list(gamma=0.99, col=1), main="BL25:BL32", beta.subset = 24:32)
+#
+#   # Achtung: eRm::fit$eta == catR::ItemBank$beta bzw. eRm::fit$beta != catR::ItemBank$beta
+#   ItemSchwierigkeit <- fit$etapar
+#   par(mfrow=c(1,1))
+#   plot(1:32, c(0, ItemSchwierigkeit), main="Itemschwierigkeit BL32")
+#   hist(ItemSchwierigkeit)
+#   write.csv2(x = ItemSchwierigkeit, file="~/Desktop/ItemschwierigkeitBL32.csv")
+#
+# #### catR
+#
+# library(catR)
+# Bank <- readItemBank()
+# EineSession <- DF[DF$keyS == "56764750-1ae2-465e-add2-f0738f53692c"  ,] # Jan Gutzeit (*2003) Session vom 2015-04-30 17:44:24
+# EineSession
+#
+# Fiedler2016 <- NULL
+# for (b in 1:32){ # b = 2
+#   Historie <- EineSession[1:b,]
+#   tmp <- catR::thetaEst(it = Bank[1:b,-1], x = Historie$ItemResponse) # Achtung: Bei Bank müssen im Falle von Adaptivität die Zeilen entsprechend der Testung umsortiert werden.
+#   Fiedler2016 <- c(Fiedler2016, tmp)
+# }
+# plot(1:32, Fiedler2016, type = 'o', ylim=c(-4,4), main="Jan Gutzeit (*2003) \n Session #1 vom 30. Apr. 2015 17:44:24", xlab="Ball Nummer")
+# abline(h=Fiedler2016[32])
+# Sigma <- catR::semTheta(thEst = Fiedler2016[32], it = Bank[, -1], x=EineSession$ItemResponse)
+# abline(h=Fiedler2016[32]+Sigma, col=2)
+# abline(h=Fiedler2016[32]-Sigma, col=2)
+# abline(v=16, col="magenta")
 
 #### Normtabellen erstellen
 
@@ -200,61 +200,61 @@ ermittleSessionIndicesNachAlter <- function(AlterGesuch=10){
 
 #ermittleSessionIndicesNachAlter(AlterGesuch = 10)
 
-
-NormSessions <- list(
-  "Probanden" = JanSpielmann[!is.na(JanSpielmann$Probanden), "ID"],
-  "U12" = JanSpielmann[!is.na(JanSpielmann$U12), "ID"],
-  "U13" = JanSpielmann[!is.na(JanSpielmann$U13), "ID"],
-  "U14" = JanSpielmann[!is.na(JanSpielmann$U14), "ID"],
-  "U15" = JanSpielmann[!is.na(JanSpielmann$U15), "ID"],
-  "U16" = JanSpielmann[!is.na(JanSpielmann$U16), "ID"],
-  "U17" = JanSpielmann[!is.na(JanSpielmann$U17), "ID"],
-  "U19" = JanSpielmann[!is.na(JanSpielmann$U19), "ID"],
-  "U23" = JanSpielmann[!is.na(JanSpielmann$U23), "ID"],
-  "Profis" = JanSpielmann[!is.na(JanSpielmann$Profis), "ID"],
-  "Alter10" = ermittleSessionIndicesNachAlter(AlterGesuch = 10),
-  "Alter11" = ermittleSessionIndicesNachAlter(AlterGesuch = 11),
-  "Alter12" = ermittleSessionIndicesNachAlter(AlterGesuch = 12),
-  "Alter13" = ermittleSessionIndicesNachAlter(AlterGesuch = 13),
-  "Alter14" = ermittleSessionIndicesNachAlter(AlterGesuch = 14),
-  "Alter15" = ermittleSessionIndicesNachAlter(AlterGesuch = 15),
-  "Alter16" = ermittleSessionIndicesNachAlter(AlterGesuch = 16),
-  "Alter17" = ermittleSessionIndicesNachAlter(AlterGesuch = 17),
-  "Alter18" = ermittleSessionIndicesNachAlter(AlterGesuch = 18),
-  "Alter19" = ermittleSessionIndicesNachAlter(AlterGesuch = 19),
-  "Alter20" = ermittleSessionIndicesNachAlter(AlterGesuch = 20),
-  "Alter21" = ermittleSessionIndicesNachAlter(AlterGesuch = 21),
-  "Alter22" = ermittleSessionIndicesNachAlter(AlterGesuch = 22),
-  "Alter23" = ermittleSessionIndicesNachAlter(AlterGesuch = 23)
-)
-
-NormSessions$total <- unique(c(as.character(NormSessions$Probanden),
-                        as.character(NormSessions$U12),
-                        as.character(NormSessions$U13),
-                        as.character(NormSessions$U14),
-                        as.character(NormSessions$U15),
-                        as.character(NormSessions$U16),
-                        as.character(NormSessions$U17),
-                        as.character(NormSessions$U19),
-                        as.character(NormSessions$U23),
-                        as.character(NormSessions$Alter10),
-                        as.character(NormSessions$Alter11),
-                        as.character(NormSessions$Alter12),
-                        as.character(NormSessions$Alter13),
-                        as.character(NormSessions$Alter14),
-                        as.character(NormSessions$Alter15),
-                        as.character(NormSessions$Alter16),
-                        as.character(NormSessions$Alter17),
-                        as.character(NormSessions$Alter18),
-                        as.character(NormSessions$Alter19),
-                        as.character(NormSessions$Alter20),
-                        as.character(NormSessions$Alter21),
-                        as.character(NormSessions$Alter22),
-                        as.character(NormSessions$Alter23)
-                        ))
-
-lapply(NormSessions, length)
-save(NormSessions, file = "~/Desktop/ZwischenErg0000002")
+#
+# NormSessions <- list(
+#   "Probanden" = JanSpielmann[!is.na(JanSpielmann$Probanden), "ID"],
+#   "U12" = JanSpielmann[!is.na(JanSpielmann$U12), "ID"],
+#   "U13" = JanSpielmann[!is.na(JanSpielmann$U13), "ID"],
+#   "U14" = JanSpielmann[!is.na(JanSpielmann$U14), "ID"],
+#   "U15" = JanSpielmann[!is.na(JanSpielmann$U15), "ID"],
+#   "U16" = JanSpielmann[!is.na(JanSpielmann$U16), "ID"],
+#   "U17" = JanSpielmann[!is.na(JanSpielmann$U17), "ID"],
+#   "U19" = JanSpielmann[!is.na(JanSpielmann$U19), "ID"],
+#   "U23" = JanSpielmann[!is.na(JanSpielmann$U23), "ID"],
+#   "Profis" = JanSpielmann[!is.na(JanSpielmann$Profis), "ID"],
+#   "Alter10" = ermittleSessionIndicesNachAlter(AlterGesuch = 10),
+#   "Alter11" = ermittleSessionIndicesNachAlter(AlterGesuch = 11),
+#   "Alter12" = ermittleSessionIndicesNachAlter(AlterGesuch = 12),
+#   "Alter13" = ermittleSessionIndicesNachAlter(AlterGesuch = 13),
+#   "Alter14" = ermittleSessionIndicesNachAlter(AlterGesuch = 14),
+#   "Alter15" = ermittleSessionIndicesNachAlter(AlterGesuch = 15),
+#   "Alter16" = ermittleSessionIndicesNachAlter(AlterGesuch = 16),
+#   "Alter17" = ermittleSessionIndicesNachAlter(AlterGesuch = 17),
+#   "Alter18" = ermittleSessionIndicesNachAlter(AlterGesuch = 18),
+#   "Alter19" = ermittleSessionIndicesNachAlter(AlterGesuch = 19),
+#   "Alter20" = ermittleSessionIndicesNachAlter(AlterGesuch = 20),
+#   "Alter21" = ermittleSessionIndicesNachAlter(AlterGesuch = 21),
+#   "Alter22" = ermittleSessionIndicesNachAlter(AlterGesuch = 22),
+#   "Alter23" = ermittleSessionIndicesNachAlter(AlterGesuch = 23)
+# )
+#
+# NormSessions$total <- unique(c(as.character(NormSessions$Probanden),
+#                         as.character(NormSessions$U12),
+#                         as.character(NormSessions$U13),
+#                         as.character(NormSessions$U14),
+#                         as.character(NormSessions$U15),
+#                         as.character(NormSessions$U16),
+#                         as.character(NormSessions$U17),
+#                         as.character(NormSessions$U19),
+#                         as.character(NormSessions$U23),
+#                         as.character(NormSessions$Alter10),
+#                         as.character(NormSessions$Alter11),
+#                         as.character(NormSessions$Alter12),
+#                         as.character(NormSessions$Alter13),
+#                         as.character(NormSessions$Alter14),
+#                         as.character(NormSessions$Alter15),
+#                         as.character(NormSessions$Alter16),
+#                         as.character(NormSessions$Alter17),
+#                         as.character(NormSessions$Alter18),
+#                         as.character(NormSessions$Alter19),
+#                         as.character(NormSessions$Alter20),
+#                         as.character(NormSessions$Alter21),
+#                         as.character(NormSessions$Alter22),
+#                         as.character(NormSessions$Alter23)
+#                         ))
+#
+# lapply(NormSessions, length)
+# save(NormSessions, file = "~/Desktop/ZwischenErg0000002")
 load(file="~/Desktop/ZwischenErg0000002")
 ermittleDieSessionErgebnisse <- function(SessionIDs){
   Resultate <- data.frame("SessionID"=c(), "Fiedler2016a"=c(), "FBt"=c(), "FBq"=c())
@@ -302,6 +302,8 @@ NormSessionResults <- list(
 
 
 str(NormSessionResults)
+save(NormSessionResults, file = "~/Desktop/ZwischenErg0000003")
+load(file = "~/Desktop/ZwischenErg0000003")
 
 ##### Erstelle NormTree
 # RAW
@@ -419,6 +421,7 @@ save(NormTree, file="~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/N
 # dput() # schreibt Objekt als R-Code
 
 
+
 #### Plot U-Mannschafts-Kernels
 
 par(mfrow=c(5, 1))
@@ -508,27 +511,27 @@ gProfis <- ggplot(NormSessionResults$Profis, aes(x = Fiedler2016a)) + geom_densi
 
 multiplot(gPbn, g12, g13, g14, g15, g16, g17, g19, g23, gProfis)
 
-
-## Normtabelle
-Normtabelle_Probanden <- data.frame(
-  "Level" = sort(NormSessionResults$Probanden$Fiedler2016a),
-  "Prozentrang" = round(1:length(NormSessionResults$Probanden$Fiedler2016a)/length(NormSessionResults$Probanden$Fiedler2016a)*100,3)
-)
-
-library(xtable)
-xtable(Normtabelle_Probanden)
-write.csv2(x=Normtabelle_Probanden, file = "~/Desktop/Normtabelle")
-
-library(jsonlite)
-JSONstring <- jsonlite::toJSON(NormSessionResults, pretty = TRUE, dataframe = "columns")
-write(x=JSONstring, file="~/Desktop/Normen.json")
-
-
-#### calcProzentrang
-
-calcProzentrang <- function(x, Populus=rnorm(100)){
-  Erg <- sum(x<=Populus)/length(Populus)
-  return(Erg)
-}
-
+#
+# ## Normtabelle
+# Normtabelle_Probanden <- data.frame(
+#   "Level" = sort(NormSessionResults$Probanden$Fiedler2016a),
+#   "Prozentrang" = round(1:length(NormSessionResults$Probanden$Fiedler2016a)/length(NormSessionResults$Probanden$Fiedler2016a)*100,3)
+# )
+#
+# library(xtable)
+# xtable(Normtabelle_Probanden)
+# write.csv2(x=Normtabelle_Probanden, file = "~/Desktop/Normtabelle")
+#
+# library(jsonlite)
+# JSONstring <- jsonlite::toJSON(NormSessionResults, pretty = TRUE, dataframe = "columns")
+# write(x=JSONstring, file="~/Desktop/Normen.json")
+#
+#
+# #### calcProzentrang
+#
+# calcProzentrang <- function(x, Populus=rnorm(100)){
+#   Erg <- sum(x<=Populus)/length(Populus)
+#   return(Erg)
+# }
+#
 
