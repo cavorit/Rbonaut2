@@ -211,8 +211,8 @@ plotSeaShell <- function(x, A, B, TitelA, TitelB, developperMode = FALSE){
   setPercent(x=x, -.68, xLevelB, col=colorB)
 
   ### Titles
-  text(.5, 1.01, TxtA, col=colorA, cex=2, pos = 2, offset = 1)
-  text(.5, 1.01, TxtB, col=colorB, cex=2, pos=4, offset = 1)
+  text(.5, 1.01, TitelA, col=colorA, cex=2, pos = 2, offset = 1)
+  text(.5, 1.01, TitelB, col=colorB, cex=2, pos=4, offset = 1)
 
 }
 
