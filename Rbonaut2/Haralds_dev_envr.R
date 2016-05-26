@@ -416,6 +416,13 @@ DF <- DFtotal
 # NormTree$Alter23$Kernel$FBqFBt <- kde2d(NormTree$Alter23$RAW$FBq, NormTree$Alter23$RAW$FBt)
 # NormTree$Total$Kernel$FBqFBt <- kde2d(NormTree$Total$RAW$FBq, NormTree$Total$RAW$FBt)
 #
+
+
+##### händische Korrekturen an NormTree-Daten: Mittelwertsimputation von NA
+NormTree$Alter14$RAW$Fiedler2016a[is.na(NormTree$Alter14$RAW$Fiedler2016a)] <- mean(NormTree$Alter14$RAW$Fiedler2016a, na.rm=TRUE)
+
+
+
 # str(NormTree)
 # save(NormTree, file="~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/NormTree/NormTree.rda")
 # # dput() # schreibt Objekt als R-Code
@@ -539,10 +546,15 @@ multiplot(gPbn, g12, g13, g14, g15, g16, g17, g19, g23, gProfis)
 
 A <- NormTree$U12$RAW$Fiedler2016a
 B <- NormTree$Alter12$RAW$Fiedler2016a
+Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "12 jährige", TitelB = "U12", developperMode = FALSE)
 
-Rbonaut2::plotSeaShell(x=rnorm(1), A=A, B=B, TitelA = "12 jährige", TitelB = "U12", developperMode = FALSE)
+A <- NormTree$U13$RAW$Fiedler2016a
+B <- NormTree$Alter13$RAW$Fiedler2016a
+Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "13 jährige", TitelB = "U13", developperMode = FALSE)
 
-
+A <- NormTree$U14$RAW$Fiedler2016a
+B <- NormTree$Alter14$RAW$Fiedler2016a
+Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "14 jährige", TitelB = "U14", developperMode = FALSE)
 
 
 

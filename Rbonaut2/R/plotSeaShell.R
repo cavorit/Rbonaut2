@@ -35,7 +35,7 @@ plotSeaShell <- function(x, A, B, TitelA, TitelB, developperMode = FALSE){
   }
 
   scaleKernelY4Canvas <- function(y){
-    scaling <- 1.1*max(KD$y) # for layout purpose
+    scaling <- 0.6*max(KD$y) # for layout purpose
     return(-1*scaling*y+0.5)
   }
 
@@ -177,9 +177,9 @@ plotSeaShell <- function(x, A, B, TitelA, TitelB, developperMode = FALSE){
   }
 
   # Medianlinie in Histogramm
-  barNumberOfMedian <- which.min(abs(HG$mids-median(B)))
+  barNumberOfMedian <- which.min(abs(HG$mids-median(B, na.rm=TRUE)))
   medianDensity <- HG$density[barNumberOfMedian]
-  lines.right(c(median(B), median(B)), c(0, medianDensity-0.005), col=colorCC, lwd=3, lty=3)
+  lines.right(c(median(B, na.rm = TRUE), median(B, na.rm=TRUE)), c(0, medianDensity-0.005), col=colorCC, lwd=3, lty=3)
 
   ### Plot spine
   lines.left(c(min(HG$breaks, KD$x),max(HG$breaks, KD$x)), c(0, 0), col=colorCC, lwd=1)
@@ -202,13 +202,13 @@ plotSeaShell <- function(x, A, B, TitelA, TitelB, developperMode = FALSE){
 
   ### magenta Score
   xLevelA <- round(integrate.xy(x = KD$x, fx = KD$y, a = min(KD$x), b = KD$x[which.min( abs(KD$x - x))] ) * 100,1)
-  points.left(x+.01, .66, col="white", cex=10, pch=21, bg="white")
-  setPercent(x=x, .6, xLevelA, col=colorX)
+  points.left(x+.01, .95, col="white", cex=11, pch=21, bg="#dcdcdc")
+  setPercent(x=x, .92, xLevelA, col=colorX)
 
   ### grey Score
   xLevelB <- round((sum(x>B)/nB*100),1)
-  points.left(x, -.62, col="white", cex=10, pch=21, bg="white")
-  setPercent(x=x, -.68, xLevelB, col=colorB)
+  points.left(x, -.95, col="white", cex=11, pch=21, bg="#dcdcdc")
+  setPercent(x=x, -.98, xLevelB, col=colorB)
 
   ### Titles
   text(.5, 1.01, TitelA, col=colorA, cex=2, pos = 2, offset = 1)
