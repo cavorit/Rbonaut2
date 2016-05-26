@@ -544,17 +544,15 @@ multiplot(gPbn, g12, g13, g14, g15, g16, g17, g19, g23, gProfis)
 
 #### plotSeaShell
 
-A <- NormTree$U12$RAW$Fiedler2016a
-B <- NormTree$Alter12$RAW$Fiedler2016a
+A <- NormTree$Alter12$RAW$Fiedler2016a
+B <- NormTree$U12$RAW$Fiedler2016a
 Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "12 jährige", TitelB = "U12", developperMode = FALSE)
 
-A <- NormTree$U13$RAW$Fiedler2016a
-B <- NormTree$Alter13$RAW$Fiedler2016a
+A <- NormTree$Alter13$RAW$Fiedler2016a
+B <- NormTree$U13$RAW$Fiedler2016a
 Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "13 jährige", TitelB = "U13", developperMode = FALSE)
 
-A <- NormTree$U14$RAW$Fiedler2016a
-B <- NormTree$Alter14$RAW$Fiedler2016a
+A <- NormTree$Alter14$RAW$Fiedler2016a
+B <- NormTree$U14$RAW$Fiedler2016a
 Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "14 jährige", TitelB = "U14", developperMode = FALSE)
-
-
 
