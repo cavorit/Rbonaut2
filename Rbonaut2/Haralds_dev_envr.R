@@ -556,3 +556,44 @@ A <- NormTree$Alter14$RAW$Fiedler2016a
 B <- NormTree$U14$RAW$Fiedler2016a
 Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "14 jährige", TitelB = "U14", developperMode = FALSE)
 
+A <- NormTree$Alter15$RAW$Fiedler2016a
+B <- NormTree$U15$RAW$Fiedler2016a
+Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "15 jährige", TitelB = "U15", developperMode = FALSE)
+
+A <- NormTree$Alter16$RAW$Fiedler2016a
+B <- NormTree$U16$RAW$Fiedler2016a
+Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "16 jährige", TitelB = "U16", developperMode = FALSE)
+
+A <- NormTree$Alter17$RAW$Fiedler2016a
+B <- NormTree$U17$RAW$Fiedler2016a
+Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "17 jährige", TitelB = "U17", developperMode = FALSE)
+
+A <- NormTree$Alter18$RAW$Fiedler2016a
+B <- NormTree$U19$RAW$Fiedler2016a
+Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "18 jährige", TitelB = "U19", developperMode = FALSE)
+
+A <- NormTree$Alter19$RAW$Fiedler2016a
+B <- NormTree$U19$RAW$Fiedler2016a
+Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "19 jährige", TitelB = "U19", developperMode = FALSE)
+
+A <- NormTree$Alter20$RAW$Fiedler2016a
+B <- NormTree$U23$RAW$Fiedler2016a
+Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "20 jährige", TitelB = "U23", developperMode = FALSE)
+
+A <- NormTree$Alter21$RAW$Fiedler2016a
+B <- NormTree$U23$RAW$Fiedler2016a
+Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "21 jährige", TitelB = "U23", developperMode = FALSE)
+
+A <- NormTree$Alter22$RAW$Fiedler2016a
+B <- NormTree$U23$RAW$Fiedler2016a
+Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "22 jährige", TitelB = "U23", developperMode = FALSE)
+
+A <- NormTree$Alter23$RAW$Fiedler2016a
+B <- NormTree$U23$RAW$Fiedler2016a
+Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "23 jährige", TitelB = "U23", developperMode = FALSE)
+
+A <- NormTree$Total$RAW$Fiedler2016a
+B <- NormTree$Profis$RAW$Fiedler2016a
+Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "Total", TitelB = "Profis", developperMode = FALSE)
+
+
