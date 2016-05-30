@@ -420,6 +420,7 @@ DF <- DFtotal
 
 ##### händische Korrekturen an NormTree-Daten: Mittelwertsimputation von NA
 NormTree$Alter14$RAW$Fiedler2016a[is.na(NormTree$Alter14$RAW$Fiedler2016a)] <- mean(NormTree$Alter14$RAW$Fiedler2016a, na.rm=TRUE)
+NormTree$Total$RAW$Fiedler2016a[is.na(NormTree$Total$RAW$Fiedler2016a)] <- mean(NormTree$Total$RAW$Fiedler2016a, na.rm=TRUE)
 
 
 
