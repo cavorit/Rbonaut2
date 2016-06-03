@@ -598,3 +598,34 @@ B <- NormTree$Profis$RAW$Fiedler2016a
 Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "Total", TitelB = "Profis", developperMode = FALSE)
 
 
+#########
+library(sfsmisc)
+library(Rbonaut2)
+
+HermannFolder <- "~/Dropbox (Cavorit)/Cavorit/_persönlicheOeffentlicheOrdner/_Hermann_Klöckner/tsv_Hoffenheim/"
+
+HistU17 <- data.frame(
+  x = NormTree$U17$HIST$Level$mids,
+  y = NormTree$U17$HIST$Level$density
+)
+
+KernelU17 <- data.frame(
+  x = NormTree$U17$Kernel$Level$x,
+  y = NormTree$U17$Kernel$Level$y
+)
+
+Integral <- as.integer((round(sfsmisc::integrate.xy(x = KernelU17$x, fx = KernelU17$y, b = KernelU17$x[2:length(KernelU17$x)]), digits = 4)*1000))/1000
+KernelU17$Integral <- c(0, Integral)
+
+write.table(x=HistU17, file = paste0(HermannFolder, "HistU17.tsv"), sep = "\t", dec = ".", row.names = FALSE, col.names = TRUE)
+write.table(x=KernelU17, file = paste0(HermannFolder, "KernelU17.tsv"), sep = "\t", dec = ".", row.names = FALSE, col.names = TRUE)
+
+
+
+
+
+
+
+
+
+
