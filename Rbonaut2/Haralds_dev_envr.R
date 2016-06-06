@@ -618,7 +618,7 @@ Integral <- as.integer((round(sfsmisc::integrate.xy(x = KernelU17$x, fx = Kernel
 KernelU17$Integral <- c(0, Integral)
 
 write.table(x=HistU17, file = paste0(HermannFolder, "HistU17.tsv"), sep = "\t", dec = ".", row.names = FALSE, col.names = TRUE)
-write.table(x=KernelU17, file = paste0(HermannFolder, "KernelU17.tsv"), sep = "\t", dec = ".", row.names = FALSE, col.names = TRUE)
+write.table(x=KernelU17, file = paste0(HermannFolder, "KernelU17.2tsv"), sep = "\t", dec = ".", row.names = FALSE, col.names = TRUE)
 
 
 
