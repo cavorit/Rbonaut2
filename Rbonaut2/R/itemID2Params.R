@@ -24,7 +24,7 @@ itemID2Params <- function(ItemID){ # ItemID = "BL04"
     adrB = ItemParams$adrM,
     sLsRvA = c(50, 60, 4),
     adrW = ItemParams$adrW,
-    adrCol = c("##FF8800"),
+    adrCol = c("#FF8800"),
     colorExpiration = 2195
   )
 
