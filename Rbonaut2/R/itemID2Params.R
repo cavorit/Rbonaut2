@@ -4,7 +4,7 @@
 #' @title itemID2Params
 #' @param ItemID charakter der Länge 1, welches den Namen des Items angibt. Implementiert sind BL01:BL32
 #' @return list
-#' @example itemID2Params("BL03")
+#' @examples itemID2Params("BL03")
 
 
 itemID2Params <- function(ItemID){ # ItemID = "BL04"
@@ -24,7 +24,7 @@ itemID2Params <- function(ItemID){ # ItemID = "BL04"
     adrB = ItemParams$adrM,
     sLsRvA = c(50, 60, 4),
     adrW = ItemParams$adrW,
-    adrCol = c("#2EFEFEF7"),
+    adrCol = c("##FF8800"),
     colorExpiration = 2195
   )
 
