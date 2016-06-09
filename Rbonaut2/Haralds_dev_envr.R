@@ -24,7 +24,7 @@ LetzterTag <- c(31,
 # Dateiname     = paste0("RAW", Monate)[WievielterMonat] #    "RAW2013-12"
 
 ########### SCHRITT 1: Hole SQL-Query
-for (WievielterMonat in 1:29){#WievielterMonat = 28
+for (WievielterMonat in 1:29){#WievielterMonat = 26
   Anfangsdatum  = paste0(Monate, "-01")[WievielterMonat]  #"2013-12-01"
   Enddatum      = paste(Monate, LetzterTag, sep = "-")[WievielterMonat]  #"2013-12-31"
   Dateiname     = paste0("RAW", Monate)[WievielterMonat] #    "RAW2013-12"
@@ -33,7 +33,7 @@ for (WievielterMonat in 1:29){#WievielterMonat = 28
 }
 
 ########### SCHRITT 2: augmentRAW
-for (WievielterMonat in 1:29){# WievielterMonat = 28
+for (WievielterMonat in 1:29){# WievielterMonat = 29
 Anfangsdatum  = paste0(Monate, "-01")[WievielterMonat]  #"2013-12-01"
 Enddatum      = paste(Monate, LetzterTag, sep = "-")[WievielterMonat]  #"2013-12-31"
 Dateiname     = paste0("RAW", Monate)[WievielterMonat] #    "RAW2013-12"
