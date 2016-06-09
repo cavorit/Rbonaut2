@@ -11,12 +11,12 @@ Monate <- c("2013-12",
             "2015-01", "2015-02", "2015-03", "2015-04",
             "2015-05","2015-06", "2015-07",  "2015-08",
             "2015-09", "2015-10", "2015-11","2015-12",
-            "2016-01", "2016-02", "2016-03", "2016-04",
-            "2016-05")
+            "2016-01", "2016-02", "2016-03", "2016-04")
+
 
 LetzterTag <- c(31,
                rep(c(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31), times=2),
-               31, 29, 31, 30, 31)
+               31, 29, 31, 30)
 
 
 # Anfangsdatum  = paste0(Monate, "-01")[WievielterMonat]  #"2013-12-01"
@@ -24,7 +24,7 @@ LetzterTag <- c(31,
 # Dateiname     = paste0("RAW", Monate)[WievielterMonat] #    "RAW2013-12"
 
 ########### SCHRITT 1: Hole SQL-Query
-for (WievielterMonat in 1:29){#WievielterMonat = 2
+for (WievielterMonat in 1:29){#WievielterMonat = 28
   Anfangsdatum  = paste0(Monate, "-01")[WievielterMonat]  #"2013-12-01"
   Enddatum      = paste(Monate, LetzterTag, sep = "-")[WievielterMonat]  #"2013-12-31"
   Dateiname     = paste0("RAW", Monate)[WievielterMonat] #    "RAW2013-12"
@@ -33,16 +33,16 @@ for (WievielterMonat in 1:29){#WievielterMonat = 2
 }
 
 ########### SCHRITT 2: augmentRAW
-# for (WievielterMonat in 1:26){
-# Anfangsdatum  = paste0(Monate, "-01")[WievielterMonat]  #"2013-12-01"
-# Enddatum      = paste(Monate, LetzterTag, sep = "-")[WievielterMonat]  #"2013-12-31"
-# Dateiname     = paste0("RAW", Monate)[WievielterMonat] #    "RAW2013-12"
-# readRAW(Dateiname = Dateiname)
-# DF <- augmentRAW(SQL = SQL)
-# writeAUGMENTED(DF=DF, Dateiname= paste0("AUGMENTED", Monate[WievielterMonat]) ) # AUGMENTED2014-01
-# table(DF$ItemID)
-# }
-# system('say "Iche habe fertig." -v Alice')
+for (WievielterMonat in 1:29){# WievielterMonat = 28
+Anfangsdatum  = paste0(Monate, "-01")[WievielterMonat]  #"2013-12-01"
+Enddatum      = paste(Monate, LetzterTag, sep = "-")[WievielterMonat]  #"2013-12-31"
+Dateiname     = paste0("RAW", Monate)[WievielterMonat] #    "RAW2013-12"
+readRAW(Dateiname = Dateiname)
+DF <- augmentRAW(SQL = SQL)
+writeAUGMENTED(DF=DF, Dateiname= paste0("AUGMENTED", Monate[WievielterMonat]) ) # AUGMENTED2014-01
+table(DF$ItemID)
+}
+system('say "Iche habe fertig." -v Alice')
 
 ########### SCHRITT 3: readAUGMENTED
 DFtotal <- NULL
