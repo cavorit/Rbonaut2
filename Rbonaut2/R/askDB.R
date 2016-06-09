@@ -12,7 +12,7 @@
 askDB <- function(Anfangsdatum, Enddatum){
   library(RPostgreSQL)
   drv = dbDriver("PostgreSQL")
-  dbname = "fbn"
+  dbname = "hf"
   user = "hf"
   password = "123456"
   host = "localhost"
