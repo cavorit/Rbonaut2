@@ -632,6 +632,69 @@ JanSpielmannTabelle3 <- JanSpielmannTabelle2[as.Date(JanSpielmannTabelle2$timest
 dim(JanSpielmannTabelle3)
 write.csv2(x = JanSpielmannTabelle3, file="~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/JanSpielmann/IndexDerSessionsBisApr2016.csv", sep = ";", dec = ".", row.names = FALSE, col.names = TRUE)
 
+IX <- read.csv2("~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/JanSpielmann/IndexDerSessionsBisApr2016_Gruppen.csv")
+Frey <- as.character(IX[!is.na(IX$Frey), "keyS"])
+Kundt <- as.character(IX[!is.na(IX$Kundt), "keyS"])
+UniMannheim <- as.character(IX[!is.na(IX$Uni.Mannheim), "keyS"])
 
+SessionsFrey <- DF[is.element(DF$keyS, Frey), ]
+SessionsKundt <- DF[is.element(DF$keyS, Kundt),]
+SessionsMannheim <- DF[is.element(DF$keyS, UniMannheim),]
+
+DATAFrey <- NULL
+for (idS in unique(SessionsFrey$keyS)){
+ EineSession <- SessionsFrey[SessionsFrey$keyS == idS,]
+ DATAFrey <- rbind(DATAFrey,
+                   data.frame(
+                    SessionID = unique(EineSession$keyS),
+                    Messzeitpunkt = unique(EineSession$timestampS),
+                    Proband = unique(EineSession$PbnName),
+                    Trefferquote = mean(EineSession$FBq),
+                    Handlungszeit = mean(EineSession$FBt)
+                   )
+              )
+}
+dim(DATAFrey)
+head(DATAFrey)
+str(DATAFrey)
+write.csv2(x = DATAFrey, file="~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/JanSpielmann/DATAFrey.csv", sep=";", dec = ".", row.names = FALSE)
+
+
+DATAKundt <- NULL
+for (idS in unique(SessionsKundt$keyS)){
+  EineSession <- SessionsKundt[SessionsKundt$keyS == idS,]
+  DATAKundt <- rbind(DATAKundt,
+                    data.frame(
+                      SessionID = unique(EineSession$keyS),
+                      Messzeitpunkt = unique(EineSession$timestampS),
+                      Proband = unique(EineSession$PbnName),
+                      Trefferquote = mean(EineSession$FBq),
+                      Handlungszeit = mean(EineSession$FBt)
+                    )
+  )
+}
+dim(DATAKundt)
+head(DATAKundt)
+str(DATAKundt)
+write.csv2(x = DATAKundt, file="~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/JanSpielmann/DATAKundt.csv", sep=";", dec = ".", row.names = FALSE)
+
+
+DATAUniMannheim <- NULL
+for (idS in unique(SessionsMannheim$keyS)){
+  EineSession <- SessionsMannheim[SessionsMannheim$keyS == idS,]
+  DATAUniMannheim <- rbind(DATAUniMannheim,
+                     data.frame(
+                       SessionID = unique(EineSession$keyS),
+                       Messzeitpunkt = unique(EineSession$timestampS),
+                       Proband = unique(EineSession$PbnName),
+                       Trefferquote = mean(EineSession$FBq),
+                       Handlungszeit = mean(EineSession$FBt)
+                     )
+  )
+}
+dim(DATAUniMannheim)
+head(DATAUniMannheim)
+str(DATAUniMannheim)
+write.csv2(x = DATAUniMannheim, file="~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/JanSpielmann/DATAUniMannheim.csv", sep=";", dec = ".", row.names = FALSE)
 
 
