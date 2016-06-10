@@ -624,9 +624,13 @@ write.table(x=KernelU17, file = paste0(HermannFolder, "KernelU17.2tsv"), sep = "
 
 
 
+#### Jan Spielmann neue Tabellen
 
-
-
+JanSpielmannTabelle <- unique(DF[, c("keyS", "PbnName", "PbnTeam", "timestampS", "nB")])
+JanSpielmannTabelle2 <- JanSpielmannTabelle[JanSpielmannTabelle$nB > 19 , ]
+JanSpielmannTabelle3 <- JanSpielmannTabelle2[as.Date(JanSpielmannTabelle2$timestampS) > as.Date("2015-06-01"), ]
+dim(JanSpielmannTabelle3)
+write.csv2(x = JanSpielmannTabelle3, file="~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/JanSpielmann/IndexDerSessionsBisApr2016.csv", sep = ";", dec = ".", row.names = FALSE, col.names = TRUE)
 
 
 
