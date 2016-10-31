@@ -33,12 +33,13 @@ LetzterTag <- c(31,
 # }
 #
 # ########### SCHRITT 2: augmentRAW
-# for (WievielterMonat in 1:29){# WievielterMonat = 27
+# for (WievielterMonat in 1:29){#
+# WievielterMonat = 27
 # Anfangsdatum  = paste0(Monate, "-01")[WievielterMonat]  #"2013-12-01"
 # Enddatum      = paste(Monate, LetzterTag, sep = "-")[WievielterMonat]  #"2013-12-31"
 # Dateiname     = paste0("RAW", Monate)[WievielterMonat] #    "RAW2013-12"
-
-# readRAW(Dateiname = Dateiname, Pfad = "~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/RAW/")
+#
+# readRAW(Dateiname = Dateiname, Pfad="~/Dropbox (Cavorit)/Hoffenheim/RAW/")
 # DF <- augmentRAW(SQL = SQL)
 # writeAUGMENTED(DF=DF, Dateiname= paste0("AUGMENTED", Monate[WievielterMonat]) ) # AUGMENTED2014-01
 # table(DF$ItemID)
@@ -51,7 +52,7 @@ for (WievielterMonat in 1:29){
 Anfangsdatum  = paste0(Monate, "-01")[WievielterMonat]  #"2013-12-01"
 Enddatum      = paste(Monate, LetzterTag, sep = "-")[WievielterMonat]  #"2013-12-31"
 Dateiname     = paste0("AUGMENTED", Monate)[WievielterMonat] #    "RAW2013-12"
-readAUGMENTED(Dateiname = Dateiname)
+readAUGMENTED(Dateiname = Dateiname, Pfad = '~/Dropbox (Cavorit)/Hoffenheim/RAW/')
 DFtotal <- rbind(DF, DFtotal)
 print(Dateiname)
 print(table(DF$ItemID))
