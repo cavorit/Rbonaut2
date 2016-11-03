@@ -2,7 +2,7 @@ rm(list=ls())
 library(Rbonaut2)
 # DB muss erst von Hand gestartet werden.
 
-
+# ich test einfach hier was
 #
 Monate <- c("2013-12",
             "2014-01", "2014-02", "2014-03", "2014-04",
