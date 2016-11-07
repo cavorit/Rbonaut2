@@ -5,26 +5,6 @@ library('Rbonaut2')
 
 base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
 cleanEx()
-nameEx("SQL2DF")
-### * SQL2DF
-
-flush(stderr()); flush(stdout())
-
-### Name: SQL2DF
-### Title: SQL2DF
-### Aliases: SQL2DF
-
-### ** Examples
-
-#message("Ich lade den R-Paket-internen RAW-Datensatz: Footbonaut_Datenabfrage_RicoWehrle.csv")
-#Pfad <- system.file("extdata", package="Rbonaut2", "Footbonaut_Datenabfrage_RicoWehrle.csv")
-#SQL <- read.csv2(file=Pfad, sep = ",", stringsAsFactors = FALSE, encoding = "utf8")
-#DF <- SQL2DF(SQL=SQL)
-#head(DF)
-
-
-
-cleanEx()
 nameEx("erstelleRaschMatrixSkeleton")
 ### * erstelleRaschMatrixSkeleton
 
@@ -76,27 +56,6 @@ flush(stderr()); flush(stdout())
 ### ** Examples
 
 getFirstAdrW(adrW=c("{2, 4, 5}", "{12, 19}", "{4}"))
-
-
-
-cleanEx()
-nameEx("getItemICC")
-### * getItemICC
-
-flush(stderr()); flush(stdout())
-
-### Name: getItemICC
-### Title: getItemICC
-### Aliases: getItemICC
-
-### ** Examples
-
-Pfad <- system.file("extdata", package="Rbonaut2", "Footbonaut_Datenabfrage_RicoWehrle.csv")
-SQL <- read.csv(file=Pfad, sep=";", header=TRUE, encoding="utf8", stringsAsFactors = FALSE)
-DF <- SQL2DF(SQL = SQL)
-ItemBank=readItemBank()
-F14 <- getItemICC(DF=DF, ItemBank=readItemBank(), MaximaleToleranz=15)
-head(F14)
 
 
 
@@ -168,22 +127,6 @@ gibZahlFuehrendeNullen(k=k, digits=9)
 
 
 cleanEx()
-nameEx("isUTF8")
-### * isUTF8
-
-flush(stderr()); flush(stdout())
-
-### Name: isUTF8
-### Title: isUTF8
-### Aliases: isUTF8
-
-### ** Examples
-
-isUTF8(file="~/Desktop")
-
-
-
-cleanEx()
 nameEx("istFormatNachnameKommaVorname")
 ### * istFormatNachnameKommaVorname
 
@@ -197,6 +140,22 @@ flush(stderr()); flush(stdout())
 
 Spielername <- c("Fiedler, Harald", "Mayer, Jan", "A-Team")
 istFormatNachnameKommaVorname(Spielername = Spielername)
+
+
+
+cleanEx()
+nameEx("itemID2Params")
+### * itemID2Params
+
+flush(stderr()); flush(stdout())
+
+### Name: itemID2Params
+### Title: itemID2Params
+### Aliases: itemID2Params
+
+### ** Examples
+
+itemID2Params("BL03")
 
 
 
@@ -237,6 +196,24 @@ plotFBN(Adresses=FALSE)
 
 
 cleanEx()
+nameEx("readAUGMENTED")
+### * readAUGMENTED
+
+flush(stderr()); flush(stdout())
+
+### Name: readAUGMENTED
+### Title: readAUGMENTED
+### Aliases: readAUGMENTED
+
+### ** Examples
+
+#Dateiname = "RAW-2015-04"
+#head(readAUGMENTED(Dateiname = Dateiname))
+
+
+
+
+cleanEx()
 nameEx("readItemBank")
 ### * readItemBank
 
@@ -266,7 +243,7 @@ flush(stderr()); flush(stdout())
 ### ** Examples
 
 Dateiname = "RAW-2015-04"
-head(readRAW(Dateiname = Dateiname))
+#head(readRAW(Dateiname = Dateiname))
 
 
 

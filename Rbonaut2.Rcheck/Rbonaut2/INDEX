@@ -1,7 +1,10 @@
+NormTree                NormTree ist eine verschachtelte Liste
 Rbonaut2-package        Rbonaut2
-SQL2DF                  SQL2DF
 askDB                   askDB
+augmentRAW              augmentRAW
+calcFiedler2016a        calcFiedler2016a
 detectItemID            detectItemID
+detectItemIDLive        detectItemIDLive
 detectItemResponse      detectItemResponse
 erstelleRaschMatrixSkeleton
                         erstelleRaschMatrixSkeleton
@@ -10,7 +13,6 @@ fillRaschMatrixSkeleton
 getAdrWAlsListe         getAdrWAlsListe
 getFirstAdrW            getFirstArdW
 getHW                   getHW
-getItemICC              getItemICC
 getNachname             getNachname
 getSessionTimeStamp     getSessionTimeStamp
 getVorname              getVorname
@@ -19,11 +21,14 @@ gibZahlFuehrendeNullen
 implodeRaschMatrix4Quality
                         implodeFilledRaschMatrixSkeleton4Quality
 isMultiTarget           isMultiTarget
-isUTF8                  isUTF8
 istFormatNachnameKommaVorname
                         istFormatNachnameKommaVorname
+itemID2Params           itemID2Params
 playedAngle             playedAngle
 plotFBN                 plotFBN
+plotSeaShell            plotSeaShell
+readAUGMENTED           readAUGMENTED
 readItemBank            readItemBank
 readRAW                 readRAW
+writeAUGMENTED          writeAUGMENTED
 writeRAW                writeRAW

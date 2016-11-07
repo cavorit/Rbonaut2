@@ -5,7 +5,7 @@
 #' @param Pfad CharacterString mit Pfadangabe zur Dropbox
 #' @examples
 #' Dateiname = "RAW-2015-04"
-#' head(readRAW(Dateiname = Dateiname))
+#' #head(readRAW(Dateiname = Dateiname))
 #'
 
 readRAW <- function(Dateiname, Pfad = "~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/RAW/"){

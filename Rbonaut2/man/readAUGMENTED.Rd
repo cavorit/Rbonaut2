@@ -4,10 +4,13 @@
 \alias{readAUGMENTED}
 \title{readAUGMENTED}
 \usage{
-readAUGMENTED(Dateiname)
+readAUGMENTED(Dateiname,
+  Pfad = "~/Dropbox (Cavorit)/Cavorit/Forschungsprojekte/Hoffenheim/RAW/")
 }
 \arguments{
 \item{Dateiname}{character der Länge 1 mit Dateiname (ohne Endung). Der Pfad wird automatisch auf die Dropbox gesetzt, genauer in den Ordner RAW vom Ordner Hoffenheim}
+
+\item{Pfad}{CharacterString mit Pfadangabe zur Dropbox}
 }
 \description{
 Liest die per writeAUGMENTED() gespeicherten Dateien ein

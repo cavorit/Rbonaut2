@@ -1,7 +1,7 @@
 
-R version 3.2.2 (2015-08-14) -- "Fire Safety"
-Copyright (C) 2015 The R Foundation for Statistical Computing
-Platform: x86_64-apple-darwin13.4.0 (64-bit)
+R version 3.2.5 (2016-04-14) -- "Very, Very Secure Dishes"
+Copyright (C) 2016 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
@@ -24,28 +24,16 @@ Type 'q()' to quit R.
 Loading required package: data.table
 Loading required package: RPostgreSQL
 Loading required package: DBI
+Loading required package: sfsmisc
+
+Attaching package: ‘sfsmisc’
+
+The following object is masked from ‘package:data.table’:
+
+    last
+
 > 
 > base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
-> cleanEx()
-> nameEx("SQL2DF")
-> ### * SQL2DF
-> 
-> flush(stderr()); flush(stdout())
-> 
-> ### Name: SQL2DF
-> ### Title: SQL2DF
-> ### Aliases: SQL2DF
-> 
-> ### ** Examples
-> 
-> #message("Ich lade den R-Paket-internen RAW-Datensatz: Footbonaut_Datenabfrage_RicoWehrle.csv")
-> #Pfad <- system.file("extdata", package="Rbonaut2", "Footbonaut_Datenabfrage_RicoWehrle.csv")
-> #SQL <- read.csv2(file=Pfad, sep = ",", stringsAsFactors = FALSE, encoding = "utf8")
-> #DF <- SQL2DF(SQL=SQL)
-> #head(DF)
-> 
-> 
-> 
 > cleanEx()
 > nameEx("erstelleRaschMatrixSkeleton")
 > ### * erstelleRaschMatrixSkeleton
@@ -67,9 +55,7 @@ Loading required package: DBI
 1 SessionA  22  23                    10
 2 SessionB  90  18                    12
 > erstelleRaschMatrixSkeleton(DF=DF, ItemIDNamen=ItemIDNamen)
-         Item1 Item2 Item3
-SessionA    NA    NA    NA
-SessionB    NA    NA    NA
+     Item1 Item2 Item3
 > 
 > 
 > 
@@ -111,107 +97,6 @@ SessionB    NA    NA    NA
 > 
 > getFirstAdrW(adrW=c("{2, 4, 5}", "{12, 19}", "{4}"))
 [1]  2 12  4
-> 
-> 
-> 
-> cleanEx()
-> nameEx("getItemICC")
-> ### * getItemICC
-> 
-> flush(stderr()); flush(stdout())
-> 
-> ### Name: getItemICC
-> ### Title: getItemICC
-> ### Aliases: getItemICC
-> 
-> ### ** Examples
-> 
-> Pfad <- system.file("extdata", package="Rbonaut2", "Footbonaut_Datenabfrage_RicoWehrle.csv")
-> SQL <- read.csv(file=Pfad, sep=";", header=TRUE, encoding="utf8", stringsAsFactors = FALSE)
-> DF <- SQL2DF(SQL = SQL)
-
-Erstelle Schlüßel
-... erstellt
-
-Erstelle Biographie (= nichtintegres bzw. weiches idP)
-... erstellt
-
-Erstelle itemdefinierende Variablen
-... erstellt
-
-Erstelle technische misc
-... erstellt
-
-Erstelle Item-Response
-... erstellt
-
-Erstelle Sonstiges
-... erstellt
-
-Erstelle nB
-... erstellt. Anmerkung: nB = max(idX), daher ist nB+1 die tatsächliche Anzahl der Bälle
-
-Erstelle Reaktionswinkel
-... fertig
-
-Erstelle ItemID
-... fertig
-
-Erstelle ItemResponse
-... fertig
-
-Sortiere Spalten
-... fertig
-> ItemBank=readItemBank()
-> F14 <- getItemICC(DF=DF, ItemBank=readItemBank(), MaximaleToleranz=15)
-Warning in getItemICC(DF = DF, ItemBank = readItemBank(), MaximaleToleranz = 15) :
-  Ein bereits identifiziertes Item wurde erneut identifiziert. Alte ItemID und ItemCC wird durch neue ItemID und neue ICC überschrieben.
-Es wurden 107 potentielle Items identifiziert.
-
-Davon wurden 2 Identifikationen auf Grund zu stark abweichender sL bzw. sR zurückgenommen.
-> head(F14)
-           idFBN                                idS
-1 FBN-Hoffenheim FBN-Hoffenheim-2015-08-27-09:27:26
-2 FBN-Hoffenheim FBN-Hoffenheim-2015-08-27-09:36:40
-3 FBN-Hoffenheim FBN-Hoffenheim-2015-08-27-11:44:18
-4 FBN-Hoffenheim FBN-Hoffenheim-2015-08-27-11:46:54
-5 FBN-Hoffenheim FBN-Hoffenheim-2015-08-27-10:26:47
-6 FBN-Hoffenheim FBN-Hoffenheim-2015-08-27-12:44:13
-                                      idB idX nB ItemID ItemResponse
-1 FBN-Hoffenheim-2015-08-27-09:27:26-B008   8  9   <NA>            0
-2 FBN-Hoffenheim-2015-08-27-09:36:40-B009   9  9   <NA>            0
-3 FBN-Hoffenheim-2015-08-27-11:44:18-B008   8  9   <NA>            0
-4 FBN-Hoffenheim-2015-08-27-11:46:54-B003   3  9   <NA>            0
-5 FBN-Hoffenheim-2015-08-27-10:26:47-B001   1 11   <NA>            0
-6 FBN-Hoffenheim-2015-08-27-12:44:13-B005   5 31   <NA>            0
-           PbnName PbnNachname PbnVorname PbnPosition      PbnTeam adrM adrW
-1    Linder, Sarai      Linder      Sarai  midfielder Frauen 2. BL   28   66
-2    Giehl, Madita       Giehl     Madita    defender Frauen 2. BL   46   12
-3     Evels, Emily       Evels      Emily  midfielder Frauen 1. BL   46   12
-4     Bürger, Lina      Bürger       Lina     striker Frauen 1. BL   46   12
-5  Kaiser, Johanna      Kaiser    Johanna    defender Frauen 2. BL   10   48
-6 A_TEST_Forschung        <NA>       <NA>    defender     Scouting   28   66
-  adrLast adrOut sL sR vA isMultiTarg MultiTargs   RW HW   AW DELAY SND LED
-1      62     66 48 48  2       FALSE       {66} -170 FF -170   950   t   t
-2       8     12 48 48  2       FALSE       {12} -170 FF -170   950   t   t
-3       8     12 48 48  2       FALSE       {12} -170 FF -170   950   t   t
-4       6     12 48 48  2       FALSE       {12} -160 FF -170   950   t   t
-5      38     48 48 48  2       FALSE       {48} -140 FF -170   950   t   t
-6      54     66 50 50  2       FALSE       {66} -130 FF -170   800   t   t
-        Date JSONfile Comments goal.under.5000ms FBq  FBt Fiedler2012 ItemID.1
-1 2015-08-27       NA       NA                 1   1 1702       93377     <NA>
-2 2015-08-27       NA       NA                 1   1 2150       70619     <NA>
-3 2015-08-27       NA       NA                 1   1 1905       93675     <NA>
-4 2015-08-27       NA       NA                 1   1 1915       61223     <NA>
-5 2015-08-27       NA       NA                 1   1 1735       55184     <NA>
-6 2015-08-27       NA       NA                 1   1 3555       11326     <NA>
-  ICCa ICCb ICCc ICCd
-1   NA   NA   NA   NA
-2   NA   NA   NA   NA
-3   NA   NA   NA   NA
-4   NA   NA   NA   NA
-5   NA   NA   NA   NA
-6   NA   NA   NA   NA
 > 
 > 
 > 
@@ -286,24 +171,6 @@ Davon wurden 2 Identifikationen auf Grund zu stark abweichender sL bzw. sR zurü
 > 
 > 
 > cleanEx()
-> nameEx("isUTF8")
-> ### * isUTF8
-> 
-> flush(stderr()); flush(stdout())
-> 
-> ### Name: isUTF8
-> ### Title: isUTF8
-> ### Aliases: isUTF8
-> 
-> ### ** Examples
-> 
-> isUTF8(file="~/Desktop")
-character(0)
-[1] TRUE
-> 
-> 
-> 
-> cleanEx()
 > nameEx("istFormatNachnameKommaVorname")
 > ### * istFormatNachnameKommaVorname
 > 
@@ -318,6 +185,37 @@ character(0)
 > Spielername <- c("Fiedler, Harald", "Mayer, Jan", "A-Team")
 > istFormatNachnameKommaVorname(Spielername = Spielername)
 [1]  TRUE  TRUE FALSE
+> 
+> 
+> 
+> cleanEx()
+> nameEx("itemID2Params")
+> ### * itemID2Params
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: itemID2Params
+> ### Title: itemID2Params
+> ### Aliases: itemID2Params
+> 
+> ### ** Examples
+> 
+> itemID2Params("BL03")
+$adrB
+[1] 10
+
+$sLsRvA
+[1] 50 60  4
+
+$adrW
+[1] 22
+
+$adrCol
+[1] "#FF8800"
+
+$colorExpiration
+[1] 2195
+
 > 
 > 
 > 
@@ -359,6 +257,24 @@ character(0)
 > 
 > 
 > cleanEx()
+> nameEx("readAUGMENTED")
+> ### * readAUGMENTED
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: readAUGMENTED
+> ### Title: readAUGMENTED
+> ### Aliases: readAUGMENTED
+> 
+> ### ** Examples
+> 
+> #Dateiname = "RAW-2015-04"
+> #head(readAUGMENTED(Dateiname = Dateiname))
+> 
+> 
+> 
+> 
+> cleanEx()
 > nameEx("readItemBank")
 > ### * readItemBank
 > 
@@ -372,13 +288,13 @@ character(0)
 > 
 > ItemBank <- readItemBank()
 > head(ItemBank)
-  ItemID sL sR vA HW   RW  AW ICCa       ICCb ICCc ICCd
-1   CS01 55 65  2 FF   NA  20    1  0.0000000    0    1
-2   CS02 55 65  2 FF -160 140    1  1.4700236    0    1
-3   CS03 55 65  2 FF   40  50    1 -0.7700552    0    1
-4   CS04 55 65  2 FF -140 -60    1  0.2591781    0    1
-5   CS05 55 65  2 FF  150 -30    1 -0.4609686    0    1
-6   CS06 55 65  2 FF   30  40    1 -0.7415591    0    1
+  ItemID ICCa       ICCb ICCc ICCd
+1   CS01    1  0.0000000    0    1
+2   CS02    1  1.4700236    0    1
+3   CS03    1 -0.7700552    0    1
+4   CS04    1  0.2591781    0    1
+5   CS05    1 -0.4609686    0    1
+6   CS06    1 -0.7415591    0    1
 > 
 > 
 > 
@@ -395,10 +311,7 @@ character(0)
 > ### ** Examples
 > 
 > Dateiname = "RAW-2015-04"
-> head(readRAW(Dateiname = Dateiname))
-Loading objects:
-  DF
-[1] "DF"
+> #head(readRAW(Dateiname = Dateiname))
 > 
 > 
 > 
@@ -407,7 +320,7 @@ Loading objects:
 > ###
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  2.956 0.03 3.006 0.002 0.002 
+Time elapsed:  0.276 0.02 0.296 0 0 
 > grDevices::dev.off()
 null device 
           1 
