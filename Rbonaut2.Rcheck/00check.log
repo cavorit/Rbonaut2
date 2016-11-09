@@ -1,10 +1,10 @@
-* using log directory ‘/home/cavorit/Dokumente/cavorit/Rbonaut2/Rbonaut2.Rcheck’
-* using R version 3.2.5 (2016-04-14)
-* using platform: x86_64-pc-linux-gnu (64-bit)
+* using log directory ‘/Users/hf/Desktop/Rbonaut2/Rbonaut2.Rcheck’
+* using R version 3.2.2 (2015-08-14)
+* using platform: x86_64-apple-darwin13.4.0 (64-bit)
 * using session charset: UTF-8
 * checking for file ‘Rbonaut2/DESCRIPTION’ ... OK
 * checking extension type ... Package
-* this is package ‘Rbonaut2’ version ‘0.6’
+* this is package ‘Rbonaut2’ version ‘0.7’
 * checking package namespace information ... OK
 * checking package dependencies ... OK
 * checking if this is a source package ... OK
@@ -13,7 +13,8 @@
 * checking for hidden files and directories ... NOTE
 Found the following hidden files and directories:
   .DS_Store
-  .Rhistory
+  R/.DS_Store
+  R/.Rhistory
   inst/.DS_Store
   .Rproj.user
 These were most likely included in error. See section ‘Package
@@ -47,11 +48,17 @@ Use \uxxxx escapes for other characters.
 * checking whether the package can be unloaded cleanly ... OK
 * checking whether the namespace can be loaded with stated dependencies ... OK
 * checking whether the namespace can be unloaded cleanly ... OK
-* checking loading without being on the library search path ... OK
 * checking dependencies in R code ... WARNING
-'::' or ':::' import not declared from: ‘catR’
+'::' or ':::' imports not declared from:
+  ‘catR’ ‘jsonlite’
+'library' or 'require' calls not declared from:
+  ‘catR’ ‘jsonlite’
 'library' or 'require' call to ‘RPostgreSQL’ which was already attached by Depends.
   Please remove these calls from your code.
+'library' or 'require' calls in package code:
+  ‘catR’ ‘jsonlite’
+  Please use :: or requireNamespace() instead.
+  See section 'Suggested packages' in the 'Writing R Extensions' manual.
 Packages in Depends field not imported from:
   ‘RPostgreSQL’ ‘data.table’ ‘sfsmisc’
   These packages need to be imported from (in the NAMESPACE file)
@@ -60,6 +67,8 @@ Packages in Depends field not imported from:
 * checking replacement functions ... OK
 * checking foreign function calls ... OK
 * checking R code for possible problems ... NOTE
+adaptiv.BL16.fullRandom.modelTransform: no visible binding for global
+  variable ‘AnfrageJSONstring’
 askDB: no visible global function definition for ‘dbDriver’
 askDB: no visible global function definition for ‘dbConnect’
 askDB: no visible global function definition for ‘dbGetQuery’
@@ -106,7 +115,8 @@ problems found in ‘askDB.Rd’, ‘augmentRAW.Rd’, ‘calcFiedler2016a.Rd’
 * checking Rd cross-references ... OK
 * checking for missing documentation entries ... WARNING
 Undocumented code objects:
-  ‘NormTree_new’
+  ‘NormTree_new’ ‘adaptiv.BL16.fullRandom.modelRequire’
+  ‘adaptiv.BL16.fullRandom.modelTransform’
 Undocumented data sets:
   ‘NormTree_new’
 All user-level objects in a package should have documentation entries.
@@ -124,7 +134,7 @@ Extensions’ manual.
         by using R CMD build --resave-data
                     old_size new_size compress
   NormTree.rda         795Kb    572Kb       xz
-  NormTree_6.16.rda    803Kb    578Kb       xz
+  NormTree_6.16.rda    803Kb    577Kb       xz
 * checking examples ... OK
 * checking PDF version of manual ... OK
 * DONE
