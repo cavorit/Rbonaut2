@@ -1,4 +1,7 @@
 Rbonaut2-package	Rbonaut2-package
+adaptiv.BL16.fullRandom.modelPredict	adaptiv.BL16.fullRandom.modelPredict
+adaptiv.BL16.fullRandom.modelRequire	adaptiv.BL16.fullRandom.modelRequire
+adaptiv.BL16.fullRandom.modelTransform	adaptiv.BL16.fullRandom.modelTransform
 askDB	askDB
 augmentRAW	augmentRAW
 calcFiedler2016a	calcFiedler2016a

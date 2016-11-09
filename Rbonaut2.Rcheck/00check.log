@@ -13,6 +13,7 @@
 * checking for hidden files and directories ... NOTE
 Found the following hidden files and directories:
   .DS_Store
+  .Rhistory
   R/.DS_Store
   R/.Rhistory
   inst/.DS_Store
@@ -69,6 +70,8 @@ Packages in Depends field not imported from:
 * checking R code for possible problems ... NOTE
 adaptiv.BL16.fullRandom.modelTransform: no visible binding for global
   variable ‘AnfrageJSONstring’
+adaptiv.BL16.fullRandom.modelTransform: no visible binding for global
+  variable ‘AnfrageList’
 askDB: no visible global function definition for ‘dbDriver’
 askDB: no visible global function definition for ‘dbConnect’
 askDB: no visible global function definition for ‘dbGetQuery’
@@ -86,6 +89,9 @@ augmentRAW : SQL2DF.RW : iCalcReaktionsWinkel: no visible binding for
   global variable ‘idX’
 plotSeaShell: no visible global function definition for ‘integrate.xy’
 * checking Rd files ... WARNING
+adaptiv.BL16.fullRandom.modelPredict.Rd: non-ASCII input and no declared encoding
+adaptiv.BL16.fullRandom.modelRequire.Rd: non-ASCII input and no declared encoding
+adaptiv.BL16.fullRandom.modelTransform.Rd: non-ASCII input and no declared encoding
 askDB.Rd: non-ASCII input and no declared encoding
 augmentRAW.Rd: non-ASCII input and no declared encoding
 calcFiedler2016a.Rd: non-ASCII input and no declared encoding
@@ -110,20 +116,29 @@ readItemBank.Rd: non-ASCII input and no declared encoding
 readRAW.Rd: non-ASCII input and no declared encoding
 writeAUGMENTED.Rd: non-ASCII input and no declared encoding
 writeRAW.Rd: non-ASCII input and no declared encoding
-problems found in ‘askDB.Rd’, ‘augmentRAW.Rd’, ‘calcFiedler2016a.Rd’, ‘detectItemID.Rd’, ‘detectItemIDLive.Rd’, ‘detectItemResponse.Rd’, ‘erstelleRaschMatrixSkeleton.Rd’, ‘fillRaschMatrixSkeleton.Rd’, ‘getAdrWAlsListe.Rd’, ‘getFirstAdrW.Rd’, ‘getHW.Rd’, ‘getNachname.Rd’, ‘getVorname.Rd’, ‘gibZahlFuehrendeNullen.Rd’, ‘implodeRaschMatrix4Quality.Rd’, ‘istFormatNachnameKommaVorname.Rd’, ‘itemID2Params.Rd’, ‘plotSeaShell.Rd’, ‘readAUGMENTED.Rd’, ‘readItemBank.Rd’, ‘readRAW.Rd’, ‘writeAUGMENTED.Rd’, ‘writeRAW.Rd’
+problems found in ‘adaptiv.BL16.fullRandom.modelPredict.Rd’, ‘adaptiv.BL16.fullRandom.modelRequire.Rd’, ‘adaptiv.BL16.fullRandom.modelTransform.Rd’, ‘askDB.Rd’, ‘augmentRAW.Rd’, ‘calcFiedler2016a.Rd’, ‘detectItemID.Rd’, ‘detectItemIDLive.Rd’, ‘detectItemResponse.Rd’, ‘erstelleRaschMatrixSkeleton.Rd’, ‘fillRaschMatrixSkeleton.Rd’, ‘getAdrWAlsListe.Rd’, ‘getFirstAdrW.Rd’, ‘getHW.Rd’, ‘getNachname.Rd’, ‘getVorname.Rd’, ‘gibZahlFuehrendeNullen.Rd’, ‘implodeRaschMatrix4Quality.Rd’, ‘istFormatNachnameKommaVorname.Rd’, ‘itemID2Params.Rd’, ‘plotSeaShell.Rd’, ‘readAUGMENTED.Rd’, ‘readItemBank.Rd’, ‘readRAW.Rd’, ‘writeAUGMENTED.Rd’, ‘writeRAW.Rd’
 * checking Rd metadata ... OK
 * checking Rd cross-references ... OK
 * checking for missing documentation entries ... WARNING
 Undocumented code objects:
-  ‘NormTree_new’ ‘adaptiv.BL16.fullRandom.modelRequire’
-  ‘adaptiv.BL16.fullRandom.modelTransform’
+  ‘NormTree_new’
 Undocumented data sets:
   ‘NormTree_new’
 All user-level objects in a package should have documentation entries.
 See chapter ‘Writing R documentation files’ in the ‘Writing R
 Extensions’ manual.
 * checking for code/documentation mismatches ... OK
-* checking Rd \usage sections ... OK
+* checking Rd \usage sections ... WARNING
+Undocumented arguments in documentation object 'adaptiv.BL16.fullRandom.modelPredict'
+  ‘AnfrageDF’
+Documented arguments not in \usage in documentation object 'adaptiv.BL16.fullRandom.modelPredict':
+  ‘DF’
+
+Functions with \usage entries need to have the appropriate \alias
+entries, and all their arguments documented.
+The \usage entries must correspond to syntactically valid R code.
+See chapter ‘Writing R documentation files’ in the ‘Writing R
+Extensions’ manual.
 * checking Rd contents ... OK
 * checking for unstated dependencies in examples ... OK
 * checking contents of ‘data’ directory ... OK
@@ -138,4 +153,4 @@ Extensions’ manual.
 * checking examples ... OK
 * checking PDF version of manual ... OK
 * DONE
-Status: 5 WARNINGs, 3 NOTEs
+Status: 6 WARNINGs, 3 NOTEs
