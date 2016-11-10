@@ -4,10 +4,10 @@
 \alias{adaptiv.BL16.fullRandom.modelTransform}
 \title{adaptiv.BL16.fullRandom.modelTransform}
 \usage{
-adaptiv.BL16.fullRandom.modelTransform(AnfrageJSON)
+adaptiv.BL16.fullRandom.modelTransform(AnfrageJSONstring)
 }
 \arguments{
-\item{AnfrageJSON}{String, der in R zu einer Liste umgewandelt werden kann mit folgenden Elementen:
+\item{AnfrageJSONstring}{String, der in R zu einer Liste umgewandelt werden kann mit folgenden Elementen:
 \itemize{
   \item TestID: den Namen des Testformats. Beispielsweise: 'BL32'
   \item idS: die aktuelle Session-ID, beispielsweise: '002b6573-cf12-436d-bccd-0856b0bb0a25'

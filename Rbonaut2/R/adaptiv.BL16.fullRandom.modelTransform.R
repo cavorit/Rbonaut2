@@ -1,7 +1,7 @@
 #' @author Harald Fiedler
 #' @description modelTransform() fuer yhat-Modell eines voll randomisierten Samplers des BL32-Testraums mit Stop nach 16 Bällen
 #' @details Es handelt sich hier um die modelTransform-Funktion für yhat-Architektur. Bei dem Dienst handelt es sich um einen reinen Item-Sampler. Solange die Session-History weniger als 16 Bälle aufweist, wird aus dem Item-Raum der BL32 ein Item gewählt.
-#' @param AnfrageJSON String, der in R zu einer Liste umgewandelt werden kann mit folgenden Elementen:
+#' @param AnfrageJSONstring String, der in R zu einer Liste umgewandelt werden kann mit folgenden Elementen:
 #' \itemize{
 #'   \item TestID: den Namen des Testformats. Beispielsweise: 'BL32'
 #'   \item idS: die aktuelle Session-ID, beispielsweise: '002b6573-cf12-436d-bccd-0856b0bb0a25'
@@ -39,7 +39,7 @@
 #' @title adaptiv.BL16.fullRandom.modelTransform
 #' @return data.frame mit den oben beschriebenen Spalten.
 
-adaptiv.BL16.fullRandom.modelTransform <- function(AnfrageJSON){
+adaptiv.BL16.fullRandom.modelTransform <- function(AnfrageJSONstring){
 
     AnfrageListe <- jsonlite::fromJSON(txt = AnfrageJSONstring)
 
