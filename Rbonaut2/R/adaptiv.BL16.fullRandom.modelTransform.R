@@ -68,7 +68,7 @@ adaptiv.BL16.fullRandom.modelTransform <- function(AnfrageJSONstring){
       SessionStart = SessionStart,
       adrB = adrB,
       adrW = adrW[,1], # bei Multitarget wird jeweils nur das erste Fenster genommen
-      adrCol = adrCol, # bei Multitarget wird jeweils nur das erste Fenster genommen
+      adrCol = adrCol[,1], # bei Multitarget wird jeweils nur das erste Fenster genommen
       adrOut = adrOut,
       FBt = FBt
     )
