@@ -54,7 +54,7 @@ adaptiv.BL16.fullRandom.modelPredict <- function(AnfrageDF){
     shot_delay = rep(800, times=32),
     expiration_time = 2100 + rpois(32, lambda = 95)
   )
-  rownames(OutputRaum) <- paste0("I", 1:32)
+  rownames(ItemRaum) <- paste0("I", 1:32)
 
 
 
