@@ -46,8 +46,9 @@ adaptiv.BL16.fullRandom.modelTransform <- function(AnfrageJSONstring){
     # Lese die Variablen ein
     TestID <- AnfrageListe$TestID # Die ID dieses Tests lautet "adaptiv.BL16.fullRandom"
     idS <- AnfrageListe$idS # ID der Session
+    idP <- AnfrageListe$idP
     NamePlayer <- AnfrageListe$NamePlayer # Name als ein CharacterString
-    Birtday <- as.Date(AnfrageListe$Birthday)
+    Birthday <- as.Date(AnfrageListe$Birthday)
     Team <- AnfrageListe$Team
     SessionStart <- as.Date(AnfrageListe$SessionStart) # Datum Stunde Sekunde
     adrB <- AnfrageListe$adrB
@@ -58,18 +59,18 @@ adaptiv.BL16.fullRandom.modelTransform <- function(AnfrageJSONstring){
 
     # Bereite Ergebnis vor
     AnfrageDF <- data.frame(
-      TestID = AnfrageList$TestID,
-      idS = AnfrageList$idS,
-      idP = AnfrageList$idP,
-      NamePlayer = AnfrageList$NamePlayer,
-      Birtday = as.Date(AnfrageListe$Birthday),
-      Team = AnfrageListe$Team,
-      SessionStart = as.POSIXlt(AnfrageList$SessionStart),
-      adrB = AnfrageList$adrB,
-      adrW = AnfrageList$adrW,
-      adrCol = AnfrageList$adrCol,
-      adrOut = AnfrageList$adrOut,
-      FBt = AnfrageList$FBt
+      TestID = TestID,
+      idS = idS,
+      idP = idP,
+      NamePlayer = NamePlayer,
+      Birthday = Birthday,
+      Team = Team,
+      SessionStart = SessionStart,
+      adrB = adrB,
+      adrW = adrW[,1], # bei Multitarget wird jeweils nur das erste Fenster genommen
+      adrCol = adrCol, # bei Multitarget wird jeweils nur das erste Fenster genommen
+      adrOut = adrOut,
+      FBt = FBt
     )
 
 
