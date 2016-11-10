@@ -49,4 +49,4 @@ Anfrage <- jsonlite::toJSON(
 )
 
 # modelRequire()
-modelTransform(x = Anfrage)
+print(modelTransform(x = Anfrage))
