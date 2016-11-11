@@ -23,8 +23,25 @@ adaptiv.BL16.fullRandom.modelTransform(AnfrageJSONstring)
   \item FBt: eine Liste mit den Angaben über die Zeitdauer zwischen Ballkanoneneinwurf und Lichtschrankensignal beim Rausschießen des Balls (in Millisekunden), beispielsweise: '[2140, 2600, 8600]' oder bei Sessionstart '[]'
 }
 
-Hier ein Beispiel für eine gültige Anfrage:
+Hier ein Beispiel für eine gültige Anfrage für die Abfrage eines ersten Balls:
 
+#' testJSONrequest <- '\{\cr
+"TestID" : "BL32",\cr
+"idS" : "002b6573-cf12-436d-bccd-0856b0bb0a25",\cr
+"idP" : "fe553db4-bbde-43dd-a6a0-804b9e46c57",\cr
+"NamePlayer" : "Mustermann, Tim",\cr
+"Birthday" : "2002-07-21",\cr
+"Team" : "U14",\cr
+"SessionStart" : "2014-03-22 13:42:03",\cr
+"adrB" : [],\cr
+"adrW" : [],\cr
+"adrCol" : [],\cr
+"adrOut" : [],\cr
+"FBt" : []\cr
+\}'\cr
+
+
+Für einen vierten Ball:
 
 testJSONrequest <- '\{\cr
 "TestID" : "BL32",\cr

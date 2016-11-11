@@ -17,8 +17,25 @@
 #'   \item FBt: eine Liste mit den Angaben über die Zeitdauer zwischen Ballkanoneneinwurf und Lichtschrankensignal beim Rausschießen des Balls (in Millisekunden), beispielsweise: '[2140, 2600, 8600]' oder bei Sessionstart '[]'
 #' }
 #'
-#' Hier ein Beispiel für eine gültige Anfrage:
+#' Hier ein Beispiel für eine gültige Anfrage für die Abfrage eines ersten Balls:
 #'
+#'#' testJSONrequest <- '\{\cr
+#' "TestID" : "BL32",\cr
+#' "idS" : "002b6573-cf12-436d-bccd-0856b0bb0a25",\cr
+#' "idP" : "fe553db4-bbde-43dd-a6a0-804b9e46c57",\cr
+#' "NamePlayer" : "Mustermann, Tim",\cr
+#' "Birthday" : "2002-07-21",\cr
+#' "Team" : "U14",\cr
+#' "SessionStart" : "2014-03-22 13:42:03",\cr
+#' "adrB" : [],\cr
+#' "adrW" : [],\cr
+#' "adrCol" : [],\cr
+#' "adrOut" : [],\cr
+#' "FBt" : []\cr
+#' \}'\cr
+#'
+#'
+#'Für einen vierten Ball:
 #'
 #' testJSONrequest <- '\{\cr
 #' "TestID" : "BL32",\cr
@@ -40,7 +57,6 @@
 #' @return data.frame mit den oben beschriebenen Spalten.
 
 adaptiv.BL16.fullRandom.modelTransform <- function(AnfrageJSONstring){
-
     AnfrageListe <- jsonlite::fromJSON(txt = AnfrageJSONstring)
 
     # Lese die Variablen ein
@@ -57,6 +73,34 @@ adaptiv.BL16.fullRandom.modelTransform <- function(AnfrageJSONstring){
     adrOut <- AnfrageListe$adrOut
     FBt <- AnfrageListe$FBt
 
+    #handling leerer Listen (Abfrage eines ersten Balls)
+    adrB <- if(is.null(dim(adrB))){adrB <- NA}
+    adrW <- if(is.null(dim(adrW))){adrW <- NA} # ein leers JSON-array [] wird zu list() oder logical(0). Deren dim() ist NULL
+    adrCol <- if(is.null(dim(adrCol))){adrCol <- NA}
+    adrOut <- if(is.null(dim(adrOut))){adrOut <- NA}
+    FBt <- if(is.null(dim(FBt))){FBt <- NA}
+
+    # bei Multitarget wird jeweils nur das erste Fenster genommen:
+    #adrW <- if(class(adrW) == "matrix"){adrW <- adrW[,1]}
+    #adrCol <- if(class(adrCol) == "matrix"){adrCol <- adrCol[,1]}
+
+
+
+    cat("######### Variablen erfasst:\n")
+    cat(paste0("# TestID : ", TestID, "\n"))
+    cat(paste0("# idS : ", idS, "\n"))
+    cat(paste0("# idP : ", idP, "\n"))
+    cat(paste0("# NamePlayer : ", NamePlayer, "\n"))
+    cat(paste0("# Birthday : ", Birthday, "\n"))
+    cat(paste0("# Team : ", Team, "\n"))
+    cat(paste0("# SessionStart : ", SessionStart, "\n"))
+    cat(paste0("# adrB : ", adrB, "\n"))
+    cat(paste0("# adrW : ", adrW, "\n"))
+    cat(paste0("# adrCol : ", adrCol, "\n"))
+    cat(paste0("# adrOut : ", adrOut, "\n"))
+    cat(paste0("# FBt : ", FBt, "\n"))
+    cat("# \n")
+
     # Bereite Ergebnis vor
     AnfrageDF <- data.frame(
       TestID = TestID,
@@ -67,13 +111,14 @@ adaptiv.BL16.fullRandom.modelTransform <- function(AnfrageJSONstring){
       Team = Team,
       SessionStart = SessionStart,
       adrB = adrB,
-      adrW = adrW[,1], # bei Multitarget wird jeweils nur das erste Fenster genommen
-      adrCol = adrCol[,1], # bei Multitarget wird jeweils nur das erste Fenster genommen
+      adrW = adrW,
+      adrCol = adrCol,
       adrOut = adrOut,
-      FBt = FBt
+      FBt = ifelse(is.list(FBt) & length(FBt)==0, NA, FBt)
     )
 
-
+    cat("# übergebe data.frame an modelPredict ...")
+    print(AnfrageDF)
 
     return(AnfrageDF)
 }
