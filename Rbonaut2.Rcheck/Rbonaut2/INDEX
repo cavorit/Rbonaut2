@@ -2,8 +2,6 @@ NormTree                NormTree ist eine verschachtelte Liste
 Rbonaut2-package        Rbonaut2
 adaptiv.BL16.fullRandom.modelPredict
                         adaptiv.BL16.fullRandom.modelPredict
-adaptiv.BL16.fullRandom.modelRequire
-                        adaptiv.BL16.fullRandom.modelRequire
 adaptiv.BL16.fullRandom.modelTransform
                         adaptiv.BL16.fullRandom.modelTransform
 askDB                   askDB

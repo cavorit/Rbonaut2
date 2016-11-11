@@ -625,9 +625,9 @@ library(ggplot2)
 ###########
 
 # NEW NORMTREE
-HH_Sessions <- c(levels(NormTree$U12$RAW$SessionID),levels(NormTree$U13$RAW$SessionID),levels(NormTree$U14$RAW$SessionID),
-                 levels(NormTree$U15$RAW$SessionID), levels(NormTree$U16$RAW$SessionID),levels(NormTree$U17$RAW$SessionID),
-                 levels(NormTree$U19$RAW$SessionID),levels(NormTree$U23$RAW$SessionID),levels(NormTree$Profis$RAW$SessionID))
+HH_Sessions <- c(levels(NormTree_6.16$U12$RAW$SessionID),levels(NormTree_6.16$U13$RAW$SessionID),levels(NormTree_6.16$U14$RAW$SessionID),
+                 levels(NormTree_6.16$U15$RAW$SessionID), levels(NormTree_6.16$U16$RAW$SessionID),levels(NormTree_6.16$U17$RAW$SessionID),
+                 levels(NormTree_6.16$U19$RAW$SessionID),levels(NormTree_6.16$U23$RAW$SessionID),levels(NormTree_6.16$Profis$RAW$SessionID))
 
 
 Session_10 <- NormTree$Alter10$RAW$SessionID[!levels(NormTree$Alter10$RAW$SessionID) %in% HH_Sessions]
@@ -732,9 +732,10 @@ NormTree_new$Alter21$Kernel$FBqFBt <- kde2d(NormTree_new$Alter21$RAW$FBq, NormTr
 NormTree_new$Alter22$Kernel$FBqFBt <- kde2d(NormTree_new$Alter22$RAW$FBq, NormTree_new$Alter22$RAW$FBt)
 NormTree_new$Alter23$Kernel$FBqFBt <- kde2d(NormTree_new$Alter23$RAW$FBq, NormTree_new$Alter23$RAW$FBt)
 
-pdf('~/Dokumente/cavorit/test.pdf', width = 14, height = 7)
-par(mfrow=c(1,2))
+pdf('~/Dokumente/cavorit/test.pdf',width = 10, height = 7)
+#png('~/Dokumente/cavorit/alter12.png', width=960, height = 5280)
 
+par(mfrow=c(1,2))
 A <- NormTree$Alter12$RAW$Fiedler2016a
 B <- NormTree$U12$RAW$Fiedler2016a
 Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "12 jährige", TitelB = "U12", developperMode = FALSE)
@@ -761,8 +762,9 @@ Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "14 jährige", TitelB = "U14",
 
 A <- NormTree_new$Alter14$RAW$Fiedler2016a
 B <- NormTree_new$U14$RAW$Fiedler2016a
-Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "14 jährige\\HH", TitelB = "U14", developperMode = FALSE)
-
+#png('~/Dokumente/cavorit/bla.png', width=480, height = 480)
+Rbonaut2::plotSeaShell(x=-0.3, y_forscale_left=-0.2, y_forscale_right=0.2, A=A, B=B, TitelA = "14 jährige\\HH", TitelB = "U14", developperMode = FALSE)
+#dev.off()
 
 A <- NormTree$Alter15$RAW$Fiedler2016a
 B <- NormTree$U15$RAW$Fiedler2016a
@@ -771,14 +773,14 @@ Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "15 jährige", TitelB = "U15",
 A <- NormTree_new$Alter15$RAW$Fiedler2016a
 B <- NormTree_new$U15$RAW$Fiedler2016a
 Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "15 jährige\\HH", TitelB = "U15", developperMode = FALSE)
-
+frame()
 A <- NormTree$Alter16$RAW$Fiedler2016a
 B <- NormTree$U16$RAW$Fiedler2016a
 Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "16 jährige", TitelB = "U16", developperMode = FALSE)
 A <- NormTree_new$Alter16$RAW$Fiedler2016a
 B <- NormTree_new$U16$RAW$Fiedler2016a
 Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "16 jährige\\HH", TitelB = "U16", developperMode = FALSE)
-
+frame()
 A <- NormTree$Alter17$RAW$Fiedler2016a
 B <- NormTree$U17$RAW$Fiedler2016a
 Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "17 jährige", TitelB = "U17", developperMode = FALSE)

@@ -1,6 +1,6 @@
-* using log directory ‘/Users/hf/Desktop/Rbonaut2/Rbonaut2.Rcheck’
-* using R version 3.2.2 (2015-08-14)
-* using platform: x86_64-apple-darwin13.4.0 (64-bit)
+* using log directory ‘/home/cavorit/Dokumente/cavorit/Rbonaut2/Rbonaut2.Rcheck’
+* using R version 3.2.5 (2016-04-14)
+* using platform: x86_64-pc-linux-gnu (64-bit)
 * using session charset: UTF-8
 * checking for file ‘Rbonaut2/DESCRIPTION’ ... OK
 * checking extension type ... Package
@@ -15,7 +15,6 @@ Found the following hidden files and directories:
   .DS_Store
   .Rhistory
   R/.DS_Store
-  R/.Rhistory
   inst/.DS_Store
   .Rproj.user
 These were most likely included in error. See section ‘Package
@@ -40,6 +39,7 @@ Found the following files with non-ASCII characters:
   getSessionTimeStamp.R
   itemID2Params.R
   playedAngle.R
+  plotSeaShell.R
 Portable packages must use only ASCII characters in their R code,
 except perhaps in comments.
 Use \uxxxx escapes for other characters.
@@ -49,17 +49,12 @@ Use \uxxxx escapes for other characters.
 * checking whether the package can be unloaded cleanly ... OK
 * checking whether the namespace can be loaded with stated dependencies ... OK
 * checking whether the namespace can be unloaded cleanly ... OK
+* checking loading without being on the library search path ... OK
 * checking dependencies in R code ... WARNING
 '::' or ':::' imports not declared from:
   ‘catR’ ‘jsonlite’
-'library' or 'require' calls not declared from:
-  ‘catR’ ‘jsonlite’
 'library' or 'require' call to ‘RPostgreSQL’ which was already attached by Depends.
   Please remove these calls from your code.
-'library' or 'require' calls in package code:
-  ‘catR’ ‘jsonlite’
-  Please use :: or requireNamespace() instead.
-  See section 'Suggested packages' in the 'Writing R Extensions' manual.
 Packages in Depends field not imported from:
   ‘RPostgreSQL’ ‘data.table’ ‘sfsmisc’
   These packages need to be imported from (in the NAMESPACE file)
@@ -68,10 +63,6 @@ Packages in Depends field not imported from:
 * checking replacement functions ... OK
 * checking foreign function calls ... OK
 * checking R code for possible problems ... NOTE
-adaptiv.BL16.fullRandom.modelTransform: no visible binding for global
-  variable ‘AnfrageJSONstring’
-adaptiv.BL16.fullRandom.modelTransform: no visible binding for global
-  variable ‘AnfrageList’
 askDB: no visible global function definition for ‘dbDriver’
 askDB: no visible global function definition for ‘dbConnect’
 askDB: no visible global function definition for ‘dbGetQuery’
@@ -90,7 +81,6 @@ augmentRAW : SQL2DF.RW : iCalcReaktionsWinkel: no visible binding for
 plotSeaShell: no visible global function definition for ‘integrate.xy’
 * checking Rd files ... WARNING
 adaptiv.BL16.fullRandom.modelPredict.Rd: non-ASCII input and no declared encoding
-adaptiv.BL16.fullRandom.modelRequire.Rd: non-ASCII input and no declared encoding
 adaptiv.BL16.fullRandom.modelTransform.Rd: non-ASCII input and no declared encoding
 askDB.Rd: non-ASCII input and no declared encoding
 augmentRAW.Rd: non-ASCII input and no declared encoding
@@ -116,12 +106,12 @@ readItemBank.Rd: non-ASCII input and no declared encoding
 readRAW.Rd: non-ASCII input and no declared encoding
 writeAUGMENTED.Rd: non-ASCII input and no declared encoding
 writeRAW.Rd: non-ASCII input and no declared encoding
-problems found in ‘adaptiv.BL16.fullRandom.modelPredict.Rd’, ‘adaptiv.BL16.fullRandom.modelRequire.Rd’, ‘adaptiv.BL16.fullRandom.modelTransform.Rd’, ‘askDB.Rd’, ‘augmentRAW.Rd’, ‘calcFiedler2016a.Rd’, ‘detectItemID.Rd’, ‘detectItemIDLive.Rd’, ‘detectItemResponse.Rd’, ‘erstelleRaschMatrixSkeleton.Rd’, ‘fillRaschMatrixSkeleton.Rd’, ‘getAdrWAlsListe.Rd’, ‘getFirstAdrW.Rd’, ‘getHW.Rd’, ‘getNachname.Rd’, ‘getVorname.Rd’, ‘gibZahlFuehrendeNullen.Rd’, ‘implodeRaschMatrix4Quality.Rd’, ‘istFormatNachnameKommaVorname.Rd’, ‘itemID2Params.Rd’, ‘plotSeaShell.Rd’, ‘readAUGMENTED.Rd’, ‘readItemBank.Rd’, ‘readRAW.Rd’, ‘writeAUGMENTED.Rd’, ‘writeRAW.Rd’
+problems found in ‘adaptiv.BL16.fullRandom.modelPredict.Rd’, ‘adaptiv.BL16.fullRandom.modelTransform.Rd’, ‘askDB.Rd’, ‘augmentRAW.Rd’, ‘calcFiedler2016a.Rd’, ‘detectItemID.Rd’, ‘detectItemIDLive.Rd’, ‘detectItemResponse.Rd’, ‘erstelleRaschMatrixSkeleton.Rd’, ‘fillRaschMatrixSkeleton.Rd’, ‘getAdrWAlsListe.Rd’, ‘getFirstAdrW.Rd’, ‘getHW.Rd’, ‘getNachname.Rd’, ‘getVorname.Rd’, ‘gibZahlFuehrendeNullen.Rd’, ‘implodeRaschMatrix4Quality.Rd’, ‘istFormatNachnameKommaVorname.Rd’, ‘itemID2Params.Rd’, ‘plotSeaShell.Rd’, ‘readAUGMENTED.Rd’, ‘readItemBank.Rd’, ‘readRAW.Rd’, ‘writeAUGMENTED.Rd’, ‘writeRAW.Rd’
 * checking Rd metadata ... OK
 * checking Rd cross-references ... OK
 * checking for missing documentation entries ... WARNING
 Undocumented code objects:
-  ‘NormTree_new’
+  ‘A’ ‘B’ ‘NormTree_new’ ‘TxtA’ ‘TxtB’ ‘x’
 Undocumented data sets:
   ‘NormTree_new’
 All user-level objects in a package should have documentation entries.
@@ -133,6 +123,9 @@ Undocumented arguments in documentation object 'adaptiv.BL16.fullRandom.modelPre
   ‘AnfrageDF’
 Documented arguments not in \usage in documentation object 'adaptiv.BL16.fullRandom.modelPredict':
   ‘DF’
+
+Undocumented arguments in documentation object 'plotSeaShell'
+  ‘y_forscale_left’ ‘y_forscale_right’
 
 Functions with \usage entries need to have the appropriate \alias
 entries, and all their arguments documented.
@@ -147,9 +140,9 @@ Extensions’ manual.
   
   Note: significantly better compression could be obtained
         by using R CMD build --resave-data
-                    old_size new_size compress
-  NormTree.rda         795Kb    572Kb       xz
-  NormTree_6.16.rda    803Kb    577Kb       xz
+                     old_size new_size compress
+  NormTree.rda          795Kb    572Kb       xz
+  NormTreeWithHH.rda    803Kb    578Kb       xz
 * checking examples ... OK
 * checking PDF version of manual ... OK
 * DONE

@@ -10,7 +10,7 @@
 #' @return Die Funktion hat keinen Ausgabe-wert
 #' @title plotSeaShell
 
-plotSeaShell <- function(x, A, B, TitelA, TitelB, developperMode = FALSE){
+plotSeaShell <- function(x, y_forscale_left=0, y_forscale_right=0,A, B, TitelA, TitelB, developperMode = FALSE){
 
   ### layout settings
   colorA = rgb(1, 1, 1, maxColorValue = 1.7)
@@ -54,7 +54,7 @@ plotSeaShell <- function(x, A, B, TitelA, TitelB, developperMode = FALSE){
   textOnCanvas <- function(x, y, ...){
     x <- scaleX4Canvas(x)
     y <- scaleKernelY4Canvas(y)
-    text(y, x, ...)
+    text(y, x, family="mono", ...)
   }
 
   lines.right <- function(x, y, ...){ # only for code simplicity
@@ -71,9 +71,9 @@ plotSeaShell <- function(x, A, B, TitelA, TitelB, developperMode = FALSE){
     xValue <- min(KD$x) + myLine/6*(max(KD$x)-min(KD$x))
     lines.left(c(xValue, xValue), c(.8, -.8), col="grey")
     txt <- round(integrate.xy(x = KD$x, fx = KD$y, a = min(KD$x), b = KD$x[which.min( abs(KD$x - xValue))] ) * 100,0)
-    textOnCanvas(xValue, .9, paste0(txt, "%"), col="grey")
+    textOnCanvas(xValue, .9, paste0(txt, "%"), col="grey", adj=1)
     txt2 <- round(sum(B<xValue)/nB * 100, 0)
-    textOnCanvas(xValue, -.9, paste0(txt2, "%"), col="grey")
+    textOnCanvas(xValue, -.9, paste0(txt2, "%"), col="grey", adj=0)
   }
   # white space around Kernel Plot
   points.left(KD$x, KD$y, col="white", type="l", lwd=30)
@@ -194,36 +194,48 @@ plotSeaShell <- function(x, A, B, TitelA, TitelB, developperMode = FALSE){
   setPercent <- function(x, y, P_numeric, ...){ # P_numeric = 31.811
     ante <- as.integer(floor(P_numeric))
     post <- as.integer(  round( (P_numeric - floor(P_numeric))*10, 1))
+    if(ante<100 & ante>=10){
+      y <- y-0.12
+    }
+    else if(ante<10){
+     y <-y-0.1
+    }
+    else{
+     y <-y-0.2
+    }
     txt1 <- paste0(ante, ",")
     txt2 <- paste0(post, "%")
-    textOnCanvas(x, y, txt1, pos=2, cex=2, offset=0, ...)
-    textOnCanvas(x, y, txt2, pos=4, cex=1, offset=0, ...)
+    textOnCanvas(x, y, txt1, pos=2, cex=1.5, offset=0, ...)
+    textOnCanvas(x, y, txt2, pos=4, cex=.7, offset=0, ...)
   }
 
   ### magenta Score
   xLevelA <- round(integrate.xy(x = KD$x, fx = KD$y, a = min(KD$x), b = KD$x[which.min( abs(KD$x - x))] ) * 100,1)
-  points.left(x+.01, .95, col="white", cex=11, pch=21, bg="#dcdcdc")
-  setPercent(x=x, .92, xLevelA, col=colorX)
-
-  ### grey Score
+  # der kreis um die Prozenten
+  points.left(x, (y_forscale_left+.95), col="white", cex=11.3, pch=21, bg="#dcdcdc")
+  setPercent(x=x, (y_forscale_left+0.95), xLevelA, col=colorX)
+  ### blue Score
   xLevelB <- round((sum(x>B)/nB*100),1)
-  points.left(x, -.95, col="white", cex=11, pch=21, bg="#dcdcdc")
-  setPercent(x=x, -.98, xLevelB, col=colorB)
-
+  points.left(x, (y_forscale_right-.95), col="white", cex=11.3, pch=21, bg="#dcdcdc")
+  setPercent(x=x, (y_forscale_right-.95), xLevelB, col=colorB)
   ### Titles
-  text(.5, 1.01, TitelA, col=colorA, cex=2, pos = 2, offset = 1)
-  text(.5, 1.01, TitelB, col=colorB, cex=2, pos=4, offset = 1)
+  text(.5, 1.01, TitelA, col=colorA, cex=1.7, pos =2, offset = 1)
+  text(.5, 1.01, TitelB, col=colorB, cex=1.7, pos=4, offset = 1)
 
 }
 
 #
-# set.seed(142)
-# A <- c(rnorm(100), rnorm(30, mean=0.2))
-# B <- rnorm(22, mean=1.2)
-# x <- 0.678
-# TxtA <- "17 jährige"
-# TxtB <- "TSG U23"
-#
-# plotSeaShell(x=x, A=A, B=B, TitelA = TxtA, TitelB=TxtB)
+set.seed(142)
+A <- c(rnorm(100), rnorm(30, mean=0.2))
+B <- rnorm(22, mean=1.2)
+x <- 0.678
+TxtA <- "17 jährige"
+TxtB <- "TSG U23"
+
+#png('~/Bilder/plotSea.png', width = 1000, height = 1000)
+png('~/Bilder/plotSea2.png')
+#pdf('~/Bilder/plotSea.pdf')
+plotSeaShell(x=0.8, A=A, B=B, TitelA = TxtA, TitelB=TxtB)
+dev.off()
 #
 
