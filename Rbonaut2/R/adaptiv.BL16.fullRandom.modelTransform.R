@@ -88,6 +88,8 @@ adaptiv.BL16.fullRandom.modelTransform <- function(AnfrageJSONstring){
     if(is.null(dim(FBt))   & (length(FBt)==0)){FBt <- NA}
 
     # bei Multitarget wird jeweils nur das erste Fenster genommen:
+    print(adrW)
+    print(class(adrW))
     if(class(adrW) == "matrix"){adrW <- adrW[,1]}
     if(class(adrCol) == "matrix"){adrCol <- adrCol[,1]}
 
