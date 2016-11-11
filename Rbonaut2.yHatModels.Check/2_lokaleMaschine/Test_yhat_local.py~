@@ -6,7 +6,7 @@ import json
 from urllib import urlencode
 
 
-Modell = "test" # das zu testenden Model muss 
+Modell = "test"  
 
 
 ersterBall = {

@@ -57,7 +57,7 @@ vierterBall = {
     }
 
 
-data = ersterBall
+data = zweiterBall
 
 anfrage = json.dumps(data)
 buf = cStringIO.StringIO()
