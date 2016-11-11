@@ -59,9 +59,15 @@
 adaptiv.BL16.fullRandom.modelTransform <- function(AnfrageJSONstring){
     AnfrageListe <- jsonlite::fromJSON(txt = AnfrageJSONstring)
 
+    cat("################ erhaltene Daten:\n")
+    for (i in 1:length(AnfrageListe)){
+      cat(paste0("# ", names(AnfrageListe[i]), " (", class(AnfrageListe[[i]]), ") : " , AnfrageListe[[i]], "\n"))
+    }
+    cat("################ \n")
+
     # Lese die Variablen ein
     TestID <- AnfrageListe$TestID # Die ID dieses Tests lautet "adaptiv.BL16.fullRandom"
-    idS <- AnfrageListe$idS # ID der Session
+    idS <- AnfrageListe$idS
     idP <- AnfrageListe$idP
     NamePlayer <- AnfrageListe$NamePlayer # Name als ein CharacterString
     Birthday <- as.Date(AnfrageListe$Birthday)
@@ -74,15 +80,16 @@ adaptiv.BL16.fullRandom.modelTransform <- function(AnfrageJSONstring){
     FBt <- AnfrageListe$FBt
 
     #handling leerer Listen (Abfrage eines ersten Balls)
-    adrB <- if(is.null(dim(adrB))){adrB <- NA}
-    adrW <- if(is.null(dim(adrW))){adrW <- NA} # ein leers JSON-array [] wird zu list() oder logical(0). Deren dim() ist NULL
-    adrCol <- if(is.null(dim(adrCol))){adrCol <- NA}
-    adrOut <- if(is.null(dim(adrOut))){adrOut <- NA}
-    FBt <- if(is.null(dim(FBt))){FBt <- NA}
+    # ein leers JSON-array [] wird zu list() oder logical(0). Deren dim() ist NULL
+    if(is.null(dim(adrB))  & (length(adrB)==0)){adrB <- NA}
+    if(is.null(dim(adrW))  & (length(adrW)==0)){adrW <- NA}
+    if(is.null(dim(adrCol))& (length(adrCol)==0)){adrCol <- NA}
+    if(is.null(dim(adrOut))& (length(adrOut)==0)){adrOut <- NA}
+    if(is.null(dim(FBt))   & (length(FBt)==0)){FBt <- NA}
 
     # bei Multitarget wird jeweils nur das erste Fenster genommen:
-    #adrW <- if(class(adrW) == "matrix"){adrW <- adrW[,1]}
-    #adrCol <- if(class(adrCol) == "matrix"){adrCol <- adrCol[,1]}
+    if(class(adrW) == "matrix"){adrW <- adrW[,1]}
+    if(class(adrCol) == "matrix"){adrCol <- adrCol[,1]}
 
 
 

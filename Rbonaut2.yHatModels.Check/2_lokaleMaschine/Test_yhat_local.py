@@ -6,7 +6,7 @@ import json
 from urllib import urlencode
 
 
-Modell = "test" # das zu testenden Model muss 
+Modell = "test"  
 
 
 ersterBall = {
@@ -38,7 +38,7 @@ zweiterBall = {
     "adrW" : [[4, 6]],
     "adrCol" : [["A", "B"]],
     "adrOut" : [4],
-    "FBt" : [2140, 2600, 8600]
+    "FBt" : [2140]
     }
 
 vierterBall = {
@@ -57,7 +57,7 @@ vierterBall = {
     }
 
 
-data = zweiterBall
+data = ersterBall
 
 anfrage = json.dumps(data)
 buf = cStringIO.StringIO()
