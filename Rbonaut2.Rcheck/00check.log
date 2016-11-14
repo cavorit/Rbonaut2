@@ -111,7 +111,7 @@ problems found in ‘adaptiv.BL16.fullRandom.modelPredict.Rd’, ‘adaptiv.BL16
 * checking Rd cross-references ... OK
 * checking for missing documentation entries ... WARNING
 Undocumented code objects:
-  ‘NormTree_new’
+  ‘NormTree_new’ ‘adaptiv.BL16.modelPredict’
 Undocumented data sets:
   ‘NormTree_new’
 All user-level objects in a package should have documentation entries.

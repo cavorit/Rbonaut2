@@ -11,7 +11,8 @@ modelTransform <- function(x){
 }
 
 modelPredict <- function(x){
-  Ergebnis <- adaptiv.BL16.fullRandom.modelPredict(AnfrageDF=x)
+  #Ergebnis <- adaptiv.BL16.fullRandom.modelPredict(AnfrageDF=x)
+  Ergebnis <- adaptiv.BL16.modelPredict(AnfrageDF=x)
   return(jsonlite::toJSON(Ergebnis))
 }
 
