@@ -81,17 +81,18 @@ adaptiv.BL16.fullRandom.modelTransform <- function(AnfrageJSONstring){
 
     #handling leerer Listen (Abfrage eines ersten Balls)
     # ein leers JSON-array [] wird zu list() oder logical(0). Deren dim() ist NULL
-    if(is.null(dim(adrB))  & (length(adrB)==0)){adrB <- NA}
-    if(is.null(dim(adrW))  & (length(adrW)==0)){adrW <- NA}
-    if(is.null(dim(adrCol))& (length(adrCol)==0)){adrCol <- NA}
-    if(is.null(dim(adrOut))& (length(adrOut)==0)){adrOut <- NA}
-    if(is.null(dim(FBt))   & (length(FBt)==0)){FBt <- NA}
+    if(length(adrB)==0){ErsterBall <- TRUE}else{ErsterBall <- FALSE}
+    if (ErsterBall){
+      adrB <- NA
+      adrW <- NA
+      adrCol <- NA
+      adrOut <- NA
+      FBt <- NA
+    }
 
     # bei Multitarget wird jeweils nur das erste Fenster genommen:
     print(adrW)
     print(class(adrW))
-    if(class(adrW) == "matrix"){adrW <- adrW[,1]}
-    if(class(adrCol) == "matrix"){adrCol <- adrCol[,1]}
 
 
 

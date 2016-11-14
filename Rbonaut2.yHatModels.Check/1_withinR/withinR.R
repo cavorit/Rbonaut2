@@ -3,6 +3,7 @@
 
 rm(list=ls())
 
+
 ersterBall <- jsonlite::toJSON(
   list(
     TestID = "BL32",
@@ -62,7 +63,7 @@ vierterBall <- jsonlite::toJSON(
   )
 )
 
-AnfrageJSONstring <- vierterBall
+AnfrageJSONstring <- get(paste0(c("erster", "zweiter", "vierter"), "Ball")[3])
 
 # modelRequire()
 AnfrageDF <- modelTransform(x = AnfrageJSONstring)
