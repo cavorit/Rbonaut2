@@ -65,7 +65,7 @@ vierterBall <- jsonlite::toJSON(
 
 AnfrageJSONstring <- get(paste0(c("erster", "zweiter", "vierter"), "Ball")[3])
 
-# modelRequire()
+ modelRequire()
 AnfrageDF <- modelTransform(x = AnfrageJSONstring)
 print(AnfrageDF)
 modelPredict(AnfrageDF) # https://jsonformatter.curiousconcept.com : Output ist valides JSON

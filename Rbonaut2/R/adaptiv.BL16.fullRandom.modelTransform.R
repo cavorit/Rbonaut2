@@ -128,8 +128,15 @@ adaptiv.BL16.fullRandom.modelTransform <- function(AnfrageJSONstring){
       adrOut = adrOut,
       FBt = ifelse(is.list(FBt) & length(FBt)==0, NA, FBt)
     )
+    # Multitarget wird auf single target abgebildet : adrW und adrCol wird erzeugt
+    if(sum(names(AnfrageDF)=="adrW.1")){
+      AnfrageDF$adrW = AnfrageDF$adrW.1
+    }
+    if(sum(names(AnfrageDF)=="adrCol.1")){
+      AnfrageDF$adrCol <- AnfrageDF$adrCol.1
+    }
 
-    cat("# übergebe data.frame an modelPredict ...")
+    cat("# übergebe data.frame an modelPredict ...\n")
     print(AnfrageDF)
 
     return(AnfrageDF)
