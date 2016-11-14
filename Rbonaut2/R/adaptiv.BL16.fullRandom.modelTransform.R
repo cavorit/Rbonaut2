@@ -57,6 +57,7 @@
 #' @return data.frame mit den oben beschriebenen Spalten.
 
 adaptiv.BL16.fullRandom.modelTransform <- function(AnfrageJSONstring){
+
     AnfrageListe <- jsonlite::fromJSON(txt = AnfrageJSONstring)
 
     cat("################ erhaltene Daten:\n")
@@ -78,14 +79,14 @@ adaptiv.BL16.fullRandom.modelTransform <- function(AnfrageJSONstring){
     adrCol <- AnfrageListe$adrCol
     adrOut <- AnfrageListe$adrOut
     FBt <- AnfrageListe$FBt
-
+    print("#############")
     #handling leerer Listen (Abfrage eines ersten Balls)
     # ein leers JSON-array [] wird zu list() oder logical(0). Deren dim() ist NULL
-    if(length(adrB)==0){ErsterBall <- TRUE}else{ErsterBall <- FALSE}
-    if (ErsterBall){
-      adrB <- NA
-      adrW <- NA
-      adrCol <- NA
+     if(length(adrB)==0){ErsterBall <- TRUE}else{ErsterBall <- FALSE}
+     if (ErsterBall){
+       adrB <- NA
+       adrW <- NA
+       adrCol <- NA
       adrOut <- NA
       FBt <- NA
     }
@@ -93,7 +94,8 @@ adaptiv.BL16.fullRandom.modelTransform <- function(AnfrageJSONstring){
     # bei Multitarget wird jeweils nur das erste Fenster genommen:
     print(adrW)
     print(class(adrW))
-
+    #if (!ErsterBall & is.matrix(adrW)){adrW <- adrW[,1]}
+    #if (!ErsterBall & is.matrix(adrCol)){adrCol <- adrCol[,1]}
 
 
     cat("######### Variablen erfasst:\n")

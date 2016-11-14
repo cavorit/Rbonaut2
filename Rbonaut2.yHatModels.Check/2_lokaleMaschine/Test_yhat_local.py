@@ -6,7 +6,7 @@ import json
 from urllib import urlencode
 
 
-Modell = "test"  
+Modell = "test"
 
 
 ersterBall = {
