@@ -4,7 +4,8 @@
 \alias{plotSeaShell}
 \title{plotSeaShell}
 \usage{
-plotSeaShell(x, A, B, TitelA, TitelB, developperMode = FALSE)
+plotSeaShell(x, A, B, TitelA, TitelB, developperMode = FALSE,
+  gameover = FALSE)
 }
 \arguments{
 \item{x}{numeric Der Item-Response-Wert des Probanden}

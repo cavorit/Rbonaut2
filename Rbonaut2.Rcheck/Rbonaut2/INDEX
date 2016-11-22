@@ -4,6 +4,8 @@ adaptiv.BL16.fullRandom.modelPredict
                         adaptiv.BL16.fullRandom.modelPredict
 adaptiv.BL16.fullRandom.modelTransform
                         adaptiv.BL16.fullRandom.modelTransform
+adaptiv.BL16.modelPredict
+                        adaptiv.BL16.modelPredict
 askDB                   askDB
 augmentRAW              augmentRAW
 calcFiedler2016a        calcFiedler2016a

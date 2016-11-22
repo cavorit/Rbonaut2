@@ -10,8 +10,10 @@
 #' @return Die Funktion hat keinen Ausgabe-wert
 #' @title plotSeaShell
 
-plotSeaShell <- function(x, A, B, TitelA, TitelB, developperMode = FALSE){
-
+plotSeaShell <- function(x, A, B, TitelA, TitelB, developperMode = FALSE, gameover=FALSE){
+  if(gameover){
+    png('~/Bilder/seashell.png')
+  }
   ### layout settings
   colorA = rgb(1, 1, 1, maxColorValue = 1.7)
   colorB = rgb(red=56, green=139, blue=255, maxColorValue = 255)
@@ -213,7 +215,9 @@ plotSeaShell <- function(x, A, B, TitelA, TitelB, developperMode = FALSE){
   ### Titles
   text(.5, 1.01, TitelA, col=colorA, cex=2, pos = 2, offset = 1)
   text(.5, 1.01, TitelB, col=colorB, cex=2, pos=4, offset = 1)
-
+  if(gameover){
+    dev.off()
+  }
 }
 
 #
@@ -224,6 +228,16 @@ plotSeaShell <- function(x, A, B, TitelA, TitelB, developperMode = FALSE){
 # TxtA <- "17 jährige"
 # TxtB <- "TSG U23"
 #
-# plotSeaShell(x=x, A=A, B=B, TitelA = TxtA, TitelB=TxtB)
-#
 
+# A <- c(0.9375749, 1.3901799, 0.5112297, 1.0491721, 0.4709042)
+# B <- NormTree$U14$RAW$Fiedler2016a
+# x <- 0.47
+# TxtA <- 'Mustermann, Tim'
+# TxtB <- 'U14'
+# png('~/Bilder/changeform.png')
+# plotSeaShell(x=x, A=A, B=B, TitelA = TxtA, TitelB=TxtB)
+# dev.off()
+
+#png('~/Bilder/changeform2.png')
+#plotSeaShell(x=x, A=A, B=B, TitelA = TxtA, TitelB=TxtB)
+#dev.off()

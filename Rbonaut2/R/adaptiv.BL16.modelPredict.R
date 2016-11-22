@@ -1,7 +1,8 @@
-#' @author Kateryna Budzyak, Harald Fiedler
+#' @author Harald Fiedler, Kateryna Budzyak
 #' @description modelPredict() fuer yhat-Modell eines adaptiven Samplers nach 5 Bällen des BL32-Testraums mit Stop nach 16 Bällen. Basiert auf dem Skript BL32MultiTargetSimTest.r (Teilcode wurde kopiert)
-#' Das Output Ergebnis wurde nach dem adaptiv.BL16.fullRandom.modelPredict.R gebaut
+#' Der Output Ergebnis wurde nach dem adaptiv.BL16.fullRandom.modelPredict.R implementiert
 #' @details Es handelt sich hier um die modelPredict-Funktion für yhat-Architektur. Bei dem Dienst handelt es sich um einen reinen Item-Sampler. Solange die Session-History weniger als 16 Bälle aufweist, wird aus dem Item-Raum der BL32 ein Item gewählt.
+#' Der erste Ball ist immer BL01, die nächsten 4 Bälle werden ohne Zurücklegen gezogen.
 #' @param DF data.frame mit den Spalten:
 #' \itemize{
 #'   \item TestID: den Namen des Testformats. Beispielsweise: 'BL32'
@@ -25,6 +26,7 @@
 #'     \item GameOver ein boolescher Wert der angibt, ob das Abbruchkriterium für die Testung erreicht wurde
 #'     \item NextB Eine liste mit Informationen über den nächsten Ball
 #'     \item Testergebnis Das Testergebnis, dass der Spieler auf der latenten Kompetenzdimension erhält. (Noch nicht implementiert, daher vorläufig NA)
+#'     \item Seashell_output, Grafik im JSON format, wenn Gameover
 #' }
 #'
 
@@ -66,7 +68,11 @@ adaptiv.BL16.modelPredict <- function(AnfrageDF){
       adrOut = AnfrageDF$adrOut,
       FBt = AnfrageDF$FBt
     )
-    nxtItemID = as.character(sample(ItemBank_BL32$ItemID, size = 1))
+
+    # warum behält man nicht einfach die ItemID's bei?
+    History$ItemID <- Rbonaut2::detectItemIDLive(adrB = History$adrB, adrW = History$adrW)
+    # History <- History[History$ItemID != "unbekannt", ] # nicht nötig
+    nxtItemID = sample(setdiff(ItemBank_BL32$ItemID,History$ItemID), size = 1)
 
   }
   # Adaptivität
@@ -76,14 +82,15 @@ adaptiv.BL16.modelPredict <- function(AnfrageDF){
       adrW = AnfrageDF$adrW,
       adrOut = AnfrageDF$adrOut,
       FBt = AnfrageDF$FBt
+
     )
 
-    # warum behält man nicht einfach die ItemID's bei?
     History$ItemID <- Rbonaut2::detectItemIDLive(adrB = History$adrB, adrW = History$adrW)
-    # was passiert hier?  total curious, es sieht so aus als ob das ganze data.frame überschrieben wird.
-    History <- Rbonaut2::detectItemResponse(Stimulus = History)
     # wann könnte es passieren, dass ItemID unbekannt ist??
     History <- History[History$ItemID != "unbekannt", ]
+    # was passiert hier?  total curious, es sieht so aus als ob das ganze data.frame überschrieben wird.
+    History <- Rbonaut2::detectItemResponse(Stimulus = History)
+
 
     Fiedler2016 <- NULL
     for (idX in 1:nrow(History)){# idX = 1
@@ -100,12 +107,14 @@ adaptiv.BL16.modelPredict <- function(AnfrageDF){
 
 
   }
+  GameOver = (nrow(AnfrageDF)>16)
+  GameOver=TRUE
 
   nextB_Params <- Rbonaut2::itemID2Params(nxtItemID)
   Ergebnis <- list(
     # what is it?
     TicketID = paste(sample(c(letters, LETTERS), size = 20, replace =TRUE), collapse = ''),
-    GameOver = (nrow(AnfrageDF)>16),
+    GameOver = GameOver,
     nextB = list(
       ballmachine = nextB_Params$adrB,
       goal_target = nextB_Params$adrW,
@@ -120,7 +129,9 @@ adaptiv.BL16.modelPredict <- function(AnfrageDF){
 
     ),
     # was kommt hier hin????
-    Testergebnis = NA
+    Testergebnis = NA,
+    # plot bei gameover, erst local
+    Seashell_output = ifelse(GameOver, plotSeaShell(x=tail(History$Level,1),A=History$Level, B=NormTree[[AnfrageDF$Team[1]]]$RAW$Fiedler2016a, TitelA = AnfrageDF$NamePlayer, TitelB =AnfrageDF$Team[1], gameover=TRUE), NA)
   )
 
   return(jsonlite::toJSON(Ergebnis))
