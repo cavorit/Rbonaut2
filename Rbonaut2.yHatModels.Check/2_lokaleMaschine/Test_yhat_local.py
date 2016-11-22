@@ -71,7 +71,7 @@ siebterBall = {
     "FBt" : [2140, 2600, 8600,2140, 2600, 8600]
     }
 
-data = vierterBall
+data = siebterBall
 
 anfrage = json.dumps(data)
 buf = cStringIO.StringIO()
