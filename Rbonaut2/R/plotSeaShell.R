@@ -12,7 +12,8 @@
 
 plotSeaShell <- function(x, A, B, TitelA, TitelB, developperMode = FALSE, gameover=FALSE){
   if(gameover){
-    png('~/Bilder/seashell.png')
+    pngfile <- tempfile()
+    png(pngfile)
   }
   ### layout settings
   colorA = rgb(1, 1, 1, maxColorValue = 1.7)
@@ -217,6 +218,8 @@ plotSeaShell <- function(x, A, B, TitelA, TitelB, developperMode = FALSE, gameov
   text(.5, 1.01, TitelB, col=colorB, cex=2, pos=4, offset = 1)
   if(gameover){
     dev.off()
+    return(base64encode(pngfile))
+    unlink(pngfile)
   }
 }
 

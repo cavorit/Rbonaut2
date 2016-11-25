@@ -81,6 +81,7 @@ augmentRAW : SQL2DF.RW : iCalcReaktionsWinkel: no visible global
 augmentRAW : SQL2DF.RW : iCalcReaktionsWinkel: no visible binding for
   global variable ‘idX’
 plotSeaShell: no visible global function definition for ‘integrate.xy’
+plotSeaShell: no visible global function definition for ‘base64encode’
 * checking Rd files ... WARNING
 adaptiv.BL16.fullRandom.modelPredict.Rd: non-ASCII input and no declared encoding
 adaptiv.BL16.fullRandom.modelTransform.Rd: non-ASCII input and no declared encoding

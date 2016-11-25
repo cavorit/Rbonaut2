@@ -26,7 +26,7 @@
 #'     \item GameOver ein boolescher Wert der angibt, ob das Abbruchkriterium für die Testung erreicht wurde
 #'     \item NextB Eine liste mit Informationen über den nächsten Ball
 #'     \item Testergebnis Das Testergebnis, dass der Spieler auf der latenten Kompetenzdimension erhält. (Noch nicht implementiert, daher vorläufig NA)
-#'     \item Seashell_output, Grafik im JSON format, wenn Gameover
+#'     \item Seashell_output_base64, Grafik im base64 im JSON format, wenn gameover.# Um es als html zu öffnen: <!DOCTYPE html><html><body><img src="data:;base64,Seashell_output_base64" alt="SeaShell"/></body></html>
 #' }
 #'
 
@@ -131,7 +131,7 @@ adaptiv.BL16.modelPredict <- function(AnfrageDF){
     # was kommt hier hin????
     Testergebnis = NA,
     # plot bei gameover, erst local
-    Seashell_output = ifelse(GameOver, plotSeaShell(x=tail(History$Level,1),A=History$Level, B=NormTree[[AnfrageDF$Team[1]]]$RAW$Fiedler2016a, TitelA = AnfrageDF$NamePlayer, TitelB =AnfrageDF$Team[1], gameover=TRUE), NA)
+    Seashell_output_base64 = ifelse(GameOver, plotSeaShell(x=tail(History$Level,1),A=History$Level, B=NormTree[[AnfrageDF$Team[1]]]$RAW$Fiedler2016a, TitelA = AnfrageDF$NamePlayer, TitelB =AnfrageDF$Team[1], gameover=TRUE), NA)
   )
 
   return(jsonlite::toJSON(Ergebnis))
