@@ -19,9 +19,11 @@ plotSeaShell(x, A, B, TitelA, TitelB, developperMode = FALSE,
 \item{TitelB}{character mit der Headline für Gruppe B}
 
 \item{developperMode}{boolescher Wert, der eine Augenscheinkontrolle des Kernels und der Histogramms erlaubt.}
+
+\item{gameover}{boolischer Wert, der bei TRUE base64 kodiertes Image wiedergibt}
 }
 \value{
-Die Funktion hat keinen Ausgabe-wert
+gameover=FALSE hat die Funktion keinen Ausgabe-wert, sonst base64 codiertes Image
 }
 \description{
 Plottet die SeaShellGrafik

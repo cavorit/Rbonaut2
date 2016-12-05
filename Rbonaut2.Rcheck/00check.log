@@ -133,9 +133,6 @@ Undocumented arguments in documentation object 'adaptiv.BL16.modelPredict'
 Documented arguments not in \usage in documentation object 'adaptiv.BL16.modelPredict':
   ‘DF’
 
-Undocumented arguments in documentation object 'plotSeaShell'
-  ‘gameover’
-
 Functions with \usage entries need to have the appropriate \alias
 entries, and all their arguments documented.
 The \usage entries must correspond to syntactically valid R code.
@@ -149,9 +146,9 @@ Extensions’ manual.
   
   Note: significantly better compression could be obtained
         by using R CMD build --resave-data
-                    old_size new_size compress
-  NormTree.rda         795Kb    572Kb       xz
-  NormTree_6.16.rda    803Kb    578Kb       xz
+                  old_size new_size compress
+  NormTree.rda       795Kb    572Kb       xz
+  NormTree616.rda    803Kb    578Kb       xz
 * checking examples ... OK
 * checking PDF version of manual ... OK
 * DONE

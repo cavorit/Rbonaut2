@@ -7,7 +7,8 @@
 #' @param TitelA character mit der Headline für Gruppe A
 #' @param TitelB character mit der Headline für Gruppe B
 #' @param developperMode boolescher Wert, der eine Augenscheinkontrolle des Kernels und der Histogramms erlaubt.
-#' @return Die Funktion hat keinen Ausgabe-wert
+#' @param gameover boolischer Wert, der bei TRUE base64 kodiertes Image wiedergibt 
+#' @return gameover=FALSE hat die Funktion keinen Ausgabe-wert, sonst base64 codiertes Image
 #' @title plotSeaShell
 
 plotSeaShell <- function(x, A, B, TitelA, TitelB, developperMode = FALSE, gameover=FALSE){
