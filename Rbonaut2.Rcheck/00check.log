@@ -15,6 +15,7 @@ Found the following hidden files and directories:
   .DS_Store
   .Rhistory
   R/.DS_Store
+  R/.Rhistory
   inst/.DS_Store
   .Rproj.user
 These were most likely included in error. See section ‘Package

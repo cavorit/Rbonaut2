@@ -3,7 +3,7 @@
 #' Der Output Ergebnis wurde nach dem adaptiv.BL16.fullRandom.modelPredict.R implementiert
 #' @details Es handelt sich hier um die modelPredict-Funktion für yhat-Architektur. Bei dem Dienst handelt es sich um einen reinen Item-Sampler. Solange die Session-History weniger als 16 Bälle aufweist, wird aus dem Item-Raum der BL32 ein Item gewählt.
 #' Der erste Ball ist immer BL01, die nächsten 4 Bälle werden ohne Zurücklegen gezogen.
-#' @param DF data.frame mit den Spalten:
+#' @param AnfrageDF data.frame mit den Spalten:
 #' \itemize{
 #'   \item TestID: den Namen des Testformats. Beispielsweise: 'BL32'
 #'   \item idS: die aktuelle Session-ID, beispielsweise: '002b6573-cf12-436d-bccd-0856b0bb0a25'
@@ -108,7 +108,6 @@ adaptiv.BL16.modelPredict <- function(AnfrageDF){
 
   }
   GameOver = (nrow(AnfrageDF)>16)
-  GameOver=TRUE
 
   nextB_Params <- Rbonaut2::itemID2Params(nxtItemID)
   Ergebnis <- list(

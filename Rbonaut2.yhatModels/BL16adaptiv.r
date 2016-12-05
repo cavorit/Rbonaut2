@@ -1,4 +1,4 @@
-# rm(list=ls())
+ rm(list=ls())
 
 modelRequire <- function(){
   library(Rbonaut2)

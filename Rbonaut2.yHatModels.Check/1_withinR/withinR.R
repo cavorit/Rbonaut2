@@ -1,7 +1,7 @@
 ###### Teststufe 1 #############################################################################
 # Testung innerhalb einer .GlobalEnv in R
 
-rm(list=ls())
+# rm(list=ls())
 
 
 ersterBall <- jsonlite::toJSON(
@@ -101,4 +101,13 @@ AnfrageDF <- modelTransform(x = AnfrageJSONstring)
 print(AnfrageDF)
 modelPredict(AnfrageDF) # https://jsonformatter.curiousconcept.com : Output ist valides JSON
 ####################################################################################################
+
+
+###### Teststufe 1.2 #############################################################################
+# Testung innerhalb einer .GlobalEnv in R
+
+
+AnfrageJSONstring <- get(paste0(c("erster", "zweiter", "vierter", "siebter"), "Ball")[4])
+AnfrageDF <- modelTransform(x = AnfrageJSONstring)
+next_Ball <- modelPredict(AnfrageDF)
 
