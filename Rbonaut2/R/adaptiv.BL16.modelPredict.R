@@ -41,6 +41,10 @@
 #'     \item Testergebnis Das Testergebnis, dass der Spieler auf der latenten Kompetenzdimension erhält. (Noch nicht implementiert, daher vorläufig NA)
 #'     \item Seashell_output_base64, Grafik im base64 im JSON format, wenn gameover. Um es im Browser zu öffnen: <!DOCTYPE html><html><body><img src="data:;base64,Seashell_output_base64" alt="SeaShell"/></body></html>
 #' }
+#' \dontrun{
+#' # Example Output, jedes Anführungszeichen, außer erstes und letztes sind backslashed
+#' # ["{"TicketID":["YxubhQlCsGdrXcGnhSZo"],"nextB":{"ballmachine":[28],"goal_target":[72],"speed_left":[50],"speed_right":[60],"vertical_angle":[4],"shot_delay":[800],"expiration_time":[2195],"expiration_color":["200,100,0"]},"Testergebnis":[null],"GameOver":[false],"Seashell_output_base64":[null]}"]
+#' }
 #'
 
 adaptiv.BL16.modelPredict <- function(AnfrageDF){
