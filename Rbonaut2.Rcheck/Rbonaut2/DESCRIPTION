@@ -11,4 +11,6 @@ License: This package is private and internal of Cavorit Consulting
         GmbH
 LazyData: TRUE
 RoxygenNote: 5.0.1
-Built: R 3.2.5; ; 2016-12-05 14:23:26 UTC; unix
+NeedsCompilation: no
+Packaged: 2016-12-08 13:39:03 UTC; cavorit
+Built: R 3.2.5; ; 2016-12-08 13:39:03 UTC; unix
