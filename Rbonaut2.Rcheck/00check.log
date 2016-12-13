@@ -54,7 +54,7 @@ Use \uxxxx escapes for other characters.
 * checking loading without being on the library search path ... OK
 * checking dependencies in R code ... WARNING
 '::' or ':::' imports not declared from:
-  ‘catR’ ‘jsonlite’
+  ‘base64enc’ ‘catR’ ‘jsonlite’
 'library' or 'require' call to ‘RPostgreSQL’ which was already attached by Depends.
   Please remove these calls from your code.
 Packages in Depends field not imported from:
@@ -89,7 +89,6 @@ augmentRAW : SQL2DF.RW : iCalcReaktionsWinkel: no visible global
 augmentRAW : SQL2DF.RW : iCalcReaktionsWinkel: no visible binding for
   global variable ‘idX’
 plotSeaShell: no visible global function definition for ‘integrate.xy’
-plotSeaShell: no visible global function definition for ‘base64encode’
 * checking Rd files ... WARNING
 adaptiv.BL16.fullRandom.modelPredict.Rd: non-ASCII input and no declared encoding
 adaptiv.BL16.fullRandom.modelTransform.Rd: non-ASCII input and no declared encoding

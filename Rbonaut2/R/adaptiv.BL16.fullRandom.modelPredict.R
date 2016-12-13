@@ -77,7 +77,7 @@ adaptiv.BL16.fullRandom.modelPredict <- function(AnfrageDF){
 
   Ergebnis <- list(
      TicketID = paste(sample(c(letters, LETTERS), size = 20, replace =TRUE), collapse = ''),
-     GameOver = (nrow(AnfrageDF)>16),
+     GameOver = (nrow(AnfrageDF)>=16),
      NextB = as.list(c(ItemRaum[sample(1:nrow(ItemRaum), size = 1),], expiration_color='200,100,0')), # hier wird das Item zufällig aus BL32 gewählt
      Testergebnis = NA,
      Seashell_output_base64 = ifelse(GameOver, plotSeaShell(x=tail(History$Level,1),A=History$Level, B=NormTree[[AnfrageDF$Team[1]]]$RAW$Fiedler2016a, TitelA = AnfrageDF$NamePlayer, TitelB =AnfrageDF$Team[1], gameover=TRUE), NA)

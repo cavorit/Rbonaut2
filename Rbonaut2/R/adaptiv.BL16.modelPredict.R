@@ -138,8 +138,8 @@ adaptiv.BL16.modelPredict <- function(AnfrageDF){
 
 
   }
-  GameOver = (nrow(AnfrageDF)>16)
-
+  GameOver = (nrow(AnfrageDF)>=16)
+  print('asdfasdffgsdfgafdadfsfs')
   nextB_Params <- Rbonaut2::itemID2Params(nxtItemID)
   Ergebnis <- list(
 

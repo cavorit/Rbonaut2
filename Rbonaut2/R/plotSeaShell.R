@@ -7,7 +7,7 @@
 #' @param TitelA character mit der Headline für Gruppe A
 #' @param TitelB character mit der Headline für Gruppe B
 #' @param developperMode boolescher Wert, der eine Augenscheinkontrolle des Kernels und der Histogramms erlaubt.
-#' @param gameover boolischer Wert, der bei TRUE base64 kodiertes Image wiedergibt 
+#' @param gameover boolischer Wert, der bei TRUE base64 kodiertes Image wiedergibt
 #' @return gameover=FALSE hat die Funktion keinen Ausgabe-wert, sonst base64 codiertes Image
 #' @title plotSeaShell
 
@@ -219,7 +219,7 @@ plotSeaShell <- function(x, A, B, TitelA, TitelB, developperMode = FALSE, gameov
   text(.5, 1.01, TitelB, col=colorB, cex=2, pos=4, offset = 1)
   if(gameover){
     dev.off()
-    return(base64encode(pngfile))
+    return(base64enc::base64encode(pngfile))
     unlink(pngfile)
   }
 }
