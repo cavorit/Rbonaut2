@@ -74,7 +74,7 @@ siebterBall <- jsonlite::toJSON(
     SessionStart = "2014-03-22 13:42:03",
     adrB = c(10, 45, 28,46,64,10),
     adrW = list(
-      c(4, 6),
+      c(12, 6),
       c(21, 22),
       c(50, 18),
       c(36,4),

@@ -8,6 +8,7 @@ calcFiedler2016a	calcFiedler2016a
 detectItemID	detectItemID
 detectItemIDLive	detectItemIDLive
 detectItemResponse	detectItemResponse
+detectRotatedItems	detectRotatedItems
 erstelleRaschMatrixSkeleton	erstelleRaschMatrixSkeleton
 fillRaschMatrixSkeleton	fillRaschMatrixSkeleton
 getAdrWAlsListe	getAdrWAlsListe

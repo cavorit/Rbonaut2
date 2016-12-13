@@ -45,10 +45,6 @@ Ein JSON-gültiger String mit den folgenden Informationen:
     \item Testergebnis Das Testergebnis, dass der Spieler auf der latenten Kompetenzdimension erhält. (Noch nicht implementiert, daher vorläufig NA)
     \item Seashell_output_base64, Grafik im base64 im JSON format, wenn gameover. Um es im Browser zu öffnen: <!DOCTYPE html><html><body><img src="data:;base64,Seashell_output_base64" alt="SeaShell"/></body></html>
 }
-\dontrun{
-# Example Output, jedes Anführungszeichen, außer erstes und letztes sind backslashed
-# ["{"TicketID":["YxubhQlCsGdrXcGnhSZo"],"nextB":{"ballmachine":[28],"goal_target":[72],"speed_left":[50],"speed_right":[60],"vertical_angle":[4],"shot_delay":[800],"expiration_time":[2195],"expiration_color":["200,100,0"]},"Testergebnis":[null],"GameOver":[false],"Seashell_output_base64":[null]}"]
-}
 }
 \description{
 modelPredict() fuer yhat-Modell eines adaptiven Samplers nach 5 Bällen des BL32-Testraums mit Stop nach 16 Bällen. Basiert auf dem Skript BL32MultiTargetSimTest.r (Teilcode wurde kopiert)
@@ -56,7 +52,8 @@ Der Output Ergebnis wurde nach dem adaptiv.BL16.fullRandom.modelPredict.R implem
 }
 \details{
 Es handelt sich hier um die modelPredict-Funktion für yhat-Architektur. Bei dem Dienst handelt es sich um einen reinen Item-Sampler. Solange die Session-History weniger als 16 Bälle aufweist, wird aus dem Item-Raum der BL32 ein Item gewählt.
-Der erste Ball ist immer BL01, die nächsten 4 Bälle werden ohne Zurücklegen gezogen.
+Der erste Ball ist immer BL01 (adrB: 64, adrW: 68), die nächsten 4 Bälle werden ohne Zurücklegen gezogen. Falls ein Ball gespielt wird, der nicht in der ItemBank
+vorhanden ist, wird überprüft ob dieser auf ein anderes Item abgebildet werden kann durch Rotation.
 }
 \author{
 Harald Fiedler, Kateryna Budzyak

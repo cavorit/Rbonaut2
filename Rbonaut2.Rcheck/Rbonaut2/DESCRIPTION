@@ -1,7 +1,7 @@
 Package: Rbonaut2
 Type: Package
 Title: CLIP2's Rbonaut
-Version: 0.7
+Version: 0.8
 Date: 2016-11-07
 Author: Cavorit
 Maintainer: Harald Fiedler <harald.fiedler@cavorit.de>
@@ -11,6 +11,4 @@ License: This package is private and internal of Cavorit Consulting
         GmbH
 LazyData: TRUE
 RoxygenNote: 5.0.1
-NeedsCompilation: no
-Packaged: 2016-12-08 14:14:49 UTC; cavorit
-Built: R 3.2.5; ; 2016-12-08 14:14:50 UTC; unix
+Built: R 3.2.5; ; 2016-12-13 14:00:00 UTC; unix

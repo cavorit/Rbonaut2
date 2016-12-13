@@ -625,240 +625,265 @@ library(ggplot2)
 ###########
 
 # NEW NORMTREE
-HH_Sessions <- c(levels(NormTree$U12$RAW$SessionID),levels(NormTree$U13$RAW$SessionID),levels(NormTree$U14$RAW$SessionID),
-                 levels(NormTree$U15$RAW$SessionID), levels(NormTree$U16$RAW$SessionID),levels(NormTree$U17$RAW$SessionID),
-                 levels(NormTree$U19$RAW$SessionID),levels(NormTree$U23$RAW$SessionID),levels(NormTree$Profis$RAW$SessionID))
+# HH_Sessions <- c(levels(NormTree$U12$RAW$SessionID),levels(NormTree$U13$RAW$SessionID),levels(NormTree$U14$RAW$SessionID),
+#                  levels(NormTree$U15$RAW$SessionID), levels(NormTree$U16$RAW$SessionID),levels(NormTree$U17$RAW$SessionID),
+#                  levels(NormTree$U19$RAW$SessionID),levels(NormTree$U23$RAW$SessionID),levels(NormTree$Profis$RAW$SessionID))
+#
+#
+# Session_10 <- NormTree$Alter10$RAW$SessionID[!levels(NormTree$Alter10$RAW$SessionID) %in% HH_Sessions]
+# Session_11 <- NormTree$Alter11$RAW$SessionID[!levels(NormTree$Alter11$RAW$SessionID) %in% HH_Sessions]
+# Session_12 <- NormTree$Alter12$RAW$SessionID[!levels(NormTree$Alter12$RAW$SessionID) %in% HH_Sessions]
+#
+# Session_13 <- NormTree$Alter13$RAW$SessionID[!levels(NormTree$Alter13$RAW$SessionID) %in% HH_Sessions]
+# Session_14 <- NormTree$Alter14$RAW$SessionID[!levels(NormTree$Alter14$RAW$SessionID) %in% HH_Sessions]
+#
+# Session_15 <- NormTree$Alter15$RAW$SessionID[!levels(NormTree$Alter15$RAW$SessionIDD) %in% HH_Sessions]
+#
+# Session_16 <- NormTree$Alter16$RAW$SessionID[!levels(NormTree$Alter16$RAW$SessionIDD) %in% HH_Sessions]
+#
+# Session_17 <- NormTree$Alter17$RAW$SessionID[!levels(NormTree$Alter17$RAW$SessionID) %in% HH_Sessions]
+# Session_18 <- NormTree$Alter18$RAW$SessionID[!levels(NormTree$Alter18$RAW$SessionID) %in% HH_Sessions]
+# Session_19 <- NormTree$Alter19$RAW$SessionID[!levels(NormTree$Alter19$RAW$SessionID) %in% HH_Sessions]
+# Session_20 <- NormTree$Alter20$RAW$SessionID[!levels(NormTree$Alter20$RAW$SessionID) %in% HH_Sessions]
+# Session_21 <- NormTree$Alter21$RAW$SessionID[!levels(NormTree$Alter21$RAW$SessionID) %in% HH_Sessions]
+# Session_22 <- NormTree$Alter22$RAW$SessionID[!levels(NormTree$Alter22$RAW$SessionID) %in% HH_Sessions]
+# Session_23 <- NormTree$Alter23$RAW$SessionID[!levels(NormTree$Alter23$RAW$SessionID) %in% HH_Sessions]
+#
+#
+#
+#
+#
+#
+# Session_10 <- setdiff(levels(NormTree$Alter10$RAW$SessionID), HH_Sessions)
+# Session_11 <- setdiff(levels(NormTree$Alter11$RAW$SessionID), HH_Sessions)
+# Session_12 <- setdiff(levels(NormTree$Alter12$RAW$SessionID), HH_Sessions)
+# Session_13 <- setdiff(levels(NormTree$Alter13$RAW$SessionID), HH_Sessions)
+# Session_14 <- setdiff(levels(NormTree$Alter14$RAW$SessionID), HH_Sessions)
+# Session_15 <- setdiff(levels(NormTree$Alter15$RAW$SessionID), HH_Sessions)
+# Session_16 <- setdiff(levels(NormTree$Alter16$RAW$SessionID), HH_Sessions)
+# Session_17 <- setdiff(levels(NormTree$Alter17$RAW$SessionID), HH_Sessions)
+# Session_18 <- setdiff(levels(NormTree$Alter18$RAW$SessionID), HH_Sessions)
+# Session_19 <- setdiff(levels(NormTree$Alter19$RAW$SessionID), HH_Sessions)
+# Session_20 <- setdiff(levels(NormTree$Alter20$RAW$SessionID), HH_Sessions)
+# Session_21 <- setdiff(levels(NormTree$Alter21$RAW$SessionID), HH_Sessions)
+# Session_22 <- setdiff(levels(NormTree$Alter22$RAW$SessionID), HH_Sessions)
+# Session_23 <- setdiff(levels(NormTree$Alter23$RAW$SessionID), HH_Sessions)
+#
+#
+# NormTree_new <- NormTree
+#
+# NormTree_new$Alter10$RAW <- NormTree_new$Alter10$RAW[NormTree_new$Alter10$RAW$SessionID %in% Session_10,]
+# NormTree_new$Alter11$RAW <- NormTree_new$Alter11$RAW[NormTree_new$Alter11$RAW$SessionID %in% Session_11,]
+# NormTree_new$Alter12$RAW <- NormTree_new$Alter12$RAW[NormTree_new$Alter12$RAW$SessionID %in% Session_12,]
+# NormTree_new$Alter13$RAW <- NormTree_new$Alter13$RAW[NormTree_new$Alter13$RAW$SessionID %in% Session_13,]
+# NormTree_new$Alter14$RAW <- NormTree_new$Alter14$RAW[NormTree_new$Alter14$RAW$SessionID %in% Session_14,]
+# NormTree_new$Alter15$RAW <- NormTree_new$Alter15$RAW[NormTree_new$Alter15$RAW$SessionID %in% Session_15,]
+# NormTree_new$Alter16$RAW <- NormTree_new$Alter16$RAW[NormTree_new$Alter16$RAW$SessionID %in% Session_16,]
+# NormTree_new$Alter17$RAW <- NormTree_new$Alter17$RAW[NormTree_new$Alter17$RAW$SessionID %in% Session_17,]
+# NormTree_new$Alter18$RAW <- NormTree_new$Alter18$RAW[NormTree_new$Alter18$RAW$SessionID %in% Session_18,]
+# NormTree_new$Alter19$RAW <- NormTree_new$Alter19$RAW[NormTree_new$Alter19$RAW$SessionID %in% Session_19,]
+# NormTree_new$Alter20$RAW <- NormTree_new$Alter20$RAW[NormTree_new$Alter20$RAW$SessionID %in% Session_20,]
+# NormTree_new$Alter21$RAW <- NormTree_new$Alter21$RAW[NormTree_new$Alter21$RAW$SessionID %in% Session_21,]
+# NormTree_new$Alter22$RAW <- NormTree_new$Alter22$RAW[NormTree_new$Alter22$RAW$SessionID %in% Session_22,]
+# NormTree_new$Alter23$RAW <- NormTree_new$Alter23$RAW[NormTree_new$Alter23$RAW$SessionID %in% Session_23,]
+#
+# NormTree_new$Alter10$HIST <- list(FBq = hist(NormTree_new$Alter10$RAW$FBq, plot=FALSE), FBt = hist(NormTree_new$Alter10$RAW$FBt, plot=FALSE), Level = hist(NormTree_new$Alter10$RAW$Fiedler2016a, plot=FALSE))
+# NormTree_new$Alter11$HIST <- list(FBq = hist(NormTree_new$Alter11$RAW$FBq, plot=FALSE), FBt = hist(NormTree_new$Alter11$RAW$FBt, plot=FALSE), Level = hist(NormTree_new$Alter11$RAW$Fiedler2016a, plot=FALSE))
+# NormTree_new$Alter12$HIST <- list(FBq = hist(NormTree_new$Alter12$RAW$FBq, plot=FALSE), FBt = hist(NormTree_new$Alter12$RAW$FBt, plot=FALSE), Level = hist(NormTree_new$Alter12$RAW$Fiedler2016a, plot=FALSE))
+# NormTree_new$Alter13$HIST <- list(FBq = hist(NormTree_new$Alter13$RAW$FBq, plot=FALSE), FBt = hist(NormTree_new$Alter13$RAW$FBt, plot=FALSE), Level = hist(NormTree_new$Alter13$RAW$Fiedler2016a, plot=FALSE))
+# NormTree_new$Alter14$HIST <- list(FBq = hist(NormTree_new$Alter14$RAW$FBq, plot=FALSE), FBt = hist(NormTree_new$Alter14$RAW$FBt, plot=FALSE), Level = hist(NormTree_new$Alter14$RAW$Fiedler2016a, plot=FALSE))
+# NormTree_new$Alter15$HIST <- list(FBq = hist(NormTree_new$Alter15$RAW$FBq, plot=FALSE), FBt = hist(NormTree_new$Alter15$RAW$FBt, plot=FALSE), Level = hist(NormTree_new$Alter15$RAW$Fiedler2016a, plot=FALSE))
+# NormTree_new$Alter16$HIST <- list(FBq = hist(NormTree_new$Alter16$RAW$FBq, plot=FALSE), FBt = hist(NormTree_new$Alter16$RAW$FBt, plot=FALSE), Level = hist(NormTree_new$Alter16$RAW$Fiedler2016a, plot=FALSE))
+# NormTree_new$Alter17$HIST <- list(FBq = hist(NormTree_new$Alter17$RAW$FBq, plot=FALSE), FBt = hist(NormTree_new$Alter17$RAW$FBt, plot=FALSE), Level = hist(NormTree_new$Alter17$RAW$Fiedler2016a, plot=FALSE))
+# NormTree_new$Alter18$HIST <- list(FBq = hist(NormTree_new$Alter18$RAW$FBq, plot=FALSE), FBt = hist(NormTree_new$Alter18$RAW$FBt, plot=FALSE), Level = hist(NormTree_new$Alter18$RAW$Fiedler2016a, plot=FALSE))
+# NormTree_new$Alter19$HIST <- list(FBq = hist(NormTree_new$Alter19$RAW$FBq, plot=FALSE), FBt = hist(NormTree_new$Alter19$RAW$FBt, plot=FALSE), Level = hist(NormTree_new$Alter19$RAW$Fiedler2016a, plot=FALSE))
+# NormTree_new$Alter20$HIST <- list(FBq = hist(NormTree_new$Alter20$RAW$FBq, plot=FALSE), FBt = hist(NormTree_new$Alter20$RAW$FBt, plot=FALSE), Level = hist(NormTree_new$Alter20$RAW$Fiedler2016a, plot=FALSE))
+# NormTree_new$Alter21$HIST <- list(FBq = hist(NormTree_new$Alter21$RAW$FBq, plot=FALSE), FBt = hist(NormTree_new$Alter21$RAW$FBt, plot=FALSE), Level = hist(NormTree_new$Alter21$RAW$Fiedler2016a, plot=FALSE))
+# NormTree_new$Alter22$HIST <- list(FBq = hist(NormTree_new$Alter22$RAW$FBq, plot=FALSE), FBt = hist(NormTree_new$Alter22$RAW$FBt, plot=FALSE), Level = hist(NormTree_new$Alter22$RAW$Fiedler2016a, plot=FALSE))
+# NormTree_new$Alter23$HIST <- list(FBq = hist(NormTree_new$Alter23$RAW$FBq, plot=FALSE), FBt = hist(NormTree_new$Alter23$RAW$FBt, plot=FALSE), Level = hist(NormTree_new$Alter23$RAW$Fiedler2016a, plot=FALSE))
+#
+# NormTree_new$Alter10$Kernel <- list(FBq = density(NormTree_new$Alter10$RAW$FBq, bw = .2), FBt = density(NormTree_new$Alter10$RAW$FBt, bw = .2), Level =  density(NormTree_new$Alter10$RAW$Fiedler2016a, bw = .2))
+# NormTree_new$Alter11$Kernel <- list(FBq = density(NormTree_new$Alter11$RAW$FBq, bw = .2), FBt = density(NormTree_new$Alter11$RAW$FBt, bw = .2), Level =  density(NormTree_new$Alter11$RAW$Fiedler2016a, bw = .2))
+# NormTree_new$Alter12$Kernel <- list(FBq = density(NormTree_new$Alter12$RAW$FBq, bw = .2), FBt = density(NormTree_new$Alter12$RAW$FBt, bw = .2), Level =  density(NormTree_new$Alter12$RAW$Fiedler2016a, bw = .2))
+# NormTree_new$Alter13$Kernel <- list(FBq = density(NormTree_new$Alter13$RAW$FBq, bw = .2), FBt = density(NormTree_new$Alter13$RAW$FBt, bw = .2), Level =  density(NormTree_new$Alter13$RAW$Fiedler2016a, bw = .2))
+# NormTree_new$Alter14$Kernel <- list(FBq = density(NormTree_new$Alter14$RAW$FBq, bw = .2), FBt = density(NormTree_new$Alter14$RAW$FBt, bw = .2), Level =  density(NormTree_new$Alter14$RAW$Fiedler2016a, bw = .2, na.rm=TRUE))
+# NormTree_new$Alter15$Kernel <- list(FBq = density(NormTree_new$Alter15$RAW$FBq, bw = .2), FBt = density(NormTree_new$Alter15$RAW$FBt, bw = .2), Level =  density(NormTree_new$Alter15$RAW$Fiedler2016a, bw = .2))
+# NormTree_new$Alter16$Kernel <- list(FBq = density(NormTree_new$Alter16$RAW$FBq, bw = .2), FBt = density(NormTree_new$Alter16$RAW$FBt, bw = .2), Level =  density(NormTree_new$Alter16$RAW$Fiedler2016a, bw = .2))
+# NormTree_new$Alter17$Kernel <- list(FBq = density(NormTree_new$Alter17$RAW$FBq, bw = .2), FBt = density(NormTree_new$Alter17$RAW$FBt, bw = .2), Level =  density(NormTree_new$Alter17$RAW$Fiedler2016a, bw = .2))
+# NormTree_new$Alter18$Kernel <- list(FBq = density(NormTree_new$Alter18$RAW$FBq, bw = .2), FBt = density(NormTree_new$Alter18$RAW$FBt, bw = .2), Level =  density(NormTree_new$Alter18$RAW$Fiedler2016a, bw = .2))
+# NormTree_new$Alter19$Kernel <- list(FBq = density(NormTree_new$Alter19$RAW$FBq, bw = .2), FBt = density(NormTree_new$Alter19$RAW$FBt, bw = .2), Level =  density(NormTree_new$Alter19$RAW$Fiedler2016a, bw = .2))
+# NormTree_new$Alter20$Kernel <- list(FBq = density(NormTree_new$Alter20$RAW$FBq, bw = .2), FBt = density(NormTree_new$Alter20$RAW$FBt, bw = .2), Level =  density(NormTree_new$Alter20$RAW$Fiedler2016a, bw = .2))
+# NormTree_new$Alter21$Kernel <- list(FBq = density(NormTree_new$Alter21$RAW$FBq, bw = .2), FBt = density(NormTree_new$Alter21$RAW$FBt, bw = .2), Level =  density(NormTree_new$Alter21$RAW$Fiedler2016a, bw = .2))
+# NormTree_new$Alter22$Kernel <- list(FBq = density(NormTree_new$Alter22$RAW$FBq, bw = .2), FBt = density(NormTree_new$Alter22$RAW$FBt, bw = .2), Level =  density(NormTree_new$Alter22$RAW$Fiedler2016a, bw = .2))
+# NormTree_new$Alter23$Kernel <- list(FBq = density(NormTree_new$Alter23$RAW$FBq, bw = .2), FBt = density(NormTree_new$Alter23$RAW$FBt, bw = .2), Level =  density(NormTree_new$Alter23$RAW$Fiedler2016a, bw = .2))
+#
+# NormTree_new$Alter10$Kernel$FBqFBt <- kde2d(NormTree_new$Alter10$RAW$FBq, NormTree_new$Alter10$RAW$FBt)
+# NormTree_new$Alter11$Kernel$FBqFBt <- kde2d(NormTree_new$Alter11$RAW$FBq, NormTree_new$Alter11$RAW$FBt)
+# NormTree_new$Alter12$Kernel$FBqFBt <- kde2d(NormTree_new$Alter12$RAW$FBq, NormTree_new$Alter12$RAW$FBt)
+# NormTree_new$Alter13$Kernel$FBqFBt <- kde2d(NormTree_new$Alter13$RAW$FBq, NormTree_new$Alter13$RAW$FBt)
+# NormTree_new$Alter14$Kernel$FBqFBt <- kde2d(NormTree_new$Alter14$RAW$FBq, NormTree_new$Alter14$RAW$FBt)
+# NormTree_new$Alter15$Kernel$FBqFBt <- kde2d(NormTree_new$Alter15$RAW$FBq, NormTree_new$Alter15$RAW$FBt)
+# NormTree_new$Alter16$Kernel$FBqFBt <- kde2d(NormTree_new$Alter16$RAW$FBq, NormTree_new$Alter16$RAW$FBt)
+# NormTree_new$Alter17$Kernel$FBqFBt <- kde2d(NormTree_new$Alter17$RAW$FBq, NormTree_new$Alter17$RAW$FBt)
+# NormTree_new$Alter18$Kernel$FBqFBt <- kde2d(NormTree_new$Alter18$RAW$FBq, NormTree_new$Alter18$RAW$FBt)
+# NormTree_new$Alter19$Kernel$FBqFBt <- kde2d(NormTree_new$Alter19$RAW$FBq, NormTree_new$Alter19$RAW$FBt)
+# NormTree_new$Alter20$Kernel$FBqFBt <- kde2d(NormTree_new$Alter20$RAW$FBq, NormTree_new$Alter20$RAW$FBt)
+# NormTree_new$Alter21$Kernel$FBqFBt <- kde2d(NormTree_new$Alter21$RAW$FBq, NormTree_new$Alter21$RAW$FBt)
+# NormTree_new$Alter22$Kernel$FBqFBt <- kde2d(NormTree_new$Alter22$RAW$FBq, NormTree_new$Alter22$RAW$FBt)
+# NormTree_new$Alter23$Kernel$FBqFBt <- kde2d(NormTree_new$Alter23$RAW$FBq, NormTree_new$Alter23$RAW$FBt)
+#
+# pdf('~/Dokumente/cavorit/test.pdf', width = 14, height = 7)
+# par(mfrow=c(1,2))
+#
+# A <- NormTree$Alter12$RAW$Fiedler2016a
+# B <- NormTree$U12$RAW$Fiedler2016a
+# Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "12 jährige", TitelB = "U12", developperMode = FALSE)
+#
+#
+# A <- NormTree_new$Alter12$RAW$Fiedler2016a
+# B <- NormTree_new$U12$RAW$Fiedler2016a
+# Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "12 jährige\\HH", TitelB = "U12", developperMode = FALSE)
+#
+#
+# A <- NormTree$Alter13$RAW$Fiedler2016a
+# B <- NormTree$U13$RAW$Fiedler2016a
+# Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "13 jährige", TitelB = "U13", developperMode = FALSE)
+#
+#
+# A <- NormTree_new$Alter13$RAW$Fiedler2016a
+# B <- NormTree_new$U13$RAW$Fiedler2016a
+# Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "13 jährige\\HH", TitelB = "U13", developperMode = FALSE)
+#
+#
+# A <- NormTree$Alter14$RAW$Fiedler2016a
+# B <- NormTree$U14$RAW$Fiedler2016a
+# Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "14 jährige", TitelB = "U14", developperMode = FALSE)
+#
+# A <- NormTree_new$Alter14$RAW$Fiedler2016a
+# B <- NormTree_new$U14$RAW$Fiedler2016a
+# Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "14 jährige\\HH", TitelB = "U14", developperMode = FALSE)
+#
+#
+# A <- NormTree$Alter15$RAW$Fiedler2016a
+# B <- NormTree$U15$RAW$Fiedler2016a
+# Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "15 jährige", TitelB = "U15", developperMode = FALSE)
+#
+# A <- NormTree_new$Alter15$RAW$Fiedler2016a
+# B <- NormTree_new$U15$RAW$Fiedler2016a
+# Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "15 jährige\\HH", TitelB = "U15", developperMode = FALSE)
+#
+# A <- NormTree$Alter16$RAW$Fiedler2016a
+# B <- NormTree$U16$RAW$Fiedler2016a
+# Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "16 jährige", TitelB = "U16", developperMode = FALSE)
+# A <- NormTree_new$Alter16$RAW$Fiedler2016a
+# B <- NormTree_new$U16$RAW$Fiedler2016a
+# Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "16 jährige\\HH", TitelB = "U16", developperMode = FALSE)
+#
+# A <- NormTree$Alter17$RAW$Fiedler2016a
+# B <- NormTree$U17$RAW$Fiedler2016a
+# Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "17 jährige", TitelB = "U17", developperMode = FALSE)
+#
+# A <- NormTree_new$Alter17$RAW$Fiedler2016a
+# B <- NormTree_new$U17$RAW$Fiedler2016a
+# Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "17 jährige\\HH", TitelB = "U17", developperMode = FALSE)
+#
+# A <- NormTree$Alter18$RAW$Fiedler2016a
+# B <- NormTree$U19$RAW$Fiedler2016a
+# Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "18 jährige", TitelB = "U19", developperMode = FALSE)
+#
+# A <- NormTree_new$Alter18$RAW$Fiedler2016a
+# B <- NormTree_new$U19$RAW$Fiedler2016a
+# Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "18 jährige\\HH", TitelB = "U19", developperMode = FALSE)
+#
+# A <- NormTree$Alter19$RAW$Fiedler2016a
+# B <- NormTree$U19$RAW$Fiedler2016a
+# Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "19 jährige", TitelB = "U19", developperMode = FALSE)
+#
+# A <- NormTree_new$Alter20$RAW$Fiedler2016a
+# B <- NormTree_new$U23$RAW$Fiedler2016a
+# Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "20 jährige\\HH", TitelB = "U23", developperMode = FALSE)
+#
+# A <- NormTree$Alter21$RAW$Fiedler2016a
+# B <- NormTree$U23$RAW$Fiedler2016a
+# Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "21 jährige", TitelB = "U23", developperMode = FALSE)
+#
+# A <- NormTree_new$Alter21$RAW$Fiedler2016a
+# B <- NormTree_new$U23$RAW$Fiedler2016a
+# Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "21 jährige\\HH", TitelB = "U23", developperMode = FALSE)
+#
+# A <- NormTree$Alter22$RAW$Fiedler2016a
+# B <- NormTree$U23$RAW$Fiedler2016a
+# Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "22 jährige", TitelB = "U23", developperMode = FALSE)
+#
+# A <- NormTree_new$Alter22$RAW$Fiedler2016a
+# B <- NormTree_new$U23$RAW$Fiedler2016a
+# Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "22 jährige\\HH", TitelB = "U23", developperMode = FALSE)
+#
+# A <- NormTree$Alter23$RAW$Fiedler2016a
+# B <- NormTree$U23$RAW$Fiedler2016a
+# Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "23 jährige", TitelB = "U23", developperMode = FALSE)
+#
+# A <- NormTree_new$Alter23$RAW$Fiedler2016a
+# B <- NormTree_new$U23$RAW$Fiedler2016a
+# Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "23 jährige\\HH", TitelB = "U23", developperMode = FALSE)
+#
+# A <- NormTree_new$Total$RAW$Fiedler2016a
+# B <- NormTree_new$Profis$RAW$Fiedler2016a
+# Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "Total", TitelB = "Profis", developperMode = FALSE)
+# dev.off()
+#
+#
+#
+#
+#
+#
+# library(sfsmisc)
+# library(Rbonaut2)
+#
+# HermannFolder <- "~/Dropbox (Cavorit)/_persönlicheOeffentlicheOrdner/_Hermann_Klöckner/tsv_Hoffenheim/"
+#
+# HistU17 <- data.frame(
+#   x = NormTree_new$U17$HIST$Level$mids,
+#   y = NormTree_new$U17$HIST$Level$density
+# )
+#
+# KernelU17 <- data.frame(
+#   x = NormTree_new$U17$Kernel$Level$x,
+#   y = NormTree_new$U17$Kernel$Level$y
+# )
+#
+# Integral <- as.integer((round(sfsmisc::integrate.xy(x = KernelU17$x, fx = KernelU17$y, b = KernelU17$x[2:length(KernelU17$x)]), digits = 4)*1000))/1000
+# KernelU17$Integral <- c(0, Integral)
+#
+# write.table(x=HistU17, file = paste0(HermannFolder, "HistU17.tsv"), sep = "\t", dec = ".", row.names = FALSE, col.names = TRUE)
+# write.table(x=KernelU17, file = paste0(HermannFolder, "KernelU17.tsv"), sep = "\t", dec = ".", row.names = FALSE, col.names = TRUE)
+#
 
+# save normtrees
+# NormTree6.16 <- NormTree
+# save(NormTree6.16, file="~/Dokumente/cavorit/Rbonaut2/Rbonaut2/data/NormTree6.16.rda")
+# NormTree <- NormTree_new
+# save(NormTree, file="~/Dokumente/cavorit/Rbonaut2/Rbonaut2/data/NormTree.rda")
 
-Session_10 <- NormTree$Alter10$RAW$SessionID[!levels(NormTree$Alter10$RAW$SessionID) %in% HH_Sessions]
-Session_11 <- NormTree$Alter11$RAW$SessionID[!levels(NormTree$Alter11$RAW$SessionID) %in% HH_Sessions]
-Session_12 <- NormTree$Alter12$RAW$SessionID[!levels(NormTree$Alter12$RAW$SessionID) %in% HH_Sessions]
-
-Session_13 <- NormTree$Alter13$RAW$SessionID[!levels(NormTree$Alter13$RAW$SessionID) %in% HH_Sessions]
-Session_14 <- NormTree$Alter14$RAW$SessionID[!levels(NormTree$Alter14$RAW$SessionID) %in% HH_Sessions]
-
-Session_15 <- NormTree$Alter15$RAW$SessionID[!levels(NormTree$Alter15$RAW$SessionIDD) %in% HH_Sessions]
-
-Session_16 <- NormTree$Alter16$RAW$SessionID[!levels(NormTree$Alter16$RAW$SessionIDD) %in% HH_Sessions]
-
-Session_17 <- NormTree$Alter17$RAW$SessionID[!levels(NormTree$Alter17$RAW$SessionID) %in% HH_Sessions]
-Session_18 <- NormTree$Alter18$RAW$SessionID[!levels(NormTree$Alter18$RAW$SessionID) %in% HH_Sessions]
-Session_19 <- NormTree$Alter19$RAW$SessionID[!levels(NormTree$Alter19$RAW$SessionID) %in% HH_Sessions]
-Session_20 <- NormTree$Alter20$RAW$SessionID[!levels(NormTree$Alter20$RAW$SessionID) %in% HH_Sessions]
-Session_21 <- NormTree$Alter21$RAW$SessionID[!levels(NormTree$Alter21$RAW$SessionID) %in% HH_Sessions]
-Session_22 <- NormTree$Alter22$RAW$SessionID[!levels(NormTree$Alter22$RAW$SessionID) %in% HH_Sessions]
-Session_23 <- NormTree$Alter23$RAW$SessionID[!levels(NormTree$Alter23$RAW$SessionID) %in% HH_Sessions]
-
-
-
-
-
-
-Session_10 <- setdiff(levels(NormTree$Alter10$RAW$SessionID), HH_Sessions)
-Session_11 <- setdiff(levels(NormTree$Alter11$RAW$SessionID), HH_Sessions)
-Session_12 <- setdiff(levels(NormTree$Alter12$RAW$SessionID), HH_Sessions)
-Session_13 <- setdiff(levels(NormTree$Alter13$RAW$SessionID), HH_Sessions)
-Session_14 <- setdiff(levels(NormTree$Alter14$RAW$SessionID), HH_Sessions)
-Session_15 <- setdiff(levels(NormTree$Alter15$RAW$SessionID), HH_Sessions)
-Session_16 <- setdiff(levels(NormTree$Alter16$RAW$SessionID), HH_Sessions)
-Session_17 <- setdiff(levels(NormTree$Alter17$RAW$SessionID), HH_Sessions)
-Session_18 <- setdiff(levels(NormTree$Alter18$RAW$SessionID), HH_Sessions)
-Session_19 <- setdiff(levels(NormTree$Alter19$RAW$SessionID), HH_Sessions)
-Session_20 <- setdiff(levels(NormTree$Alter20$RAW$SessionID), HH_Sessions)
-Session_21 <- setdiff(levels(NormTree$Alter21$RAW$SessionID), HH_Sessions)
-Session_22 <- setdiff(levels(NormTree$Alter22$RAW$SessionID), HH_Sessions)
-Session_23 <- setdiff(levels(NormTree$Alter23$RAW$SessionID), HH_Sessions)
-
-
-NormTree_new <- NormTree
-
-NormTree_new$Alter10$RAW <- NormTree_new$Alter10$RAW[NormTree_new$Alter10$RAW$SessionID %in% Session_10,]
-NormTree_new$Alter11$RAW <- NormTree_new$Alter11$RAW[NormTree_new$Alter11$RAW$SessionID %in% Session_11,]
-NormTree_new$Alter12$RAW <- NormTree_new$Alter12$RAW[NormTree_new$Alter12$RAW$SessionID %in% Session_12,]
-NormTree_new$Alter13$RAW <- NormTree_new$Alter13$RAW[NormTree_new$Alter13$RAW$SessionID %in% Session_13,]
-NormTree_new$Alter14$RAW <- NormTree_new$Alter14$RAW[NormTree_new$Alter14$RAW$SessionID %in% Session_14,]
-NormTree_new$Alter15$RAW <- NormTree_new$Alter15$RAW[NormTree_new$Alter15$RAW$SessionID %in% Session_15,]
-NormTree_new$Alter16$RAW <- NormTree_new$Alter16$RAW[NormTree_new$Alter16$RAW$SessionID %in% Session_16,]
-NormTree_new$Alter17$RAW <- NormTree_new$Alter17$RAW[NormTree_new$Alter17$RAW$SessionID %in% Session_17,]
-NormTree_new$Alter18$RAW <- NormTree_new$Alter18$RAW[NormTree_new$Alter18$RAW$SessionID %in% Session_18,]
-NormTree_new$Alter19$RAW <- NormTree_new$Alter19$RAW[NormTree_new$Alter19$RAW$SessionID %in% Session_19,]
-NormTree_new$Alter20$RAW <- NormTree_new$Alter20$RAW[NormTree_new$Alter20$RAW$SessionID %in% Session_20,]
-NormTree_new$Alter21$RAW <- NormTree_new$Alter21$RAW[NormTree_new$Alter21$RAW$SessionID %in% Session_21,]
-NormTree_new$Alter22$RAW <- NormTree_new$Alter22$RAW[NormTree_new$Alter22$RAW$SessionID %in% Session_22,]
-NormTree_new$Alter23$RAW <- NormTree_new$Alter23$RAW[NormTree_new$Alter23$RAW$SessionID %in% Session_23,]
-
-NormTree_new$Alter10$HIST <- list(FBq = hist(NormTree_new$Alter10$RAW$FBq, plot=FALSE), FBt = hist(NormTree_new$Alter10$RAW$FBt, plot=FALSE), Level = hist(NormTree_new$Alter10$RAW$Fiedler2016a, plot=FALSE))
-NormTree_new$Alter11$HIST <- list(FBq = hist(NormTree_new$Alter11$RAW$FBq, plot=FALSE), FBt = hist(NormTree_new$Alter11$RAW$FBt, plot=FALSE), Level = hist(NormTree_new$Alter11$RAW$Fiedler2016a, plot=FALSE))
-NormTree_new$Alter12$HIST <- list(FBq = hist(NormTree_new$Alter12$RAW$FBq, plot=FALSE), FBt = hist(NormTree_new$Alter12$RAW$FBt, plot=FALSE), Level = hist(NormTree_new$Alter12$RAW$Fiedler2016a, plot=FALSE))
-NormTree_new$Alter13$HIST <- list(FBq = hist(NormTree_new$Alter13$RAW$FBq, plot=FALSE), FBt = hist(NormTree_new$Alter13$RAW$FBt, plot=FALSE), Level = hist(NormTree_new$Alter13$RAW$Fiedler2016a, plot=FALSE))
-NormTree_new$Alter14$HIST <- list(FBq = hist(NormTree_new$Alter14$RAW$FBq, plot=FALSE), FBt = hist(NormTree_new$Alter14$RAW$FBt, plot=FALSE), Level = hist(NormTree_new$Alter14$RAW$Fiedler2016a, plot=FALSE))
-NormTree_new$Alter15$HIST <- list(FBq = hist(NormTree_new$Alter15$RAW$FBq, plot=FALSE), FBt = hist(NormTree_new$Alter15$RAW$FBt, plot=FALSE), Level = hist(NormTree_new$Alter15$RAW$Fiedler2016a, plot=FALSE))
-NormTree_new$Alter16$HIST <- list(FBq = hist(NormTree_new$Alter16$RAW$FBq, plot=FALSE), FBt = hist(NormTree_new$Alter16$RAW$FBt, plot=FALSE), Level = hist(NormTree_new$Alter16$RAW$Fiedler2016a, plot=FALSE))
-NormTree_new$Alter17$HIST <- list(FBq = hist(NormTree_new$Alter17$RAW$FBq, plot=FALSE), FBt = hist(NormTree_new$Alter17$RAW$FBt, plot=FALSE), Level = hist(NormTree_new$Alter17$RAW$Fiedler2016a, plot=FALSE))
-NormTree_new$Alter18$HIST <- list(FBq = hist(NormTree_new$Alter18$RAW$FBq, plot=FALSE), FBt = hist(NormTree_new$Alter18$RAW$FBt, plot=FALSE), Level = hist(NormTree_new$Alter18$RAW$Fiedler2016a, plot=FALSE))
-NormTree_new$Alter19$HIST <- list(FBq = hist(NormTree_new$Alter19$RAW$FBq, plot=FALSE), FBt = hist(NormTree_new$Alter19$RAW$FBt, plot=FALSE), Level = hist(NormTree_new$Alter19$RAW$Fiedler2016a, plot=FALSE))
-NormTree_new$Alter20$HIST <- list(FBq = hist(NormTree_new$Alter20$RAW$FBq, plot=FALSE), FBt = hist(NormTree_new$Alter20$RAW$FBt, plot=FALSE), Level = hist(NormTree_new$Alter20$RAW$Fiedler2016a, plot=FALSE))
-NormTree_new$Alter21$HIST <- list(FBq = hist(NormTree_new$Alter21$RAW$FBq, plot=FALSE), FBt = hist(NormTree_new$Alter21$RAW$FBt, plot=FALSE), Level = hist(NormTree_new$Alter21$RAW$Fiedler2016a, plot=FALSE))
-NormTree_new$Alter22$HIST <- list(FBq = hist(NormTree_new$Alter22$RAW$FBq, plot=FALSE), FBt = hist(NormTree_new$Alter22$RAW$FBt, plot=FALSE), Level = hist(NormTree_new$Alter22$RAW$Fiedler2016a, plot=FALSE))
-NormTree_new$Alter23$HIST <- list(FBq = hist(NormTree_new$Alter23$RAW$FBq, plot=FALSE), FBt = hist(NormTree_new$Alter23$RAW$FBt, plot=FALSE), Level = hist(NormTree_new$Alter23$RAW$Fiedler2016a, plot=FALSE))
-
-NormTree_new$Alter10$Kernel <- list(FBq = density(NormTree_new$Alter10$RAW$FBq, bw = .2), FBt = density(NormTree_new$Alter10$RAW$FBt, bw = .2), Level =  density(NormTree_new$Alter10$RAW$Fiedler2016a, bw = .2))
-NormTree_new$Alter11$Kernel <- list(FBq = density(NormTree_new$Alter11$RAW$FBq, bw = .2), FBt = density(NormTree_new$Alter11$RAW$FBt, bw = .2), Level =  density(NormTree_new$Alter11$RAW$Fiedler2016a, bw = .2))
-NormTree_new$Alter12$Kernel <- list(FBq = density(NormTree_new$Alter12$RAW$FBq, bw = .2), FBt = density(NormTree_new$Alter12$RAW$FBt, bw = .2), Level =  density(NormTree_new$Alter12$RAW$Fiedler2016a, bw = .2))
-NormTree_new$Alter13$Kernel <- list(FBq = density(NormTree_new$Alter13$RAW$FBq, bw = .2), FBt = density(NormTree_new$Alter13$RAW$FBt, bw = .2), Level =  density(NormTree_new$Alter13$RAW$Fiedler2016a, bw = .2))
-NormTree_new$Alter14$Kernel <- list(FBq = density(NormTree_new$Alter14$RAW$FBq, bw = .2), FBt = density(NormTree_new$Alter14$RAW$FBt, bw = .2), Level =  density(NormTree_new$Alter14$RAW$Fiedler2016a, bw = .2, na.rm=TRUE))
-NormTree_new$Alter15$Kernel <- list(FBq = density(NormTree_new$Alter15$RAW$FBq, bw = .2), FBt = density(NormTree_new$Alter15$RAW$FBt, bw = .2), Level =  density(NormTree_new$Alter15$RAW$Fiedler2016a, bw = .2))
-NormTree_new$Alter16$Kernel <- list(FBq = density(NormTree_new$Alter16$RAW$FBq, bw = .2), FBt = density(NormTree_new$Alter16$RAW$FBt, bw = .2), Level =  density(NormTree_new$Alter16$RAW$Fiedler2016a, bw = .2))
-NormTree_new$Alter17$Kernel <- list(FBq = density(NormTree_new$Alter17$RAW$FBq, bw = .2), FBt = density(NormTree_new$Alter17$RAW$FBt, bw = .2), Level =  density(NormTree_new$Alter17$RAW$Fiedler2016a, bw = .2))
-NormTree_new$Alter18$Kernel <- list(FBq = density(NormTree_new$Alter18$RAW$FBq, bw = .2), FBt = density(NormTree_new$Alter18$RAW$FBt, bw = .2), Level =  density(NormTree_new$Alter18$RAW$Fiedler2016a, bw = .2))
-NormTree_new$Alter19$Kernel <- list(FBq = density(NormTree_new$Alter19$RAW$FBq, bw = .2), FBt = density(NormTree_new$Alter19$RAW$FBt, bw = .2), Level =  density(NormTree_new$Alter19$RAW$Fiedler2016a, bw = .2))
-NormTree_new$Alter20$Kernel <- list(FBq = density(NormTree_new$Alter20$RAW$FBq, bw = .2), FBt = density(NormTree_new$Alter20$RAW$FBt, bw = .2), Level =  density(NormTree_new$Alter20$RAW$Fiedler2016a, bw = .2))
-NormTree_new$Alter21$Kernel <- list(FBq = density(NormTree_new$Alter21$RAW$FBq, bw = .2), FBt = density(NormTree_new$Alter21$RAW$FBt, bw = .2), Level =  density(NormTree_new$Alter21$RAW$Fiedler2016a, bw = .2))
-NormTree_new$Alter22$Kernel <- list(FBq = density(NormTree_new$Alter22$RAW$FBq, bw = .2), FBt = density(NormTree_new$Alter22$RAW$FBt, bw = .2), Level =  density(NormTree_new$Alter22$RAW$Fiedler2016a, bw = .2))
-NormTree_new$Alter23$Kernel <- list(FBq = density(NormTree_new$Alter23$RAW$FBq, bw = .2), FBt = density(NormTree_new$Alter23$RAW$FBt, bw = .2), Level =  density(NormTree_new$Alter23$RAW$Fiedler2016a, bw = .2))
-
-NormTree_new$Alter10$Kernel$FBqFBt <- kde2d(NormTree_new$Alter10$RAW$FBq, NormTree_new$Alter10$RAW$FBt)
-NormTree_new$Alter11$Kernel$FBqFBt <- kde2d(NormTree_new$Alter11$RAW$FBq, NormTree_new$Alter11$RAW$FBt)
-NormTree_new$Alter12$Kernel$FBqFBt <- kde2d(NormTree_new$Alter12$RAW$FBq, NormTree_new$Alter12$RAW$FBt)
-NormTree_new$Alter13$Kernel$FBqFBt <- kde2d(NormTree_new$Alter13$RAW$FBq, NormTree_new$Alter13$RAW$FBt)
-NormTree_new$Alter14$Kernel$FBqFBt <- kde2d(NormTree_new$Alter14$RAW$FBq, NormTree_new$Alter14$RAW$FBt)
-NormTree_new$Alter15$Kernel$FBqFBt <- kde2d(NormTree_new$Alter15$RAW$FBq, NormTree_new$Alter15$RAW$FBt)
-NormTree_new$Alter16$Kernel$FBqFBt <- kde2d(NormTree_new$Alter16$RAW$FBq, NormTree_new$Alter16$RAW$FBt)
-NormTree_new$Alter17$Kernel$FBqFBt <- kde2d(NormTree_new$Alter17$RAW$FBq, NormTree_new$Alter17$RAW$FBt)
-NormTree_new$Alter18$Kernel$FBqFBt <- kde2d(NormTree_new$Alter18$RAW$FBq, NormTree_new$Alter18$RAW$FBt)
-NormTree_new$Alter19$Kernel$FBqFBt <- kde2d(NormTree_new$Alter19$RAW$FBq, NormTree_new$Alter19$RAW$FBt)
-NormTree_new$Alter20$Kernel$FBqFBt <- kde2d(NormTree_new$Alter20$RAW$FBq, NormTree_new$Alter20$RAW$FBt)
-NormTree_new$Alter21$Kernel$FBqFBt <- kde2d(NormTree_new$Alter21$RAW$FBq, NormTree_new$Alter21$RAW$FBt)
-NormTree_new$Alter22$Kernel$FBqFBt <- kde2d(NormTree_new$Alter22$RAW$FBq, NormTree_new$Alter22$RAW$FBt)
-NormTree_new$Alter23$Kernel$FBqFBt <- kde2d(NormTree_new$Alter23$RAW$FBq, NormTree_new$Alter23$RAW$FBt)
-
-pdf('~/Dokumente/cavorit/test.pdf', width = 14, height = 7)
-par(mfrow=c(1,2))
-
-A <- NormTree$Alter12$RAW$Fiedler2016a
-B <- NormTree$U12$RAW$Fiedler2016a
-Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "12 jährige", TitelB = "U12", developperMode = FALSE)
-
-
-A <- NormTree_new$Alter12$RAW$Fiedler2016a
-B <- NormTree_new$U12$RAW$Fiedler2016a
-Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "12 jährige\\HH", TitelB = "U12", developperMode = FALSE)
-
-
-A <- NormTree$Alter13$RAW$Fiedler2016a
-B <- NormTree$U13$RAW$Fiedler2016a
-Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "13 jährige", TitelB = "U13", developperMode = FALSE)
-
-
-A <- NormTree_new$Alter13$RAW$Fiedler2016a
-B <- NormTree_new$U13$RAW$Fiedler2016a
-Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "13 jährige\\HH", TitelB = "U13", developperMode = FALSE)
-
-
-A <- NormTree$Alter14$RAW$Fiedler2016a
-B <- NormTree$U14$RAW$Fiedler2016a
-Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "14 jährige", TitelB = "U14", developperMode = FALSE)
-
-A <- NormTree_new$Alter14$RAW$Fiedler2016a
-B <- NormTree_new$U14$RAW$Fiedler2016a
-Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "14 jährige\\HH", TitelB = "U14", developperMode = FALSE)
-
-
-A <- NormTree$Alter15$RAW$Fiedler2016a
-B <- NormTree$U15$RAW$Fiedler2016a
-Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "15 jährige", TitelB = "U15", developperMode = FALSE)
-
-A <- NormTree_new$Alter15$RAW$Fiedler2016a
-B <- NormTree_new$U15$RAW$Fiedler2016a
-Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "15 jährige\\HH", TitelB = "U15", developperMode = FALSE)
-
-A <- NormTree$Alter16$RAW$Fiedler2016a
-B <- NormTree$U16$RAW$Fiedler2016a
-Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "16 jährige", TitelB = "U16", developperMode = FALSE)
-A <- NormTree_new$Alter16$RAW$Fiedler2016a
-B <- NormTree_new$U16$RAW$Fiedler2016a
-Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "16 jährige\\HH", TitelB = "U16", developperMode = FALSE)
-
-A <- NormTree$Alter17$RAW$Fiedler2016a
-B <- NormTree$U17$RAW$Fiedler2016a
-Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "17 jährige", TitelB = "U17", developperMode = FALSE)
-
-A <- NormTree_new$Alter17$RAW$Fiedler2016a
-B <- NormTree_new$U17$RAW$Fiedler2016a
-Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "17 jährige\\HH", TitelB = "U17", developperMode = FALSE)
-
-A <- NormTree$Alter18$RAW$Fiedler2016a
-B <- NormTree$U19$RAW$Fiedler2016a
-Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "18 jährige", TitelB = "U19", developperMode = FALSE)
-
-A <- NormTree_new$Alter18$RAW$Fiedler2016a
-B <- NormTree_new$U19$RAW$Fiedler2016a
-Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "18 jährige\\HH", TitelB = "U19", developperMode = FALSE)
-
-A <- NormTree$Alter19$RAW$Fiedler2016a
-B <- NormTree$U19$RAW$Fiedler2016a
-Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "19 jährige", TitelB = "U19", developperMode = FALSE)
-
-A <- NormTree_new$Alter20$RAW$Fiedler2016a
-B <- NormTree_new$U23$RAW$Fiedler2016a
-Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "20 jährige\\HH", TitelB = "U23", developperMode = FALSE)
-
-A <- NormTree$Alter21$RAW$Fiedler2016a
-B <- NormTree$U23$RAW$Fiedler2016a
-Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "21 jährige", TitelB = "U23", developperMode = FALSE)
-
-A <- NormTree_new$Alter21$RAW$Fiedler2016a
-B <- NormTree_new$U23$RAW$Fiedler2016a
-Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "21 jährige\\HH", TitelB = "U23", developperMode = FALSE)
-
-A <- NormTree$Alter22$RAW$Fiedler2016a
-B <- NormTree$U23$RAW$Fiedler2016a
-Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "22 jährige", TitelB = "U23", developperMode = FALSE)
-
-A <- NormTree_new$Alter22$RAW$Fiedler2016a
-B <- NormTree_new$U23$RAW$Fiedler2016a
-Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "22 jährige\\HH", TitelB = "U23", developperMode = FALSE)
-
-A <- NormTree$Alter23$RAW$Fiedler2016a
-B <- NormTree$U23$RAW$Fiedler2016a
-Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "23 jährige", TitelB = "U23", developperMode = FALSE)
-
-A <- NormTree_new$Alter23$RAW$Fiedler2016a
-B <- NormTree_new$U23$RAW$Fiedler2016a
-Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "23 jährige\\HH", TitelB = "U23", developperMode = FALSE)
-
-A <- NormTree_new$Total$RAW$Fiedler2016a
-B <- NormTree_new$Profis$RAW$Fiedler2016a
-Rbonaut2::plotSeaShell(x=-0.3, A=A, B=B, TitelA = "Total", TitelB = "Profis", developperMode = FALSE)
-dev.off()
-
-
-
-
-
-
-library(sfsmisc)
+rm(list=ls())
 library(Rbonaut2)
+Items <- data.frame(ItemID = c("BL01", "BL02", "BL03", "BL04", "BL05", "BL06", "BL07", "BL08", "BL09", paste0("BL", 10:32)),
+                  adrM = c(64L, 28L, 10L, 46L, 64L, 28L, 10L, 46L, 64L, 46L, 10L, 64L, 10L, 64L, 46L, 28L, 64L, 10L, 10L, 46L, 64L, 46L, 28L, 46L, 28L, 64L, 28L, 10L, 28L, 64L, 10L, 28L),
+                  adrW = c(68L, 72L, 22L, 36L, 54L, 66L, 4L, 18L, 70L, 52L, 58L, 40L, 8L, 32L, 14L, 12L, 30L, 24L, 48L, 34L, 26L, 38L, 60L, 6L, 44L, 42L, 16L, 2L, 50L, 56L, 62L, 20L)
+ )
 
-HermannFolder <- "~/Dropbox (Cavorit)/_persönlicheOeffentlicheOrdner/_Hermann_Klöckner/tsv_Hoffenheim/"
 
-HistU17 <- data.frame(
-  x = NormTree_new$U17$HIST$Level$mids,
-  y = NormTree_new$U17$HIST$Level$density
-)
+playedAngle(Items[1,2], Items[1,3])
 
-KernelU17 <- data.frame(
-  x = NormTree_new$U17$Kernel$Level$x,
-  y = NormTree_new$U17$Kernel$Level$y
-)
+Items$angle <- playedAngle(Items[,2], Items[,3])
 
-Integral <- as.integer((round(sfsmisc::integrate.xy(x = KernelU17$x, fx = KernelU17$y, b = KernelU17$x[2:length(KernelU17$x)]), digits = 4)*1000))/1000
-KernelU17$Integral <- c(0, Integral)
 
-write.table(x=HistU17, file = paste0(HermannFolder, "HistU17.tsv"), sep = "\t", dec = ".", row.names = FALSE, col.names = TRUE)
-write.table(x=KernelU17, file = paste0(HermannFolder, "KernelU17.tsv"), sep = "\t", dec = ".", row.names = FALSE, col.names = TRUE)
 
-save(NormTree_new, file="~/Dokumente/cavorit/Rbonaut2/Rbonaut2/data/NormTree.rda")
+
+
+
+
+
 
 # #### Jan Spielmann neue Tabellen
 #
