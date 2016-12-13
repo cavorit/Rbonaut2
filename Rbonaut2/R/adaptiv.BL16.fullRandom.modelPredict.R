@@ -38,6 +38,11 @@
 #'     \item Testergebnis Das Testergebnis, dass der Spieler auf der latenten Kompetenzdimension erhält. (Noch nicht implementiert, daher vorläufig NA)
 #'     \item Seashell_output_base64, Grafik im base64 im JSON format, wenn gameover. Um es im Browser zu öffnen: <!DOCTYPE html><html><body><img src="data:;base64,Seashell_output_base64" alt="SeaShell"/></body></html>
 #' }
+#' #' Example Output, jedes Anführungszeichen, außer erstes und letztes sind backslashed \cr
+#' ["{"TicketID":["YxubhQlCsGdrXcGnhSZo"],"nextB":{"ballmachine":[28],"goal_target":[72],"speed_left":[50],\cr
+#' "speed_right":[60],"vertical_angle":[4],"shot_delay":[800],"expiration_time":[2195],\cr
+#' "expiration_color":["200,100,0"]},"Testergebnis":[null],"GameOver":[false],\cr
+#' "Seashell_output_base64":[null]}"]
 #'
 
 adaptiv.BL16.fullRandom.modelPredict <- function(AnfrageDF){
@@ -74,7 +79,9 @@ adaptiv.BL16.fullRandom.modelPredict <- function(AnfrageDF){
      TicketID = paste(sample(c(letters, LETTERS), size = 20, replace =TRUE), collapse = ''),
      GameOver = (nrow(AnfrageDF)>16),
      NextB = as.list(c(ItemRaum[sample(1:nrow(ItemRaum), size = 1),], expiration_color='200,100,0')), # hier wird das Item zufällig aus BL32 gewählt
-     Testergebnis = NA
+     Testergebnis = NA,
+     Seashell_output_base64 = ifelse(GameOver, plotSeaShell(x=tail(History$Level,1),A=History$Level, B=NormTree[[AnfrageDF$Team[1]]]$RAW$Fiedler2016a, TitelA = AnfrageDF$NamePlayer, TitelB =AnfrageDF$Team[1], gameover=TRUE), NA)
+
    )
 
   return(jsonlite::toJSON(Ergebnis))

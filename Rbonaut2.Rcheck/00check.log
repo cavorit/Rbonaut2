@@ -37,6 +37,7 @@ Standardizable: FALSE
 * checking R files for non-ASCII characters ... WARNING
 Found the following files with non-ASCII characters:
   adaptiv.BL16.fullRandom.modelTransform.R
+  adaptiv.BL16.modelTransform.R
   augmentRAW.R
   getSessionTimeStamp.R
   itemID2Params.R
@@ -64,6 +65,12 @@ Packages in Depends field not imported from:
 * checking replacement functions ... OK
 * checking foreign function calls ... OK
 * checking R code for possible problems ... NOTE
+adaptiv.BL16.fullRandom.modelPredict: no visible binding for global
+  variable ‘GameOver’
+adaptiv.BL16.fullRandom.modelPredict: no visible binding for global
+  variable ‘History’
+adaptiv.BL16.fullRandom.modelPredict: no visible binding for global
+  variable ‘NormTree’
 adaptiv.BL16.modelPredict: no visible binding for global variable
   ‘NormTree’
 askDB: no visible global function definition for ‘dbDriver’
@@ -87,6 +94,7 @@ plotSeaShell: no visible global function definition for ‘base64encode’
 adaptiv.BL16.fullRandom.modelPredict.Rd: non-ASCII input and no declared encoding
 adaptiv.BL16.fullRandom.modelTransform.Rd: non-ASCII input and no declared encoding
 adaptiv.BL16.modelPredict.Rd: non-ASCII input and no declared encoding
+adaptiv.BL16.modelTransform.Rd: non-ASCII input and no declared encoding
 askDB.Rd: non-ASCII input and no declared encoding
 augmentRAW.Rd: non-ASCII input and no declared encoding
 calcFiedler2016a.Rd: non-ASCII input and no declared encoding
@@ -112,7 +120,7 @@ readItemBank.Rd: non-ASCII input and no declared encoding
 readRAW.Rd: non-ASCII input and no declared encoding
 writeAUGMENTED.Rd: non-ASCII input and no declared encoding
 writeRAW.Rd: non-ASCII input and no declared encoding
-problems found in ‘adaptiv.BL16.fullRandom.modelPredict.Rd’, ‘adaptiv.BL16.fullRandom.modelTransform.Rd’, ‘adaptiv.BL16.modelPredict.Rd’, ‘askDB.Rd’, ‘augmentRAW.Rd’, ‘calcFiedler2016a.Rd’, ‘detectItemID.Rd’, ‘detectItemIDLive.Rd’, ‘detectItemResponse.Rd’, ‘detectRotatedItems.Rd’, ‘erstelleRaschMatrixSkeleton.Rd’, ‘fillRaschMatrixSkeleton.Rd’, ‘getAdrWAlsListe.Rd’, ‘getFirstAdrW.Rd’, ‘getHW.Rd’, ‘getNachname.Rd’, ‘getVorname.Rd’, ‘gibZahlFuehrendeNullen.Rd’, ‘implodeRaschMatrix4Quality.Rd’, ‘istFormatNachnameKommaVorname.Rd’, ‘itemID2Params.Rd’, ‘plotSeaShell.Rd’, ‘readAUGMENTED.Rd’, ‘readItemBank.Rd’, ‘readRAW.Rd’, ‘writeAUGMENTED.Rd’, ‘writeRAW.Rd’
+problems found in ‘adaptiv.BL16.fullRandom.modelPredict.Rd’, ‘adaptiv.BL16.fullRandom.modelTransform.Rd’, ‘adaptiv.BL16.modelPredict.Rd’, ‘adaptiv.BL16.modelTransform.Rd’, ‘askDB.Rd’, ‘augmentRAW.Rd’, ‘calcFiedler2016a.Rd’, ‘detectItemID.Rd’, ‘detectItemIDLive.Rd’, ‘detectItemResponse.Rd’, ‘detectRotatedItems.Rd’, ‘erstelleRaschMatrixSkeleton.Rd’, ‘fillRaschMatrixSkeleton.Rd’, ‘getAdrWAlsListe.Rd’, ‘getFirstAdrW.Rd’, ‘getHW.Rd’, ‘getNachname.Rd’, ‘getVorname.Rd’, ‘gibZahlFuehrendeNullen.Rd’, ‘implodeRaschMatrix4Quality.Rd’, ‘istFormatNachnameKommaVorname.Rd’, ‘itemID2Params.Rd’, ‘plotSeaShell.Rd’, ‘readAUGMENTED.Rd’, ‘readItemBank.Rd’, ‘readRAW.Rd’, ‘writeAUGMENTED.Rd’, ‘writeRAW.Rd’
 * checking Rd metadata ... OK
 * checking Rd cross-references ... OK
 * checking for missing documentation entries ... OK
