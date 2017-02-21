@@ -56,6 +56,21 @@ vierterBall = {
     "FBt" : [2140, 2600, 8600]
     }
 
+funfterBall = {
+    "TestID" : "BL16a",
+    "idS" : "002b6573-cf12-436d-bccd-0856b0bb0a24",
+    "idP" : "fe553db4-bbde-43dd-a6a0-804b9e46c57",
+    "NamePlayer" : "Mustermann, Tim",
+    "Birthday" : "2002-07-21",
+    "Team" : "U14",
+    "SessionStart" : "2014-03-22 13:42:03",
+    "adrB" : [64,46,64,64,46],
+    "adrW" : [68,36,42,70,38],
+    "adrCol" : ['200,0,0','200,0,0','200,0,0','200,0,0','200,0,0'],
+    "adrOut" : [68, 36, 42,70,38],
+    "FBt" : [2140, 2600, 8600,8600,8600]
+    }
+
 siebterBall = {
     "TestID" : "BL32",
     "idS" : "002b6573-cf12-436d-bccd-0856b0bb0a25",
@@ -86,7 +101,7 @@ siebzehnterBall = {
     "FBt" : [2140, 2600, 8600,2140, 2600, 8600,2140, 2600, 8600,2140, 2600, 860,2140, 2600, 8600,2140]
     }
 
-data = siebterBall
+data = funfterBall
 
 anfrage = json.dumps(data)
 buf = cStringIO.StringIO()
