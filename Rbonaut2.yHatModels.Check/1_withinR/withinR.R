@@ -94,7 +94,7 @@ siebterBall <- jsonlite::toJSON(
   )
 )
 
-AnfrageJSONstring <- get(paste0(c("erster", "zweiter", "vierter", "siebter"), "Ball")[4])
+AnfrageJSONstring <- get(paste0(c("erster", "zweiter", "vierter", "siebter"), "Ball")[3])
 
 modelRequire()
 AnfrageDF <- modelTransform(x = AnfrageJSONstring)
