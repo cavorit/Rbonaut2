@@ -101,7 +101,7 @@ siebzehnterBall = {
     "FBt" : [2140, 2600, 8600,2140, 2600, 8600,2140, 2600, 8600,2140, 2600, 860,2140, 2600, 8600,2140]
     }
 
-data = funfterBall
+data = siebzehnterBall
 
 anfrage = json.dumps(data)
 buf = cStringIO.StringIO()

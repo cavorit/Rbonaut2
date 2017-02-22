@@ -2,7 +2,6 @@
 * using R version 3.2.5 (2016-04-14)
 * using platform: x86_64-pc-linux-gnu (64-bit)
 * using session charset: UTF-8
-* using options ‘--no-manual --as-cran’
 * checking for file ‘Rbonaut2/DESCRIPTION’ ... OK
 * checking extension type ... Package
 * this is package ‘Rbonaut2’ version ‘0.8’
@@ -11,7 +10,16 @@
 * checking if this is a source package ... OK
 * checking if there is a namespace ... OK
 * checking for executable files ... OK
-* checking for hidden files and directories ... OK
+* checking for hidden files and directories ... NOTE
+Found the following hidden files and directories:
+  .DS_Store
+  .Rhistory
+  R/.DS_Store
+  R/.Rhistory
+  inst/.DS_Store
+  .Rproj.user
+These were most likely included in error. See section ‘Package
+structure’ in the ‘Writing R Extensions’ manual.
 * checking for portable file names ... OK
 * checking for sufficient/correct file permissions ... OK
 * checking whether package ‘Rbonaut2’ can be installed ... OK
@@ -22,9 +30,7 @@ Malformed Description field: should contain one or more complete sentences.
 Non-standard license specification:
   This package is private and internal of Cavorit Consulting GmbH
 Standardizable: FALSE
-* checking top-level files ... NOTE
-Non-standard files/directories found at top level:
-  ‘3’ ‘Haralds_dev_envr.R’ ‘Katerynas_dev_envr.R’ ‘Monatsangaben.R’
+* checking top-level files ... OK
 * checking for left-over files ... OK
 * checking index information ... OK
 * checking package subdirectories ... OK
@@ -116,12 +122,6 @@ writeAUGMENTED.Rd: non-ASCII input and no declared encoding
 writeRAW.Rd: non-ASCII input and no declared encoding
 problems found in ‘adaptiv.BL16.fullRandom.modelPredict.Rd’, ‘adaptiv.BL16.fullRandom.modelTransform.Rd’, ‘adaptiv.BL16.modelPredict.Rd’, ‘adaptiv.BL16.modelTransform.Rd’, ‘askDB.Rd’, ‘augmentRAW.Rd’, ‘calcFiedler2016a.Rd’, ‘detectItemID.Rd’, ‘detectItemIDLive.Rd’, ‘detectItemResponse.Rd’, ‘detectRotatedItems.Rd’, ‘erstelleRaschMatrixSkeleton.Rd’, ‘fillRaschMatrixSkeleton.Rd’, ‘getAdrWAlsListe.Rd’, ‘getFirstAdrW.Rd’, ‘getHW.Rd’, ‘getNachname.Rd’, ‘getVorname.Rd’, ‘gibZahlFuehrendeNullen.Rd’, ‘implodeRaschMatrix4Quality.Rd’, ‘istFormatNachnameKommaVorname.Rd’, ‘itemID2Params.Rd’, ‘plotSeaShell.Rd’, ‘readAUGMENTED.Rd’, ‘readItemBank.Rd’, ‘readRAW.Rd’, ‘writeAUGMENTED.Rd’, ‘writeRAW.Rd’
 * checking Rd metadata ... OK
-* checking Rd line widths ... NOTE
-Rd file 'getSessionTimeStamp.Rd':
-  \examples lines wider than 100 characters:
-     DatumString <- c("2015-08-27 18:59:25.328383+02", "2015-08-27 18:59:25.328383+02", "2015-08-27 18:59:25.328383+02")
-
-These lines will be truncated in the PDF manual.
 * checking Rd cross-references ... OK
 * checking for missing documentation entries ... OK
 * checking for code/documentation mismatches ... OK
@@ -138,5 +138,6 @@ These lines will be truncated in the PDF manual.
   NormTree.rda        795Kb    572Kb       xz
   NormTree6.16.rda    803Kb    578Kb       xz
 * checking examples ... OK
+* checking PDF version of manual ... OK
 * DONE
-Status: 4 WARNINGs, 4 NOTEs
+Status: 4 WARNINGs, 3 NOTEs
